@@ -42,7 +42,7 @@ function Footer() {
             </Link>
           </div>
           <small className="website-rights">
-            Merchandise Society Club © 2020
+            Merchandising Society Club © 2020
           </small>
           <div className="social-icons">
             <Link
