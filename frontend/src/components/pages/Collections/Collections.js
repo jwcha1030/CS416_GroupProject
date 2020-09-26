@@ -1,11 +1,11 @@
 import React from "react";
 import HeroSection from "../../HeroSection";
-import { temp1 } from "./Data";
+import { products } from "./Data";
 
 function Products() {
   return (
     <>
-      <HeroSection {...temp1} />
+      <HeroSection {...products} />
     </>
   );
 }

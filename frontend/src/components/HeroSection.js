@@ -14,6 +14,7 @@ function HeroSection({
   img,
   alt,
   imgStart,
+  buttonTo,
 }) {
   return (
     <>
@@ -51,11 +52,15 @@ function HeroSection({
                 >
                   {description}
                 </p>
-                {/* <Link to="/sign-up">
-                  <Button buttonSize="btn--wide" buttonColor="msc_orange">
+                <Link to={buttonTo}>
+                  <Button
+                    buttonSize="btn--wide"
+                    lightBg
+                    buttonColor={lightBg ? "msc_orange" : "msc_orange_invert"}
+                  >
                     {buttonLabel}
                   </Button>
-                </Link> */}
+                </Link>
               </div>
             </div>
             <div className="col">

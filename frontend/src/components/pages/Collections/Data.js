@@ -1,11 +1,11 @@
-export const temp1 = {
+export const products = {
   lightBg: false,
   lightText: true,
   lightTextDesc: true,
   topLine: "MSC COLLECTIONS",
   headline: "Explore through our catalog of products",
   description: "Explore our latest products!",
-  buttonLabel: "",
+  buttonLabel: "View Products",
   imgStart: "",
   img: "",
   alt: "",

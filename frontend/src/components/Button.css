@@ -58,12 +58,12 @@
 .btn--mobile:hover {
   transition: all 0.3s ease-out;
   background: #fff;
-  color: #242424;
+  color: #00000050;
 }
 
 .btn--wide:hover {
   color: #fff;
-  background-color: #572e07;
+  background-color: #00000050;
   transition: all 0.2s ease-out;
 }
 

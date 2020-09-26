@@ -19,7 +19,7 @@ export const virtualStore = {
   topLine: "Retail Revolution Store",
   headline: "Experience Our Store Online",
   description: "Virtually experience Retail Revolution Store",
-  buttonLabel: "",
+  buttonLabel: "View Store",
   imgStart: "",
   img: "images/svg-5.svg",
   alt: "Virtual Retail Revolution Shop",
