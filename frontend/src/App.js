@@ -7,6 +7,15 @@ import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/pages/Footer.js/Footer";
+// import counterpart from 'counterpart';
+// import Translate from 'react-traslate-component';
+
+// counterpart.registerTranslations('en',{
+
+// })
+//https://www.youtube.com/watch?v=PM3SrgdYvrw&ab_channel=Chigabiga 
+// Translation Tutorial
+
 
 function App() {
   return (

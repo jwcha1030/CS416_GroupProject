@@ -8,6 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  font-family:Helvetica ;
 }
 
 .navbar-container {
@@ -40,9 +41,7 @@
 .navbar-logo:hover {
   text-decoration: none;
   color: #ea7229;
-  font-weight: bolder;
-  transition: 0.1s;
-}
+ }
 
 .navbar-icon {
   margin-right: 0.5rem;
@@ -63,9 +62,10 @@
 }
 
 .nav-item:hover {
-  border-bottom: 8px solid #ffffff;
+  border-bottom: 6px solid #ffffff;
   transition: 0.4s;
 }
+
 
 .nav-links {
   color: #ea7229;
@@ -75,6 +75,10 @@
   padding: 0.5rem 1rem;
   height: 100%;
 }
+
+.nav-links:focus{
+  color:#ea7229
+ }
 
 .nav-links:hover {
   color: #ea7229;

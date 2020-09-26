@@ -25,10 +25,10 @@ body::-webkit-scrollbar-thumb {
   );
 }
 
-a:visited {
-  color: #ea7229;
-  border-bottom-color: white;
+a, a:hover, a:active, a:visited, a:focus {
+  text-decoration:none;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -48,8 +48,6 @@ code {
 .carousel-indicators ol {
   width: 100%;
 }
-
-
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {

@@ -12,7 +12,7 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const showButton = () => {
+   const showButton = () => {
     if (window.innerWidth <= 800) {
       setButton(false);
     } else {
@@ -71,9 +71,15 @@ function Navbar() {
                   About Us
                 </Link>
               </li>
-              <li className="nav-item">
+            </ul>
+
+
+
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
+
+            <li className="nav-item">
                 <Link
-                  //  KOR PAGE
+                  //  KOREAN PAGE
                   to="/"
                   className="nav-links"
                   onClick={closeMobileMenu}
@@ -83,7 +89,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  // ENG PAGE
+                  // ENGLISH PAGE
                   to="/"
                   className="nav-links"
                   onClick={closeMobileMenu}
@@ -101,7 +107,10 @@ function Navbar() {
                   Admin
                 </Link>
               </li>
-            </ul>
+              </ul>
+
+
+
           </div>
         </nav>
       </IconContext.Provider>
