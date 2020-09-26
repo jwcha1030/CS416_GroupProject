@@ -42,6 +42,10 @@
   text-decoration: none;
   color: #ea7229;
  }
+ .navbar-logo:focus {
+  text-decoration: none;
+  color: #ea7229;
+ }
 
 .navbar-icon {
   margin-right: 0.5rem;
