@@ -17,6 +17,12 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background: #ea7229;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(234, 114, 41, 1) 45%,
+    rgba(0, 38, 46, 0.5998774509803921) 100%
+  );
 }
 
 code {
