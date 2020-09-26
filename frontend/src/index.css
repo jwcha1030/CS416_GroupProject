@@ -25,6 +25,10 @@ body::-webkit-scrollbar-thumb {
   );
 }
 
+a:visited {
+  color: #ea7229;
+  border-bottom-color: white;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

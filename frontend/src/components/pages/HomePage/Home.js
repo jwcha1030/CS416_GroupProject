@@ -20,7 +20,7 @@ function Home() {
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={msc_banner2} alt="Second slide" />
+          <img className="center-block" src={msc_banner2} alt="Second slide" />
           <Carousel.Caption>
             <h3>Second slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -28,7 +28,7 @@ function Home() {
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={msc_banner3} alt="Thrid slide" />
+          <img className="center-block" src={msc_banner3} alt="Thrid slide" />
           <Carousel.Caption>
             <h3>Third slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

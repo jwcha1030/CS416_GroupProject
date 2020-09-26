@@ -3,7 +3,7 @@ export const temp1 = {
   lightText: true,
   lightTextDesc: true,
   topLine: "MSC COLLECTIONS",
-  headline: "Explor through our catalog of products",
+  headline: "Explore through our catalog of products",
   description: "Explore our latest products!",
   buttonLabel: "",
   imgStart: "",
