@@ -44,6 +44,7 @@ function Home() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      
       <HeroSection {...collections} />
 
       <HeroSection {...ourteam} />
