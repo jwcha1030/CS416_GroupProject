@@ -106,40 +106,45 @@
 }
 
 .fa-bars {
-  color: #ea7229;
+  color: #000000;
 }
 
 .menu-icon {
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1200px) {
   .NavbarItems {
     position: relative;
   }
-
+ 
   .nav-menu {
+    justify-content: flex-start;
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 40%;
     height: 90vh;
     position: absolute;
     top: 79px;
-    left: -100%;
+    left: 100%;
     opacity: 1;
     transition: all 1s ease;
   }
 
   .nav-menu.active {
+    margin-top: 2.4rem;
+    border:none;
+    text-decoration: none;
     color: white;
     background: #ffffff;
-    left: 0;
-    opacity: 1;
+    left: 60%;
+    opacity: .85;
     transition: all 0.6s ease;
     z-index: 1;
   }
 
   .nav-links {
+    margin-top: 5px;
     text-align: center;
     padding: 2rem;
     width: 100%;
@@ -147,21 +152,31 @@
   }
 
   .nav-links:hover {
-    color: #ea7229;
+    color: #ffffff;
+    border:none;
+
     transform: scale(1.2);
     transition: all 0.3s ease;
   }
 
   .nav-item:hover {
-    border: none;
-  }
+    
+    border-left: 6px solid #000000;
+
+   }
 
   .nav-item {
     width: 100%;
   }
 
+  .nav-item:hover{ 
+     background-color: #ea7229;
+  }
+
   .navbar-logo {
     position: absolute;
+    font-size: 2.5rem;
+    margin-top: 15px;
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
@@ -173,16 +188,18 @@
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    font-size: 3rem;
     cursor: pointer;
+
   }
 
   .fa-times {
-    color: #866c5b;
+    color: #000000;
     font-size: 2rem;
   }
 
   .nav-btn {
+    
     display: flex;
     justify-content: center;
     align-items: center;

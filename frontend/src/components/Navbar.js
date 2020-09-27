@@ -37,6 +37,8 @@ function Navbar() {
             <div className="menu-icon" onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </div>
+
+
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
@@ -71,13 +73,7 @@ function Navbar() {
                   About Us
                 </Link>
               </li>
-            </ul>
-
-
-
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
-
-            <li className="nav-item">
+              <li className="nav-item">
                 <Link
                   //  KOREAN PAGE
                   to="/"
@@ -107,7 +103,10 @@ function Navbar() {
                   Admin
                 </Link>
               </li>
-              </ul>
+            </ul>
+
+
+ 
 
 
 
