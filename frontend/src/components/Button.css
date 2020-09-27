@@ -1,7 +1,7 @@
 :root {
-  --primary: #fff;
+  --primary: #d5d5d5;
   --accent: #ea7229;
-  --primary_invert : black;
+  --primary_invert : #030303;
 }
 
 .btn {
@@ -59,14 +59,11 @@
 .btn--medium:hover,
 .btn--mobile:hover {
   transition: all 0.3s ease-out;
-  background: #fff;
-  color: #00000050;
-}
+  }
 
 .btn--wide:hover {
   color: #fff;
-  background-color: #00000050;
-  transition: all 0.2s ease-out;
+   transition: all 0.2s ease-out;
 }
 
 .btn-link {
@@ -80,7 +77,7 @@
 }
 
 .black{
-  background-color: black;
+  background-color: #030303;
   color:white;
 
 }
@@ -90,11 +87,11 @@
 
 }
 .textBlack{
-  color:black;
+  color:#030303;
 }
 
 .textWhite{
-  color:white;
+  color:#d5d5d5;
 }
 .msc_orange {
   background-color: #ea7229;
