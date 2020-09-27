@@ -6,8 +6,8 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import SVG from 'react-inlinesvg';
 import Logo from '../images/MSC.jpeg';
-
-
+import {FaLanguage, FaUserLock,FaHome } from 'react-icons/fa';
+ 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -66,7 +66,8 @@ function Navbar() {
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  Home
+                <FaHome style={{ fill: 'black',   paddingRight: "7px"
+} } /> Home
                 </Link>
               </li>
 
@@ -97,47 +98,44 @@ function Navbar() {
                 >
                   About Us
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  //  KOREAN PAGE
-                  to="/"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  KOR
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  // ENGLISH PAGE
-                  to="/"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  ENG
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  // ADMIN PAGE
-                  to="/"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  Admin
-                </Link>
-              </li>
+      </li>
+      <div className={"non-function"}>
+
+      <li className="nav-item">
+       <Link
+            // Toggle translate 
+            to="/"
+            className="nav-links"
+            onClick={closeMobileMenu}>
+            <FaLanguage style={{ fill: 'black', paddingRight: "5px"}}/>
+            <div style={{fontSize: "10px" }}>
+            KOR | ENG
+            </div>
+            </Link>
+       </li>
+    <li className="nav-item">
+      <Link
+        // ADMIN PAGE
+        to="/"
+        className="nav-links"
+        onClick={closeMobileMenu} >
+        <FaUserLock style={{ fill: 'black', paddingRight: "5px"}} />
+        <div style={{fontSize: "10px"}}>
+          ADMIN
+        </div>
+      </Link>
+    </li>
+    </div>
             </ul>
-
-
- 
-
-
-
+           
+            
           </div>
+        
         </nav>
       </IconContext.Provider>
+
+
+
     </>
   );
 }

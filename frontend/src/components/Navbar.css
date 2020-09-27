@@ -12,14 +12,27 @@
   z-index: 999;
   font-family:Helvetica ;
   margin-bottom: 0;
-
+ 
 }
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 80px;
 }
+
+.non-function{
+  display: flex;
+  flex-direction: row;
+
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin:0;
+
+
+}
+
 
 .container {
   z-index: 1;
@@ -135,6 +148,15 @@
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
+  }
+
+  .non-function{
+    display: flex;
+     flex-direction: column;
+    list-style: none;
+ 
+  
+  
   }
 
   .navbar-icon{
