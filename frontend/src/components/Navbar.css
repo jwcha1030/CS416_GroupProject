@@ -42,10 +42,9 @@
   font-weight: 600;
 
  }
-.navbar-logo-image{
-
+.navbar-icon{
   height:auto;
-  width: 120px;
+  width: 140px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -122,6 +121,32 @@
 }
 
 @media screen and (max-width: 1200px) {
+  
+  .navbar {
+    
+    margin-top: 0;
+    padding-top: 0;
+
+  
+  }
+  .navbar-logo {
+     position: absolute;
+    font-size: 2.5rem;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 50%);
+  }
+
+  .navbar-icon{
+ 
+    height:auto;
+    width: 120px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+   }
+ 
   .NavbarItems {
     position: relative;
   }
@@ -171,16 +196,6 @@
 
   .nav-item {
     width: 100%;
-  }
-
- 
-  .navbar-logo {
-    position: absolute;
-    font-size: 2.5rem;
-    margin-top: 15px;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
   }
 
   .menu-icon {

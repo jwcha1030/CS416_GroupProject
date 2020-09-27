@@ -53,7 +53,7 @@ function Navbar() {
 
 
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <div className = "navbar-logo-image">
+            <div className = "navbar-icon">
             <img src={Logo} />
             </div>
               Merchandising Society
