@@ -42,7 +42,15 @@
   font-weight: 600;
 
  }
+.navbar-logo-image{
 
+  height:auto;
+  width: 120px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
 .navbar-logo:hover {
   text-decoration: none;
   color: #ea7229;
