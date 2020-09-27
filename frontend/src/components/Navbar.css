@@ -119,26 +119,25 @@
   }
  
   .nav-menu {
-    justify-content: flex-start;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 30%;
     height: 90vh;
     position: absolute;
-    top: 79px;
+    top:  79px;
     left: 100%;
     opacity: 1;
     transition: all 1s ease;
   }
 
   .nav-menu.active {
-    margin-top: 2.4rem;
+     margin-top: 2.4rem;
     border:none;
     text-decoration: none;
-    color: white;
     background: #ffffff;
-    left: 60%;
-    opacity: .85;
+    left: 70%;
+    top:69px;
+    opacity: .8;
     transition: all 0.6s ease;
     z-index: 1;
   }
@@ -152,27 +151,21 @@
   }
 
   .nav-links:hover {
-    color: #ffffff;
+   
+    color: #ea7229;
     border:none;
-
-    transform: scale(1.2);
-    transition: all 0.3s ease;
+     transition: all 0.2s ease;
   }
 
   .nav-item:hover {
-    
     border-left: 6px solid #000000;
-
    }
 
   .nav-item {
     width: 100%;
   }
 
-  .nav-item:hover{ 
-     background-color: #ea7229;
-  }
-
+ 
   .navbar-logo {
     position: absolute;
     font-size: 2.5rem;
@@ -183,6 +176,8 @@
   }
 
   .menu-icon {
+    padding-right: 0;
+    margin-right: 0;
     display: block;
     position: absolute;
     top: 0;
