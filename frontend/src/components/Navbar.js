@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import SVG from 'react-inlinesvg';
-import Logo from '../images/MSC.jpeg';
-import {FaLanguage, FaUserLock,FaHome } from 'react-icons/fa';
- 
+import SVG from "react-inlinesvg";
+import Logo from "../images/MSC.jpeg";
+import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
+
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -15,7 +15,7 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-   const showButton = () => {
+  const showButton = () => {
     if (window.innerWidth <= 800) {
       setButton(false);
     } else {
@@ -34,8 +34,7 @@ function Navbar() {
       <IconContext.Provider value={{ size: "2.5rem", color: "#ea7229" }}>
         <nav className="navbar">
           <div className="navbar-container container">
-          
-          {/* <SVG
+            {/* <SVG
   baseURL="/home"
   cacheRequests={true}
   description="The React logo"
@@ -48,31 +47,26 @@ function Navbar() {
   uniqueHash="a1f8d1"
   uniquifyIDs={true}
 /> */}
-{/*SVG not working properly :( so using jpg file)  */}
-
-
+            {/*SVG not working properly :( so using jpg file)  */}
 
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <div className = "navbar-icon">
-            <img src={Logo} />
-            </div>
+              <div className="navbar-icon">
+                <img src={Logo} />
+              </div>
               Merchandising Society
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </div>
 
-
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                <FaHome style={{ fill: 'black',   paddingRight: "7px"
-} } /> Home
+                  <FaHome style={{ fill: "black", paddingRight: "7px" }} /> Home
                 </Link>
               </li>
 
               <li className="nav-item">
-                
                 <Link
                   to="/collections"
                   className="nav-links"
@@ -98,44 +92,39 @@ function Navbar() {
                 >
                   About Us
                 </Link>
-      </li>
-      <div className={"non-function"}>
-
-      <li className="nav-item">
-       <Link
-            // Toggle translate 
-            to="/"
-            className="nav-links"
-            onClick={closeMobileMenu}>
-            <FaLanguage style={{ fill: 'black', paddingRight: "5px"}}/>
-            <div style={{fontSize: "10px" }}>
-            KOR | ENG
-            </div>
-            </Link>
-       </li>
-    <li className="nav-item">
-      <Link
-        // ADMIN PAGE
-        to="/"
-        className="nav-links"
-        onClick={closeMobileMenu} >
-        <FaUserLock style={{ fill: 'black', paddingRight: "5px"}} />
-        <div style={{fontSize: "10px"}}>
-          ADMIN
-        </div>
-      </Link>
-    </li>
-    </div>
+              </li>
+              <div className={"non-function"}>
+                <li className="nav-item">
+                  <Link
+                    // Toggle translate
+                    to="/"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    <FaLanguage
+                      style={{ fill: "black", paddingRight: "7px" }}
+                    />
+                    <div style={{ fontSize: "6px" }}>KOR | ENG</div>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    // ADMIN PAGE
+                    to="/"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    <FaUserLock
+                      style={{ fill: "black", paddingRight: "7px" }}
+                    />
+                    <div style={{ fontSize: "6px" }}>ADMIN</div>
+                  </Link>
+                </li>
+              </div>
             </ul>
-           
-            
           </div>
-        
         </nav>
       </IconContext.Provider>
-
-
-
     </>
   );
 }

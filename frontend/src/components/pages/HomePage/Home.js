@@ -8,10 +8,16 @@ import msc_banner2 from "../../../images/msc_banner2.jfif";
 import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
 
+import { AnimatePresence, motion } from "framer-motion"
 
 function Home() {
   return (
-    <div>
+    <motion.div 
+    initial={{opacity:0}}
+    
+    animate={{opacity:1}}
+    exit={{opacity:0}} 
+   >
       <Carousel>
         <Carousel.Item>
           <img className="center-block" src={msc_banner} alt="First slide" />
@@ -50,7 +56,7 @@ function Home() {
       <HeroSection {...ourteam} />
 
       <HeroSection {...aboutus} />
-    </div>
+    </motion.div>
   );
 }
 
