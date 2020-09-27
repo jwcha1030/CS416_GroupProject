@@ -32,7 +32,7 @@
 }
 
 .top-line {
-  color: #000000;
+  color: #ea7229;
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;
@@ -52,7 +52,13 @@
 .msc_orange {
   color: #ea7229;
 }
+.msc_orange_invert{
+  color:white;
+}
 
+.msc_orange_invert_background{
+  color:white;
+}
 .msc_orange_background {
   background-color: #ea7229;
 }
@@ -88,7 +94,6 @@ img {
     padding-right: 30px;
     padding-left: 30px;
    }
-   
 }
 
 @media screen and (max-width: 768px) {

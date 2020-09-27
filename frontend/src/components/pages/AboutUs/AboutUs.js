@@ -5,7 +5,7 @@ import { aboutUs, virtualStore } from "./Data";
 function AboutUs() {
   return (
     <>
-      <HeroSection {...aboutUs} />
+      <HeroSection {...aboutUs}></HeroSection>
       <HeroSection {...virtualStore} />
     </>
   );

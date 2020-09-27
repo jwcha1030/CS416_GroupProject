@@ -1,7 +1,10 @@
+
+import image1 from "../../../images/msc_banner3.jpg"
+
 export const collections = {
-  lightBg: false,
-  lightText: true,
-  lightTextDesc: true,
+  lightBg: true,
+  lightText: false,
+  lightTextDesc: false,
   topLine: "MSC Collections",
   headline: "Discover new products we made!",
   description: "2020 Fall New Arrivals are here!",
@@ -9,14 +12,14 @@ export const collections = {
 
   buttonLabel: "COLLECTIONS",
   imgStart: "",
-  img: "",
-  alt: "",
+  img: image1,
+  alt: "image",
 };
 
 export const ourteam = {
-  lightBg: true,
-  lightText: false,
-  lightTextDesc: false,
+  lightBg: false,
+  lightText: true,
+  lightTextDesc: true,
   topLine: "MSC Our Team",
   headline: "Meet our members",
   description: "Website is in progress",
@@ -28,9 +31,9 @@ export const ourteam = {
 };
 
 export const aboutus = {
-  lightBg: false,
-  lightText: true,
-  lightTextDesc: true,
+  lightBg: true,
+  lightText: false,
+  lightTextDesc: false,
   topLine: "MSC About Us",
   headline: "About Us",
   description: "MSC makes merchandise for FIT and SBU.",

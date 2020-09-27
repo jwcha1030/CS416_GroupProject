@@ -6,8 +6,12 @@ const STYLES = ["btn--primary", "btn--outline"];
 const SIZES = ["btn--medium", "btn--large", "btn--mobile", "btn--wide"];
 
 const COLOR = [
-  "msc_orange",
+  "textWhite",
+  "textBlack",
+  "white",
+  "black",
   "msc_orange_invert",
+  "msc_orange",
   "primary",
   "blue",
   "red",

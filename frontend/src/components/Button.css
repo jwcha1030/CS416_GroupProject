@@ -1,5 +1,7 @@
 :root {
   --primary: #fff;
+  --accent: #ea7229;
+  --primary_invert : black;
 }
 
 .btn {
@@ -14,7 +16,7 @@
 .btn--primary {
   background-color: var(--primary);
   color: #ea7229;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--accent);
 }
 
 .btn--outline {
@@ -77,16 +79,34 @@
   width: 100%;
 }
 
+.black{
+  background-color: black;
+  color:white;
+
+}
+.white{
+  background-color: white;
+  color:#ea7229;
+
+}
+.textBlack{
+  color:black;
+}
+
+.textWhite{
+  color:white;
+}
 .msc_orange {
   background-color: #ea7229;
   color: #fff;
   border: none;
+
 }
 
 .msc_orange_invert {
   background-color: white;
   color: #ea7229;
-  border-color: #ea7229;
+  border:none;
 }
 
 .red {
@@ -105,14 +125,4 @@
   background-color: #fff;
   color: #242424;
   border: none;
-}
-
-.green {
-  background: #25ce4a;
-  color: #fff;
-  border: none;
-}
-
-.green:hover {
-  background-color: #242424;
 }

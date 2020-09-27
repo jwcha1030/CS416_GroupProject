@@ -21,8 +21,8 @@ function HeroSection({
       <div
         className={
           lightBg
-            ? "home__hero-section"
-            : "home__hero-section msc_orange_background"
+            ? "home__hero-section white"
+            : "home__hero-section black"
         }
       >
         <div className="container">
@@ -38,7 +38,7 @@ function HeroSection({
                 <div className="top-line">{topLine}</div>
                 <h1
                   className={
-                    lightText ? "heading" : "heading msc_orange_invert"
+                    lightText ? "heading " : "heading textBlack"
                   }
                 >
                   {headline}
@@ -46,8 +46,8 @@ function HeroSection({
                 <p
                   className={
                     lightTextDesc
-                      ? "home__hero-subtitle msc_orange"
-                      : "home__hero-subtitle msc_orange_invert"
+                      ? "home__hero-subtitle textWhite"
+                      : "home__hero-subtitle textBlack"
                   }
                 >
                   {description}
@@ -56,7 +56,7 @@ function HeroSection({
                   <Button
                     buttonSize="btn--wide"
                     lightBg
-                    buttonColor={lightBg ? "msc_orange" : "msc_orange_invert"}
+                    buttonColor={lightBg = "msc_orange" }
                   >
                     {buttonLabel}
                   </Button>
@@ -64,9 +64,9 @@ function HeroSection({
               </div>
             </div>
             <div className="col">
-              {/* <div className="home__hero-img-wrapper">
+              <div className="home__hero-img-wrapper">
                 <img src={img} alt={alt} className="home__hero-img" />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
