@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeroSection from "../../HeroSection";
 import { collections, ourteam, aboutus } from "./Data";
@@ -7,17 +7,25 @@ import msc_banner from "../../../images/msc_banner.JPG";
 import msc_banner2 from "../../../images/msc_banner2.jfif";
 import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
-
+import renderCarousel from "../../Carousel"
+import { carouselData } from "./CarouselData"
 import { AnimatePresence, motion } from "framer-motion"
+import Carousel from "react-bootstrap/esm/Carousel";
 
 function Home() {
   return (
-    <motion.div 
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}} 
-   >
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+
       <Carousel>
+        {carouselData.map(renderCarousel)}
+      </Carousel>
+
+
+      {/* <Carousel>
         <Carousel.Item>
           <img className="center-block" src={msc_banner} alt="First slide" />
           <Carousel.Caption>
@@ -48,8 +56,8 @@ function Home() {
             <p>For Students, By Students</p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
-      
+      </Carousel> */}
+
       <HeroSection {...collections} />
 
       <HeroSection {...ourteam} />
