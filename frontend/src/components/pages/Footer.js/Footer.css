@@ -156,7 +156,7 @@ color: white;
   margin-bottom: 16px;
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 1150px) {
   .footer-links {
     padding-top: 2rem;
   }
@@ -176,4 +176,33 @@ color: white;
   .social-media-wrap {
     flex-direction: column;
   }
+
+
+
+.footer-subscription > p {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.footer-subscription-heading {
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.footer-subscription-text {
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.footer-input {
+  padding: 8px 24px;
+  border-radius: 2px;
+  margin-right: 10px;
+  outline: none;
+  border: none;
+  font-size: 12px;
+  margin-bottom: 16px;
+  border: 2px solid #fff;
+}
+
 }
