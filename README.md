@@ -17,7 +17,6 @@ Our solution is to create a website for them that will allow MSC to have an onli
 
 **Initial Frontend Prototype Deployment**
 https://merchandising-society.web.app/
-
 If you want to deploy this to the domain above, run the following in frontend directory.
 **-npm run build**
 **-firebase serve**
@@ -26,9 +25,7 @@ If you want to deploy this to the domain above, run the following in frontend di
 **Installation**  
 Git clone the repository and go to frontend directory.
 Install packages and run the application by the following commands. 
-
 **-npm install**  
 **-npm start**
-
 Frontend is built extensively for Chrome at the momoent -- other broswers may behave differently with styling.
 Supports mobile view of the application
