@@ -17,10 +17,11 @@ Our solution is to create a website for them that will allow MSC to have an onli
 
 **Installation**  
 
-FrontEnd
+*Front End*  
 Git clone the repository and go to frontend directory.
-Install packages and run React by the following commands.
--npm install  
--npm start
+Install packages and run React by the following commands. 
+
+*-npm install*  
+*-npm start*
 
 Frontend is built extensively for Chrome at the momoent -- other broswers may behave differently with styling.
