@@ -136,19 +136,12 @@
 @media screen and (max-width: 1200px) {
   
   .navbar {
-    
-    margin-top: 0;
-    padding-top: 0;
-
-  
+    height: 10%;
   }
   .navbar-logo {
-    position: absolute;
-    font-size: 2.5rem;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
-  }
+    font-size: 2rem;
+ 
+   }
 
   .non-function{
     display: flex;
@@ -161,13 +154,15 @@
 
   .navbar-icon{
  
-    width: 10rem;
+    width: 8rem;
     height:auto;
 
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding-right: 30px;
+    padding:auto;
+    margin: auto;
+
    }
  
   .NavbarItems {
@@ -177,10 +172,10 @@
   .nav-menu {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     height: 90vh;
     position: absolute;
-    top:  79px;
+    top:  0;
     left: 100%;
     opacity: 1;
     transition: all 1s ease;
@@ -191,8 +186,8 @@
     border:none;
     text-decoration: none;
     background: #ffffff;
-    left: 70%;
-    top:69px;
+    left: 60%;
+    top:65%;
     opacity: .8;
     transition: all 0.6s ease;
     z-index: 1;
