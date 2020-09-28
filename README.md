@@ -20,6 +20,7 @@ Our solution is to create a website for them that will allow MSC to have an onli
 **Initial Frontend Prototype Deployment**
 
  https://merchandising-society.web.app/
+
 If you want to deploy this to the domain above, run the following in frontend directory.
 **-npm run build**
 **-firebase serve**
