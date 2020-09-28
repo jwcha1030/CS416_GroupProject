@@ -58,8 +58,39 @@ code {
   }
 
   .carousel-caption {
-    font-size: 1rem;
+    font-size: 2rem;
     background: rgba(0, 0, 0, 0.5);
 }
 
 
+@media screen and (max-width: 1150px) {
+
+ 
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    background-color: transparent;
+     transition-timing-function: ease;
+    transition: .4s;
+    }
+    .carousel-caption h3 {  /* Header */
+      font-size: 12px;
+    }
+    .carousel-caption p {  /* Paragraph */
+      font-size: 4px;
+    }
+    .carousel-indicators li {  /* Indicators */
+      width: 8px;
+      height: 8px;
+    }  
+   
+    
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.8);
+      height: 15%;
+      overflow-y: hidden;
+   }
+    
+  
+
+}
