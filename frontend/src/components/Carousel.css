@@ -27,21 +27,38 @@
 }
 
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
 
- 
-  
+  .carousel-indicators li,
+  .carousel-indicators li.active {
+    float: left;
+    width: 22%;
+    height: 2rem;
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+    background: transparent;
+  }
   .carousel-control-prev:hover,
   .carousel-control-next:hover {
     background-color: transparent;
      transition-timing-function: ease;
     transition: .4s;
     }
+
+ 
     .carousel-caption h3 {  /* Header */
-      font-size: 12px;
+      font-size: 1.2rem;
+      background-color: black;
+
+      margin: 0;
+      padding:0;
     }
-    .carousel-caption p {  /* Paragraph */
-      font-size: 4px;
+    .carousel-caption p {  /* Description */
+      font-size: 1rem;
+      background-color: black;
+      margin: 0;
+      padding-bottom:5px;
     }
     .carousel-indicators li {  /* Indicators */
       width: 8px;
@@ -50,11 +67,14 @@
    
     
     .carousel-caption {
-        background: rgba(0, 0, 0, 0.8);
-      height: 15%;
-      overflow-y: hidden;
+      background: none;
+       height: 10%;
+
+      
    }
     
-  
+   .center-block{
+     width:50px;
+   }
 
 }

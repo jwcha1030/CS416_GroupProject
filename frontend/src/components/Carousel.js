@@ -10,7 +10,7 @@ const renderCarousel = (item, index) => {
 
     return (
         <Carousel.Item  >
-            <img className="center-block" src={item.img} alt={item.alt} />
+            <img className="" src={item.img} alt={item.alt} />
             <Carousel.Caption >
                 <h3>{item.caption}</h3>
                 <p>{item.description}</p>

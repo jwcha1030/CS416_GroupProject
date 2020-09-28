@@ -8,8 +8,8 @@ export const carouselData = [
 
     {
         id: "1",
-        caption: "Merchadising Society Club",
-        description: "We Make Merchandise for Fashion Institute of Technology and Stony Brook University",
+        caption: "We Make Merchandise for FIT and SBU",
+        description: "2020 Fall Club Member Registration Open! ",
         img: msc_banner,
         alt: "First Slide",
 

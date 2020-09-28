@@ -89,7 +89,7 @@ img {
   display: inline-block;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
   
 .row {
   display: flex;
