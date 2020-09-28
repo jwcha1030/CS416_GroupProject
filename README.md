@@ -15,14 +15,18 @@ The Fashion Institute of Technology (FIT) at SUNY Korea has big and professional
 **The Solution**  
 Our solution is to create a website for them that will allow MSC to have an online platform that has several different sections such as an MSC about page, mailing subscriptions, an MSC product collection for showcasing merchandise, and a virtual showroom to replicate their physical Retail Revolution Store online.
 
-**Initial Frontend Prototype Deployment**.
+
+
+**Initial Frontend Prototype Deployment**
+
  https://merchandising-society.web.app/
 If you want to deploy this to the domain above, run the following in frontend directory.
 **-npm run build**
 **-firebase serve**
 
 
-**Installation**  
+**Installation**
+
 Git clone the repository and go to frontend directory.
 Install packages and run the application by the following commands. 
 **-npm install**  
