@@ -102,9 +102,9 @@ function Navbar() {
                     onClick={closeMobileMenu}
                   >
                     <FaLanguage
-                      style={{ fill: "black", paddingRight: "7px" }}
+                      style={{ fill: "black", paddingRight: "2px" }}
                     />
-                    <div style={{ fontSize: "6px" }}>KOR | ENG</div>
+                    <div style={{ fontSize: "11px" }}>KOR | ENG</div>
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -115,9 +115,9 @@ function Navbar() {
                     onClick={closeMobileMenu}
                   >
                     <FaUserLock
-                      style={{ fill: "black", paddingRight: "7px" }}
+                      style={{ fill: "black", paddingRight: "6px" }}
                     />
-                    <div style={{ fontSize: "6px" }}>ADMIN</div>
+                    <div style={{ fontSize: "11px" }}>ADMIN</div>
                   </Link>
                 </li>
               </div>

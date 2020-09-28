@@ -1,6 +1,6 @@
 .navbar {
   background: #ffffff;
-  height: 8vh;
+  height: 11vh;
   margin-top: 0;
   padding-top: 0;
   display: flex;
@@ -143,7 +143,7 @@
 
 }
   .navbar {
-    height: 10%;
+    height: 15%;
  
   }
   .navbar-logo {
