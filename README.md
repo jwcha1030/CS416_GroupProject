@@ -14,3 +14,14 @@ The Fashion Institute of Technology (FIT) at SUNY Korea has big and professional
 
 **The Solution**  
 Our solution is to create a website for them that will allow MSC to have an online platform that has several different sections such as an MSC about page, mailing subscriptions, an MSC product collection for showcasing merchandise, and a virtual showroom to replicate their physical Retail Revolution Store online.
+
+**Installation**  
+
+*Front End*  
+Git clone the repository and go to frontend directory.
+Install packages and run React by the following commands. 
+
+*-npm install*  
+*-npm start*
+
+Frontend is built extensively for Chrome at the momoent -- other broswers may behave differently with styling.
