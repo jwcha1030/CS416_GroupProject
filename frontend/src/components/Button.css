@@ -1,7 +1,7 @@
 :root {
   --primary: #d5d5d5;
   --accent: #ea7229;
-  --primary_invert : #030303;
+  --primary_invert: #030303;
 }
 
 .btn {
@@ -46,7 +46,7 @@
   background-color: transparent;
   color: #fff;
   padding: 14px 20px;
-   transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .btn--wide {
@@ -58,11 +58,11 @@
 .btn--medium:hover,
 .btn--mobile:hover {
   transition: all 0.3s ease-out;
-  }
+}
 
 .btn--wide:hover {
   color: #fff;
-   transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .btn-link {
@@ -75,34 +75,31 @@
   width: 100%;
 }
 
-.black{
+.black {
   background-color: #030303;
-  color:white;
-
+  color: white;
 }
-.white{
+.white {
   background-color: white;
-  color:#ea7229;
-
+  color: #ea7229;
 }
-.textBlack{
-  color:#030303;
+.textBlack {
+  color: #030303;
 }
 
-.textWhite{
-  color:#d5d5d5;
+.textWhite {
+  color: #d5d5d5;
 }
 .msc_orange {
   background-color: #ea7229;
   color: #fff;
   border: none;
-
 }
 
 .msc_orange_invert {
   background-color: white;
   color: #ea7229;
-  border:none;
+  border: none;
 }
 
 .red {
@@ -121,4 +118,14 @@
   background-color: #fff;
   color: #242424;
   border: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .btn--wide,
+  .btn--large,
+  .btn--medium,
+  .btn--mobile {
+    padding: 10px 30px;
+    font-size: 14px;
+  }
 }

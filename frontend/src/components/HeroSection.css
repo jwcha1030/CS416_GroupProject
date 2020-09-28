@@ -52,12 +52,12 @@
 .msc_orange {
   color: #ea7229;
 }
-.msc_orange_invert{
-  color:white;
+.msc_orange_invert {
+  color: white;
 }
 
-.msc_orange_invert_background{
-  color:white;
+.msc_orange_invert_background {
+  color: white;
 }
 .msc_orange_background {
   background-color: #ea7229;
@@ -75,11 +75,10 @@
 }
 
 .home__hero-img {
-  max-width: 95%;
+  max-width: 100%;
   margin-top: 0;
   margin-right: 0;
-  margin-left: 10px;
-  padding-right: 0;
+   padding-right: 10%;
 }
 
 img {
@@ -90,39 +89,28 @@ img {
 }
 
 @media screen and (max-width: 1200px) {
-  
-.row {
-  display: flex;
-  margin-right: -15px;
-  margin-bottom: -15px;
-  margin-left: -15px;
-  flex-wrap: wrap;
-  align-content: stretch;
-}
-.home__hero-row {
-  align-items: center;
-}
-  .container {
-    padding-right: 15px;
-    padding-left: 15px;
-   }
-    .home__hero-text-wrapper {
+  .col {
+    margin-bottom: 15px;
+    padding-left: 10%;
+    flex: 1;
+    flex-basis: 60%;
+    max-width: 100%;
+  }
+
+  .home__hero-text-wrapper {
     padding-bottom: 4rem;
   }
   .home__hero-section {
     color: #fff;
-    padding: 80px 0;
+    padding: 30px 0;
   }
-  .col {
-    max-width: 100%;
-     align-items: center;
-  }
+
   .home__hero-text-wrapper {
     max-width: 270px;
     padding-top: 0;
-    padding-bottom: 2rem ;
+    padding-bottom: 2rem;
   }
-  
+
   .top-line {
     color: #ea7229;
     font-size: 12px;
@@ -132,7 +120,7 @@ img {
     text-transform: uppercase;
     margin-bottom: 8px;
   }
-  
+
   .heading {
     margin-bottom: 12px;
     font-size: 24px;
@@ -141,5 +129,3 @@ img {
     color: #f7f8fa;
   }
 }
-
- 

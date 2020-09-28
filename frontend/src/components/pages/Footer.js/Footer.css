@@ -156,7 +156,7 @@ color: white;
   margin-bottom: 16px;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
   .footer-links {
     padding-top: 2rem;
   }
@@ -165,9 +165,7 @@ color: white;
     width: 100%;
   }
 
-  .btn {
-    width: 100%;
-  }
+  
 
   .footer-link-wrapper {
     flex-direction: column;
