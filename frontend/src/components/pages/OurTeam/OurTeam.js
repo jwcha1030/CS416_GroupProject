@@ -5,7 +5,7 @@ import { members } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
 import renderMembers from "../../Member";
 import { MembersData } from "./MembersData"
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image } from "semantic-ui-react";
 
 function OurTeam() {
   return (
