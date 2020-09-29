@@ -1,7 +1,5 @@
 import React from "react";
 import HeroSection from "../../HeroSection";
-import about_us from "../../../images/aboutus.jpg";
-
 import { aboutUs, virtualStore } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
 
