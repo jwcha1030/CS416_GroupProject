@@ -4,7 +4,7 @@ import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
 
 
-export const carouselData = [
+export const CarouselData = [
 
     {
         id: "1",

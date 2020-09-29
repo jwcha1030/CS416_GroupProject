@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HeroSection from "../../HeroSection";
 import { collections, ourteam, aboutus } from "./Data";
 import renderCarousel from "../../Carousel";
-import { carouselData } from "./CarouselData";
+import { CarouselData } from "./CarouselData";
 import { motion } from "framer-motion";
 import Carousel from "react-bootstrap/esm/Carousel";
 import Aos from "aos";
@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     Aos.init({
       duration: 3000, // values from 0 to 3000, with step 50ms
-      delay: 1000, // values from 0 to 3000, with step 50ms
+      delay: 500, // values from 0 to 3000, with step 50ms
       easing: "ease", // default easing for AOS animations});
     });
   }, []);
@@ -25,18 +25,18 @@ function Home() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* now carousel is updated in carouselData.js */}
-      <Carousel>{carouselData.map(renderCarousel)}</Carousel>
+      {/* now carousel is updated in CarouselData.js */}
+      <Carousel>{CarouselData.map(renderCarousel)}</Carousel>
 
-      <div data-aos="slide-right">
+      <div data-aos="slide-left">
         <HeroSection {...collections} />
       </div>
 
-      <div data-aos="slide-right">
+      <div data-aos="slide-left">
         <HeroSection {...ourteam} />
       </div>
 
-      <div data-aos="slide-right">
+      <div data-aos="slide-left">
         <HeroSection {...aboutus} />
       </div>
     </motion.div>

@@ -1,0 +1,9 @@
+.members-list {
+  display: flex;
+  padding: 5%;
+}
+
+.member {
+  padding: 10px;
+  margin: 10px;
+}
