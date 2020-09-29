@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     Aos.init({
       duration: 3000, // values from 0 to 3000, with step 50ms
-      delay: 500, // values from 0 to 3000, with step 50ms
+      delay: 1000, // values from 0 to 3000, with step 50ms
       easing: "ease", // default easing for AOS animations});
     });
   }, []);
@@ -28,7 +28,7 @@ function Home() {
       {/* now carousel is updated in carouselData.js */}
       <Carousel>{carouselData.map(renderCarousel)}</Carousel>
 
-      <div data-aos="fade-up">
+      <div data-aos="slide-right">
         <HeroSection {...collections} />
       </div>
 
@@ -36,7 +36,7 @@ function Home() {
         <HeroSection {...ourteam} />
       </div>
 
-      <div data-aos="flip-up">
+      <div data-aos="slide-right">
         <HeroSection {...aboutus} />
       </div>
     </motion.div>
