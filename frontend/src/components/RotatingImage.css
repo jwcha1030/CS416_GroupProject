@@ -1,0 +1,12 @@
+.rotating_images {
+  max-width: 200px;
+}
+
+.mugcups {
+  padding: 50px;
+}
+
+.sample-wrapper {
+  display: flex;
+  justify-content: center;
+}

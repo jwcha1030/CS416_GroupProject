@@ -4,7 +4,7 @@ import Member from "../../Member";
 import { members } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
 import renderMembers from "../../Member";
-import { MembersData } from "./MembersData"
+import { DataMembers } from "./DataMembers"
 // import { Card, Icon, Image } from "semantic-ui-react";
 
 function OurTeam() {
@@ -19,7 +19,7 @@ function OurTeam() {
 
       </motion.div>
       <div className="members-list">
-        {MembersData.map(renderMembers)}
+        {DataMembers.map(renderMembers)}
       </div>
 
     </div>
