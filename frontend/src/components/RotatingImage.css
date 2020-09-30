@@ -3,10 +3,11 @@
 }
 
 .mugcups {
-  padding: 50px;
+  padding: 100px;
 }
 
 .sample-wrapper {
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 }

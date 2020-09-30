@@ -17,10 +17,11 @@ function Products() {
 
       <HeroSection {...products} />
       <div className="sample-wrapper">
-        <Rotation autoPlay={true} cycle={true} scroll={true} className="mugcups">
+        <h1>Sample 360 Degrees Draggable Images <br></br> Drag me!</h1>
+        <Rotation autoPlay={false} cycle={true} scroll={true} className="mugcups">
           {mugcup_1.map(renderImages)}
         </Rotation>
-        <Rotation autoPlay={true} cycle={true} scroll={true} className="mugcups">
+        <Rotation autoPlay={false} cycle={true} scroll={true} className="mugcups">
           {mugcup_2.map(renderImages)}
         </Rotation>
       </div>

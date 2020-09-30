@@ -1,3 +1,6 @@
+import model_orange from "../../../images/model_orange.jpg";
+
+
 export const products = {
   lightBg: true,
   lightText: false,
@@ -7,6 +10,6 @@ export const products = {
   description: "Explore our latest products!",
   buttonLabel: "View Products",
   imgStart: "",
-  img: "",
+  img: model_orange,
   alt: "products",
 };
