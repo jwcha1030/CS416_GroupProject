@@ -27,6 +27,7 @@ If you want to deploy this to the domain above, run the following in frontend di
 
 
 **Installation**
+*Note due to some sample images, the project size may be slightly big.
 
 Git clone the repository and go to frontend directory.
 Install packages and run the application by the following commands. 
