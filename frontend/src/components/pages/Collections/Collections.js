@@ -17,7 +17,10 @@ function Products() {
 
       <HeroSection {...products} />
       <div className="sample-wrapper">
-        <h1>Sample 360 Degrees Draggable Images <br></br> Drag me!</h1>
+        <h2 style={{
+          padding: "15px",
+          margin: "auto"
+        }}>Sample 360 Degrees Draggable Images <br></br> Drag me!</h2>
         <Rotation autoPlay={false} cycle={true} scroll={true} className="mugcups">
           {mugcup_1.map(renderImages)}
         </Rotation>
