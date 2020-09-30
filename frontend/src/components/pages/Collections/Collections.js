@@ -6,7 +6,7 @@ import Rotation from 'react-rotation'
 import "../../RotatingImage.css";
 
 import renderImages from "../../RotatingImage";
-import { mugcup_1, mugcup_2 } from "./DataRotatingImages"
+import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages"
 
 function Products() {
   return (
@@ -17,15 +17,15 @@ function Products() {
 
       <HeroSection {...products} />
       <div className="sample-wrapper">
-        <h2 style={{
-          padding: "15px",
-          margin: "auto"
-        }}>Sample 360 Degrees Draggable Images <br></br> Drag me!</h2>
-        <Rotation autoPlay={false} cycle={true} scroll={true} className="mugcups">
+
+        <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
           {mugcup_1.map(renderImages)}
         </Rotation>
-        <Rotation autoPlay={false} cycle={true} scroll={true} className="mugcups">
+        <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
           {mugcup_2.map(renderImages)}
+        </Rotation>
+        <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
+          {sample.map(renderImages)}
         </Rotation>
       </div>
     </motion.div>

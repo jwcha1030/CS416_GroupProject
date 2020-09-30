@@ -56,6 +56,63 @@ import m2_24 from "../../../images/test4/mugcup_2 (24).jpg";
 import m2_25 from "../../../images/test4/mugcup_2 (25).jpg";
 
 
+import sample_1 from "../../../images/sample/sample (1).jpg";
+import sample_2 from "../../../images/sample/sample (2).jpg";
+import sample_3 from "../../../images/sample/sample (3).jpg";
+import sample_4 from "../../../images/sample/sample (4).jpg";
+import sample_5 from "../../../images/sample/sample (5).jpg";
+import sample_6 from "../../../images/sample/sample (6).jpg";
+import sample_7 from "../../../images/sample/sample (7).jpg";
+import sample_8 from "../../../images/sample/sample (8).jpg";
+import sample_9 from "../../../images/sample/sample (9).jpg";
+import sample_10 from "../../../images/sample/sample (10).jpg";
+import sample_11 from "../../../images/sample/sample (11).jpg";
+import sample_12 from "../../../images/sample/sample (12).jpg";
+import sample_13 from "../../../images/sample/sample (13).jpg";
+import sample_14 from "../../../images/sample/sample (14).jpg";
+import sample_15 from "../../../images/sample/sample (15).jpg";
+import sample_16 from "../../../images/sample/sample (16).jpg";
+import sample_17 from "../../../images/sample/sample (17).jpg";
+import sample_18 from "../../../images/sample/sample (18).jpg";
+import sample_19 from "../../../images/sample/sample (19).jpg";
+import sample_20 from "../../../images/sample/sample (20).jpg";
+import sample_21 from "../../../images/sample/sample (21).jpg";
+import sample_22 from "../../../images/sample/sample (22).jpg";
+import sample_23 from "../../../images/sample/sample (23).jpg";
+import sample_24 from "../../../images/sample/sample (24).jpg";
+import sample_25 from "../../../images/sample/sample (25).jpg";
+import sample_26 from "../../../images/sample/sample (26).jpg";
+import sample_27 from "../../../images/sample/sample (27).jpg";
+import sample_28 from "../../../images/sample/sample (28).jpg";
+import sample_29 from "../../../images/sample/sample (29).jpg";
+import sample_30 from "../../../images/sample/sample (30).jpg";
+import sample_31 from "../../../images/sample/sample (31).jpg";
+import sample_32 from "../../../images/sample/sample (32).jpg";
+import sample_33 from "../../../images/sample/sample (33).jpg";
+import sample_34 from "../../../images/sample/sample (34).jpg";
+import sample_35 from "../../../images/sample/sample (35).jpg";
+import sample_36 from "../../../images/sample/sample (36).jpg";
+import sample_37 from "../../../images/sample/sample (37).jpg";
+import sample_38 from "../../../images/sample/sample (38).jpg";
+import sample_39 from "../../../images/sample/sample (39).jpg";
+import sample_40 from "../../../images/sample/sample (40).jpg";
+import sample_41 from "../../../images/sample/sample (41).jpg";
+import sample_42 from "../../../images/sample/sample (42).jpg";
+import sample_43 from "../../../images/sample/sample (43).jpg";
+import sample_44 from "../../../images/sample/sample (44).jpg";
+import sample_45 from "../../../images/sample/sample (45).jpg";
+import sample_46 from "../../../images/sample/sample (46).jpg";
+import sample_47 from "../../../images/sample/sample (47).jpg";
+import sample_48 from "../../../images/sample/sample (48).jpg";
+import sample_49 from "../../../images/sample/sample (49).jpg";
+import sample_50 from "../../../images/sample/sample (50).jpg";
+import sample_51 from "../../../images/sample/sample (51).jpg";
+import sample_52 from "../../../images/sample/sample (52).jpg";
+import sample_53 from "../../../images/sample/sample (53).jpg";
+import sample_54 from "../../../images/sample/sample (54).jpg";
+import sample_55 from "../../../images/sample/sample (55).jpg";
+import sample_56 from "../../../images/sample/sample (56).jpg";
+
 
 export const mugcup_1 = [
 
@@ -284,4 +341,79 @@ export const mugcup_2 = [
         id: "25",
         img: m2_25
     }
+];
+
+
+export const sample = [
+    { id: "1", img: sample_1 },
+    { id: "1", img: sample_2 },
+    { id: "1", img: sample_3 },
+    { id: "1", img: sample_4 },
+    { id: "1", img: sample_5 },
+    { id: "1", img: sample_6 },
+    { id: "1", img: sample_7 },
+    { id: "1", img: sample_8 },
+    { id: "1", img: sample_9 },
+    { id: "1", img: sample_10 },
+    { id: "1", img: sample_11 },
+    { id: "1", img: sample_12 },
+    { id: "1", img: sample_13 },
+    { id: "1", img: sample_14 },
+    { id: "1", img: sample_15 },
+    { id: "1", img: sample_16 },
+    { id: "1", img: sample_17 },
+    { id: "1", img: sample_18 },
+    { id: "1", img: sample_19 },
+    { id: "1", img: sample_20 },
+    { id: "1", img: sample_21 },
+    { id: "1", img: sample_22 },
+    { id: "1", img: sample_23 },
+    { id: "1", img: sample_24 },
+    { id: "1", img: sample_25 },
+    { id: "1", img: sample_26 },
+    { id: "1", img: sample_27 },
+    { id: "1", img: sample_28 },
+    { id: "1", img: sample_29 },
+    { id: "1", img: sample_30 },
+    { id: "1", img: sample_31 },
+    { id: "1", img: sample_32 },
+    { id: "1", img: sample_33 },
+    { id: "1", img: sample_34 },
+    { id: "1", img: sample_35 },
+    { id: "1", img: sample_36 },
+    { id: "1", img: sample_37 },
+    { id: "1", img: sample_38 },
+    { id: "1", img: sample_39 },
+    { id: "1", img: sample_30 },
+    { id: "1", img: sample_41 },
+    { id: "1", img: sample_42 },
+    { id: "1", img: sample_43 },
+    { id: "1", img: sample_44 },
+    { id: "1", img: sample_45 },
+    { id: "1", img: sample_46 },
+    { id: "1", img: sample_47 },
+    { id: "1", img: sample_48 },
+    { id: "1", img: sample_49 },
+    { id: "1", img: sample_40 },
+    { id: "1", img: sample_41 },
+    { id: "1", img: sample_42 },
+    { id: "1", img: sample_43 },
+    { id: "1", img: sample_44 },
+    { id: "1", img: sample_45 },
+    { id: "1", img: sample_46 },
+    { id: "1", img: sample_47 },
+    { id: "1", img: sample_48 },
+    { id: "1", img: sample_49 },
+    { id: "1", img: sample_50 },
+    { id: "1", img: sample_51 },
+    { id: "1", img: sample_52 },
+    { id: "1", img: sample_53 },
+    { id: "1", img: sample_54 },
+    { id: "1", img: sample_55 },
+    { id: "1", img: sample_56 },
+
+
+
+
+
 ];
