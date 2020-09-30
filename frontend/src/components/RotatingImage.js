@@ -24,7 +24,7 @@ const renderImages = (item, index) => {
             <img className="rotate_sign" src={RotateSign}></img>
             <br></br>
 
-            <img className="rotating_image" src={item.img} />
+            <img className="rotating-image" src={item.img} />
         </div>
     )
 

@@ -17,14 +17,14 @@ function Collection() {
       <HeroSection {...products} />
       <div className="sample-wrapper">
 
-        <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
+        <Rotation autoPlay={false} cycle={true} scroll={false} className="rotating-image">
           {mugcup_1.map(renderImages)}
         </Rotation>
-        <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
+        <Rotation autoPlay={false} cycle={true} scroll={false} className="rotating-image">
           {mugcup_2.map(renderImages)}
         </Rotation>
 
-        <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
+        <Rotation autoPlay={false} cycle={true} scroll={false} className="rotating-image">
           {sample.map(renderImages)}
         </Rotation>
       </div>

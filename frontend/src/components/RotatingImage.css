@@ -1,17 +1,18 @@
-.rotating_image {
-  min-width: 200px;
-  max-width: 400px;
-  border-radius: 100px;
-}
-
-.mugcups {
-  padding: 100px;
+.rotating-image {
+  min-width: 150px;
+  border-radius: 50px;
 }
 
 .sample-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 100px;
+  column-gap: 25rem;
+  row-gap: 10rem;
+  padding-top: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 20%;
 }
 
 .rotate_sign {
@@ -22,24 +23,20 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .rotating_image {
+  .rotating-image {
+    border-radius: 50px;
     min-width: 150px;
-    max-width: 300px;
-  }
-
-  .mugcups {
-    padding: 100px;
   }
 
   .sample-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 50px;
-    row-gap: 50px;
+    column-gap: 10rem;
+    row-gap: 10rem;
     padding-top: 30px;
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 5%;
+    padding-bottom: 20rem;
   }
 }

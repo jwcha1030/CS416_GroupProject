@@ -66,10 +66,10 @@ function HeroSection({
             </div>
             <div className="col">
               <div className="home__hero-img-wrapper">
+                {/*  https://github.com/ArunMichaelDsouza/react-image-appear */}
                 <ReactImageAppear className="home__hero-img"
                   src={img} alt={alt}
                   loader="https://cache.dominos.com/nolo/ca/en/010048/assets/build/images/img/spinner.gif"
-
                   animation="fillIn"
                   animationDuration="1s"
                 />
