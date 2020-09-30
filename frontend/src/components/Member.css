@@ -1,9 +1,53 @@
 .members-list {
   display: flex;
-  padding: 5%;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 50px;
+
+  padding-top: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
 }
 
 .member {
-  padding: 10px;
-  margin: 10px;
+  width: 300px;
+}
+
+.title {
+  font-size: 24px;
+}
+.subtitle {
+  font-size: 16px;
+}
+.description {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1200px) {
+  .member {
+    width: 180px;
+  }
+
+  .members-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 20px;
+    row-gap: 20px;
+    padding-top: 30px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 20%;
+  }
+}
+.title {
+  font-size: 20px;
+}
+.subtitle {
+  font-size: 14px;
+}
+.description {
+  font-size: 12px;
 }

@@ -1,3 +1,4 @@
+import dummy from "../../../images/dummy.jpg";
 import member1 from "../../../images/member1.jpg";
 
 
