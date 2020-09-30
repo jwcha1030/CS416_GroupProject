@@ -15,9 +15,9 @@ const renderImages = (item, index) => {
                 type="TailSpin"
                 color="#ea7229"
                 secondaryColor="Grey"
-                height={100}
-                width={100}
-                timeout={3000} //3 secs
+                height={50}
+                width={50}
+                timeout={1000 + Math.random() * (5000)} //3 secs
 
             />
             <br></br>

@@ -7,6 +7,7 @@ import renderMembers from "../../Member";
 import { DataMembers } from "./DataMembers"
 // import { Card, Icon, Image } from "semantic-ui-react";
 
+
 function OurTeam() {
   return (
     <div>
@@ -21,7 +22,6 @@ function OurTeam() {
       <div className="members-list">
         {DataMembers.map(renderMembers)}
       </div>
-
     </div>
 
   );

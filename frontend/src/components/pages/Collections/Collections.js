@@ -8,13 +8,12 @@ import "../../RotatingImage.css";
 import renderImages from "../../RotatingImage";
 import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages"
 
-function Products() {
+function Collection() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }} >
-
       <HeroSection {...products} />
       <div className="sample-wrapper">
 
@@ -24,6 +23,7 @@ function Products() {
         <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
           {mugcup_2.map(renderImages)}
         </Rotation>
+
         <Rotation autoPlay={false} cycle={true} scroll={false} className="mugcups">
           {sample.map(renderImages)}
         </Rotation>
@@ -35,4 +35,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Collection;

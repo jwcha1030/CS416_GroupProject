@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { Card, Icon, Image } from 'semantic-ui-react'  
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-
 const renderMembers = (item, index) => {
 
     return (
@@ -29,6 +28,7 @@ const renderMembers = (item, index) => {
         // </Card>
         <div>
             <Card className="member">
+
                 < Card.Img variant="top" src={item.img} />
                 <Card.Body>
                     <Card.Title className="title">{item.name}</Card.Title>
@@ -40,8 +40,8 @@ const renderMembers = (item, index) => {
 
                     <Button variant="dark">{item.button}</Button>
                 </Card.Body>
-            </Card >
 
+            </Card >
         </div>
     )
 
