@@ -1,6 +1,7 @@
-.rotating_images {
+.rotating_image {
   min-width: 200px;
-  max-width: 300px;
+  max-width: 400px;
+  border-radius: 50px;
 }
 
 .mugcups {
@@ -13,8 +14,15 @@
   padding-bottom: 100px;
 }
 
+.rotate_sign {
+  width: 10rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (max-width: 1200px) {
-  .rotating_images {
+  .rotating_image {
     min-width: 150px;
     max-width: 300px;
   }
