@@ -17,7 +17,7 @@ const renderImages = (item, index) => {
                 secondaryColor="Grey"
                 height={50}
                 width={50}
-                timeout={1000 + Math.random() * (5000)} //3 secs
+                timeout={1000 + Math.random() * (1000)} //1-2 secs
 
             />
             <br></br>

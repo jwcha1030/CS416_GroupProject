@@ -2,6 +2,7 @@ import React from "react";
 import "./HeroSection.css";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
+import ReactImageAppear from 'react-image-appear';
 
 function HeroSection({
   lightBg,
@@ -56,7 +57,7 @@ function HeroSection({
                   <Button
                     buttonSize="btn--wide"
                     lightBg
-                    buttonColor={lightBg = "msc_orange" }
+                    buttonColor={lightBg = "msc_orange"}
                   >
                     {buttonLabel}
                   </Button>
@@ -65,7 +66,14 @@ function HeroSection({
             </div>
             <div className="col">
               <div className="home__hero-img-wrapper">
-                <img src={img} alt={alt} className="home__hero-img" />
+                <ReactImageAppear className="home__hero-img"
+                  src={img} alt={alt}
+                  loader="https://cache.dominos.com/nolo/ca/en/010048/assets/build/images/img/spinner.gif"
+
+                  animation="fillIn"
+                  animationDuration="1s"
+                />
+
               </div>
             </div>
           </div>
