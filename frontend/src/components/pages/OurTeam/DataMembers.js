@@ -22,6 +22,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "person2@contact.com"
+
     },
     {
         id: "3",
@@ -30,6 +32,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "person3@contact.com"
+
     },
     {
         id: "4",
@@ -38,6 +42,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "5",
@@ -46,6 +52,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "6",
@@ -54,6 +62,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "7",
@@ -62,6 +72,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "8",
@@ -70,6 +82,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "9",
@@ -78,6 +92,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "10",
@@ -86,6 +102,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "11",
@@ -94,6 +112,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "12",
@@ -102,6 +122,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "13",
@@ -110,6 +132,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "14",
@@ -118,6 +142,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
     {
         id: "15",
@@ -126,6 +152,8 @@ export const DataMembers = [
         date: "Joined Date",
         description: "Description the person's role in MSC ",
         img: member1,
+        contact: "contact@contact.com"
+
     },
 
 
