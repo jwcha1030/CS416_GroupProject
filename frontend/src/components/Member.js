@@ -4,6 +4,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { Card, Icon, Image } from 'semantic-ui-react'  
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Overlay from 'react-bootstrap/Overlay'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
+import Popover from 'react-bootstrap/Popover'
+import PopoverContent from 'react-bootstrap/PopoverContent'
+import PopoverTitle from 'react-bootstrap/PopoverTitle'
+const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+        Copy to Clipboard
+    </Tooltip>
+);
+
 const renderMembers = (item, index) => {
 
     return (
@@ -38,7 +50,16 @@ const renderMembers = (item, index) => {
                         {item.description}
                     </Card.Text>
 
-                    <Button variant="dark">{item.button}</Button>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip}
+                    >
+                        <Button onClick={() => navigator.clipboard.writeText(item.contact)} variant="dark">{item.contact}</Button>
+                    </OverlayTrigger>,
+
+
+
                 </Card.Body>
 
             </Card >

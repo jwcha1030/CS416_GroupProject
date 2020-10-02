@@ -15,11 +15,20 @@
   padding-bottom: 20%;
 }
 
-.rotate_sign {
+.rotate-sign-wrapper {
   width: 10rem;
-  display: block;
+  display: flex;
+  flex-direction: row;
   margin-left: auto;
   margin-right: auto;
+}
+.rotate-sign {
+  width: 10rem;
+}
+
+.rotate-image-loader {
+  margin-right: 0;
+  margin-left: 70px;
 }
 
 @media screen and (max-width: 1200px) {

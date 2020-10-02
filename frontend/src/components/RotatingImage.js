@@ -11,20 +11,26 @@ const renderImages = (item, index) => {
 
     return (
         <div>
-            <Loader
-                type="TailSpin"
-                color="#ea7229"
-                secondaryColor="Grey"
-                height={50}
-                width={50}
-                timeout={1000 + Math.random() * (1000)} //1-2 secs loading animation
 
-            />
             <br></br>
-            <img className="rotate_sign" src={RotateSign}></img>
-            <br></br>
+            <div className="roating-image-wrapper">
+                <div className="rotate-sign-wrapper">
+                    <img className="rotate-sign" src={RotateSign}></img>
 
-            <img className="rotating-image" src={item.img} />
+                    <Loader className="rotate-image-loader"
+                        type="TailSpin"
+                        color="#ea7229"
+                        secondaryColor="Grey"
+                        height={50}
+                        width={50}
+                        timeout={1000 + Math.random() * (1000)} //1-2 secs loading animation
+
+                    />
+
+                </div>
+                <br></br>
+                <img className="rotating-image" src={item.img} />
+            </div>
         </div>
     )
 
