@@ -20,6 +20,7 @@ function Collection() {
         <Rotation autoPlay={false} cycle={true} scroll={false} className="rotating-image">
           {mugcup_1.map(renderImages)}
         </Rotation>
+
         <Rotation autoPlay={false} cycle={true} scroll={false} className="rotating-image">
           {mugcup_2.map(renderImages)}
         </Rotation>

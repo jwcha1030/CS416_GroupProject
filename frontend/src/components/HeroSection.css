@@ -82,10 +82,7 @@
 }
 
 img {
-  border: 0;
-  max-width: 100%;
-  vertical-align: middle;
-  display: inline-block;
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
