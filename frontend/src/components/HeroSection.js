@@ -71,7 +71,7 @@ function HeroSection({
                   src={img} alt={alt}
                   loader="https://cache.dominos.com/nolo/ca/en/010048/assets/build/images/img/spinner.gif"
                   animation="fillIn"
-                  animationDuration="1s"
+                  animationDuration="1.5s"
                 />
 
               </div>
