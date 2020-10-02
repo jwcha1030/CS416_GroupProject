@@ -4,7 +4,7 @@ export const members = {
   lightBg: true,
   lightText: false,
   lightTextDesc: false,
-  topLine: "MSC Members",
+  topLine: "MSC Our Team",
   headline: "Club Members",
   description: "Rebecca leads MSC and its memebers as the President.",
   buttonLabel: "Apply for MSC",
