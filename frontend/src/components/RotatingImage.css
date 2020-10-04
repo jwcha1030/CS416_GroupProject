@@ -23,12 +23,23 @@
   margin-right: auto;
 }
 .rotate-sign {
-  width: 10rem;
+  margin-top: auto;
+  height: 14px;
+  width: 100%;
 }
 
+.rotate-sign-2 {
+  margin-left: 1rem;
+  margin-top: auto;
+  height: 14px;
+  width: auto;
+}
 .rotate-image-loader {
+  margin-top: 1rem;
   margin-right: 0;
-  margin-left: 70px;
+  position: absolute;
+  right: 1rem;
+  top: 0;
 }
 
 @media screen and (max-width: 1200px) {

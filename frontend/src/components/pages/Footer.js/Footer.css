@@ -5,13 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #ea7229;
-color: white;
-} 
+  color: white;
+}
 
 .footer-subscription {
   display: flex;
@@ -40,14 +39,27 @@ color: white;
 }
 
 .footer-input {
+  margin-top: 1rem;
   padding: 8px 24px;
-  border-radius: 2px;
+  border-radius: 4px;
   margin-right: 10px;
   outline: none;
   border: none;
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 16px;
-  border: 1px solid #fff;
+  color: #ea7229;
+}
+
+.footer-input:focus {
+  padding: 8px 24px;
+  border-radius: 4px;
+  margin-right: 12px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #ea7229;
+  transition: 0.1s;
 }
 
 .footer-links {
@@ -128,7 +140,7 @@ color: white;
 .social-icon-link:hover {
   color: #ea7229;
 }
- 
+
 .social-logo {
   color: #fff;
   justify-self: start;
@@ -144,12 +156,10 @@ color: white;
 .social-logo:focus {
   color: #fff;
   text-decoration: none;
-   
 }
 .social-logo:hover {
   color: #ea7229;
   text-decoration: none;
-   
 }
 .website-rights {
   color: #fff;
@@ -165,8 +175,6 @@ color: white;
     width: 100%;
   }
 
-  
-
   .footer-link-wrapper {
     flex-direction: column;
   }
@@ -175,32 +183,29 @@ color: white;
     flex-direction: column;
   }
 
+  .footer-subscription > p {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
 
+  .footer-subscription-heading {
+    margin-bottom: 18px;
+    font-size: 18px;
+  }
 
-.footer-subscription > p {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
+  .footer-subscription-text {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
 
-.footer-subscription-heading {
-  margin-bottom: 18px;
-  font-size: 18px;
-}
-
-.footer-subscription-text {
-  margin-bottom: 18px;
-  font-size: 14px;
-}
-
-.footer-input {
-  padding: 8px 24px;
-  border-radius: 2px;
-  margin-right: 10px;
-  outline: none;
-  border: none;
-  font-size: 12px;
-  margin-bottom: 16px;
-  border: 2px solid #fff;
-}
-
+  .footer-input {
+    padding: 8px 24px;
+    border-radius: 2px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    font-size: 12px;
+    margin-bottom: 16px;
+    border: 2px solid #fff;
+  }
 }

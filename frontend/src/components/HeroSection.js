@@ -2,7 +2,7 @@ import React from "react";
 import "./HeroSection.css";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
-import ReactImageAppear from 'react-image-appear';
+import ReactImageAppear from "react-image-appear";
 
 function HeroSection({
   lightBg,
@@ -21,9 +21,7 @@ function HeroSection({
     <>
       <div
         className={
-          lightBg
-            ? "home__hero-section white"
-            : "home__hero-section black"
+          lightBg ? "home__hero-section white" : "home__hero-section black"
         }
       >
         <div className="container">
@@ -37,11 +35,7 @@ function HeroSection({
             <div className="col">
               <div className="home__hero-text-wrapper">
                 <div className="top-line">{topLine}</div>
-                <h1
-                  className={
-                    lightText ? "heading " : "heading textBlack"
-                  }
-                >
+                <h1 className={lightText ? "heading " : "heading textBlack"}>
                   {headline}
                 </h1>
                 <p
@@ -57,7 +51,7 @@ function HeroSection({
                   <Button
                     buttonSize="btn--wide"
                     lightBg
-                    buttonColor={lightBg = "msc_orange"}
+                    buttonColor={(lightBg = "msc_orange")}
                   >
                     {buttonLabel}
                   </Button>
@@ -66,14 +60,14 @@ function HeroSection({
             </div>
             <div className="col">
               <div className="home__hero-img-wrapper">
-                {/*  https://github.com/ArunMichaelDsouza/react-image-appear */}
-                <ReactImageAppear className="home__hero-img"
-                  src={img} alt={alt}
-                  loader="https://cache.dominos.com/nolo/ca/en/010048/assets/build/images/img/spinner.gif"
+                {/*  API: https://github.com/ArunMichaelDsouza/react-image-appear */}
+                <ReactImageAppear
+                  className="home__hero-img"
+                  src={img}
+                  alt={alt}
                   animation="fillIn"
-                  animationDuration="2s"
+                  animationDuration="3s"
                 />
-
               </div>
             </div>
           </div>
