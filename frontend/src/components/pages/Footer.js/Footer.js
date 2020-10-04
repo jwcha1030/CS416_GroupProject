@@ -9,8 +9,40 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
+import { Modal } from "react-bootstrap";
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      style={{ opacity: 1 }}
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Centered Modal</h4>
+        <p>
+          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+          consectetur ac, vestibulum at eros.
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 function Footer() {
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
     <div className="footer-container">
       <section className="footer-subscription">
@@ -31,6 +63,15 @@ function Footer() {
             <Button buttonStyle="btn--outline">Subscribe</Button>
           </form>
         </div>
+      </section>
+      <section className="footer-inquiry">
+        <Button
+          className="make-inquiry"
+          buttonStyle="btn--outline"
+          onClick={() => setModalShow(true)}
+        >
+          Make an Inquiry
+        </Button>
       </section>
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
@@ -87,6 +128,11 @@ function Footer() {
           </div>
         </div>
       </section>
+
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 }

@@ -11,11 +11,16 @@ function HeroSection({
   lightTextDesc,
   headline,
   description,
-  buttonLabel,
   img,
   alt,
   imgStart,
+  buttonLabel,
+
   buttonTo,
+  buttonToExternalURL,
+
+  //if buttonTo is null, then we are going to externalURL like google.com or google form.
+  // if buttonTo is there /collections, then we go to /collections (ignoring buttonToExternalURL)
 }) {
   return (
     <>
@@ -52,6 +57,11 @@ function HeroSection({
                     buttonSize="btn--wide"
                     lightBg
                     buttonColor={(lightBg = "msc_orange")}
+                    onClick={(e) =>
+                      buttonTo !== ""
+                        ? buttonTo
+                        : (window.location = buttonToExternalURL)
+                    } //if buttonTo is not null, then go to buttonTo (Link) else, we are going to buttonToExternalURL on this button clicked.
                   >
                     {buttonLabel}
                   </Button>

@@ -13,7 +13,6 @@ export const collections = {
   headline: "Discover new products we made!",
   description: "2020 Fall New Arrivals are here!",
   buttonTo: "/collections",
-
   buttonLabel: "COLLECTIONS",
   imgStart: "",
   img: msc_banner3,
@@ -47,42 +46,3 @@ export const aboutus = {
   img: msc,
   alt: "image",
 };
-
-//Moved to CarouselData.js
-
-// export const carouselData = [
-
-//     {
-//         id: "1",
-//         caption: "Merchadising Society Club",
-//         description: "We Make Merchandise for Fashion Institute of Technology and Stony Brook University",
-//         img: msc_banner,
-//         alt: "First Slide",
-
-//     },
-
-//     {
-//         id: "2",
-//         caption: "Retail Revolution Shop",
-//         description: "Academic Building C, 6th Floor. Come Visit!",
-//         img: msc_banner2,
-//         alt: "Second Slide",
-
-//     },
-//     {
-//         id: "3",
-//         caption: "2020 Summer Collections",
-//         description: "Fashion Starts at MSC",
-//         img: msc_banner3,
-//         alt: "Third Slide",
-
-//     },
-//     {
-//         id: "4",
-//         caption: "2020 Summer Sales",
-//         description: "For Students, By Students",
-//         img: msc_banner4,
-//         alt: "Fourth Slide",
-
-//     }
-// ];
