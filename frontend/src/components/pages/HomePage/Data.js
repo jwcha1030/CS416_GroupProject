@@ -1,8 +1,9 @@
-
 import msc_banner from "../../../images/msc_banner.JPG";
 import msc_banner2 from "../../../images/msc_banner2.jfif";
 import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
+import model_white from "../../../images/model_white.jpg";
+import msc from "../../../images/MSC.jpg";
 
 export const collections = {
   lightBg: true,
@@ -29,8 +30,8 @@ export const ourteam = {
   buttonLabel: "OUR TEAM",
   buttonTo: "/ourteam",
   imgStart: "",
-  img: "",
-  alt: "",
+  img: model_white,
+  alt: "image",
 };
 
 export const aboutus = {
@@ -43,10 +44,9 @@ export const aboutus = {
   buttonTo: "/aboutus",
   buttonLabel: "ABOUT US",
   imgStart: "",
-  img: "",
-  alt: "",
+  img: msc,
+  alt: "image",
 };
-
 
 //Moved to CarouselData.js
 

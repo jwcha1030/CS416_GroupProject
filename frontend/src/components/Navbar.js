@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import SVG from "react-inlinesvg";
-import Logo from "../images/MSC.jpeg";
+import Logo from "../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
 
 function Navbar() {

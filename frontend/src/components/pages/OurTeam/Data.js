@@ -8,7 +8,7 @@ export const members = {
   headline: "Club Members",
   description: "Rebecca leads MSC and its memebers as the President.",
   buttonLabel: "Apply for MSC",
-  imgStart: "",
+  imgStart: "start",
   img: member,
-  alt: "",
+  alt: "image",
 };
