@@ -10,6 +10,12 @@ import {
   Slide,
   Slider,
 } from "pure-react-carousel";
+import a1 from "../images/model_orange.jpg";
+import a2 from "../images/model_hat.jpg";
+import a3 from "../images/aboutus.jpg";
+import a4 from "../images/model_white.jpg";
+import a5 from "../images/member.jpg";
+import a6 from "../images/dummy.jpg";
 
 import s from "./CollectionsCarousel.scss";
 
@@ -30,22 +36,22 @@ export default () => (
     </p>
     <Slider className={s.slider}>
       <Slide index={0}>
-        <ImageWithZoom src="./media/img01.jpeg" />
+        <ImageWithZoom src={a1} />
       </Slide>
       <Slide index={1}>
-        <ImageWithZoom src="./media/img02.jpeg" />
+        <ImageWithZoom src={a2} />
       </Slide>
       <Slide index={2}>
-        <ImageWithZoom src="./media/img03.jpeg" />
+        <ImageWithZoom src={a3} />
       </Slide>
       <Slide index={3}>
-        <ImageWithZoom src="./media/img04.jpeg" />
+        <ImageWithZoom src={a4} />
       </Slide>
       <Slide index={4}>
-        <ImageWithZoom src="./media/img05.jpeg" />
+        <ImageWithZoom src={a5} />
       </Slide>
       <Slide index={5}>
-        <ImageWithZoom src="./media/img06.jpeg" />
+        <ImageWithZoom src={a6} />
       </Slide>
     </Slider>
     <ButtonFirst>First</ButtonFirst>
