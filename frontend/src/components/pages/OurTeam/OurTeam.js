@@ -1,12 +1,10 @@
 import React from "react";
 import HeroSection from "../../HeroSection";
-import Member from "../../Member";
 import { members } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
-import renderMembers from "../../Member";
-import { DataMembers } from "./DataMembers"
+import Member from "../../Member";
+import { DataMembers } from "./DataMembers";
 // import { Card, Icon, Image } from "semantic-ui-react";
-
 
 function OurTeam() {
   return (
@@ -17,16 +15,10 @@ function OurTeam() {
         exit={{ opacity: 0 }}
       >
         <HeroSection {...members} />
-
       </motion.div>
-      <div className="members-list">
-        {DataMembers.map(renderMembers)}
-      </div>
+      <div className="members-list">{DataMembers.map(Member)}</div>
     </div>
-
   );
-
-
 }
 
 export default OurTeam;

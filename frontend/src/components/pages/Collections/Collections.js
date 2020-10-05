@@ -1,12 +1,20 @@
 import React from "react";
-import HeroSection from "../../HeroSection";
+import CollectionsMain from "../../CollectionsMain";
 import { products } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
 import Rotation from "react-rotation";
 import "../../RotatingImage.css";
-
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 import renderImages from "../../RotatingImage";
 import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages";
+import CollectionsCarousel from "../../CollectionsCarousel";
 
 function Collection() {
   return (
@@ -15,7 +23,8 @@ function Collection() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <HeroSection {...products} />
+      <CollectionsMain {...products} />
+      <CollectionsCarousel></CollectionsCarousel>
       <div className="sample-wrapper">
         <Rotation
           autoPlay={false}
@@ -25,7 +34,6 @@ function Collection() {
         >
           {mugcup_1.map(renderImages)}
         </Rotation>
-
         <Rotation
           autoPlay={false}
           cycle={true}
