@@ -42,7 +42,7 @@ const renderMembers = (item, index) => {
               className="contact-button"
               onClick={() => {
                 navigator.clipboard.writeText(item.contact);
-                alert(item.contact + " is copied to your clipboard");
+                alert("'" + item.contact + "' is copied to your clipboard.");
               }}
               variant="dark"
             >
