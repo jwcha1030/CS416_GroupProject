@@ -3,6 +3,8 @@ import msc_banner2 from "../../../images/msc_banner2.jfif";
 import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
 import model_white from "../../../images/model_white.jpg";
+import model_hat from "../../../images/model_hat.jpg";
+
 import msc from "../../../images/MSC.jpg";
 
 export const collections = {
@@ -15,7 +17,7 @@ export const collections = {
   buttonTo: "/collections",
   buttonLabel: "COLLECTIONS",
   imgStart: "",
-  img: msc_banner3,
+  img: model_hat,
   alt: "image",
 };
 

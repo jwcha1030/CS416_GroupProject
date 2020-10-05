@@ -9,6 +9,8 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
+import Logo from "../../../images/MSC.jpg";
+
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 function MyVerticallyCenteredModal(props) {
@@ -85,11 +87,9 @@ function Footer() {
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
         <div className="social-media-wrap">
-          <div className="footer-logo">
-            <Link to="/" className="social-logo">
-              MSC
-            </Link>
-          </div>
+          <Link to="/" className="social-logo-icon">
+            <img src={Logo}></img>
+          </Link>
           <small className="website-rights">
             Merchandising Society Club © 2020
           </small>
@@ -129,15 +129,18 @@ function Footer() {
             </div>
           </div>
         </div>
-        <smaller style={{ color: "white" }}>032-1234-1234</smaller>
-        <br></br>
-        <smaller style={{ color: "white" }}>msc.sunykr@gmail.com</smaller>
+        <br />
+        <div align="center">
+          <smaller style={{ color: "white" }}>032-1234-1234</smaller>
+          <br></br>
+          <smaller style={{ color: "white" }}>msc.sunykr@gmail.com</smaller>
 
-        <br></br>
+          <br></br>
 
-        <smaller style={{ color: "white" }}>
-          SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
-        </smaller>
+          <smaller style={{ color: "white" }}>
+            SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
+          </smaller>
+        </div>
       </section>
 
       <MyVerticallyCenteredModal
