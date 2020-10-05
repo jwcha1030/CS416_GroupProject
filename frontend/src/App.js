@@ -6,10 +6,11 @@ import Collections from "./components/pages/Collections/Collections";
 import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import Navbar from "./components/Navbar";
-import Footer from "./components/pages/Footer.js/Footer";
 import ScrollToTop from 'react-router-scroll-top'
 
 import { AnimatePresence, motion } from "framer-motion";
+import Admin from "./components/pages/Admin/Admin";
+import CarouselEdit from "./components/pages/Admin/EditContents/CarouselEdit";
 
 // import counterpart from 'counterpart';
 // import Translate from 'react-traslate-component';
@@ -33,10 +34,11 @@ function App() {
             <Route path="/collections" component={Collections} />
             <Route path="/aboutus" component={AboutUs} />
             <Route path="/ourteam" component={OurTeam} />
+            <Route path="/admin" exact component={Admin} />
+            <Route path="/admin/carousel_edit" component={CarouselEdit}/>
+
           </Switch>
         </AnimatePresence>
-
-        <Footer />
       </ScrollToTop>
 
     </Router>

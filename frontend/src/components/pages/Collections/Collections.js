@@ -7,6 +7,8 @@ import "../../RotatingImage.css";
 
 import renderImages from "../../RotatingImage";
 import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages";
+import Footer from "../Footer.js/Footer";
+import ScrollToTop from "react-router-scroll-top";
 
 function Collection() {
   return (
@@ -44,6 +46,8 @@ function Collection() {
           {sample.map(renderImages)}
         </Rotation>
       </div>
+      <Footer />
+
     </motion.div>
   );
 }
