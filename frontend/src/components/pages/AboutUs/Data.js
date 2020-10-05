@@ -9,9 +9,9 @@ export const aboutUs = {
   topLine: "MSC ABOUT US",
   headline: "ABOUT US",
   description:
-    "The Merchandising Society Club (MSC) makes Fashion Institute of Technology (FIT) and StonyBrook University merchandise. Their goal is to not only produce merchandise for students andfaculties but also to showcase and sell their products that are crafted after extensive research onfashion trends and sales planning.Thus, to display their products for sale, MSC runs its own physical Retail Revolution Store at FIT,and they are currently in need of expanding their collection online. Particularly during the COVID 19crisis, customers cannot regularly access the offline retail store. Thus, having an online means ofaccessing MSC is a massive benefit for them.",
-  buttonLabel: "Make an Inquiry",
-  buttonTo: "",
+    "MSC stands for Merchandising Society Club where we learn about retailing in a fully-running business at our Retail Revolution store. Supported by the school since 2018, MSC now has more than 40 SKUs for FIT and SBU apparel and assorted goods sold at our physical store at SUNY Korea. As a club that’s fully run by students, and for students, it’s a safe learning base in a campus environment to develop retail skills and knowledge.",
+  buttonLabel: "Who Are We?",
+  buttonTo: "ourteam",
   buttonToExternalURL: "",
   imgStart: "",
   img: about_us,

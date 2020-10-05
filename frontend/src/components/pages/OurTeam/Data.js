@@ -9,7 +9,7 @@ export const members = {
   description: "Rebecca leads MSC and its memebers as the President.",
   buttonLabel: "Join MSC",
   buttonTo: "",
-  buttonToExternalURL: "http://www.google.com",
+  buttonToExternalURL: "https://forms.gle/FziVYSByf6NYFCqC8",
   imgStart: "start",
   img: member,
   alt: "image",

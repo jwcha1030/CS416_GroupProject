@@ -94,30 +94,30 @@ function Footer() {
             Merchandising Society Club © 2020
           </small>
           <div className="social-icons">
-            <Link
+            <a
+              href="https://www.facebook.com/mscsunykr/?ref=bookmarks"
               className="social-icon-link"
-              to="/"
               target="_blank"
               aria-label="Facebook"
             >
               <FaFacebook />
-            </Link>
-            <Link
+            </a>
+            <a
+              href="https://www.instagram.com/msc_sunykr/"
               className="social-icon-link"
-              to="/"
               target="_blank"
               aria-label="Instagram"
             >
               <FaInstagram />
-            </Link>
-            <Link
+            </a>
+            <a
+              href="https://www.youtube.com"
               className="social-icon-link"
-              to={"/"}
               target="_blank"
               aria-label="Youtube"
             >
               <FaYoutube />
-            </Link>
+            </a>
             <div className="footer-inquiry">
               <Button
                 className="make-inquiry"
