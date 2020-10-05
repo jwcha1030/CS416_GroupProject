@@ -5,6 +5,7 @@ import Home from "./components/pages/HomePage/Home";
 import Collections from "./components/pages/Collections/Collections";
 import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
+import AdminLogin from "./components/pages/AdminLogin/AdminLogin";
 import Navbar from "./components/Navbar";
 import Footer from "./components/pages/Footer.js/Footer";
 import ScrollToTop from 'react-router-scroll-top'
@@ -33,6 +34,7 @@ function App() {
             <Route path="/collections" component={Collections} />
             <Route path="/aboutus" component={AboutUs} />
             <Route path="/ourteam" component={OurTeam} />
+            <Route path="/adminlogin" component={AdminLogin} />
           </Switch>
         </AnimatePresence>
 
