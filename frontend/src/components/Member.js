@@ -10,9 +10,11 @@ import Popover from "react-bootstrap/Popover";
 import PopoverContent from "react-bootstrap/PopoverContent";
 import PopoverTitle from "react-bootstrap/PopoverTitle";
 
+const toolTipMessage = "Click & Copy to Clipboard";
+
 const renderTooltip = (props) => (
   <Tooltip id="button-tooltip" {...props}>
-    Click & Copy to Clipboard
+    {toolTipMessage}
   </Tooltip>
 );
 
@@ -38,7 +40,10 @@ const renderMembers = (item, index) => {
           >
             <Button
               className="contact-button"
-              onClick={() => navigator.clipboard.writeText(item.contact)}
+              onClick={() => {
+                navigator.clipboard.writeText(item.contact);
+                alert(item.contact + " is copied to your clipboard");
+              }}
               variant="dark"
             >
               {item.contact}

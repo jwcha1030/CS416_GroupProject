@@ -1,3 +1,10 @@
+.tooltip-inner {
+  padding: 1rem 1rem !important;
+  /* background-color: #013220 !important; */
+  font-size: larger;
+
+  color: #ea7229;
+}
 .members-list {
   display: flex;
   flex-wrap: wrap;
