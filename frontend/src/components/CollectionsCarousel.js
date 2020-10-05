@@ -21,19 +21,13 @@ import s from "./CollectionsCarousel.scss";
 
 export default () => (
   <CarouselProvider
-    visibleSlides={3}
+    visibleSlides={6}
     totalSlides={6}
-    step={3}
+    step={6}
     naturalSlideWidth={400}
     naturalSlideHeight={500}
     hasMasterSpinner
   >
-    <h2 className={s.headline}>Carousel (With Master Loading Spinner)</h2>
-    <p>
-      This spinner will go away after all the images have loaded. You might want
-      to use Chrome dev tools to throttle the network connection so you can see
-      the spinner.
-    </p>
     <Slider className={s.slider}>
       <Slide index={0}>
         <ImageWithZoom src={a1} />
