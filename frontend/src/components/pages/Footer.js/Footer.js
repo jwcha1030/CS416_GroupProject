@@ -10,7 +10,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
-
+import Form from "react-bootstrap/Form";
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
@@ -21,20 +21,37 @@ function MyVerticallyCenteredModal(props) {
       style={{ opacity: 1 }}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Questions?</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <h4>
+          Please feel free to ask anything by filling out the form below, and we
+          will get back to you within a few days.
+        </h4>
+
+        <Form>
+          <br></br>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="email" />
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlInput2">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control type="text" placeholder="Name" />
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Inquiry</Form.Label>
+            <Form.Control as="textarea" rows="3" />
+          </Form.Group>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button buttonStyle="" onClick={props.onHide}>
+          Close
+        </Button>
+        <Button>Submit</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -64,15 +81,7 @@ function Footer() {
           </form>
         </div>
       </section>
-      <section className="footer-inquiry">
-        <Button
-          className="make-inquiry"
-          buttonStyle="btn--outline"
-          onClick={() => setModalShow(true)}
-        >
-          Make an Inquiry
-        </Button>
-      </section>
+
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
         <div className="social-media-wrap">
@@ -109,24 +118,26 @@ function Footer() {
             >
               <FaYoutube />
             </Link>
-            <Link
-              className="social-icon-link"
-              to="/"
-              target="_blank"
-              aria-label="Twitter"
-            >
-              <FaTwitter />
-            </Link>
-            <Link
-              className="social-icon-link"
-              to="/"
-              target="_blank"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin />
-            </Link>
+            <div className="footer-inquiry">
+              <Button
+                className="make-inquiry"
+                buttonStyle="btn--outline"
+                onClick={() => setModalShow(true)}
+              >
+                Make an Inquiry
+              </Button>
+            </div>
           </div>
         </div>
+        <smaller style={{ color: "white" }}>032-1234-1234</smaller>
+        <br></br>
+        <smaller style={{ color: "white" }}>msc.sunykr@gmail.com</smaller>
+
+        <br></br>
+
+        <smaller style={{ color: "white" }}>
+          SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
+        </smaller>
       </section>
 
       <MyVerticallyCenteredModal
