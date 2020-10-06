@@ -41,7 +41,7 @@ const ProductList = (props, idex) => {
       <input
         className="search"
         type="text"
-        placeholder="Search"
+        placeholder='Search  "Hoodies"'
         value={searchTerm}
         onChange={handleChange}
       />

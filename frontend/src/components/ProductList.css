@@ -1,3 +1,31 @@
+.search {
+  display: grid;
+  place-items: center;
+  margin: 1rem;
+  width: 100%;
+  padding: 2rem;
+  transition: 0.5s;
+  color: #000000;
+  font-size: x-large;
+  border-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.search::placeholder {
+  color: #868686;
+  font-size: large;
+}
+
+.search:hover {
+  color: rgb(0, 0, 0);
+  font-size: xx-large;
+  padding: 2.5rem;
+  transition: 0.5s;
+}
+
+.search:focus {
+  outline: none;
+}
 .main-category {
   padding: 5rem;
 }
