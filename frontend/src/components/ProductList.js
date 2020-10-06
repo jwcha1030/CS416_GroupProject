@@ -20,8 +20,31 @@ import { Col, Row } from "antd";
 
 const { Meta } = Card;
 const ProductList = (props, idex) => {
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  React.useEffect(() => {
+    const results = ProductDataAll.filter(
+      (product) =>
+        product.title.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm) ||
+        product.type.toLowerCase().includes(searchTerm) ||
+        product.school.toLowerCase().includes(searchTerm) ||
+        product.date.toLowerCase().includes(searchTerm)
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
+      <input
+        className="search"
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
       <TabList>
         <Tab>All</Tab>
 
@@ -34,6 +57,9 @@ const ProductList = (props, idex) => {
       {/* All */}
       <TabPanel>
         <Tabs forceRenderTabPanel>
+          {searchResults.map((item) => (
+            <li>{item.title}</li>
+          ))}
           <div className="product-list">{ProductDataAll.map(Product)}</div>
 
           <ul>
