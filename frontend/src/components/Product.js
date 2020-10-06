@@ -8,6 +8,8 @@ import ProductList from "./ProductList";
 import renderImages from "./RotatingImage";
 import Rotation from "react-rotation";
 import "./RotatingImage.css";
+import ReactImageAppear from "react-image-appear";
+
 import {
   mugcup_1,
   mugcup_2,
@@ -30,7 +32,13 @@ const renderProducts = (props, index) => {
         hoverable
         style={{ width: 300 }}
         cover={
-          <img alt="img" src={props.img} />
+          <ReactImageAppear
+            className="home__hero-img"
+            src={props.img}
+            alt={"img"}
+            animation="fillIn"
+            animationDuration={Math.random() * 3 + 1 + "s"}
+          />
 
           //   <Rotation
           //   autoPlay={false}
