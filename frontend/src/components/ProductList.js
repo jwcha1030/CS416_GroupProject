@@ -58,10 +58,6 @@ const ProductList = (props, idex) => {
       <TabPanel>
         <Tabs forceRenderTabPanel>
           <div className="product-list">{searchResults.map(Product)}</div>
-
-          <ul>
-            <li>All Items</li>
-          </ul>
         </Tabs>
       </TabPanel>
       {/* All */}
@@ -75,12 +71,7 @@ const ProductList = (props, idex) => {
             <Tab>FIT Apparels</Tab>
           </TabList>
           <TabPanel>
-            <div className="product-list">{ProductDataAll.map(Product)}</div>
-
-            <ul>
-              <li>FIT All Goods </li>
-              <li>FIT All Apparels</li>
-            </ul>
+            <div className="product-list">{searchResults.map(Product)}</div>
           </TabPanel>
           <TabPanel>
             <ul>

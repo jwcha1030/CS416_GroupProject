@@ -1,6 +1,7 @@
 .search {
   display: grid;
   place-items: center;
+  text-align: center;
   margin: 1rem;
   width: 100%;
   padding: 2rem;
@@ -19,7 +20,7 @@
 .search:hover {
   color: rgb(0, 0, 0);
   font-size: xx-large;
-  padding: 2.5rem;
+  padding: 3rem;
   transition: 0.5s;
 }
 
