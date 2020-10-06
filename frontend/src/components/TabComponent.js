@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 import "./TabComponent.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import sbu from "../images/sbu.png";
-import fit from "../images/fit.png";
+import fit from "../images/fit.jpg";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -80,11 +80,11 @@ export default function FullWidthTabs() {
             onChange={handleChange}
             indicatorColor="primary"
             textColor="primary"
-            variant="fullWidth"
+            variant="scrollable"
             aria-label="Description Tab"
           >
-            <Tab label="Stony Brook University" {...a11yProps(0)} />
-            <Tab label="Fashion Institute of Technology" {...a11yProps(1)} />
+            <Tab label="Fashion Institute of Technology" {...a11yProps(0)} />
+            <Tab label="Stony Brook University" {...a11yProps(1)} />
             <Tab label="Others" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
@@ -99,31 +99,14 @@ export default function FullWidthTabs() {
             index={0}
             dir={theme.direction}
           >
-            <br />
-            <br />
             <div className="row">
               <div className="col">
-                <a href="https://www.stonybrook.edu" target="_blank">
-                  <img style={{ width: "100px" }} src={sbu} />
-                </a>
-              </div>
-              <div className="col">
-                The State University of New York at Stony Brook, more commonly
-                known as Stony Brook University (SBU), is a public sea-grant and
-                space-grant research university in Stony Brook, New York. It is
-                one of four university centers of the SUNY system. It is the
-                largest public university in New York by area.
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <br />
-            <br />
-            <div className="row">
-              <div className="col">
-                <a href="https://www.fitnyc.edu/" target="_blank">
+                <br />
+                <a href="https://www.fitnyc.edu" target="_blank">
                   <img style={{ width: "180px" }} src={fit} />
                 </a>
+                <br />
+                <br />
               </div>
               <div className="col">
                 The Fashion Institute of Technology (FIT) is a public college in
@@ -131,6 +114,25 @@ export default function FullWidthTabs() {
                 New York (SUNY) and focuses on art, business, design, mass
                 communication, and technology connected to the fashion industry.
                 It was founded in 1944.
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <div className="row">
+              <div className="col">
+                <br />
+                <a href="https://www.stonybrook.edu" target="_blank">
+                  <img style={{ width: "180px" }} src={sbu} />
+                </a>
+                <br />
+                <br />
+              </div>
+              <div className="col">
+                The State University of New York at Stony Brook, more commonly
+                known as Stony Brook University (SBU), is a public sea-grant and
+                space-grant research university in Stony Brook, New York. It is
+                one of four university centers of the SUNY system. It is the
+                largest public university in New York by area.
               </div>
             </div>
           </TabPanel>
