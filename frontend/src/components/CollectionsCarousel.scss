@@ -1,6 +1,6 @@
 $dark: #373737;
-$light: #f4f4f4;
-$white: #fefefe;
+$light: #ffffff;
+$white: #ffffff;
 $highlight1: #c0b283;
 $highlight2: #dcd0c0;
 $font-size--large-headline--mobile: 4rem;
@@ -10,14 +10,6 @@ $font-size--large-text--desktop: 2rem;
 
 html {
   scroll-behavior: smooth;
-  font-size: 10px;
-}
-
-body {
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  color: $dark;
-  background-color: $light;
 }
 
 hr {
@@ -43,6 +35,12 @@ p {
   @media all and (min-width: 480px) {
     font-size: 1.3rem;
   }
+}
+
+.CarouselButton {
+  padding: 3px 6px;
+  border: none;
+  text-decoration: none;
 }
 
 .responsiveImg {
@@ -171,7 +169,7 @@ p {
 }
 
 .slider {
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .externalLink {

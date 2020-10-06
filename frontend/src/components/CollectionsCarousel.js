@@ -16,16 +16,15 @@ import a3 from "../images/aboutus.jpg";
 import a4 from "../images/model_white.jpg";
 import a5 from "../images/member.jpg";
 import a6 from "../images/dummy.jpg";
-
 import s from "./CollectionsCarousel.scss";
 
 export default () => (
   <CarouselProvider
-    visibleSlides={6}
+    visibleSlides={2}
     totalSlides={6}
-    step={6}
-    naturalSlideWidth={400}
-    naturalSlideHeight={500}
+    step={1}
+    naturalSlideWidth={800}
+    naturalSlideHeight={1000}
     hasMasterSpinner
   >
     <Slider className={s.slider}>
@@ -48,10 +47,13 @@ export default () => (
         <ImageWithZoom src={a6} />
       </Slide>
     </Slider>
-    <ButtonFirst>First</ButtonFirst>
-    <ButtonBack>Back</ButtonBack>
-    <ButtonNext>Next</ButtonNext>
-    <ButtonLast>Last</ButtonLast>
-    <DotGroup />
+    <br />
+    <div align="center">
+      <div>
+        <ButtonBack className="CarouselButton">Back</ButtonBack>
+        {"   "}
+        <ButtonNext className="CarouselButton">Next</ButtonNext>
+      </div>
+    </div>
   </CarouselProvider>
 );

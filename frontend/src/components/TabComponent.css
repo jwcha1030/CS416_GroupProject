@@ -1,3 +1,7 @@
 .MuiTabPanel-root {
   font-size: x-large;
 }
+
+body {
+  background-color: white;
+}

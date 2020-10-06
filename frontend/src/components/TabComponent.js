@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import "./TabComponent.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import sbu from "../images/sbu.png";
+import fit from "../images/fit.png";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -97,9 +99,11 @@ export default function FullWidthTabs() {
             index={0}
             dir={theme.direction}
           >
+            <img style={{ width: "100px" }} src={sbu} />
             Description of SBU.
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
+            <img style={{ width: "200px" }} src={fit} />
             Description of FIT.
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
