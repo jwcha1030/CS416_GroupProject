@@ -57,10 +57,7 @@ const ProductList = (props, idex) => {
       {/* All */}
       <TabPanel>
         <Tabs forceRenderTabPanel>
-          {searchResults.map((item) => (
-            <li>{item.title}</li>
-          ))}
-          <div className="product-list">{ProductDataAll.map(Product)}</div>
+          <div className="product-list">{searchResults.map(Product)}</div>
 
           <ul>
             <li>All Items</li>
