@@ -2,7 +2,14 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./ProductList.css";
+import Product from "./Product";
+import { Card } from "antd";
 import test from "../images/model_white.jpg";
+import "antd/dist/antd.css";
+import ProductData from "./ProductData";
+import { Col, Row } from "antd";
+
+const { Meta } = Card;
 const ProductList = (props, idex) => {
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
@@ -17,6 +24,8 @@ const ProductList = (props, idex) => {
       {/* All */}
       <TabPanel>
         <Tabs forceRenderTabPanel>
+          <div className="product-list">{ProductData.map(Product)}</div>
+
           <ul>
             <li>All Items</li>
           </ul>
@@ -32,8 +41,9 @@ const ProductList = (props, idex) => {
             <Tab>FIT Apparels</Tab>
           </TabList>
           <TabPanel>
+            <div className="product-list">{ProductData.map(Product)}</div>
+
             <ul>
-              <img src={test}></img>
               <li>FIT All Goods </li>
               <li>FIT All Apparels</li>
             </ul>

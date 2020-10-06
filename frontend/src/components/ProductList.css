@@ -25,3 +25,16 @@
 
   transition: 0.3s;
 }
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 50px;
+
+  padding-top: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+}
