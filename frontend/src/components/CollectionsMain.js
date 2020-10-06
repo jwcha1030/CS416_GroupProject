@@ -31,9 +31,8 @@ function CollectionsMain({
             <div className="col-sm-8">
               <CollectionsCarousel />
             </div>
-            <div className="col-sm-1 " />
 
-            <div className="col-sm-3 ">
+            <div className="col-sm-4 ">
               <div className="row">
                 <div className="home__hero-text-wrapper">
                   <div className="top-line">{topLine}</div>
@@ -51,7 +50,7 @@ function CollectionsMain({
                   </p>
                 </div>
               </div>
-              <div className="row">
+              <div className="row" style={{ margin: "3rem" }}>
                 <TabComponent />
               </div>
             </div>

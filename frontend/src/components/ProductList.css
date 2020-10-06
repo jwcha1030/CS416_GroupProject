@@ -1,0 +1,30 @@
+.main-category {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.react-tabs__tab {
+  padding: 20px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #f4f4f4;
+
+  font-size: medium;
+}
+
+.react-tabs__tab:hover {
+  font-size: large;
+  transition: 0.1s;
+  border-radius: 5px;
+  background-color: #ea7229;
+  color: white;
+}
+
+.react-tabs__tab--selected {
+  background-color: #ea7229;
+  color: white;
+  text-align: center;
+
+  transition: 0.3s;
+}

@@ -13,6 +13,8 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import renderImages from "../../RotatingImage";
+import ProductList from "../../ProductList";
+
 import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages";
 
 function Collection() {
@@ -23,6 +25,8 @@ function Collection() {
       exit={{ opacity: 0 }}
     >
       <CollectionsMain {...products} />
+
+      <ProductList />
       <div className="sample-wrapper">
         <Rotation
           autoPlay={false}

@@ -1,5 +1,6 @@
 import React, { useEffect, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { motion } from "framer-motion";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
@@ -55,44 +56,50 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <MuiThemeProvider>
-          <div
-            align="center"
-            style={{
-              margin: "200px",
-            }}
-          >
-            <h4>Admin Login</h4>
-            <br />
-            <br />
-            {/* <AppBar title="Login" /> */}
-            <TextField
-              hintText="Enter your Email"
-              floatingLabelText="Email"
-              onChange={(event, newValue) =>
-                this.setState({ username: newValue })
-              }
-            />
-            <br />
-            <TextField
-              type="password"
-              hintText="Enter your Password"
-              floatingLabelText="Password"
-              onChange={(event, newValue) =>
-                this.setState({ password: newValue })
-              }
-            />
-            <br />
-            <RaisedButton
-              label="Login"
-              primary={true}
-              style={style}
-              onClick={(event) => this.handleClick(event)}
-            />
-          </div>
-        </MuiThemeProvider>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <div>
+          <MuiThemeProvider>
+            <div
+              align="center"
+              style={{
+                margin: "200px",
+              }}
+            >
+              <h4>Admin Login</h4>
+              <br />
+              <br />
+              {/* <AppBar title="Login" /> */}
+              <TextField
+                hintText="Enter your Email"
+                floatingLabelText="Email"
+                onChange={(event, newValue) =>
+                  this.setState({ username: newValue })
+                }
+              />
+              <br />
+              <TextField
+                type="password"
+                hintText="Enter your Password"
+                floatingLabelText="Password"
+                onChange={(event, newValue) =>
+                  this.setState({ password: newValue })
+                }
+              />
+              <br />
+              <RaisedButton
+                label="Login"
+                primary={true}
+                style={style}
+                onClick={(event) => this.handleClick(event)}
+              />
+            </div>
+          </MuiThemeProvider>
+        </div>
+      </motion.div>
     );
   }
 }
