@@ -99,12 +99,40 @@ export default function FullWidthTabs() {
             index={0}
             dir={theme.direction}
           >
-            <img style={{ width: "100px" }} src={sbu} />
-            Description of SBU.
+            <br />
+            <br />
+            <div className="row">
+              <div className="col">
+                <a href="https://www.stonybrook.edu" target="_blank">
+                  <img style={{ width: "100px" }} src={sbu} />
+                </a>
+              </div>
+              <div className="col">
+                The State University of New York at Stony Brook, more commonly
+                known as Stony Brook University (SBU), is a public sea-grant and
+                space-grant research university in Stony Brook, New York. It is
+                one of four university centers of the SUNY system. It is the
+                largest public university in New York by area.
+              </div>
+            </div>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <img style={{ width: "200px" }} src={fit} />
-            Description of FIT.
+            <br />
+            <br />
+            <div className="row">
+              <div className="col">
+                <a href="https://www.fitnyc.edu/" target="_blank">
+                  <img style={{ width: "180px" }} src={fit} />
+                </a>
+              </div>
+              <div className="col">
+                The Fashion Institute of Technology (FIT) is a public college in
+                Manhattan, New York City. It is part of the State University of
+                New York (SUNY) and focuses on art, business, design, mass
+                communication, and technology connected to the fashion industry.
+                It was founded in 1944.
+              </div>
+            </div>
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             Description of other IGC universities.
