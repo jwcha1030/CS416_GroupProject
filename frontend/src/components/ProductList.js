@@ -6,7 +6,16 @@ import Product from "./Product";
 import { Card } from "antd";
 import test from "../images/model_white.jpg";
 import "antd/dist/antd.css";
-import ProductData from "./ProductData";
+import ProductDataAll from "./ProductDataAll";
+import renderImages from "./RotatingImage";
+import Rotation from "react-rotation";
+import "./RotatingImage.css";
+import {
+  mugcup_1,
+  mugcup_2,
+  sample,
+} from "./pages/Collections/DataRotatingImages";
+
 import { Col, Row } from "antd";
 
 const { Meta } = Card;
@@ -21,10 +30,11 @@ const ProductList = (props, idex) => {
         <Tab>Assorted Goods</Tab>
         <Tab>Apparels</Tab>
       </TabList>
+
       {/* All */}
       <TabPanel>
         <Tabs forceRenderTabPanel>
-          <div className="product-list">{ProductData.map(Product)}</div>
+          <div className="product-list">{ProductDataAll.map(Product)}</div>
 
           <ul>
             <li>All Items</li>
@@ -32,6 +42,7 @@ const ProductList = (props, idex) => {
         </Tabs>
       </TabPanel>
       {/* All */}
+
       {/* FIT */}
       <TabPanel>
         <Tabs forceRenderTabPanel>
@@ -41,7 +52,7 @@ const ProductList = (props, idex) => {
             <Tab>FIT Apparels</Tab>
           </TabList>
           <TabPanel>
-            <div className="product-list">{ProductData.map(Product)}</div>
+            <div className="product-list">{ProductDataAll.map(Product)}</div>
 
             <ul>
               <li>FIT All Goods </li>
@@ -73,10 +84,24 @@ const ProductList = (props, idex) => {
             <Tab>SBU Apparels</Tab>
           </TabList>
           <TabPanel>
-            <ul>
-              <li>SBU All Goods</li>
-              <li>SBU All Apparel</li>
-            </ul>
+            <div className="product-list">
+              <Rotation
+                autoPlay={false}
+                cycle={true}
+                scroll={false}
+                className="rotating-image"
+              >
+                {mugcup_1.map(renderImages)}
+              </Rotation>
+              <Rotation
+                autoPlay={false}
+                cycle={true}
+                scroll={false}
+                className="rotating-image"
+              >
+                {mugcup_2.map(renderImages)}
+              </Rotation>
+            </div>
           </TabPanel>
           <TabPanel>
             <ul>
@@ -104,9 +129,16 @@ const ProductList = (props, idex) => {
             <Tab>Stony Brook University</Tab>
           </TabList>
           <TabPanel>
-            <ul>
-              <li>All Goods</li>
-            </ul>
+            <div className="product-list">
+              <Rotation
+                autoPlay={false}
+                cycle={true}
+                scroll={false}
+                className="rotating-image"
+              >
+                {sample.map(renderImages)}
+              </Rotation>
+            </div>
           </TabPanel>
           <TabPanel>
             <ul>

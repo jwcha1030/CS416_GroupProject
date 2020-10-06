@@ -3,7 +3,7 @@ import q2 from "../images/member1.jpg";
 import q3 from "../images/model_hat.jpg";
 import q4 from "../images/model_white.jpg";
 
-export const ProductData = [
+export const ProductDataAll = [
   {
     id: "1",
     price: "29.99",
@@ -104,4 +104,4 @@ export const ProductData = [
   },
 ];
 
-export default ProductData;
+export default ProductDataAll;
