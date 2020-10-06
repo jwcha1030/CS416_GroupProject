@@ -2,8 +2,8 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./ProductList.css";
-
-function ProductList() {
+import test from "../images/model_white.jpg";
+const ProductList = (props, idex) => {
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
       <TabList>
@@ -33,6 +33,7 @@ function ProductList() {
           </TabList>
           <TabPanel>
             <ul>
+              <img src={test}></img>
               <li>FIT All Goods </li>
               <li>FIT All Apparels</li>
             </ul>
@@ -143,6 +144,6 @@ function ProductList() {
       {/* Apparels */}
     </Tabs>
   );
-}
+};
 
 export default ProductList;
