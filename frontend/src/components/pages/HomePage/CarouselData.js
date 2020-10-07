@@ -4,39 +4,39 @@ import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
 
 
-export const CarouselData = [
+export let CarouselData = [
 
     {
-        id: "1",
+        id: 1,
         caption: "We Make Merchandise for FIT and SBU",
         description: "2020 Fall Clu7777b Member Registration Open! ",
         img: msc_banner,
-        alt: "First Slide",
+        alt: "Slide_1",
 
     },
 
     {
-        id: "2",
+        id: 2,
         caption: "Retail Revolution Shop",
         description: "Academic Building C, 6th Floor. Come Visit!",
         img: msc_banner2,
-        alt: "Second Slide",
+        alt: "Slide_2",
 
     },
     {
-        id: "3",
+        id: 3,
         caption: "2020 Summer Collections",
         description: "Fashion Starts at MSC",
         img: msc_banner3,
-        alt: "Third Slide",
+        alt: "Slide_3",
 
     },
     {
-        id: "4",
+        id: 4,
         caption: "2020 Summer Sales",
         description: "For Students, By Students",
         img: msc_banner4,
-        alt: "Fourth Slide",
+        alt: "Slide_4",
 
     }
 ];
