@@ -44,7 +44,7 @@ const ProductList = (props, idex) => {
         product.description.toLowerCase().includes(searchTerm) ||
         product.type.toLowerCase().includes(searchTerm) ||
         product.school.toLowerCase().includes(searchTerm) ||
-        product.date.toLowerCase().includes(searchTerm)
+        product.date_added.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
 

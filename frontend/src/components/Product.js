@@ -53,7 +53,7 @@ const renderProducts = (props, index) => {
             " " +
             props.type +
             " | " +
-            props.date +
+            props.date_added +
             " | $" +
             props.price
           }
