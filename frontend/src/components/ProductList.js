@@ -22,9 +22,15 @@ const { Meta } = Card;
 const ProductList = (props, idex) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
+  const [fitAll, setFitAll] = React.useState([]);
+  const [sbuAll, setSbuAll] = React.useState([]);
+  const [goodsAll, setGoodsAll] = React.useState([]);
+  const [apparelsAll, setApparelsAll] = React.useState([]);
+
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
+
   React.useEffect(() => {
     const results = ProductDataAll.filter(
       (product) =>
@@ -35,7 +41,25 @@ const ProductList = (props, idex) => {
         product.date.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
+
+    const fitAll = ProductDataAll.filter(
+      (product) => product.school.toLowerCase() == "fit"
+    );
+    setFitAll(fitAll);
+    const sbuAll = ProductDataAll.filter(
+      (product) => product.school.toLowerCase() == "sbu"
+    );
+    setSbuAll(sbuAll);
+    const goodsAll = ProductDataAll.filter(
+      (product) => product.type.toLowerCase().includes("good") //to avoid good vs goods mix
+    );
+    setGoodsAll(goodsAll);
+    const apparelsAll = ProductDataAll.filter(
+      (product) => product.type.toLowerCase().includes("apparel") //to avoid apparel vs apparels mix
+    );
+    setApparelsAll(apparelsAll);
   }, [searchTerm]);
+
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
       <input
@@ -71,7 +95,7 @@ const ProductList = (props, idex) => {
             <Tab>FIT Apparels</Tab>
           </TabList>
           <TabPanel>
-            <div className="product-list">{searchResults.map(Product)}</div>
+            <div className="product-list">{fitAll.map(Product)}</div>
           </TabPanel>
           <TabPanel>
             <ul>
@@ -98,6 +122,8 @@ const ProductList = (props, idex) => {
             <Tab>SBU Apparels</Tab>
           </TabList>
           <TabPanel>
+            <div className="product-list">{sbuAll.map(Product)}</div>
+
             <div className="product-list">
               <Rotation
                 autoPlay={false}
@@ -143,6 +169,8 @@ const ProductList = (props, idex) => {
             <Tab>Stony Brook University</Tab>
           </TabList>
           <TabPanel>
+            <div className="product-list">{goodsAll.map(Product)}</div>
+
             <div className="product-list">
               <Rotation
                 autoPlay={false}
@@ -179,6 +207,8 @@ const ProductList = (props, idex) => {
             <Tab>Stony Brook University</Tab>
           </TabList>
           <TabPanel>
+            <div className="product-list">{apparelsAll.map(Product)}</div>
+
             <ul>
               <li>All Apparel</li>
             </ul>
