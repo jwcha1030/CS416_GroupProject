@@ -130,7 +130,7 @@
 
 .social-media-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 90%;
   max-width: 1000px;
@@ -147,7 +147,13 @@
 .social-icon-link:hover {
   color: #ea7229;
 }
-
+.social-logo-icon {
+  color: #fff;
+  justify-self: start;
+  cursor: pointer;
+  margin-bottom: 16px;
+  width: 80px;
+}
 .social-logo {
   color: #fff;
   justify-self: start;
@@ -157,7 +163,6 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
   width: 60px;
 }
 

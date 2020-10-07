@@ -110,7 +110,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     // ADMIN PAGE
-                    to="/admin"
+                    to="/adminlogin"
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >

@@ -1,11 +1,13 @@
 import React from "react";
-import HeroSection from "../../HeroSection";
+import CollectionsMain from "../../CollectionsMain";
 import { products } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
+
+import "pure-react-carousel/dist/react-carousel.es.css";
+import ProductList from "../../ProductList";
+import renderImages from "../../RotatingImage";
 import Rotation from "react-rotation";
 import "../../RotatingImage.css";
-
-import renderImages from "../../RotatingImage";
 import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages";
 import Footer from "../Footer.js/Footer";
 import ScrollToTop from "react-router-scroll-top";
@@ -17,37 +19,8 @@ function Collection() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <HeroSection {...products} />
-      <div className="sample-wrapper">
-        <Rotation
-          autoPlay={false}
-          cycle={true}
-          scroll={false}
-          className="rotating-image"
-        >
-          {mugcup_1.map(renderImages)}
-        </Rotation>
-
-        <Rotation
-          autoPlay={false}
-          cycle={true}
-          scroll={false}
-          className="rotating-image"
-        >
-          {mugcup_2.map(renderImages)}
-        </Rotation>
-
-        <Rotation
-          autoPlay={false}
-          cycle={true}
-          scroll={false}
-          className="rotating-image"
-        >
-          {sample.map(renderImages)}
-        </Rotation>
-      </div>
-      <Footer />
-
+      <CollectionsMain {...products} />
+      <ProductList />
     </motion.div>
   );
 }

@@ -5,6 +5,7 @@ import Home from "./components/pages/HomePage/Home";
 import Collections from "./components/pages/Collections/Collections";
 import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
+import AdminLogin from "./components/pages/AdminLogin/AdminLogin";
 import Navbar from "./components/Navbar";
 import ScrollToTop from 'react-router-scroll-top'
 
@@ -41,6 +42,9 @@ function App() {
             <Route path="/admin/collections_edit" component={CollectionsEdit}/>
             <Route path="/admin/team_edit" component={OurTeamEdit}/>
             <Route path="/admin/about_edit" component={AboutUsEdit}/>
+
+            <Route path="/adminlogin" component={AdminLogin} />
+
           </Switch>
         </AnimatePresence>
       </ScrollToTop>
