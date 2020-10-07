@@ -13,7 +13,7 @@ import ProductDetailPage from "./components/ProductDetailPage";
 import { AnimatePresence, motion } from "framer-motion";
 import Admin from "./components/pages/Admin/Admin";
 import CarouselEdit from "./components/pages/Admin/EditContents/EditCarousel/CarouselEdit";
-import CollectionsEdit from "./components/pages/Admin/EditContents/CollectionsEdit";
+import CollectionsEdit from "./components/pages/Admin/EditContents/EditCollections/CollectionsEdit";
 import OurTeamEdit from "./components/pages/Admin/EditContents/OurTeamEdit";
 import AboutUsEdit from "./components/pages/Admin/EditContents/AboutUsEdit";
 

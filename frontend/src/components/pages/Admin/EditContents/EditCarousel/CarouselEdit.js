@@ -4,6 +4,9 @@ import DataTable from "../DataTable";
 import {Button} from "../../../../Button";
 import Modal from "react-bootstrap/Modal";
 import CarouselForm from "./CreateCarouselForm"
+import {Link} from "react-router-dom";
+import {IoIosArrowBack} from "react-icons/io";
+import CollectionsForm from "../EditCollections/CollectionsForm";
 
 export default function CarouselEdit(prop) {
   const [current_item, setItem] = useState(CarouselData[0]);
@@ -51,9 +54,12 @@ export default function CarouselEdit(prop) {
       }
     }
     let newData = [...data];
-    newData[i].caption = newCaption;
-    newData[i].description = newDesc;
+    newData[i].caption = newCaption===''? data[i].caption:newCaption;
+    setNewCaption(''); //reinitialize
+    newData[i].description = newDesc===''? data[i].description:newDesc;
+    setNewDesc('');
     newData[i].img = newImg === '' ? data[i].img : newImg;
+    setNewImg('');
     setData(newData);
     setEditModalShow(false);
   };
@@ -74,6 +80,10 @@ export default function CarouselEdit(prop) {
       img: newImg,
       alt: "Slide_" + (maxID + 1)
     }]);
+    //reinitialize
+    setNewCaption('');
+    setNewDesc('');
+    setNewImg('');
     setCreateModalShow(false);
   };
   const handleCreateClose = () => {
@@ -87,52 +97,54 @@ export default function CarouselEdit(prop) {
 
   return (
     <div>
-      <h1 className="carouselEdit__header">CarouselList</h1>
+      <Link style={{fontSize:"17px"}} className="goBack" to="/admin">
+        <IoIosArrowBack/>Go Back
+      </Link>
+      <h1 style={{textAlign: "center", fontWeight: "bold"}} className="carouselEdit__header" >
+        Carousel List
+      </h1>
       <DataTable
         data={data}
         headers={headers}
         changeItem={changeItem}
         showEdit={handleEditShow}
         deleteItem={handleDelete}/>
-      <Modal animation={false} show={showCreateModal} onHide={handleCreateClose}>
+      {/*Create Modal*/}
+      <Modal centered={true} size='lg' animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create a New Slide</Modal.Title>
+          <Modal.Title>Add a New Slide</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <CarouselForm
             handleCaption={handleCaption}
             handleDesc={handleDesc}
             handleImg={handleImg}
+            handleClose={handleCreateClose}
+            handleSubmit={handleCreateSubmit}
           />
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={handleCreateClose} buttonColor="msc_orange_invert" buttonSize="btn--medium">Close</Button>
-          <Button onClick={handleCreateSubmit} buttonColor="msc_orange" buttonSize="btn--medium">
-            Submit
-          </Button>
-        </Modal.Footer>
       </Modal>
-      <Modal animation={false} show={showEditModal} onHide={handleEditClose}>
+      {/*Edit Modal*/}
+      <Modal centered={true} size='lg' animation={false} show={showEditModal} onHide={handleEditClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Slide</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <CarouselForm
+            currentItem={current_item}
             handleCaption={handleCaption}
             handleDesc={handleDesc}
             handleImg={handleImg}
+            handleClose={handleEditClose}
+            handleSubmit={handleEditSubmit}
           />
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={handleEditClose} buttonColor="msc_orange_invert" buttonSize="btn--medium">Close</Button>
-          <Button onClick={handleEditSubmit} buttonColor="msc_orange" buttonSize="btn--medium">
-            Submit
-          </Button>
-        </Modal.Footer>
       </Modal>
-      <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-        Create a Slide
-      </Button>
+        <div style={{display:"flex", justifyContent:"center"}}>
+          <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
+            Create
+          </Button>
+        </div>
     </div>
   );
 }

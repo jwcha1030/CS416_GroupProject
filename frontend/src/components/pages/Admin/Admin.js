@@ -9,6 +9,9 @@ import {Link} from "react-router-dom";
 import {Button} from "../../Button";
 
 export default function Admin() {
+  const handleAlert=()=>{
+    alert("UNDER CONSTRUCTION - come back later!");
+  };
   return (
     <div className="admin__section">
       <div className="admin__wrapper">
@@ -52,7 +55,7 @@ export default function Admin() {
                 </li>
               </ul>
 
-              <Button buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
+              <Button onClick={handleAlert} buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
                 Details</Button>
             </div>
           </div>
@@ -72,7 +75,7 @@ export default function Admin() {
                   <p>{analysisData.mostViewed}</p>
                 </li>
               </ul>
-              <Button buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
+              <Button onClick={handleAlert} buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
                 Details</Button>
 
             </div>
