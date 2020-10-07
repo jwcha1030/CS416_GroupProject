@@ -1,62 +1,79 @@
 import React, {useState} from 'react';
-import {CarouselData} from '../../HomePage/CarouselData';
-import DataTable from "./DataTable";
-import {Button} from "../../../Button";
+import {CarouselData} from '../../../HomePage/CarouselData';
+import DataTable from "../DataTable";
+import {Button} from "../../../../Button";
 import Modal from "react-bootstrap/Modal";
 import CarouselForm from "./CreateCarouselForm"
 
 export default function CarouselEdit(prop) {
-  const [current_item, setItem]=useState(CarouselData[0]);
+  const [current_item, setItem] = useState(CarouselData[0]);
   const [data, setData] = useState(CarouselData);
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
 
   const [newCaption, setNewCaption] = useState('');
   const [newDesc, setNewDesc] = useState('');
-  const [newImg, setNewImg]=useState('');
+  const [newImg, setNewImg] = useState('');
   const headers = Object.keys(CarouselData[0]);
 
-  const handleCaption=(e)=>{
+  const handleCaption = (e) => {
     setNewCaption(e.target.value);
   };
-  const handleDesc=(e)=>{
+  const handleDesc = (e) => {
     setNewDesc(e.target.value);
   };
-  const handleImg=(e)=>{
+  const handleImg = (e) => {
     setNewImg(e.target.value);
   };
 
-  const handleDelete=(id)=>{
-    const removedItems = [...data].filter( item=> item.id !== id);
+  const handleDelete = (id) => {
+    const removedItems = [...data].filter(item => item.id !== id);
 
     setData(removedItems);
   };
   //edit modal handler
-  const changeItem=(id)=>{
+  const changeItem = (id) => {
     const currentItem = (data.filter(item => item.id === id))[0]; //selects the item that is clicked
     setItem(currentItem);
   };
-  const handleEditShow=()=>{
+  const handleEditShow = () => {
     setEditModalShow(true);
   };
-  const handleEditClose=()=>{
+  const handleEditClose = () => {
     setEditModalShow(false);
   };
-  const handleEditSubmit =() =>{
-    const id= current_item.id;
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    let i;
+    for(i=0; i<data.length; i++){
+      if(data[i].id===current_item.id){
+        break;
+      }
+    }
     let newData = [...data];
+    newData[i].caption = newCaption;
+    newData[i].description = newDesc;
+    newData[i].img = newImg === '' ? data[i].img : newImg;
     setData(newData);
+    setEditModalShow(false);
   };
 
   //create modal handler
   const handleCreateSubmit = (e) => {
     e.preventDefault();
+    let maxID = 0;
+    for(let i=0; i<data.length; i++){
+      if(maxID<data[i].id) {
+        maxID=data[i].id;
+      }
+    }
     setData([...data, {
-      id: data.length+1,
+      id: maxID + 1,
       caption: newCaption,
       description: newDesc,
       img: newImg,
-      alt: "Slide_"+(data.length+1)}]);
+      alt: "Slide_" + (maxID + 1)
+    }]);
     setCreateModalShow(false);
   };
   const handleCreateClose = () => {
@@ -113,8 +130,9 @@ export default function CarouselEdit(prop) {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">Create a
-        Slide</Button>
+      <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
+        Create a Slide
+      </Button>
     </div>
   );
 }
