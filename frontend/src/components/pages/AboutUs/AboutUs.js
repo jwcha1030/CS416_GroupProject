@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "../../HeroSection";
 import { aboutUs, virtualStore } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
+import Footer from "../Footer.js/Footer";
 
 function AboutUs() {
   return (
@@ -12,6 +13,7 @@ function AboutUs() {
     >
       <HeroSection {...aboutUs}></HeroSection>
       <HeroSection {...virtualStore} />
+      <Footer />
     </motion.div>
   );
 }

@@ -19,10 +19,10 @@
 }
 
 .search:hover {
-  background-color: rgb(29, 29, 29);
-  color: #f4f4f4;
+  background-color: #f4f4f4;
+
+  color: #000000;
   font-size: xx-large;
-  padding: 3rem;
   transition: 0.5s;
 }
 

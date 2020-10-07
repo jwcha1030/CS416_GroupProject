@@ -21,6 +21,7 @@ function Collection() {
     >
       <CollectionsMain {...products} />
       <ProductList />
+      <Footer />
     </motion.div>
   );
 }

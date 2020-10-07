@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import Member from "../../Member";
 import { DataMembers } from "./DataMembers";
+import Footer from "../Footer.js/Footer";
 
 // import { Card, Icon, Image } from "semantic-ui-react";
 
@@ -20,6 +21,7 @@ function OurTeam() {
       </motion.div>
 
       <div className="members-list">{DataMembers.map(Member)}</div>
+      <Footer />
     </div>
   );
 }
