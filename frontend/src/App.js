@@ -7,10 +7,14 @@ import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import AdminLogin from "./components/pages/AdminLogin/AdminLogin";
 import Navbar from "./components/Navbar";
-import Footer from "./components/pages/Footer.js/Footer";
 import ScrollToTop from 'react-router-scroll-top'
 
 import { AnimatePresence, motion } from "framer-motion";
+import Admin from "./components/pages/Admin/Admin";
+import CarouselEdit from "./components/pages/Admin/EditContents/CarouselEdit";
+import CollectionsEdit from "./components/pages/Admin/EditContents/CollectionsEdit";
+import OurTeamEdit from "./components/pages/Admin/EditContents/OurTeamEdit";
+import AboutUsEdit from "./components/pages/Admin/EditContents/AboutUsEdit";
 
 // import counterpart from 'counterpart';
 // import Translate from 'react-traslate-component';
@@ -25,7 +29,6 @@ function App() {
   return (
 
     <Router>
-
       <ScrollToTop>
         <Navbar />
         <AnimatePresence>
@@ -34,11 +37,16 @@ function App() {
             <Route path="/collections" component={Collections} />
             <Route path="/aboutus" component={AboutUs} />
             <Route path="/ourteam" component={OurTeam} />
+            <Route path="/admin" exact component={Admin} />
+            <Route path="/admin/carousel_edit" component={CarouselEdit}/>
+            <Route path="/admin/collections_edit" component={CollectionsEdit}/>
+            <Route path="/admin/team_edit" component={OurTeamEdit}/>
+            <Route path="/admin/about_edit" component={AboutUsEdit}/>
+
             <Route path="/adminlogin" component={AdminLogin} />
+
           </Switch>
         </AnimatePresence>
-
-        <Footer />
       </ScrollToTop>
 
     </Router>

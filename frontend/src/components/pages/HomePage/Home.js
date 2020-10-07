@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import Carousel from "react-bootstrap/esm/Carousel";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Footer from "../Footer.js/Footer";
+import ScrollToTop from "react-router-scroll-top";
 
 function Home() {
   useEffect(() => {
@@ -39,6 +41,7 @@ function Home() {
       <div data-aos="slide-left">
         <HeroSection {...aboutus} />
       </div>
+      <Footer />
     </motion.div>
   );
 }
