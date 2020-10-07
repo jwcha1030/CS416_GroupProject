@@ -81,7 +81,7 @@ export const ProductDataAll = [
   {
     id: 7,
     price: "8.99",
-    date: "Summer 2020",
+    date_added: "Summer 2020",
     title: "2020 Shorts",
     new: "",
 
@@ -93,7 +93,7 @@ export const ProductDataAll = [
   {
     id: 8,
     price: "99.99",
-    date: "Winter 2017",
+    date_added: "Winter 2017",
     title: "2017 Legendary Jacket",
     new: "",
 

@@ -42,7 +42,6 @@ function App() {
             <Route path="/admin/collections_edit" component={CollectionsEdit}/>
             <Route path="/admin/team_edit" component={OurTeamEdit}/>
             <Route path="/admin/about_edit" component={AboutUsEdit}/>
-
             <Route path="/adminlogin" component={AdminLogin} />
 
           </Switch>

@@ -24,6 +24,16 @@ export default function CollectionEdit() {
 
   const headers = Object.keys(ProductDataAll[0]);
 
+  const getCurrentDate = () => {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today
+  };
+
   const handlePrice = (e) => {
     setPrice(e.target.value);
   };
@@ -34,7 +44,15 @@ export default function CollectionEdit() {
     setTitle(e.target.value);
   };
   const handleNewLabel = (e) => {
-    setNewLabel(e.target.value);
+    let target = e.target;
+    let val;
+    if(target.type ==='checkbox'){
+      val= target.checked? "New":"";
+    }
+    else{
+      val=target.value;
+    }
+    setNewLabel(val);
   };
   const handleDesc = (e) => {
     setDesc(e.target.value);
@@ -75,7 +93,7 @@ export default function CollectionEdit() {
     let newData = [...data];
     newData[i].price = price === '' ? data[i].price : price;
     newData[i].title = title === '' ? data[i].title : title;
-    newData[i].date = date === '' ? data[i].date : date;
+    newData[i].date_added = date === '' ? data[i].date_added : date;
     newData[i].new = newLabel === '' ? data[i].new : newLabel;
     newData[i].description = desc === '' ? data[i].description : desc;
     newData[i].img = img === '' ? data[i].img : img;
@@ -90,7 +108,7 @@ export default function CollectionEdit() {
     setDesc('');
     setSchool('');
     setType('');
-
+    setImg('');
     setData(newData);
     setEditModalShow(false);
   };
@@ -108,7 +126,7 @@ export default function CollectionEdit() {
     setData([...data, {
       id: maxID + 1,
       price: price,
-      date: date,
+      date_added: date === '' ? getCurrentDate() : date, //get current date if 'date' is empty
       title: title,
       new: newLabel,
       description: desc,
@@ -135,7 +153,6 @@ export default function CollectionEdit() {
     setCreateModalShow(true);
   };
 
-
   return (
     <div>
       <Link style={{fontSize: "17px"}} className="goBack" to="/admin">
@@ -151,7 +168,7 @@ export default function CollectionEdit() {
         showEdit={handleEditShow}
         deleteItem={handleDelete}/>
       {/*Create Modal*/}
-      <Modal size='xl' centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
+      <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add an Item</Modal.Title>
         </Modal.Header>
@@ -171,7 +188,7 @@ export default function CollectionEdit() {
         </Modal.Body>
       </Modal>
       {/*Edit modal*/}
-      <Modal size='xl' centered={true} animation={false} show={showEditModal} onHide={handleEditClose}>
+      <Modal size='lg' centered={true} animation={false} show={showEditModal} onHide={handleEditClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Item</Modal.Title>
         </Modal.Header>
