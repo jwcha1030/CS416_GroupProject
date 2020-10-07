@@ -23,7 +23,13 @@ const ProductList = (props, idex) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
   const [fitAll, setFitAll] = React.useState([]);
+  const [fitGoods, setFitGoods] = React.useState([]);
+  const [fitApparels, setFitApparels] = React.useState([]);
+
   const [sbuAll, setSbuAll] = React.useState([]);
+  const [sbuGoods, setSbuGoods] = React.useState([]);
+  const [sbuApparels, setSbuApparels] = React.useState([]);
+
   const [goodsAll, setGoodsAll] = React.useState([]);
   const [apparelsAll, setApparelsAll] = React.useState([]);
 
@@ -46,10 +52,40 @@ const ProductList = (props, idex) => {
       (product) => product.school.toLowerCase() == "fit"
     );
     setFitAll(fitAll);
+
+    const fitGoods = ProductDataAll.filter(
+      (product) =>
+        product.school.toLowerCase() == "fit" &&
+        product.type.toLowerCase().includes("good")
+    );
+    setFitGoods(fitGoods);
+
+    const fitApparels = ProductDataAll.filter(
+      (product) =>
+        product.school.toLowerCase() == "fit" &&
+        product.type.toLowerCase().includes("apparel")
+    );
+    setFitApparels(fitApparels);
+
     const sbuAll = ProductDataAll.filter(
       (product) => product.school.toLowerCase() == "sbu"
     );
     setSbuAll(sbuAll);
+
+    const sbuGoods = ProductDataAll.filter(
+      (product) =>
+        product.school.toLowerCase() == "sbu" &&
+        product.type.toLowerCase().includes("good")
+    );
+    setSbuGoods(sbuGoods);
+
+    const sbuApparels = ProductDataAll.filter(
+      (product) =>
+        product.school.toLowerCase() == "sbu" &&
+        product.type.toLowerCase().includes("apparel")
+    );
+    setSbuApparels(sbuApparels);
+
     const goodsAll = ProductDataAll.filter(
       (product) => product.type.toLowerCase().includes("good") //to avoid good vs goods mix
     );
@@ -98,16 +134,10 @@ const ProductList = (props, idex) => {
             <div className="product-list">{fitAll.map(Product)}</div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>FIT Goods 1</li>
-              <li>FIT Goods 2</li>
-            </ul>
+            <div className="product-list">{fitGoods.map(Product)}</div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>FIT Apparel 1</li>
-              <li>FIT Apparel 2</li>
-            </ul>
+            <div className="product-list">{fitApparels.map(Product)}</div>
           </TabPanel>
         </Tabs>
       </TabPanel>
@@ -144,16 +174,10 @@ const ProductList = (props, idex) => {
             </div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>SBU Goods 1</li>
-              <li>SBU Goods 2</li>
-            </ul>
+            <div className="product-list">{sbuGoods.map(Product)}</div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>SBU Apparel 1</li>
-              <li>SBU Apparel 2</li>
-            </ul>
+            <div className="product-list">{sbuApparels.map(Product)}</div>
           </TabPanel>
         </Tabs>
       </TabPanel>
@@ -183,16 +207,10 @@ const ProductList = (props, idex) => {
             </div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>FIT Goods 1</li>
-              <li>FIT Goods 2</li>
-            </ul>
+            <div className="product-list">{fitGoods.map(Product)}</div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>SBU Goods 1</li>
-              <li>SBU Goods 2</li>
-            </ul>
+            <div className="product-list">{sbuGoods.map(Product)}</div>
           </TabPanel>
         </Tabs>
       </TabPanel>
@@ -208,22 +226,12 @@ const ProductList = (props, idex) => {
           </TabList>
           <TabPanel>
             <div className="product-list">{apparelsAll.map(Product)}</div>
-
-            <ul>
-              <li>All Apparel</li>
-            </ul>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>FIT Apparel 1</li>
-              <li>FIT Apparel 2</li>
-            </ul>
+            <div className="product-list">{fitApparels.map(Product)}</div>
           </TabPanel>
           <TabPanel>
-            <ul>
-              <li>SBU Apparel 1</li>
-              <li>SBU Apparel 2</li>
-            </ul>
+            <div className="product-list">{sbuApparels.map(Product)}</div>
           </TabPanel>
         </Tabs>
       </TabPanel>
