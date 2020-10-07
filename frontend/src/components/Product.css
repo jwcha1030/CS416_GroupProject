@@ -1,7 +1,9 @@
 .product-card {
   width: 250px;
 }
-
+.ant-card-meta-description {
+  font-size: 12px;
+}
 @media screen and (max-width: 1200px) {
   .product-card {
     width: 150px;

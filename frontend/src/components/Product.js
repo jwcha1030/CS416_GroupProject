@@ -19,12 +19,6 @@ import {
 const { Meta } = Card;
 const toolTipMessage = "Need Help? Reach out to us!";
 
-const renderTooltip = (props) => (
-  <Tooltip id="button-tooltip" {...props}>
-    {toolTipMessage}
-  </Tooltip>
-);
-
 const renderProducts = (props, index) => {
   return (
     <div>
@@ -32,14 +26,15 @@ const renderProducts = (props, index) => {
         className="product-card"
         hoverable
         cover={
-          <ReactImageAppear
-            className="home__hero-img"
-            src={props.img}
-            alt={"img"}
-            animation="fillIn"
-            animationDuration={Math.random() * 3 + 1 + "s"}
-          />
-
+          <a href={`/collections/${props.id}`}>
+            <ReactImageAppear
+              className="home__hero-img"
+              src={props.img}
+              alt={"img"}
+              animation="fillIn"
+              animationDuration={Math.random() * 3 + 1 + "s"}
+            />
+          </a>
           //   <Rotation
           //   autoPlay={false}
           //   cycle={true}
@@ -54,15 +49,16 @@ const renderProducts = (props, index) => {
           className="product-properties"
           title={props.new + " " + props.title}
           description={
-            props.date +
-            " | " +
             props.school +
             " " +
             props.type +
+            " | " +
+            props.date +
             " | $" +
             props.price
           }
         />
+
         <br />
         <div className="additional">
           <p className="product-description">{props.description}</p>
