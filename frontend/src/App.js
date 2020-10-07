@@ -7,7 +7,8 @@ import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import AdminLogin from "./components/pages/AdminLogin/AdminLogin";
 import Navbar from "./components/Navbar";
-import ScrollToTop from 'react-router-scroll-top'
+import ScrollToTop from "react-router-scroll-top";
+import ProductDetailPage from "./components/ProductDetailPage";
 
 import { AnimatePresence, motion } from "framer-motion";
 import Admin from "./components/pages/Admin/Admin";
@@ -27,27 +28,26 @@ import AboutUsEdit from "./components/pages/Admin/EditContents/AboutUsEdit";
 
 function App() {
   return (
-
     <Router>
       <ScrollToTop>
         <Navbar />
         <AnimatePresence>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/collections" component={Collections} />
+            <Route path="/collections" exact component={Collections} />
+            <Route path="/collections/:id" component={ProductDetailPage} />
             <Route path="/aboutus" component={AboutUs} />
             <Route path="/ourteam" component={OurTeam} />
             <Route path="/admin" exact component={Admin} />
-            <Route path="/admin/carousel_edit" component={CarouselEdit}/>
-            <Route path="/admin/collections_edit" component={CollectionsEdit}/>
-            <Route path="/admin/team_edit" component={OurTeamEdit}/>
-            <Route path="/admin/about_edit" component={AboutUsEdit}/>
-            <Route path="/adminlogin" component={AdminLogin} />
+            <Route path="/admin/carousel_edit" component={CarouselEdit} />
+            <Route path="/admin/collections_edit" component={CollectionsEdit} />
+            <Route path="/admin/team_edit" component={OurTeamEdit} />
+            <Route path="/admin/about_edit" component={AboutUsEdit} />
 
+            <Route path="/adminlogin" component={AdminLogin} />
           </Switch>
         </AnimatePresence>
       </ScrollToTop>
-
     </Router>
   );
 }

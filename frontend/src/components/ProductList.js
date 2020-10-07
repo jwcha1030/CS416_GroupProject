@@ -18,8 +18,6 @@ import {
   sample,
 } from "./pages/Collections/DataRotatingImages";
 
-import { Col, Row } from "antd";
-
 const { Meta } = Card;
 const ProductList = (props, idex) => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -46,11 +44,11 @@ const ProductList = (props, idex) => {
         product.description.toLowerCase().includes(searchTerm) ||
         product.type.toLowerCase().includes(searchTerm) ||
         product.school.toLowerCase().includes(searchTerm) ||
-        product.date.toLowerCase().includes(searchTerm)
+        product.date_added.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
 
-    const fitAll = ProductDataAll.filter(
+    const fitAll = searchResults.filter(
       (product) => product.school.toLowerCase() == "fit"
     );
     setFitAll(fitAll);
@@ -113,7 +111,6 @@ const ProductList = (props, idex) => {
       <div className="upperTab">
         <TabList>
           <Tab>All</Tab>
-
           <Tab>Fashion Institute of Technology</Tab>
           <Tab>Stony Brook University</Tab>
           <Tab>Assorted Goods</Tab>
