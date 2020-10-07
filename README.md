@@ -24,14 +24,13 @@ Our solution is to create a website for them that will allow MSC to have an onli
 
  
 **Installation**
- 
- 
+
 Git clone the repository and go to the frontend directory.
 Install packages and run the application by the following commands.
 
-*-npm install*
-
-*-npm start*
-
+```
+npm install
+npm start
+```
 Frontend is built extensively for Chrome at the moment -- other broswers may behave differently with styling.
 Supports responsive design for mobile usage.
