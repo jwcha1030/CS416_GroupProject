@@ -110,155 +110,158 @@ const ProductList = (props, idex) => {
         />
         <SearchOutlined style={{ marginTop: "3rem", fontSize: "3rem" }} />
       </div>
-      <TabList>
-        <Tab>All</Tab>
+      <div className="upperTab">
+        <TabList>
+          <Tab>All</Tab>
 
-        <Tab>Fashion Institute of Technology</Tab>
-        <Tab>Stony Brook University</Tab>
-        <Tab>Assorted Goods</Tab>
-        <Tab>Apparels</Tab>
-      </TabList>
+          <Tab>Fashion Institute of Technology</Tab>
+          <Tab>Stony Brook University</Tab>
+          <Tab>Assorted Goods</Tab>
+          <Tab>Apparels</Tab>
+        </TabList>
+      </div>
+      <div className="nestedTab">
+        {/* All */}
+        <TabPanel>
+          <Tabs forceRenderTabPanel>
+            <div className="product-list">{searchResults.map(Product)}</div>
+          </Tabs>
+        </TabPanel>
+        {/* All */}
 
-      {/* All */}
-      <TabPanel>
-        <Tabs forceRenderTabPanel>
-          <div className="product-list">{searchResults.map(Product)}</div>
-        </Tabs>
-      </TabPanel>
-      {/* All */}
+        {/* FIT */}
+        <TabPanel>
+          <Tabs forceRenderTabPanel>
+            <TabList>
+              <Tab>FIT All</Tab>
+              <Tab>FIT Assorted Goods</Tab>
+              <Tab>FIT Apparels</Tab>
+            </TabList>
+            <TabPanel>
+              <div className="product-list">{fitAll.map(Product)}</div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{fitGoods.map(Product)}</div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{fitApparels.map(Product)}</div>
+            </TabPanel>
+          </Tabs>
+        </TabPanel>
+        {/* FIT */}
 
-      {/* FIT */}
-      <TabPanel>
-        <Tabs forceRenderTabPanel>
-          <TabList>
-            <Tab>FIT All</Tab>
-            <Tab>FIT Assorted Goods</Tab>
-            <Tab>FIT Apparels</Tab>
-          </TabList>
-          <TabPanel>
-            <div className="product-list">{fitAll.map(Product)}</div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{fitGoods.map(Product)}</div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{fitApparels.map(Product)}</div>
-          </TabPanel>
-        </Tabs>
-      </TabPanel>
-      {/* FIT */}
+        {/* SBU  */}
+        <TabPanel>
+          <Tabs forceRenderTabPanel>
+            <TabList>
+              <Tab>SBU All</Tab>
+              <Tab>SBU Assorted Goods</Tab>
+              <Tab>SBU Apparels</Tab>
+            </TabList>
+            <TabPanel>
+              <div className="product-list">{sbuAll.map(Product)}</div>
 
-      {/* SBU  */}
-      <TabPanel>
-        <Tabs forceRenderTabPanel>
-          <TabList>
-            <Tab>SBU All</Tab>
-            <Tab>SBU Assorted Goods</Tab>
-            <Tab>SBU Apparels</Tab>
-          </TabList>
-          <TabPanel>
-            <div className="product-list">{sbuAll.map(Product)}</div>
+              <div className="product-list">
+                <Rotation
+                  autoPlay={false}
+                  cycle={true}
+                  scroll={false}
+                  className="rotating-image"
+                >
+                  {mugcup_1.map(renderImages)}
+                </Rotation>
+                <Rotation
+                  autoPlay={false}
+                  cycle={true}
+                  scroll={false}
+                  className="rotating-image"
+                >
+                  {mugcup_2.map(renderImages)}
+                </Rotation>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{sbuGoods.map(Product)}</div>
+              <div className="product-list">
+                <Rotation
+                  autoPlay={false}
+                  cycle={true}
+                  scroll={false}
+                  className="rotating-image"
+                >
+                  {mugcup_1.map(renderImages)}
+                </Rotation>
+                <Rotation
+                  autoPlay={false}
+                  cycle={true}
+                  scroll={false}
+                  className="rotating-image"
+                >
+                  {mugcup_2.map(renderImages)}
+                </Rotation>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{sbuApparels.map(Product)}</div>
+            </TabPanel>
+          </Tabs>
+        </TabPanel>
+        {/* SBU */}
 
-            <div className="product-list">
-              <Rotation
-                autoPlay={false}
-                cycle={true}
-                scroll={false}
-                className="rotating-image"
-              >
-                {mugcup_1.map(renderImages)}
-              </Rotation>
-              <Rotation
-                autoPlay={false}
-                cycle={true}
-                scroll={false}
-                className="rotating-image"
-              >
-                {mugcup_2.map(renderImages)}
-              </Rotation>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{sbuGoods.map(Product)}</div>
-            <div className="product-list">
-              <Rotation
-                autoPlay={false}
-                cycle={true}
-                scroll={false}
-                className="rotating-image"
-              >
-                {mugcup_1.map(renderImages)}
-              </Rotation>
-              <Rotation
-                autoPlay={false}
-                cycle={true}
-                scroll={false}
-                className="rotating-image"
-              >
-                {mugcup_2.map(renderImages)}
-              </Rotation>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{sbuApparels.map(Product)}</div>
-          </TabPanel>
-        </Tabs>
-      </TabPanel>
-      {/* SBU */}
+        {/* Goods */}
+        <TabPanel>
+          <Tabs forceRenderTabPanel>
+            <TabList>
+              <Tab>All</Tab>
 
-      {/* Goods */}
-      <TabPanel>
-        <Tabs forceRenderTabPanel>
-          <TabList>
-            <Tab>All</Tab>
+              <Tab>Fashion Institute of Technology</Tab>
+              <Tab>Stony Brook University</Tab>
+            </TabList>
+            <TabPanel>
+              <div className="product-list">{goodsAll.map(Product)}</div>
 
-            <Tab>Fashion Institute of Technology</Tab>
-            <Tab>Stony Brook University</Tab>
-          </TabList>
-          <TabPanel>
-            <div className="product-list">{goodsAll.map(Product)}</div>
+              <div className="product-list">
+                <Rotation
+                  autoPlay={false}
+                  cycle={true}
+                  scroll={false}
+                  className="rotating-image"
+                >
+                  {sample.map(renderImages)}
+                </Rotation>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{fitGoods.map(Product)}</div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{sbuGoods.map(Product)}</div>
+            </TabPanel>
+          </Tabs>
+        </TabPanel>
+        {/* Goods */}
 
-            <div className="product-list">
-              <Rotation
-                autoPlay={false}
-                cycle={true}
-                scroll={false}
-                className="rotating-image"
-              >
-                {sample.map(renderImages)}
-              </Rotation>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{fitGoods.map(Product)}</div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{sbuGoods.map(Product)}</div>
-          </TabPanel>
-        </Tabs>
-      </TabPanel>
-      {/* Goods */}
-
-      {/* Apparels */}
-      <TabPanel>
-        <Tabs forceRenderTabPanel>
-          <TabList>
-            <Tab>All</Tab>
-            <Tab>Fashion Institute of Technology</Tab>
-            <Tab>Stony Brook University</Tab>
-          </TabList>
-          <TabPanel>
-            <div className="product-list">{apparelsAll.map(Product)}</div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{fitApparels.map(Product)}</div>
-          </TabPanel>
-          <TabPanel>
-            <div className="product-list">{sbuApparels.map(Product)}</div>
-          </TabPanel>
-        </Tabs>
-      </TabPanel>
-      {/* Apparels */}
+        {/* Apparels */}
+        <TabPanel>
+          <Tabs forceRenderTabPanel>
+            <TabList>
+              <Tab>All</Tab>
+              <Tab>Fashion Institute of Technology</Tab>
+              <Tab>Stony Brook University</Tab>
+            </TabList>
+            <TabPanel>
+              <div className="product-list">{apparelsAll.map(Product)}</div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{fitApparels.map(Product)}</div>
+            </TabPanel>
+            <TabPanel>
+              <div className="product-list">{sbuApparels.map(Product)}</div>
+            </TabPanel>
+          </Tabs>
+        </TabPanel>
+        {/* Apparels */}
+      </div>
     </Tabs>
   );
 };

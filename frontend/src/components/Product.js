@@ -9,7 +9,7 @@ import renderImages from "./RotatingImage";
 import Rotation from "react-rotation";
 import "./RotatingImage.css";
 import ReactImageAppear from "react-image-appear";
-
+import "./Product.css";
 import {
   mugcup_1,
   mugcup_2,
@@ -29,8 +29,8 @@ const renderProducts = (props, index) => {
   return (
     <div>
       <Card
+        className="product-card"
         hoverable
-        style={{ width: 300 }}
         cover={
           <ReactImageAppear
             className="home__hero-img"
@@ -51,6 +51,7 @@ const renderProducts = (props, index) => {
         }
       >
         <Meta
+          className="product-properties"
           title={props.new + " " + props.title}
           description={
             props.date +
