@@ -3,8 +3,9 @@
   place-items: center;
   text-align: center;
   margin: 1rem;
-  width: 100%;
-  padding: 2rem;
+  width: 80%;
+  padding: 1rem;
+  margin-bottom: 2rem;
   transition: 0.5s;
   color: #000000;
   font-size: x-large;
@@ -18,7 +19,8 @@
 }
 
 .search:hover {
-  color: rgb(0, 0, 0);
+  background-color: rgb(29, 29, 29);
+  color: #f4f4f4;
   font-size: xx-large;
   padding: 3rem;
   transition: 0.5s;

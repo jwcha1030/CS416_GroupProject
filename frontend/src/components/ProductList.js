@@ -10,6 +10,8 @@ import ProductDataAll from "./ProductDataAll";
 import renderImages from "./RotatingImage";
 import Rotation from "react-rotation";
 import "./RotatingImage.css";
+import { SearchOutlined } from "@ant-design/icons";
+
 import {
   mugcup_1,
   mugcup_2,
@@ -98,13 +100,16 @@ const ProductList = (props, idex) => {
 
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
-      <input
-        className="search"
-        type="text"
-        placeholder='Search  "Hoodies"'
-        value={searchTerm}
-        onChange={handleChange}
-      />
+      <div className="row">
+        <input
+          className="search"
+          type="text"
+          placeholder='Search  "Hoodies"'
+          value={searchTerm}
+          onChange={handleChange}
+        />
+        <SearchOutlined style={{ marginTop: "3rem", fontSize: "3rem" }} />
+      </div>
       <TabList>
         <Tab>All</Tab>
 
@@ -175,6 +180,24 @@ const ProductList = (props, idex) => {
           </TabPanel>
           <TabPanel>
             <div className="product-list">{sbuGoods.map(Product)}</div>
+            <div className="product-list">
+              <Rotation
+                autoPlay={false}
+                cycle={true}
+                scroll={false}
+                className="rotating-image"
+              >
+                {mugcup_1.map(renderImages)}
+              </Rotation>
+              <Rotation
+                autoPlay={false}
+                cycle={true}
+                scroll={false}
+                className="rotating-image"
+              >
+                {mugcup_2.map(renderImages)}
+              </Rotation>
+            </div>
           </TabPanel>
           <TabPanel>
             <div className="product-list">{sbuApparels.map(Product)}</div>
