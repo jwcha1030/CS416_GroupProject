@@ -102,54 +102,62 @@ export const ProductDataAll = [
     school: "SBU",
     type: "Apparel",
   },
+  //ORDER: ID, PRICE, DATE_ADDED, TITLE, NEW, DESCRIPTION, IMG, SCHOOL, TYPE
+
   {
     id: 9,
     price: "8.99",
-    date: "Summer 2010",
+    date_added: "Summer 2010",
+    title: "2020 T-Shirts",
     new: "",
 
-    title: "2020 T-Shirts",
     description: "Really Red Roundneck T-Shirts",
     img: q1,
     school: "SBU",
     type: "Apparel",
   },
+  //ORDER: ID, PRICE, DATE_ADDED, TITLE, NEW, DESCRIPTION, IMG, SCHOOL, TYPE
+
   {
     id: 10,
     price: "299.99",
-    date: "Winter 2019",
+    date_added: "Winter 2019",
+    title: "SBU Water Bottle",
     new: "",
 
-    title: "SBU Water Bottle",
     description: "Water Bottle is something that you'll need..",
     img: q4,
     school: "SBU",
     type: "Goods",
   },
+  //ORDER: ID, PRICE, DATE_ADDED, TITLE, NEW, DESCRIPTION, IMG, SCHOOL, TYPE
+
   {
     id: 11,
     price: "18.99",
-    date: "Fall 2020",
+    date_added: "Fall 2020",
+    title: "Phone Charger",
     new: "",
 
-    title: "Phone Charger",
     description: "FIT's only phone charger",
     img: q1,
     school: "FIT",
     type: "Goods",
   },
+  //ORDER: ID, PRICE, DATE_ADDED, TITLE, NEW, DESCRIPTION, IMG, SCHOOL, TYPE
   {
     id: 12,
     price: "29.99",
-    date: "Summer 2014",
+    date_added: "Summer 2014",
+    title: "Beach Ball",
     new: "",
 
-    title: "Beach Ball",
     description: "This beach ball delivers extra fun for you",
     img: q1,
     school: "SBU",
     type: "Goods",
   },
+  //ORDER: ID, PRICE, DATE_ADDED, TITLE, NEW, DESCRIPTION, IMG, SCHOOL, TYPE
 ];
 
 export default ProductDataAll;

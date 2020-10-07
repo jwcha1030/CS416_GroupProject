@@ -1,9 +1,11 @@
 import React from 'react';
+import {Redirect} from "react-router-dom";
 
 export default function AboutUsEdit(props) {
   return (
     <div>
-      <h1>AboutUs Edit</h1>
+      {alert("UNDER CONSTRUCTION - Come back later")}
+      <Redirect to={"/admin"}/>
     </div>
   );
 }
