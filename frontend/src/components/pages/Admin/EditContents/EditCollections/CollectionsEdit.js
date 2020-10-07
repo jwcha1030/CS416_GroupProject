@@ -1,22 +1,22 @@
 import React, {useState} from 'react';
-import {CarouselData} from '../../../HomePage/CarouselData';
 import DataTable from "../DataTable";
 import {Button} from "../../../../Button";
 import Modal from "react-bootstrap/Modal";
-import CarouselForm from "./CreateCarouselForm"
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
+import ProductDataAll from "../../../../ProductDataAll";
+import CollectionsForm from "./CollectionsForm";
 
-export default function CarouselEdit(prop) {
-  const [current_item, setItem] = useState(CarouselData[0]);
-  const [data, setData] = useState(CarouselData);
+export default function CollectionEdit(prop) {
+  const [current_item, setItem] = useState(ProductDataAll[0]);
+  const [data, setData] = useState(ProductDataAll);
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
 
   const [newCaption, setNewCaption] = useState('');
   const [newDesc, setNewDesc] = useState('');
   const [newImg, setNewImg] = useState('');
-  const headers = Object.keys(CarouselData[0]);
+  const headers = Object.keys(ProductDataAll[0]);
 
   const handleCaption = (e) => {
     setNewCaption(e.target.value);
@@ -100,7 +100,7 @@ export default function CarouselEdit(prop) {
         <IoIosArrowBack/>Go Back
       </Link>
       <h1 style={{textAlign: "center", fontWeight: "bold"}} className="carouselEdit__header" >
-        Carousel List
+        Collections List
       </h1>
       <DataTable
         data={data}
@@ -113,7 +113,7 @@ export default function CarouselEdit(prop) {
           <Modal.Title>Create a New Slide</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CarouselForm
+          <CollectionsForm
             handleCaption={handleCaption}
             handleDesc={handleDesc}
             handleImg={handleImg}
@@ -128,10 +128,10 @@ export default function CarouselEdit(prop) {
       </Modal>
       <Modal animation={false} show={showEditModal} onHide={handleEditClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Slide</Modal.Title>
+          <Modal.Title>Edit Collections</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CarouselForm
+          <CollectionsForm
             handleCaption={handleCaption}
             handleDesc={handleDesc}
             handleImg={handleImg}
@@ -144,11 +144,11 @@ export default function CarouselEdit(prop) {
           </Button>
         </Modal.Footer>
       </Modal>
-        <div style={{display:"flex", justifyContent:"center"}}>
-          <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-            Create a Slide
-          </Button>
-        </div>
+      <div style={{display:"flex", justifyContent:"center"}}>
+        <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
+          Create a Slide
+        </Button>
+      </div>
     </div>
   );
 }

@@ -5,8 +5,8 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 
 export default function DataTable({data, headers, changeItem, showEdit, deleteItem}) {
   return (
-    <div className="table__container">
-      <Table>
+    <div className="table__container" style={{marginBottom: "30px"}}>
+      <Table >
         <thead>
           {headers.map((header, i)=>{
             return <th key={header+i}> {header}</th>
