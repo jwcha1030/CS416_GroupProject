@@ -8,10 +8,9 @@ import myImage from "../images/vr_sample.jpg";
  
 const vr = () => (
   <div>
-    <h1>Pannellum React Component</h1>
-    <Pannellum
+     <Pannellum
         width="100%"
-        height="500px"
+        height="800px"
         image={myImage}
         pitch={10}
         yaw={180}
@@ -26,7 +25,7 @@ const vr = () => (
         pitch={11}
         yaw={-167}
         text="Info Hotspot Text 3"
-        URL="https://github.com/farminf/pannellum-react"
+        URL=""
       />
  
       <Pannellum.Hotspot
