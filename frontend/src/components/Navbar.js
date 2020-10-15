@@ -7,6 +7,7 @@ import { IconContext } from "react-icons/lib";
 import SVG from "react-inlinesvg";
 import Logo from "../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
+import GoogleTranslate from "./GoogleTranslate";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -58,7 +59,6 @@ function Navbar() {
             <div className="menu-icon" onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </div>
-
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
@@ -94,7 +94,7 @@ function Navbar() {
                 </Link>
               </li>
               <div className={"non-function"}>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link
                     // Toggle translate
                     to="/"
@@ -105,8 +105,9 @@ function Navbar() {
                       style={{ fill: "black", paddingRight: "2px" }}
                     />
                     <div style={{ fontSize: "11px" }}>KOR | ENG</div>
+                    
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link
                     // ADMIN PAGE
@@ -119,6 +120,10 @@ function Navbar() {
                     />
                     <div style={{ fontSize: "11px" }}>ADMIN</div>
                   </Link>
+                </li>
+                <li className="nav-item">
+
+                <GoogleTranslate className="GoogleTranslate"/> 
                 </li>
               </div>
             </ul>
