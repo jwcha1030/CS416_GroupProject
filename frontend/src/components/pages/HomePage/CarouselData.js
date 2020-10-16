@@ -9,7 +9,7 @@ export let CarouselData = [
     {
         id: 1,
         caption: "We Make Merchandise for FIT and SBU",
-        description: "2020 Fall Clu7777b Member Registration Open! ",
+        description: "2020 Fall Club Member Registration Open! ",
         img: msc_banner,
         alt: "Slide_1",
 

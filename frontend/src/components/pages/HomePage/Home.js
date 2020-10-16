@@ -38,7 +38,7 @@ function Home() {
         <HeroSection {...ourteam} />
       </div>
 
-      <div data-aos="slide-left">
+      <div data-aos="fade-up">
         <HeroSection {...aboutus} />
       </div>
       <Footer />
