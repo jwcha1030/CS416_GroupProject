@@ -1,0 +1,14 @@
+.vr-container {
+  padding-bottom: 300px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+.vr-screen {
+  margin-bottom: 100;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: black;
+}

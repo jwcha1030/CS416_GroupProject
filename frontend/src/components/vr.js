@@ -3,23 +3,29 @@ import { render } from 'react-dom';
 import "./VR.css";
 
 import { Pannellum, PannellumVideo } from "pannellum-react";
-import myImage from "../images/vr_sample.jpg";
-import myImage2 from "../images/vr_sample2.jpg";
+import myImage from "../images/vr_sample2.jpg";
+import myImage2 from "../images/vr_sample3.jpg";
+import myImage3 from "../images/vr_sample.jpg";
 
 // import myVideo from "./images/video.mp4";
  
 
 function VR () {
-  const [currentVR, setNewVR] = useState(myImage2);
+  const [currentVR, setNewVR] = useState(myImage);
 
   const handleClickHotSpot =(evt,newImage)=>{
+    if(newImage != currentVR){
       setNewVR(newImage)
+    }else{
+      alert("No more next page")
+    }
+
   }
 return(
-<div>
-      <Pannellum
-        width="800px"
-        height="400px"
+<div className="vr-container">
+      <Pannellum className="vr-screen" 
+        width="1000px"
+        height="600px"
         image={currentVR}
         pitch={10}
         yaw={400}
@@ -53,19 +59,29 @@ return(
         pitch={11}
         yaw={-167}
         text="Info Hotspot Text 3"
-        URL="https://github.com/farminf"
+        URL="/collections"
         />
+
+        {/* <Pannellum.Hotspot 
+        type="custom"
+        name= {myImage}
+        pitch={131}
+        yaw={10}
+
+        handleClick={(evt , args) => handleClickHotSpot(evt , args.name)}
+        handleClickArg={{ "name":myImage }}
+        /> */}
+
 
         <Pannellum.Hotspot 
         type="custom"
-        name="shoes"
+        name= {myImage}
         pitch={31}
         yaw={150}
 
         handleClick={(evt , args) => handleClickHotSpot(evt , args.name)}
-        handleClickArg={{ "name":myImage }}
-
-/>
+        handleClickArg={{ "name":myImage2 }}
+        />
 
     </Pannellum>
  
