@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { Button } from "./Button";
+import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
@@ -36,15 +36,15 @@ function InquiryModal(props) {
   
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Inquiry</Form.Label>
-              <Form.Control as="textarea" rows="3" />
+              <Form.Control as="textarea" rows="10" />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button buttonStyle="" onClick={props.onHide}>
+          <Button variant="light" onClick={props.onHide}>
             Close
           </Button>
-          <Button>Submit</Button>
+          <Button variant="dark">Submit</Button>
         </Modal.Footer>
       </Modal>
     );
