@@ -16,8 +16,10 @@ function Home() {
   useEffect(() => {
     Aos.init({
       duration: 3000, // values from 0 to 3000, with step 50ms
-      delay: 500, // values from 0 to 3000, with step 50ms
+      delay: 1000, // values from 0 to 3000, with step 50ms
       easing: "ease", // default easing for AOS animations});
+      once: true,
+
     });
   }, []);
   //https://github.com/michalsnik/aos#animations AOS animation on scroll library for anmation on scrolling added**
@@ -38,10 +40,11 @@ function Home() {
         <HeroSection {...ourteam} />
       </div>
 
-      <div data-aos="fade-up">
-        <HeroSection {...aboutus} />
-      </div>
+         <HeroSection {...aboutus} /> 
+         {/* Theres a bug in mobile view when adding aos on the last component... */}
+    
       <Footer />
+      
     </motion.div>
   );
 }
