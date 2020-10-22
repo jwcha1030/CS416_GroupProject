@@ -51,6 +51,9 @@ function ProductDetailPage(props) {
       </Button>
 
       <RotatingImageModal
+        //pass data to  modal using props...
+
+        id={productId}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
@@ -79,10 +82,7 @@ function ProductDetailPage(props) {
                       </Rotation>
                     }
                   >
-                    <Meta
-                      title="$99.99 "
-                      description="Drag around the see different angles"
-                    />
+                  
                   </Card>
                 </div>
                 <div className="col">
@@ -115,7 +115,8 @@ function ProductDetailPage(props) {
 }
 
 function RotatingImageModal(props) {
-  
+  const id = props.id;
+  //pass data from product using props...
   return (
     <Modal
       {...props}
@@ -143,7 +144,11 @@ function RotatingImageModal(props) {
                         {mugcup_2.map(renderImages)}
                       </Rotation>
                     }
-        ></Card>
+                 
+        >   <Meta
+                    title={"Product ID is "+ id}
+                    description="Drag around the see different angles"
+                  /></Card>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="dark" onClick={props.onHide}>Close</Button>
