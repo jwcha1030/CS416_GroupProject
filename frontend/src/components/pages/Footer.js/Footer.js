@@ -100,6 +100,18 @@ function Footer() {
           <smaller style={{ color: "white" }}>
             SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
           </smaller>
+          <br></br>
+          <br></br>
+          <Link
+              // ADMIN PAGE
+              to="/adminlogin"
+              className="admin-button"
+          >
+              <FaUserLock
+                style={{ fill: "white", paddingRight: "6px" }}
+              />
+              <div style={{ fontSize: "12px" }}>Admin Log in</div>
+           </Link>  
         </div>
        
       </section>
