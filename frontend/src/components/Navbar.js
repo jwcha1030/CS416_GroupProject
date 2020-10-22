@@ -108,19 +108,7 @@ function Navbar() {
                     
                   </Link>
                 </li> */}
-                <li className="nav-item">
-                  <Link
-                    // ADMIN PAGE
-                    to="/adminlogin"
-                    className="nav-links"
-                    onClick={closeMobileMenu}
-                  >
-                    <FaUserLock
-                      style={{ fill: "black", paddingRight: "6px" }}
-                    />
-                    <div style={{ fontSize: "11px" }}>ADMIN</div>
-                  </Link>
-                </li>
+              
                 <li className="nav-item">
 
                 <GoogleTranslate className="GoogleTranslate"/> 

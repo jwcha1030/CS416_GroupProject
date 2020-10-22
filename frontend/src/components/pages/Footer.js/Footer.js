@@ -10,6 +10,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import Logo from "../../../images/MSC.jpg";
+import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
 
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
@@ -86,11 +87,14 @@ function Footer() {
 
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
+         
         <div className="social-media-wrap">
-          <Link to="/" className="social-logo-icon">
+        
+           <Link to="/" className="social-logo-icon">
             <img src={Logo}></img>
           </Link>
-          <small className="website-rights">
+        
+        <small className="website-rights">
             Merchandising Society Club © 2020
           </small>
           <div className="social-icons">
@@ -141,6 +145,16 @@ function Footer() {
             SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
           </smaller>
         </div>
+        <Link
+              // ADMIN PAGE
+              to="/adminlogin"
+              className="admin-button"
+          >
+              <FaUserLock
+                style={{ fill: "white", paddingRight: "6px" }}
+              />
+              <div style={{ fontSize: "12px" }}>Admin Log in</div>
+           </Link>  
       </section>
 
       <MyVerticallyCenteredModal
