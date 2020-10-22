@@ -4,6 +4,9 @@
 }
 
 .image-gallery-content {
-  padding-bottom: 10%;
-  margin-bottom: 10%;
+  padding-bottom: 5%;
+}
+
+.rotating-images-modal {
+  margin-bottom: 100px;
 }

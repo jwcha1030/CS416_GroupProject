@@ -9,6 +9,8 @@ import Rotation from "react-rotation";
 import "./RotatingImage.css";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import InquiryModal from "./Inquiry"
+
 import {
   mugcup_1,
   mugcup_2,
@@ -19,7 +21,8 @@ const { Meta } = Card;
 
 
 function ProductDetailPage(props) {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
+  const [RotatingImageModalShow, setRotatingImageModalShow] = React.useState(false); 
 
   const productId = props.match.params.id;
   const images = [
@@ -46,60 +49,56 @@ function ProductDetailPage(props) {
         DETAILED PAGE OF THE PRODUCT ID: {productId}
       </h1>
 
-      <Button variant="dark" onClick={() => setModalShow(true)}>
-        Launch 360 Degree View
-      </Button>
+     
 
       <RotatingImageModal
         //pass data to  modal using props...
 
         id={productId}
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+        show={RotatingImageModalShow}
+        onHide={() => setRotatingImageModalShow(false)}
       />
+
+
       <div className="row" align="center">
       <div className="col-sm-1">
         </div>
         <div className="col-sm-5">
           <ImageGallery items={images} />
+          <div className="rotating-images-modal">
+          <Button variant="dark" onClick={() => setRotatingImageModalShow(true)}>
+            Launch 360 Degree View
+          </Button>
+      </div>
         </div>
+        
           <div className="col-sm-1">
          </div>
           <div className="col-sm-4">
-            <Card title="Title of Product">
+            <Card title="Title of Product"  extra={ 
+                    <Button
+                      className="make-inquiry"
+                      variant="dark"
+                      buttonStyle="btn--outline"
+                      onClick={() => setInquiryModalShow(true)}
+                    >
+                      Make an Inquiry
+                    </Button>}>
               <div className="row">
-                <div className="col">
-                  <Card
-                    style={{ width: "100%" }}
-                    cover={
-                      <Rotation
-                        autoPlay={false}
-                        cycle={true}
-                        scroll={false}
-                        className="rotating-image"
-                      >
-                        {mugcup_2.map(renderImages)}
-                      </Rotation>
-                    }
-                  >
-                  
-                  </Card>
+                <div className="col-sm-8">
+               PRODCUT INFORMATION
                 </div>
-                <div className="col">
-                  <Card
-                    extra={<a href="#">Want to buy? Contact us.</a>}
-                    style={{ width: 300 }}
+                <div className="col-sm-4">
+                   <Card
+                    style={{ width: "50%" }}
                   >
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
-                    <p>Product Details</p>
+                    <p>Price:</p>
+                    <p>School:</p>
+                    <p>Type:</p>
+                    <p>Size:</p>
+                    <p>Color:</p>
+                    <p>View Count:</p>
+              
                   </Card>
                 </div>
               </div>
@@ -109,6 +108,10 @@ function ProductDetailPage(props) {
           </div>
       
       </div>
+      <InquiryModal
+        show={inquiryModalShow}
+        onHide={() => setInquiryModalShow(false)}
+      />
       <Footer />
     </div>
   );
