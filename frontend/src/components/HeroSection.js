@@ -60,7 +60,7 @@ function HeroSection({
                     onClick={(e) =>
                       buttonTo !== ""
                         ? buttonTo
-                        : (window.location = buttonToExternalURL)
+                        :(window.location = buttonToExternalURL)
                     } //if buttonTo is not null, then go to buttonTo (Link) else, we are going to buttonToExternalURL on this button clicked.
                   >
                     {buttonLabel}

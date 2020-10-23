@@ -40,11 +40,11 @@ const ProductList = (props, idex) => {
   React.useEffect(() => {
     const results = ProductDataAll.filter(
       (product) =>
-        product.title.toLowerCase().includes(searchTerm) ||
-        product.description.toLowerCase().includes(searchTerm) ||
-        product.type.toLowerCase().includes(searchTerm) ||
-        product.school.toLowerCase().includes(searchTerm) ||
-        product.date_added.toLowerCase().includes(searchTerm)
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.date_added.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
 
