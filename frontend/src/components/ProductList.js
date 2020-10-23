@@ -6,17 +6,8 @@ import Product from "./Product";
 import { Card } from "antd";
 import test from "../images/model_white.jpg";
 import "antd/dist/antd.css";
-import ProductDataAll from "./ProductDataAll";
-import renderImages from "./RotatingImage";
-import Rotation from "react-rotation";
-import "./RotatingImage.css";
+import ProductDataAll from "./ProductDataAll"; 
 import { SearchOutlined } from "@ant-design/icons";
-
-import {
-  mugcup_1,
-  mugcup_2,
-  sample,
-} from "./pages/Collections/DataRotatingImages";
 
 const { Meta } = Card;
 const ProductList = (props, idex) => {
@@ -48,50 +39,90 @@ const ProductList = (props, idex) => {
     );
     setSearchResults(results);
 
-    const fitAll = searchResults.filter(
-      (product) => product.school.toLowerCase() == "fit"
+    const fitAll = ProductDataAll.filter(
+      (product) => product.school.toLowerCase() == "fit" && 
+      (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFitAll(fitAll);
 
     const fitGoods = ProductDataAll.filter(
       (product) =>
         product.school.toLowerCase() == "fit" &&
-        product.type.toLowerCase().includes("good")
+        product.type.toLowerCase().includes("good") &&
+        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFitGoods(fitGoods);
 
     const fitApparels = ProductDataAll.filter(
       (product) =>
         product.school.toLowerCase() == "fit" &&
-        product.type.toLowerCase().includes("apparel")
+        product.type.toLowerCase().includes("apparel") &&
+        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFitApparels(fitApparels);
 
     const sbuAll = ProductDataAll.filter(
-      (product) => product.school.toLowerCase() == "sbu"
+      (product) => product.school.toLowerCase() == "sbu" &&
+      (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setSbuAll(sbuAll);
 
     const sbuGoods = ProductDataAll.filter(
       (product) =>
         product.school.toLowerCase() == "sbu" &&
-        product.type.toLowerCase().includes("good")
+        product.type.toLowerCase().includes("good")&&
+        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setSbuGoods(sbuGoods);
 
     const sbuApparels = ProductDataAll.filter(
       (product) =>
         product.school.toLowerCase() == "sbu" &&
-        product.type.toLowerCase().includes("apparel")
+        product.type.toLowerCase().includes("apparel") &&
+        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setSbuApparels(sbuApparels);
 
     const goodsAll = ProductDataAll.filter(
-      (product) => product.type.toLowerCase().includes("good") //to avoid good vs goods mix
+      (product) => product.type.toLowerCase().includes("good") && //to avoid good vs goods mix
+      (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setGoodsAll(goodsAll);
     const apparelsAll = ProductDataAll.filter(
-      (product) => product.type.toLowerCase().includes("apparel") //to avoid apparel vs apparels mix
+      (product) => product.type.toLowerCase().includes("apparel") &&//to avoid apparel vs apparels mix
+      (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setApparelsAll(apparelsAll);
   }, [searchTerm]);
@@ -157,46 +188,9 @@ const ProductList = (props, idex) => {
             </TabList>
             <TabPanel>
               <div className="product-list">{sbuAll.map(Product)}</div>
-
-              <div className="product-list">
-                <Rotation
-                  autoPlay={false}
-                  cycle={true}
-                  scroll={false}
-                  className="rotating-image"
-                >
-                  {mugcup_1.map(renderImages)}
-                </Rotation>
-                <Rotation
-                  autoPlay={false}
-                  cycle={true}
-                  scroll={false}
-                  className="rotating-image"
-                >
-                  {mugcup_2.map(renderImages)}
-                </Rotation>
-              </div>
             </TabPanel>
             <TabPanel>
               <div className="product-list">{sbuGoods.map(Product)}</div>
-              <div className="product-list">
-                <Rotation
-                  autoPlay={false}
-                  cycle={true}
-                  scroll={false}
-                  className="rotating-image"
-                >
-                  {mugcup_1.map(renderImages)}
-                </Rotation>
-                <Rotation
-                  autoPlay={false}
-                  cycle={true}
-                  scroll={false}
-                  className="rotating-image"
-                >
-                  {mugcup_2.map(renderImages)}
-                </Rotation>
-              </div>
             </TabPanel>
             <TabPanel>
               <div className="product-list">{sbuApparels.map(Product)}</div>
@@ -216,18 +210,7 @@ const ProductList = (props, idex) => {
             </TabList>
             <TabPanel>
               <div className="product-list">{goodsAll.map(Product)}</div>
-
-              <div className="product-list">
-                <Rotation
-                  autoPlay={false}
-                  cycle={true}
-                  scroll={false}
-                  className="rotating-image"
-                >
-                  {sample.map(renderImages)}
-                </Rotation>
-              </div>
-            </TabPanel>
+             </TabPanel>
             <TabPanel>
               <div className="product-list">{fitGoods.map(Product)}</div>
             </TabPanel>
