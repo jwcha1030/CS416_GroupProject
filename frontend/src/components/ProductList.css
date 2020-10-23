@@ -75,7 +75,7 @@
   padding-right: 3%;
 }
 .react-tabs__tab-list {
-  border-bottom: 1px solid #d4d4d4;
+  border-bottom: 1px solid #e0e0e0;
 }
 @media screen and (max-width: 1200px) {
   .product-list {
