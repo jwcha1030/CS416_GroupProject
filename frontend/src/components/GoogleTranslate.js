@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class GoogleTranslate extends Component {
   
     googleTranslateElementInit =()=> {
-        new window.google.translate.TranslateElement({pageLanguage: 'en', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        new window.google.translate.TranslateElement({pageLanguage: 'en', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,includedLanguages: "sp,zh-CN,en,ja,ko"}, 'google_translate_element');
     }
     constructor(props) {
         super(props);
