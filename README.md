@@ -10,22 +10,27 @@
 >- Designer: Haseung Lee (haseung.lee@stonybrook.edu)
 
 **The Problem**  
->The Merchandising Society Club (MSC) makes Fashion Institute of Technology (FIT) and Stony Brook University merchandise. Their goal is to not only produce merchandise for >students and faculties but also to showcase and sell their products that are crafted after extensive research on fashion trends and sales planning. Thus, to display their >products for sale, MSC runs its own physical Retail Revolution Store at FIT, and they are currently in need of expanding their collection online. Particularly during the COVID >19 crisis, customers cannot regularly access the offline retail store. Thus, having an online means of accessing MSC is a massive benefit for them. 
+The Merchandising Society Club (MSC) makes Fashion Institute of Technology (FIT) and Stony Brook University merchandise. Their goal is to not only produce merchandise for students and faculties but also to showcase and sell their products that are crafted after extensive research on fashion trends and sales planning. Thus, to display their products for sale, MSC runs its own physical Retail Revolution Store at FIT, and they are currently in need of expanding their collection online. Particularly during the COVID 19 crisis, customers cannot regularly access the offline retail store. Thus, having an online means of accessing MSC is a massive benefit for them. 
 
 **The Solution**  
->Our solution is to create a flexible website for MSC that will allow them to manage and maintain an online platform that has several different sections which include an MSC >about page, mailing subscriptions, an MSC product collection for showcasing merchandise, and a virtual showroom to replicate their physical Retail Revolution Store online.
+Our solution is to create a flexible website for MSC that will allow them to manage and maintain an online platform that has several different sections which include an MSC about page, mailing subscriptions, an MSC product collection for showcasing merchandise, and a virtual showroom to replicate their physical Retail Revolution Store online.
 
-
+**Current Version**  
+> 0.01 Beta Release 10/26/2020 - Deployed initial design and look of the web application with zero-features. 
 
 **Deployment** <br>
->https://merchandising-society.web.app/ <br>
->*Depoyed on firebase
+>**Front-end deployed on Firebase** <br>
+>https://merchandising-society.web.app/ <br> <br>
+>**Back-end deployed on Heroku** <br>
+>https://sunyk-msc-backend.herokuapp.com/ <br>
 
-**Technologies Used** <br>
+
+**Framework Used** <br>
 >React.js <br>
 >Django <br>
  
-**Installation for Front-end** <br> 
+**Installation** <br> 
+>**Front-end** <br>
 >Git clone the repository and go to the "frontend" directory. <br>
 >Install packages and run the application by the following commands. <br>
 >Open localhost:3000 on Chrome Browser, if it does not automatically load on your machine. <br> 
@@ -34,10 +39,16 @@
 npm install
 npm start
 ```
+>**Back-end** <br>
+> Back-end installation instructions... <br>
 
+```
+commands for backend
+```
 
 
 **Instructions for Deployment** <br>
+>**Front-end** <br>
 >Change directory to "frontend". <br>
 >Initialize Firebase setups. <br>
 >Run build and deploy. <br>
@@ -45,6 +56,9 @@ npm start
 npm run build
 firebase deploy
 ```
+>**Back-end** <br>
+>Change directory to "backend". <br>
+>Instructions for backend deployment set up...
 
 **Envrionment and Settings**
 >This project has been tested on running Chrome 86.0.4240.111 (Official Build) (64-bit) on various devices, including mobile devices. <br> 
