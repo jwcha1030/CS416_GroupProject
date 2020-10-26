@@ -19,7 +19,7 @@ Our solution is to create a flexible website for MSC that will allow them to man
 
 **Deployment**
 
- https://merchandising-society.web.app/
+ https://merchandising-society.web.app/ <br>
 *Depoyed on firebase
 
 **Technologies Used** <br>
@@ -43,7 +43,7 @@ npm start
 
 Change directory to "frontend".
 Initialize Firebase setups.
-Run build and deploy
+Run build and deploy.
 ```
 npm run build
 firebase deploy
