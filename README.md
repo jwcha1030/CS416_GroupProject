@@ -69,7 +69,6 @@ firebase deploy
 ```
 >**Back-end** <br>
 >Change directory to "backend". <br>
->Instructions for backend deployment set up...
 ```
 pip freeze > requirements.txt
 git add .
