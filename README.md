@@ -40,9 +40,11 @@ Our solution is to create a flexible website for MSC that will allow them to man
 npm install
 npm start
 ```
+>Works on both Windows and Mac <br>
+
 >**Back-end** <br>
 > Install Django 3 - https://www.djangoproject.com/ <br> 
-> Install Python 3 - https://www.python.org/downloads/ <br> 
+> Install Python 3 that fits with your os - https://www.python.org/downloads/ <br> 
 > Start a virtual environment - https://docs.python.org/3/tutorial/venv.html <br> 
 > Go to the "backend" directory. <br>
 > Run the following only once on initial setup. <br>
@@ -80,3 +82,4 @@ git push heroku master
 **Envrionment and Settings**
 >This project has been tested on running Chrome 86.0.4240.111 (Official Build) (64-bit) on various devices, including mobile devices. <br> 
 >This project is also extensively built for Chrome Browser. Other browsers may behave diffrently in stylings. <br> 
+>This project should work on Windows and Mac. The backend portion will also work on linux machines.
