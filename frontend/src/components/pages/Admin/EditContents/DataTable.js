@@ -18,13 +18,15 @@ export default function DataTable({data, headers, changeItem, showEdit, deleteIt
     <div className="table__container" style={{marginBottom: "30px"}}>
       <Table>
         <thead>
-        {headers.map((header, i) => {
-          return <th key={header + i}> {header}</th>
-        })}
+        <tr>
+          {headers.map((header, i) => {
+            return <th key={header + i}> {header}</th>
+          })}
 
-        {/*if showEdit or deleteItem is not null display <th>*/}
-        {showEdit && <th>Edit</th>}
-        {deleteItem && <th>Delete</th>}
+          {/*if showEdit or deleteItem is not null display <th>*/}
+          {showEdit && <th>Edit</th>}
+          {deleteItem && <th>Delete</th>}
+        </tr>
         </thead>
         <tbody>
         {data.map((item, i) => {
