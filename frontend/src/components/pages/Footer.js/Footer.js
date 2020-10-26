@@ -10,54 +10,11 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import Logo from "../../../images/MSC.jpg";
-
+import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
+import InquiryModal from "../../Inquiry";
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      style={{ opacity: 1 }}
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Questions?</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>
-          Please feel free to ask anything by filling out the form below, and we
-          will get back to you within a few days.
-        </h4>
-
-        <Form>
-          <br></br>
-          <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="email" />
-          </Form.Group>
-
-          <Form.Group controlId="exampleForm.ControlInput2">
-            <Form.Label>Full Name</Form.Label>
-            <Form.Control type="text" placeholder="Name" />
-          </Form.Group>
-
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Inquiry</Form.Label>
-            <Form.Control as="textarea" rows="3" />
-          </Form.Group>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button buttonStyle="" onClick={props.onHide}>
-          Close
-        </Button>
-        <Button>Submit</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+ 
 
 function Footer() {
   const [modalShow, setModalShow] = React.useState(false);
@@ -86,11 +43,14 @@ function Footer() {
 
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
+         
         <div className="social-media-wrap">
-          <Link to="/" className="social-logo-icon">
+        
+           <Link to="/" className="social-logo-icon">
             <img src={Logo}></img>
           </Link>
-          <small className="website-rights">
+        
+        <small className="website-rights">
             Merchandising Society Club © 2020
           </small>
           <div className="social-icons">
@@ -140,10 +100,23 @@ function Footer() {
           <smaller style={{ color: "white" }}>
             SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
           </smaller>
+          <br></br>
+          <br></br>
+          <Link
+              // ADMIN PAGE
+              to="/adminlogin"
+              className="admin-button"
+          >
+              <FaUserLock
+                style={{ fill: "white", paddingRight: "6px" }}
+              />
+              <div style={{ fontSize: "12px" }}>Admin Log in</div>
+           </Link>  
         </div>
+       
       </section>
 
-      <MyVerticallyCenteredModal
+      <InquiryModal
         show={modalShow}
         onHide={() => setModalShow(false)}
       />

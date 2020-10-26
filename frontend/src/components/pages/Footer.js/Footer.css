@@ -5,13 +5,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
 .btn:hover {
   background-color: #ea7229;
   color: white;
 }
-
+.admin-button {
+  color: white;
+}
+.admin-button:hover {
+  color: #ea7229;
+}
 .footer-inquiry {
 }
 

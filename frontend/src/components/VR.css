@@ -12,3 +12,10 @@
   position: relative;
   background-color: black;
 }
+
+@media screen and (max-width: 1200px) {
+  .vr-screen {
+    width: 100px;
+    height: 100px;
+  }
+}

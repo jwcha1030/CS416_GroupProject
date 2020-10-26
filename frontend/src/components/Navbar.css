@@ -7,10 +7,10 @@
   justify-content: center;
   align-items: center;
   font-size: 1.7rem;
+  font-family: "Times New Roman", Times, serif;
   position: sticky;
   top: 0;
   z-index: 999;
-  font-family: Helvetica;
   margin-bottom: 0;
   border-bottom: 1px solid #242424;
 }

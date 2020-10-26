@@ -24,8 +24,10 @@ function VR () {
 return(
 <div className="vr-container">
       <Pannellum className="vr-screen" 
-        width="1000px"
+        width="70%"
         height="600px"
+        resize
+
         image={currentVR}
         pitch={10}
         yaw={400}
