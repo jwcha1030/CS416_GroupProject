@@ -14,9 +14,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Admin from "./components/pages/Admin/Admin";
 import CarouselEdit from "./components/pages/Admin/EditContents/EditCarousel/CarouselEdit";
 import CollectionsEdit from "./components/pages/Admin/EditContents/EditCollections/CollectionsEdit";
-import OurTeamEdit from "./components/pages/Admin/EditContents/OurTeamEdit";
-import AboutUsEdit from "./components/pages/Admin/EditContents/AboutUsEdit";
-
+import OurTeamEdit from "./components/pages/Admin/EditContents/EditOurTeam/OurTeamEdit";
+import SubscriptionEdit from "./components/pages/Admin/ManageSubscriptions/SubscriptionEdit";
+import WebUsageAnalysis from "./components/pages/Admin/WebUsageAnalysis/WebUsagePage";
 // import counterpart from 'counterpart';
 // import Translate from 'react-traslate-component';
 
@@ -41,8 +41,9 @@ function App() {
             <Route path="/admin" exact component={Admin} />
             <Route path="/admin/carousel_edit" component={CarouselEdit} />
             <Route path="/admin/collections_edit" component={CollectionsEdit} />
+            <Route path="/admin/subscription_edit" component={SubscriptionEdit}/>
+            <Route path="/admin/web_usage" component={WebUsageAnalysis}/>
             <Route path="/admin/team_edit" component={OurTeamEdit} />
-            <Route path="/admin/about_edit" component={AboutUsEdit} />
 
             <Route path="/adminlogin" component={AdminLogin} />
           </Switch>

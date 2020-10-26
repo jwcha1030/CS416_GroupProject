@@ -6,7 +6,7 @@ export const DataMembers = [
     id: "1",
     name: "Rebecca",
     position: "President",
-    date: "Joined Sept. 2018",
+    date: "Joined 2018-09",
     description:
       "Leads MSC and its members to make unique merchandise for students around campus.",
     img: member1,

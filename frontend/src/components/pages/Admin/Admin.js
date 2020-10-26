@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Admin.css'
-import analysis_chart from '../../../images/admin/web_usage_piechart.png';
-import analysis_chart2 from '../../../images/admin/web_usage_analysis_chart.png';
 import {subscriptionData} from './ManageSubscriptions/SubscriptionData'
 import {analysisData} from './WebUsageAnalysis/AnalysisData'
 import {Link} from "react-router-dom";
 import {Button} from "../../Button";
+import Chart from "./WebUsageAnalysis/LineGraph";
 
 export default function Admin() {
   const handleAlert=()=>{
@@ -30,9 +29,6 @@ export default function Admin() {
                 <li>
                   <Link className="update-pages-link" to="/admin/team_edit">Our Team</Link>
                 </li>
-                <li>
-                  <Link className="update-pages-link" to="/admin/about_edit">About Us</Link>
-                </li>
               </ul>
             </div>
           </div>
@@ -43,7 +39,7 @@ export default function Admin() {
               <ul className="admin__list admin__subscription-list">
                 <li id="totalSubCount">
                   <h3>Total Subscription Count</h3>
-                  <p>{subscriptionData.subCount}</p>
+                  <p>{subscriptionData.mailList.length}</p>
                 </li>
                 <li>
                   <h3>Daily Subscribed Count</h3>
@@ -54,17 +50,22 @@ export default function Admin() {
                   <p>{subscriptionData.dailyUnsubCount}</p>
                 </li>
               </ul>
-
-              <Button onClick={handleAlert} buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
-                Details</Button>
+              <div className="admin__buttonLink admin__manage-subscription">
+                <Link to="/admin/subscription_edit">
+                <Button buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
+                  Details</Button>
+                </Link>
+              </div>
             </div>
           </div>
           <div className="admin__col">
             <div className="admin__colInfo admin__analysis-wrapper">
               <h2>Web Usage Analysis</h2>
-              <img src={analysis_chart2} alt={"dummy_chart"} className='admin__dummy-bar-img'/>
-              <img src={analysis_chart} alt={"dummy_chart"} className='admin__dummy-pie-img'/>
-
+              {/*<img src={analysis_chart2} alt={"dummy_chart"} className='admin__dummy-bar-img'/>*/}
+              {/*<img src={analysis_chart} alt={"dummy_chart"} className='admin__dummy-pie-img'/>*/}
+              <div className="admin__analysis-chart-container">
+                <Chart width="100%"/>
+              </div>
               <ul className="admin__list admin__analysis-list">
                 <li>
                   <h3>Today's Number of Visits:</h3>
@@ -74,10 +75,17 @@ export default function Admin() {
                   <h3>Most Viewed Item:</h3>
                   <p>{analysisData.mostViewed}</p>
                 </li>
+                <li>
+                  <h3>Most Purchased Item:</h3>
+                  <p>{analysisData.mostPurchased}</p>
+                </li>
               </ul>
-              <Button onClick={handleAlert} buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
-                Details</Button>
-
+              <div className="admin__buttonLink admin__web-usage-analysis">
+                <Link to="/admin/web_usage">
+                  <Button buttonStyle="btn--outline" buttonColor="msc_orange_invert" buttonSize="btn--wide">See
+                    Details</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

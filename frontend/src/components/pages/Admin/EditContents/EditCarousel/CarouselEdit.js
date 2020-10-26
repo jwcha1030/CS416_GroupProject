@@ -6,7 +6,6 @@ import Modal from "react-bootstrap/Modal";
 import CarouselForm from "./CreateCarouselForm"
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
-import CollectionsForm from "../EditCollections/CollectionsForm";
 
 export default function CarouselEdit(prop) {
   const [current_item, setItem] = useState(CarouselData[0]);

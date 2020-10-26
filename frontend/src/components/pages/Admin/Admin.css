@@ -127,3 +127,16 @@ h3{
 .admin__analysis-list li{
     margin-bottom: 10px;
 }
+
+.admin__analysis-chart-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.myChart{
+    width:100%;
+    height:100%;
+}

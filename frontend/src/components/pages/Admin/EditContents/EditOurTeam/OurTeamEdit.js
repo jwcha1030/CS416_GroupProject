@@ -1,76 +1,61 @@
 import React, {useState} from 'react';
+import {Link, Redirect} from "react-router-dom";
+import {DataMembers} from "../../../OurTeam/DataMembers";
+import {IoIosArrowBack} from "react-icons/io";
 import DataTable from "../DataTable";
+import ProductDataAll from "../../../../ProductDataAll";
 import {Button} from "../../../../Button";
 import Modal from "react-bootstrap/Modal";
-import {Link} from "react-router-dom";
-import {IoIosArrowBack} from "react-icons/io";
-import ProductDataAll from "../../../../ProductDataAll";
-import CollectionsForm from "./CollectionsForm";
+import CollectionsForm from "../EditCollections/CollectionsForm";
+import OurTeamForm from "./OurTeamForm";
 
-export default function CollectionEdit() {
+export default function OurTeamEdit(props) {
+  const headers = Object.keys(DataMembers[0]);
   const [current_item, setItem] = useState(ProductDataAll[0]);
-  const [data, setData] = useState(ProductDataAll);
+  const [data, setData] = useState(DataMembers);
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
 
-  const [price, setPrice] = useState('');
-  const [date, setDate] = useState('');
-  const [title, setTitle] = useState('');
-  const [newLabel, setNewLabel] = useState('');
+  const [name, setName] = useState('');
+  const [position, setPosition] = useState('');
+  const [dateJoined, setDateJoined] = useState('');
   const [desc, setDesc] = useState('');
   const [img, setImg] = useState('');
-  const [school, setSchool] = useState('');
-  const [type, setType] = useState('');
-
-  const headers = Object.keys(ProductDataAll[0]);
+  const [contact, setContact] = useState('');
 
   const getCurrentDate = () => {
     let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
 
-    today = yyyy + '-' + mm + '-' + dd;
+    today = yyyy + '-' + mm;
     return today
   };
-
-  const handlePrice = (e) => {
-    setPrice(e.target.value);
+  //inputs
+  const handleName=(e)=>{
+    setName(e.target.value);
   };
-  const handleDate = (e) => {
-    setDate(e.target.value);
+  const handlePosition=(e)=>{
+    setPosition(e.target.value);
   };
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
+  const handleDate=(e)=>{
+    setDateJoined(e.target.value);
   };
-  const handleNewLabel = (e) => {
-    let target = e.target;
-    let val;
-    if(target.type ==='checkbox'){
-      val= target.checked? "New":"";
-    }
-    else{
-      val=target.value;
-    }
-    setNewLabel(val);
+  const handleDesc=(e)=>{
+    setDesc(e.target.value)
   };
-  const handleDesc = (e) => {
-    setDesc(e.target.value);
+  const handleImg =(e)=>{
+    setImg(e.target.value)
   };
-  const handleImg = (e) => {
-    setImg(e.target.value);
-  };
-  const handleSchool = (e) => {
-    setSchool(e.target.value);
-  };
-  const handleType = (e) => {
-    setType(e.target.value);
+  const handleContact=(e)=>{
+    setContact(e.target.value)
   };
 
   const handleDelete = (id) => {
     const removedItems = [...data].filter(item => item.id !== id);
     setData(removedItems);
   };
+
   //edit modal handler
   const changeItem = (id) => {
     const currentItem = (data.filter(item => item.id === id))[0]; //selects the item that is clicked
@@ -82,6 +67,7 @@ export default function CollectionEdit() {
   const handleEditClose = () => {
     setEditModalShow(false);
   };
+
   const handleEditSubmit = (e) => {
     e.preventDefault();
     let i;
@@ -91,24 +77,21 @@ export default function CollectionEdit() {
       }
     }
     let newData = [...data];
-    newData[i].price = price === '' ? data[i].price : price;
-    newData[i].title = title === '' ? data[i].title : title;
-    newData[i].date_added = date === '' ? data[i].date_added : date;
-    newData[i].new = newLabel === '' ? data[i].new : newLabel;
+    newData[i].name = name === '' ? data[i].name : name;
+    newData[i].position = position === '' ? data[i].position : position;
+    newData[i].date = dateJoined === '' ? data[i].date : dateJoined;
     newData[i].description = desc === '' ? data[i].description : desc;
     newData[i].img = img === '' ? data[i].img : img;
-    newData[i].school = school === '' ? data[i].school : school;
-    newData[i].type = type === '' ? data[i].type : type;
+    newData[i].contact = contact === '' ? data[i].contact : contact;
 
     //reinitialize
-    setPrice('');
-    setDate('');
-    setTitle('');
-    setNewLabel('');
+    setName('');
+    setDateJoined('');
+    setPosition('');
     setDesc('');
-    setSchool('');
-    setType('');
     setImg('');
+    setContact('');
+
     setData(newData);
     setEditModalShow(false);
   };
@@ -125,24 +108,20 @@ export default function CollectionEdit() {
     }
     setData([...data, {
       id: maxID + 1,
-      price: price,
-      date_added: date === '' ? getCurrentDate() : date, //get current date if 'date' is empty
-      title: title,
-      new: newLabel,
+      name: name,
+      date: dateJoined === '' ? "Joined " + getCurrentDate() : dateJoined, //get current date if 'date' is empty
+      position: position,
       description: desc,
       img: img,
-      school: school,
-      type: type
+      contact: contact
     }]);
     //reinitialize
-    setPrice('');
-    setDate('');
-    setTitle('');
-    setNewLabel('');
+    setName('');
+    setDateJoined('');
+    setPosition('');
     setDesc('');
     setImg('');
-    setSchool('');
-    setType('');
+    setContact('');
     setCreateModalShow(false);
   };
   const handleCreateClose = () => {
@@ -152,36 +131,34 @@ export default function CollectionEdit() {
   const handleCreateShow = () => {
     setCreateModalShow(true);
   };
-
   return (
     <div>
       <Link style={{fontSize: "17px"}} className="goBack" to="/admin">
         <IoIosArrowBack/>Go Back
       </Link>
-      <h1 style={{textAlign: "center", fontWeight: "bold"}} className="collectionsEdit__header">
-        Collections List
+      <h1 style={{textAlign: "center", fontWeight: "bold"}} className="ourTeamEdit__header">
+        Members List
       </h1>
       <DataTable
         data={data}
         headers={headers}
         changeItem={changeItem}
         showEdit={handleEditShow}
-        deleteItem={handleDelete}/>
+        deleteItem={handleDelete}
+      />
       {/*Create Modal*/}
       <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add an Item</Modal.Title>
+          <Modal.Title>Add a New Member</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CollectionsForm
-            handlePrice={handlePrice}
+          <OurTeamForm
+            handleName={handleName}
+            handlePosition={handlePosition}
             handleDate={handleDate}
-            handleTitle={handleTitle}
-            handleNewLabel={handleNewLabel}
             handleDesc={handleDesc}
             handleImg={handleImg}
-            handleSchool={handleSchool}
-            handleType={handleType}
+            handleContact={handleContact}
             handleClose={handleCreateClose}
             handleSubmit={handleCreateSubmit}
           />
@@ -190,19 +167,17 @@ export default function CollectionEdit() {
       {/*Edit modal*/}
       <Modal size='lg' centered={true} animation={false} show={showEditModal} onHide={handleEditClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Item</Modal.Title>
+          <Modal.Title>Edit a Member</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CollectionsForm
+          <OurTeamForm
             currentItem={current_item}
-            handlePrice={handlePrice}
+            handleName={handleName}
+            handlePosition={handlePosition}
             handleDate={handleDate}
-            handleTitle={handleTitle}
-            handleNewLabel={handleNewLabel}
             handleDesc={handleDesc}
             handleImg={handleImg}
-            handleSchool={handleSchool}
-            handleType={handleType}
+            handleContact={handleContact}
             handleClose={handleEditClose}
             handleSubmit={handleEditSubmit}
           />
@@ -210,7 +185,7 @@ export default function CollectionEdit() {
       </Modal>
       <div style={{display: "flex", justifyContent: "center"}}>
         <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-          Create
+          Add a New Member
         </Button>
       </div>
     </div>

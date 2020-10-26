@@ -8,14 +8,14 @@ charts(FusionCharts);
 
 const dataSource = {
   chart: {
-    caption: "Support Tickets : Received vs Resolved",
-    yaxisname: "# of Tickets",
+    caption: "Dummy Chart : A vs B",
+    yaxisname: "Revenue Made ($)",
     subcaption: "Last week",
-    numdivlines: "3",
+    numdivlines: "4",
     showvalues: "0",
-    legenditemfontsize: "15",
+    legenditemfontsize: "10",
     legenditemfontbold: "1",
-    plottooltext: "<b>$dataValue</b> Tickets $seriesName on $label",
+    plottooltext: "<b>$$dataValue</b> revenue made for Item $seriesName on $label",
     theme: "fusion"
   },
   categories: [
@@ -47,7 +47,7 @@ const dataSource = {
   ],
   dataset: [
     {
-      seriesname: "Received",
+      seriesname: "A",
       data: [
         {
           value: "55"
@@ -73,7 +73,7 @@ const dataSource = {
       ]
     },
     {
-      seriesname: "Resolved",
+      seriesname: "B",
       data: [
         {
           value: "50"
@@ -101,16 +101,15 @@ const dataSource = {
   ]
 };
 
-export default class Chart extends React.Component {
-  render() {
+export default function LineGraph(prop) {
     return (
       <ReactFusioncharts
+        className="myChart"
         type="msspline"
-        width="50%"
-        height="50%"
+        width={prop.width}
+        height={prop.height}
         dataFormat="JSON"
         dataSource={dataSource}
       />
     );
-  }
 }
