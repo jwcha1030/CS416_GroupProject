@@ -26,26 +26,26 @@
 >Django <br>
  
 **Installation for Front-end** <br> 
->Git clone the repository and go to the "frontend" directory.
->Install packages and run the application by the following commands.
->Open localhost:3000 on Chrome Browser, if it does not automatically load on your machine. 
+>Git clone the repository and go to the "frontend" directory. <br>
+>Install packages and run the application by the following commands. <br>
+>Open localhost:3000 on Chrome Browser, if it does not automatically load on your machine. <br> 
 
 ```
->npm install
->npm start
+npm install
+npm start
 ```
 
 
 
 **Instructions for Deployment** <br>
->Change directory to "frontend".
->Initialize Firebase setups.
->Run build and deploy.
+>Change directory to "frontend". <br>
+>Initialize Firebase setups. <br>
+>Run build and deploy. <br>
 ```
->npm run build
->firebase deploy
+npm run build
+firebase deploy
 ```
 
 **Envrionment and Settings**
->This project has been tested on running Chrome 86.0.4240.111 (Official Build) (64-bit) on various devices, including mobile devices.
->This project is also extensively built for Chrome Browser. Other browsers may behave diffrently in stylings.
+>This project has been tested on running Chrome 86.0.4240.111 (Official Build) (64-bit) on various devices, including mobile devices. <br> 
+>This project is also extensively built for Chrome Browser. Other browsers may behave diffrently in stylings. <br> 
