@@ -25,7 +25,7 @@ Our solution is to create a flexible website for MSC that will allow them to man
 >https://sunyk-msc-backend.herokuapp.com/ <br>
 
 
-**Framework Used** <br>
+**Frameworks and Technologies Used** <br>
 >React.js <br>
 >Django <br>
 >Amazon S3 <br>
