@@ -28,6 +28,7 @@ Our solution is to create a flexible website for MSC that will allow them to man
 **Framework Used** <br>
 >React.js <br>
 >Django <br>
+>Amazon S3 <br>
  
 **Installation** <br> 
 >**Front-end** <br>
@@ -40,10 +41,20 @@ npm install
 npm start
 ```
 >**Back-end** <br>
-> Back-end installation instructions... <br>
-
+> Install Django 3 - https://www.djangoproject.com/ <br> 
+> Install Python 3 - https://www.python.org/downloads/ <br> 
+> Start a virtual environment - https://docs.python.org/3/tutorial/venv.html <br> 
+> Go to the "backend" directory. <br>
+> Run the following only once on initial setup. <br>
 ```
-commands for backend
+python get-pip.py
+pip install
+```
+> Run the following after making changes to the code. <br>
+```
+python manage.py makemgirations
+python manage.py migrate
+python manage.py runserver
 ```
 
 
@@ -59,6 +70,13 @@ firebase deploy
 >**Back-end** <br>
 >Change directory to "backend". <br>
 >Instructions for backend deployment set up...
+```
+pip freeze > requirements.txt
+git add .
+git commit -m 'with a message'
+git push heroku master
+```
+>*DO NOT RUN 'python manage.py makemigrations' and 'python manage.py migrate' on heroku bash! 'makemigrations' and 'migrate' should only be done locally.
 
 **Envrionment and Settings**
 >This project has been tested on running Chrome 86.0.4240.111 (Official Build) (64-bit) on various devices, including mobile devices. <br> 
