@@ -83,3 +83,7 @@ git push heroku master
 >This project has been tested on running Chrome 86.0.4240.111 (Official Build) (64-bit) on various devices, including mobile devices. <br> 
 >This project is also extensively built for Chrome Browser. Other browsers may behave diffrently in stylings. <br> 
 >This project should work on Windows and Mac. The backend portion will also work on linux machines.
+
+**Bug Report**
+* List of known bugs so far is shown in the bottom of this document - https://docs.google.com/document/d/1F2VT2uxXTtgqkSdHsZDD1JYNprkv5WWZQzJMY1aoMUI/edit?usp=sharing
+* Anyone can issue a bug from this link - https://github.com/jwcha1030/CS416_GroupProject/issues
