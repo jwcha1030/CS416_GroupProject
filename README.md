@@ -86,4 +86,4 @@ git push heroku master
 
 **Bug Report**
 * List of known bugs so far is shown in the bottom of this document - https://docs.google.com/document/d/1F2VT2uxXTtgqkSdHsZDD1JYNprkv5WWZQzJMY1aoMUI/edit?usp=sharing
-* Anyone can issue a bug from this link - https://github.com/jwcha1030/CS416_GroupProject/issues
+* Contributors can issue a bug from this link - https://github.com/jwcha1030/CS416_GroupProject/issues
