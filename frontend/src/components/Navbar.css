@@ -1,6 +1,6 @@
 .navbar {
   background: #ffffff;
-  height: 11vh;
+  height: 9vh;
   margin-top: 0;
   padding-top: 0;
   display: flex;
@@ -12,7 +12,7 @@
   top: 0;
   z-index: 999;
   margin-bottom: 0;
-  border-bottom: 1px solid #242424;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .navbar-container {
