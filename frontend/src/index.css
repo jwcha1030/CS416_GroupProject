@@ -24,6 +24,9 @@ body::-webkit-scrollbar-thumb {
     rgba(0, 38, 46, 0.5998774509803921) 100%
   );
 }
+html {
+  scroll-behavior: smooth;
+}
 
 a,
 a:hover,

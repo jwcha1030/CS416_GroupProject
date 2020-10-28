@@ -60,11 +60,11 @@ function Navbar() {
               {click ? <FaTimes /> : <FaBars />}
             </div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                   <FaHome style={{ fill: "black", paddingRight: "7px" }} /> Home
                 </Link>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <Link
