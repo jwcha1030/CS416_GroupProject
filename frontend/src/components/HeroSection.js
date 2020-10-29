@@ -70,7 +70,7 @@ function HeroSection({
                 <Button
                   buttonSize="btn--wide"
                   lightBg
-                  buttonColor={((buttonLabel==="Team") ?  "black": "msc_orange" )}
+                  buttonColor={((buttonLabel==="Our Team" || buttonLabel ==="Collections") ?  "black": "msc_orange" )}
                  >
                   {buttonLabel}
                 </Button>
@@ -79,15 +79,14 @@ function HeroSection({
                   {" "}
 
                 {/* dynamic render of AboutUs "Contact Button for scroll down using a href #"  */}
-                {aboutUsRender==="Yes"?
+                {aboutUsRender==="TRUE_CONTACT"?
                   <Button
                   buttonSize="btn--wide"
                   lightBg
                   buttonColor="black"
                   onClick={function(e) {
                   window.scroll({
-                    top: 999999999, 
-                    left: 0, 
+                    top: 99999999, 
                     behavior: 'smooth'
                   })   
                 }}
@@ -96,7 +95,22 @@ function HeroSection({
                 </Button>
             
                 :
-                <p></p>  
+                " "  //else nothing
+                }
+                {aboutUsRender==="TRUE_VR"?
+                  <Button
+                  buttonSize="btn--wide"
+                  lightBg
+                  buttonColor="black"
+                  onClick={function(e) {
+                  window.scroll({
+                    top: 1800, 
+                    behavior: 'smooth'
+                  })   
+                }}
+                >
+                   {aboutUsRenderSubButton}
+                </Button> : <div></div> //else nothing
                 }
               </div>
             </div>
