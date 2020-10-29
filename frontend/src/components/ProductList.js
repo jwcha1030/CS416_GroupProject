@@ -4,7 +4,10 @@ import "react-tabs/style/react-tabs.css";
 import "./ProductList.css";
 import Product from "./Product";
 import { Card } from "antd";
-import test from "../images/model_white.jpg";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import FIT_TAB_IMAGE from "../images/fit2.jpg";
+import SBU_TAB_IMAGE from "../images/sbu2.png";
 import "antd/dist/antd.css";
 import ProductDataAll from "./ProductDataAll"; 
 import { SearchOutlined } from "@ant-design/icons";
@@ -129,21 +132,25 @@ const ProductList = (props, idex) => {
 
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
+        <h1 align="center">MERCHANDISING SOCIETY COLLECTIONS</h1>
+        <br/>
       <div className="row">
+        <div className="mx-auto" style={{width:"1000px"}}>
+      <SearchOutlined style={{ marginTop: "3rem", marginLeft:"4%", marginRight:"2%", fontSize: "3rem" }} />
         <input
           className="search"
           type="text"
-          placeholder='Search  "Hoodies"'
+          placeholder='Search  "Hoodie"'
           value={searchTerm}
           onChange={handleChange}
         />
-        <SearchOutlined style={{ marginTop: "3rem", fontSize: "3rem" }} />
+        </div>
       </div>
       <div className="upperTab">
         <TabList>
           <Tab>All</Tab>
-          <Tab>Fashion Institute of Technology</Tab>
-          <Tab>Stony Brook University</Tab>
+          <Tab> <img className="tab-logo" src={FIT_TAB_IMAGE}/></Tab>
+          <Tab><img className="tab-logo" src={SBU_TAB_IMAGE}/></Tab>
           <Tab>Assorted Goods</Tab>
           <Tab>Apparels</Tab>
         </TabList>
