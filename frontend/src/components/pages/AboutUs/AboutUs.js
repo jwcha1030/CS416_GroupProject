@@ -3,7 +3,7 @@ import HeroSection from "../../HeroSection";
 import { aboutUs, virtualStore } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
 import Footer from "../Footer.js/Footer";
-import VR from "../../VR";
+import VR from "../../vr";
 
 function AboutUs() {
   return (
