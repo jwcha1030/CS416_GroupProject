@@ -17,6 +17,7 @@ import CollectionsEdit from "./components/pages/Admin/EditContents/EditCollectio
 import OurTeamEdit from "./components/pages/Admin/EditContents/EditOurTeam/OurTeamEdit";
 import SubscriptionEdit from "./components/pages/Admin/ManageSubscriptions/SubscriptionEdit";
 import WebUsageAnalysis from "./components/pages/Admin/WebUsageAnalysis/WebUsagePage";
+import Axios from "axios";
 // import counterpart from 'counterpart';
 // import Translate from 'react-traslate-component';
 

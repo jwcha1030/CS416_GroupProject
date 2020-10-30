@@ -8,7 +8,38 @@ import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 
 export default function CarouselEdit(prop) {
-  const [current_item, setItem] = useState(CarouselData[0]);
+	
+
+	var axios = require('axios')
+
+	
+	// TODO IDK WHERE TO PUT THIS
+	// put this in a constructor or something to get 
+	axios.get('http://127.0.0.1:8000/home_page_carousel/get_all/',)
+	.then(function (response) {
+		// console.log(response.data);
+		// Check if internet connection was working
+		if(response.status == 200){
+			if(response.data.res_code == 1){
+				// Everything worked correctly
+				// Do something with the returned data
+
+			// } else if (){
+				// Check other res_code with else if
+			// }
+			} else {
+				// Unhandled res_code
+			}
+		} else {
+			// TODO handle unable to connect with database
+		}
+	})
+	.catch(function (error) {
+		// TODO handle error with the call
+		console.log(error);
+	});
+	
+	const [current_item, setItem] = useState(CarouselData[0]);
   const [data, setData] = useState(CarouselData);
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
@@ -25,7 +56,8 @@ export default function CarouselEdit(prop) {
     setNewDesc(e.target.value);
   };
   const handleImg = (e) => {
-    setNewImg(e.target.value);
+		// Changed from e.target.value to e.target.files[0] because the api needs a file
+    setNewImg(e.target.files[0] );
   };
 
   const handleDelete = (id) => {
@@ -65,6 +97,49 @@ export default function CarouselEdit(prop) {
 
   //create modal handler
   const handleCreateSubmit = (e) => {
+
+    var apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/home_page_carousel/add/";
+    // var apiBaseUrl = "http://127.0.0.1:8000/home_page_carousel/add/";
+		
+
+		// if the data does not include a File (eg img) use a json 
+    // var payload = {
+    //   caption: newCaption,
+		// 	desc: newDesc,
+		// 	img: newImg
+		// };
+		
+		// if the new data includes a File (eg img) use FromData();
+		const formData = new FormData();
+		formData.append('img', newImg);
+		// Wait for API to include caption and description
+		// formData.append('caption', newCaption);
+		// formData.append('desc', newDesc);
+
+		axios.post(apiBaseUrl, formData )
+			.then( function (response) {
+				// console.log(response);
+				// Check if internet connection was working
+				if(response.status == 200){
+					if(response.data.res_code == 1){
+						// Everything worked correctly
+						// Do something with the returned data
+
+					// } else if (){
+						// Check other res_code with else if
+					// }
+					} else {
+						// Unhandled res_code
+					}
+				} else {
+					// TODO handle unable to connect with database
+				}
+			})
+		.catch(function (error) {
+			// TODO handle error with the call
+			console.log(error);
+		});
+
     e.preventDefault();
     let maxID = 0;
     for(let i=0; i<data.length; i++){
@@ -83,7 +158,10 @@ export default function CarouselEdit(prop) {
     setNewCaption('');
     setNewDesc('');
     setNewImg('');
-    setCreateModalShow(false);
+		setCreateModalShow(false);
+		
+		
+
   };
   const handleCreateClose = () => {
     setCreateModalShow(false);
