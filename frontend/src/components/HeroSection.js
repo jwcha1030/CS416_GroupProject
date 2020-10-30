@@ -4,6 +4,9 @@ import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import ReactImageAppear from "react-image-appear";
 
+
+
+ 
 function HeroSection({
   lightBg,
   topLine,
@@ -15,12 +18,9 @@ function HeroSection({
   alt,
   imgStart,
   buttonLabel,
-
   buttonTo,
-  buttonToExternalURL,
-
-  //if buttonTo is null, then we are going to externalURL like google.com or google form.
-  // if buttonTo is there /collections, then we go to /collections (ignoring buttonToExternalURL)
+  aboutUsRender,
+  aboutUsRenderSubButton
 }) {
   return (
     <>
@@ -52,20 +52,66 @@ function HeroSection({
                 >
                   {description}
                 </p>
-                <Link to={buttonTo}>
+
+              
+
+                {/* Check if buttonTo is External URL or not and uses a href or Link, respectively  */}
+                {/^https?:\/\//.test(buttonTo)
+                ? <a href={buttonTo}>
+                    <Button
+                      buttonSize="btn--wide"
+                      lightBg
+                      buttonColor={(lightBg = "msc_orange")}
+                >
+                  {buttonLabel}
+                </Button>
+                </a>
+                :   <Link to={buttonTo}>
+                <Button
+                  buttonSize="btn--wide"
+                  lightBg
+                  buttonColor={((buttonLabel==="Our Team" || buttonLabel ==="Collections") ?  "black": "msc_orange" )}
+                 >
+                  {buttonLabel}
+                </Button>
+              </Link>
+                }
+                  {" "}
+
+                {/* dynamic render of AboutUs "Contact Button for scroll down using a href #"  */}
+                {aboutUsRender==="TRUE_CONTACT"?
                   <Button
-                    buttonSize="btn--wide"
-                    lightBg
-                    buttonColor={(lightBg = "msc_orange")}
-                    onClick={(e) =>
-                      buttonTo !== ""
-                        ? buttonTo
-                        :(window.location = buttonToExternalURL)
-                    } //if buttonTo is not null, then go to buttonTo (Link) else, we are going to buttonToExternalURL on this button clicked.
-                  >
-                    {buttonLabel}
-                  </Button>
-                </Link>
+                  buttonSize="btn--wide"
+                  lightBg
+                  buttonColor="black"
+                  onClick={function(e) {
+                  window.scroll({
+                    top: 99999999, 
+                    behavior: 'smooth'
+                  })   
+                }}
+                >
+                   {aboutUsRenderSubButton}
+                </Button>
+            
+                :
+                " "  //else nothing
+                }
+                {aboutUsRender==="TRUE_VR"?
+                  <Button
+                  buttonSize="btn--wide"
+                  lightBg
+                  buttonColor="black"
+                  onClick={function(e) {
+                  window.scroll({
+                    top: 1800, 
+                    behavior: 'smooth'
+                  })   
+                }}
+                >
+                   {aboutUsRenderSubButton}
+                </Button> : <div></div> //else nothing
+                }
               </div>
             </div>
             <div className="col">
