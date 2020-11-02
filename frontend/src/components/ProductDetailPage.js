@@ -19,7 +19,6 @@ import {
 const { Meta } = Card;
 
 
-
 function ProductDetailPage(props) {
   const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
   const [RotatingImageModalShow, setRotatingImageModalShow] = React.useState(false); 
@@ -86,7 +85,7 @@ function ProductDetailPage(props) {
                     </Button>}>
               <div className="row">
                 <div className="col-sm-8">
-               PRODCUT INFORMATION
+               RPODUCT INFORMATION
                 </div>
                 <div className="col-sm-4">
                    <Card

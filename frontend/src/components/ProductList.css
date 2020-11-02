@@ -44,11 +44,11 @@
 }
 
 .react-tabs__tab {
-  padding: 8rem;
+  padding: 10rem;
   padding-bottom: 1rem;
-  padding-top: 1rem;
-
+  padding-top: 0rem;
   margin: 1rem;
+  margin-top: 0rem;
   margin-bottom: 1rem;
   background-color: white;
   font-size: medium;

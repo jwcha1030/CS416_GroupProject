@@ -13,7 +13,7 @@ const renderCarousel = (item, index) => {
             />
             <Carousel.Caption >
                 <h3>{item.caption}</h3>
-                <p>{item.description}</p>
+                <p>{item.desc}</p>
             </Carousel.Caption>
         </Carousel.Item>
     )

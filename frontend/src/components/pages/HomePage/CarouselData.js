@@ -3,6 +3,10 @@ import msc_banner2 from "../../../images/msc_banner2.jfif";
 import msc_banner3 from "../../../images/msc_banner3.jpg";
 import msc_banner4 from "../../../images/msc_banner4.jpg";
 
+//**************************************************
+// THIS IS FOR SAMPLE DATA BEFORE BACKEND. 
+// THIS IS NO LONGER USED. 
+// KEEPING IT FOR REFERENCE. ***********************
 
 export let CarouselData = [
 
