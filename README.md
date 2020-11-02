@@ -47,7 +47,7 @@ npm start
 > Install Python 3 that fits with your os - https://www.python.org/downloads/ <br> 
 > Install Heroku CLI - https://devcenter.heroku.com/articles/heroku-cli <br>
 > Start a virtual environment - https://docs.python.org/3/tutorial/venv.html <br> 
-> Go to the "backend/sunyk-msc-backend" directory. <br>
+> ~~Go to the "backend/sunyk-msc-backend" directory.~~ Clone the following directory - https://github.com/Habced/sunyk-msc-backend <br>
 > Run the following only once on initial setup. <br>
 ```
 // While the virtual environment is running
@@ -72,7 +72,7 @@ npm run build
 firebase deploy
 ```
 >**Back-end** <br>
->Change directory to "backend/sunyk-msc-backend". <br>
+>~~Change directory to "backend/sunyk-msc-backend".~~ Go to the directory where you cloned https://github.com/Habced/sunyk-msc-backend <br>
 ```
 pip freeze > requirements.txt
 git add .
