@@ -1,5 +1,4 @@
 import React, { Component,useState, useEffect  } from 'react';
-import { render } from 'react-dom';
 import "./VR.css";
 
 import { Pannellum, PannellumVideo } from "pannellum-react";

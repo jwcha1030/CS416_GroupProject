@@ -18,7 +18,7 @@ export const DataMembers = [
     name: "Person_2",
     position: "Vice-President",
     date: "Joined Date",
-    description: "Description the person's role in MSC ",
+    description: "Description the person's role in MSC",
     img: member1,
     contact: "contact",
   },
