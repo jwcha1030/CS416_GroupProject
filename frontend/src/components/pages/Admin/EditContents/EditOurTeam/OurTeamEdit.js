@@ -6,7 +6,6 @@ import DataTable from "../DataTable";
 import ProductDataAll from "../../../../ProductDataAll";
 import {Button} from "../../../../Button";
 import Modal from "react-bootstrap/Modal";
-import CollectionsForm from "../EditCollections/CollectionsForm";
 import OurTeamForm from "./OurTeamForm";
 
 export default function OurTeamEdit(props) {
@@ -39,7 +38,8 @@ export default function OurTeamEdit(props) {
     setPosition(e.target.value);
   };
   const handleDate=(e)=>{
-    setDateJoined(e.target.value);
+    let dateVal=e.target.value;
+    setDateJoined("Joined: "+dateVal.slice(0,-3));
   };
   const handleDesc=(e)=>{
     setDesc(e.target.value)
@@ -102,15 +102,15 @@ export default function OurTeamEdit(props) {
     let maxID = 0;
     //find maximum ID to allocate to the new object.
     for (let i = 0; i < data.length; i++) {
-      if (maxID < data[i].id) {
-        maxID = data[i].id;
+      if (maxID < parseInt(data[i].id)) {
+        maxID = parseInt(data[i].id);
       }
     }
     setData([...data, {
-      id: maxID + 1,
+      id: (maxID + 1).toString(),
       name: name,
-      date: dateJoined === '' ? "Joined " + getCurrentDate() : dateJoined, //get current date if 'date' is empty
       position: position,
+      date: dateJoined === '' ? "Joined " + getCurrentDate() : dateJoined, //get current date if 'date' is empty
       description: desc,
       img: img,
       contact: contact
@@ -149,7 +149,7 @@ export default function OurTeamEdit(props) {
       {/*Create Modal*/}
       <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a New Member</Modal.Title>
+          <Modal.Title>New Member</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <OurTeamForm
