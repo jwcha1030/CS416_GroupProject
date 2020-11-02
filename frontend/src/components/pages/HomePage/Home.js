@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeroSection from "../../HeroSection";
@@ -12,7 +12,12 @@ import "aos/dist/aos.css";
 import Footer from "../Footer.js/Footer";
 import ScrollToTop from "react-router-scroll-top";
 
+
+var axios = require('axios')
+
+ 
 function Home() {
+  const [carousels, setData] = useState([{}]);
   useEffect(() => {
     Aos.init({
       duration: 3000, // values from 0 to 3000, with step 50ms
@@ -22,16 +27,32 @@ function Home() {
 
     });
   }, []);
+  useEffect(() => {
+    axios.get('https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/',)
+    .then(function (response) {
+      if(response.status == 200){
+        if(response.data.res_code == 1){
+          setData(response.data.results)
+        } else {
+        }
+      } else {
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   },[]);
   //https://github.com/michalsnik/aos#animations AOS animation on scroll library for anmation on scrolling added**
-  return (
+   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      
       {/* now carousel is updated in CarouselData.js */}
-      <Carousel>{CarouselData.map(renderCarousel)}</Carousel>
-
+      <Carousel>{carousels.map(renderCarousel)}</Carousel>
+       
       <div data-aos="slide-left">
         <HeroSection {...collections} />
       </div>
