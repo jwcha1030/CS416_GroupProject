@@ -45,12 +45,14 @@ npm start
 >**Back-end** <br>
 > Install Django 3 - https://www.djangoproject.com/ <br> 
 > Install Python 3 that fits with your os - https://www.python.org/downloads/ <br> 
+> Install Heroku CLI - https://devcenter.heroku.com/articles/heroku-cli <br>
 > Start a virtual environment - https://docs.python.org/3/tutorial/venv.html <br> 
-> Go to the "backend" directory. <br>
+> Go to the "backend/sunyk-msc-backend" directory. <br>
 > Run the following only once on initial setup. <br>
 ```
+// While the virtual environment is running
 python get-pip.py
-pip install
+pip install -r requirements.txt
 ```
 > Run the following after making changes to the code. <br>
 ```
@@ -70,7 +72,7 @@ npm run build
 firebase deploy
 ```
 >**Back-end** <br>
->Change directory to "backend". <br>
+>Change directory to "backend/sunyk-msc-backend". <br>
 ```
 pip freeze > requirements.txt
 git add .
