@@ -132,11 +132,11 @@ const ProductList = (props, idex) => {
 
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
-        <h1 align="center">MERCHANDISING SOCIETY COLLECTIONS</h1>
+        <h1 style={{fontSize:"5rem", marginBottom:"3%"}} align="center">MERCHANDISING SOCIETY COLLECTIONS</h1>
         <br/>
       <div className="row">
         <div className="mx-auto" style={{width:"1000px"}}>
-      <SearchOutlined style={{ marginTop: "3rem", marginLeft:"4%", marginRight:"2%", fontSize: "3rem" }} />
+      <SearchOutlined style={{ marginTop: "3rem", marginLeft:"4%", marginRight:"2%", marginBottom:"10%",fontSize: "3rem" }} />
         <input
           className="search"
           type="text"
@@ -151,7 +151,7 @@ const ProductList = (props, idex) => {
           <Tab>All</Tab>
           <Tab> <img className="tab-logo" src={FIT_TAB_IMAGE}/></Tab>
           <Tab><img className="tab-logo" src={SBU_TAB_IMAGE}/></Tab>
-          <Tab>Assorted Goods</Tab>
+          <Tab>Goods</Tab>
           <Tab>Apparels</Tab>
         </TabList>
       </div>
@@ -167,12 +167,12 @@ const ProductList = (props, idex) => {
         {/* FIT */}
         <TabPanel>
           <Tabs forceRenderTabPanel>
-            <TabList>
+             <TabList >
               <Tab>FIT All</Tab>
-              <Tab>FIT Assorted Goods</Tab>
+              <Tab>FIT Goods</Tab>
               <Tab>FIT Apparels</Tab>
             </TabList>
-            <TabPanel>
+             <TabPanel>
               <div className="product-list">{fitAll.map(Product)}</div>
             </TabPanel>
             <TabPanel>
@@ -190,7 +190,7 @@ const ProductList = (props, idex) => {
           <Tabs forceRenderTabPanel>
             <TabList>
               <Tab>SBU All</Tab>
-              <Tab>SBU Assorted Goods</Tab>
+              <Tab>SBU Goods</Tab>
               <Tab>SBU Apparels</Tab>
             </TabList>
             <TabPanel>
