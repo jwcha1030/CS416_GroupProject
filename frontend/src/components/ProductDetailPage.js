@@ -9,7 +9,7 @@ import Rotation from "react-rotation";
 import "./RotatingImage.css";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import InquiryModal from "./Inquiry"
+import ProductInquiryModal from "./ProductInquiry"
 
 import {
   mugcup_1,
@@ -20,10 +20,11 @@ const { Meta } = Card;
 
 
 function ProductDetailPage(props) {
-  const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
+  const [ProductInquiryModalShow, setProductInquiryModalShow] = React.useState(false);
   const [RotatingImageModalShow, setRotatingImageModalShow] = React.useState(false); 
 
   const productId = props.match.params.id;
+
   const images = [
     {
       original: "https://picsum.photos/id/1018/1000/600/",
@@ -43,7 +44,7 @@ function ProductDetailPage(props) {
   return (
     <div className="details-container">
       <h1
-        style={{ display: "flex", justifyContent: "center", margin: "100px" }}
+        style={{ display: "flex", justifyContent: "center", margin: "50px" }}
       >
         DETAILED PAGE OF THE PRODUCT ID: {productId}
       </h1>
@@ -56,6 +57,8 @@ function ProductDetailPage(props) {
         id={productId}
         show={RotatingImageModalShow}
         onHide={() => setRotatingImageModalShow(false)}
+        
+
       />
 
 
@@ -65,7 +68,7 @@ function ProductDetailPage(props) {
         <div className="col-sm-5">
           <ImageGallery items={images} />
           <div className="rotating-images-modal">
-          <Button variant="dark" onClick={() => setRotatingImageModalShow(true)}>
+          <Button variant="dark" size="lg" onClick={() => setRotatingImageModalShow(true)}>
             Launch 360 Degree View
           </Button>
       </div>
@@ -79,13 +82,13 @@ function ProductDetailPage(props) {
                       className="make-inquiry"
                       variant="dark"
                       buttonStyle="btn--outline"
-                      onClick={() => setInquiryModalShow(true)}
+                      onClick={() => setProductInquiryModalShow(true)}
                     >
-                      Make an Inquiry
+                      Product Inquiry
                     </Button>}>
               <div className="row">
                 <div className="col-sm-8">
-               RPODUCT INFORMATION
+               Product Information
                 </div>
                 <div className="col-sm-4">
                    <Card
@@ -107,9 +110,11 @@ function ProductDetailPage(props) {
           </div>
       
       </div>
-      <InquiryModal
-        show={inquiryModalShow}
-        onHide={() => setInquiryModalShow(false)}
+      <ProductInquiryModal
+        show={ProductInquiryModalShow}
+        onHide={() => setProductInquiryModalShow(false)}
+        dataToModal={productId}
+
       />
       <Footer />
     </div>

@@ -71,7 +71,7 @@ function Footer() {
               <FaInstagram />
             </a>
             <a
-              href="https://www.youtube.com"
+              href="https://www.youtube.com/watch?v=xLTye_XoBUU&feature=youtu.be&ab_channel=MACKENZIEBECXS"
               className="social-icon-link"
               target="_blank"
               aria-label="Youtube"
