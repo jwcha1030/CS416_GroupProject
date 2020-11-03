@@ -6,8 +6,19 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from "react-bootstrap/Form";
+import { Formik } from 'formik';
+import * as yup from 'yup';
+ 
+
+const schema = yup.object({
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  email: yup.string().required(),
+  message: yup.string().required(),
+  });
 
 function InquiryModal(props) {
+ 
     return (
       <Modal
         {...props}
@@ -17,63 +28,127 @@ function InquiryModal(props) {
         style={{ opacity: 1 }}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Questions?</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">General Inquiry</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <br></br>
-
-          <Row>
-            <Col>
             <h4>
             Please feel free to ask anything by filling out the form below, and we
-            will get back to you within a few days.
-          </h4>
-  
-            </Col>
-          </Row>
-        
-          <Form>
-            <br></br>
-            <Row>
-            <Col>
-            <Form.Label>First Name</Form.Label>
-              <Form.Control required size="lg" placeholder="First name" />
-            </Col>
-            <Col>
-            <Form.Label>Last Name</Form.Label>
-              <Form.Control  required size="lg" placeholder="Last name" />
-            </Col>
-          </Row>
+             will get back to you within a few days.         
+              </h4>
           <br></br>
 
-          <Row>
-          <Col>
-          <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control required size="lg" type="email" placeholder="Your Email" />
-            </Form.Group>
-        </Col>
-          </Row>
-        
-        <Row>
-        <Col>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Message</Form.Label>
-              <Form.Control required size="lg" as="textarea" rows="10" />
-            </Form.Group>
-        </Col>
-        </Row>
+          <Formik
+      validationSchema={schema}
+      onSubmit={console.log(schema)}
+      initialValues={{
+      }}
+    >
+      {({
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        values,
+        touched,
+        isValid,
+        errors,
+      }) => (
+        <Form noValidate onSubmit={handleSubmit}>
+          <Form.Row>
+              
+                  <Form.Group as={Col} md="5" controlId="validationFormikLastName">
+                    <Form.Label>First Name</Form.Label>
+                    
+                      <Form.Control
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.firstName}
+                        size="lg"
+                      />             
+                      <Form.Control.Feedback type="invalid">
+                        {errors.firstName}
+                      </Form.Control.Feedback>
+                  </Form.Group>
 
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
+                  <Form.Group as={Col} md="5" controlId="validationFormikLastName">
+                    <Form.Label>Last Name</Form.Label>
+                    
+                      <Form.Control
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+
+                        value={values.lastName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.lastName}
+                        size="lg"
+                      />             
+                      <Form.Control.Feedback type="invalid">
+                        {errors.lastName}
+                      </Form.Control.Feedback>
+                  </Form.Group>
+
+          </Form.Row>
+          <Form.Row>
+        <Form.Group as={Col} md="5" controlId="validationFormikEmail">
+                    <Form.Label>Email</Form.Label>
+                    
+                      <Form.Control
+                        type="email"
+                        placeholder="Your Email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        isInvalid={!!errors.email}
+                        size="lg"
+                      />             
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                  </Form.Group>
+        </Form.Row>
+
+
+         
+          <Form.Row>
+              
+            <Form.Group as={Col} md="10" controlId="validationFormikMessage">
+              <Form.Label>Message</Form.Label>  
+
+             
+              <Form.Control
+                placeholder="Your Message"
+                name="message"
+               value={values.message}
+                onChange={handleChange}
+                isInvalid={!!errors.message}
+                 size="lg" as="textarea" rows="15" />
+
+              <Form.Control.Feedback type="invalid">
+                {errors.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+            </Form.Row>
+            <br/>
+            <br/>
+          <div align="right">
           <Button variant="light" onClick={props.onHide}>
             Close
           </Button>
-          <Button variant="dark">Submit</Button>
-        </Modal.Footer>
+          <Button type="submit" variant="dark">Submit</Button>
+          </div>
+        </Form>
+      )}
+    </Formik>
+        </Modal.Body>
       </Modal>
     );
   }
+
+
+
   
   export default InquiryModal

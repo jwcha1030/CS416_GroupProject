@@ -156,10 +156,9 @@ function RotatingImageModal(props) {
                     title={"Product ID is "+ id}
                     description="Drag around the see different angles"
                   /></Card>
+ 
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="dark" onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+   
     </Modal>
   );
 }
