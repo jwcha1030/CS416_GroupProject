@@ -10,6 +10,10 @@ export default function DataTable({data, headers, changeItem, showEdit, deleteIt
     //append priceUnit sign if 'key' is price
     if (key === "price")
       return priceUnit + item[key];
+
+    //file object
+    if (key.toLowerCase()==="img" && (typeof item[key])!=="string" && item[key]!==null)
+      return item[key].name;
     //if the length of the content is longer than maxLength, slice it so that it fits nicely in a column
     return (typeof (item[key]) === "string" && item[key].length > maxLength ?
       (item[key].slice(0, maxLength)) + "..." : item[key])
@@ -31,9 +35,9 @@ export default function DataTable({data, headers, changeItem, showEdit, deleteIt
         <tbody>
         {data.map((item, i) => {
           return <tr key={item['id']}>
-            {Object.keys(item).map(key =>
-              <td key={key + item.id} className={key + item.id}>
-                {validContent(item, key)}
+            {Object.keys(item).map(k =>
+              <td key={k + item.id}>
+                {validContent(item, k)}
               </td>)}
 
             {/*if showEdit is not null display <td>*/}

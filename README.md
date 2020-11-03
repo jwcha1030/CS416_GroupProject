@@ -16,7 +16,8 @@ The Merchandising Society Club (MSC) makes Fashion Institute of Technology (FIT)
 Our solution is to create a flexible website for MSC that will allow them to manage and maintain an online platform that has several different sections which include an MSC about page, mailing subscriptions, an MSC product collection for showcasing merchandise, and a virtual showroom to replicate their physical Retail Revolution Store online.
 
 **Current Version**  
-> 0.01 Beta Release 10/26/2020 - Deployed initial design and look of the web application with zero-features. 
+> 0.02 Beta Release 11/3/2020    Deployed initial design and look of the web application with carousel CRUD in admin feature.  <br>
+> 0.01 Beta Release 10/26/2020   Deployed initial design and look of the web application with zero-features. 
 
 **Deployment** <br>
 >**Front-end deployed on Firebase** <br>
@@ -45,12 +46,14 @@ npm start
 >**Back-end** <br>
 > Install Django 3 - https://www.djangoproject.com/ <br> 
 > Install Python 3 that fits with your os - https://www.python.org/downloads/ <br> 
+> Install Heroku CLI - https://devcenter.heroku.com/articles/heroku-cli <br>
 > Start a virtual environment - https://docs.python.org/3/tutorial/venv.html <br> 
-> Go to the "backend" directory. <br>
+> ~~Go to the "backend/sunyk-msc-backend" directory.~~ Clone the following directory - https://github.com/Habced/sunyk-msc-backend <br>
 > Run the following only once on initial setup. <br>
 ```
+// While the virtual environment is running
 python get-pip.py
-pip install
+pip install -r requirements.txt
 ```
 > Run the following after making changes to the code. <br>
 ```
@@ -70,7 +73,7 @@ npm run build
 firebase deploy
 ```
 >**Back-end** <br>
->Change directory to "backend". <br>
+>~~Change directory to "backend/sunyk-msc-backend".~~ Go to the directory where you cloned https://github.com/Habced/sunyk-msc-backend <br>
 ```
 pip freeze > requirements.txt
 git add .
@@ -87,3 +90,4 @@ git push heroku master
 **Bug Report**
 * List of known bugs so far is shown in the bottom of this document - https://docs.google.com/document/d/1F2VT2uxXTtgqkSdHsZDD1JYNprkv5WWZQzJMY1aoMUI/edit?usp=sharing
 * Contributors can issue a bug from this link - https://github.com/jwcha1030/CS416_GroupProject/issues
+* Issues with the API directly can be found as comments here - https://docs.google.com/spreadsheets/d/1b4XPErknaVPMNBPf7zuzlBbYz6Cvb3ZSYmrM4xtOyqc/edit?pli=1#gid=0
