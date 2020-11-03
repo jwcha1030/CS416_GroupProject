@@ -157,7 +157,7 @@ const ProductList = (props, idex) => {
       </div>
       <div className="nestedTab">
         {/* All */}
-        <TabPanel>
+        <TabPanel >
           <Tabs forceRenderTabPanel>
             <div className="product-list">{searchResults.map(Product)}</div>
           </Tabs>
@@ -165,12 +165,12 @@ const ProductList = (props, idex) => {
         {/* All */}
 
         {/* FIT */}
-        <TabPanel>
+        <TabPanel >
           <Tabs forceRenderTabPanel>
-             <TabList >
-              <Tab>FIT All</Tab>
-              <Tab>FIT Goods</Tab>
-              <Tab>FIT Apparels</Tab>
+             <TabList>
+              <Tab >FIT All</Tab>
+              <Tab >FIT Goods</Tab>
+              <Tab >FIT Apparels</Tab>
             </TabList>
              <TabPanel>
               <div className="product-list">{fitAll.map(Product)}</div>

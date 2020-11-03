@@ -47,26 +47,26 @@
   padding: 10rem;
   padding-bottom: 1rem;
   padding-top: 0rem;
-  margin: 1rem;
   margin-top: 0rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.08rem;
   background-color: white;
   font-size: medium;
 }
 
 .react-tabs__tab:hover {
-  font-size: large;
   transition: 0.1s;
-  border-radius: 3px;
-  border-bottom: 3px #ea7229 solid;
+  font-weight: bold;
+  color: #ea7229;
 }
 
 .react-tabs__tab--selected {
   border: none;
-  border-radius: 3px;
-
-  border-bottom: 3px #ea7229 solid;
   text-align: center;
+  font-weight: 700;
+  font-size: large;
+
+  color: #ea7229;
+  border-bottom: 5px solid #ea7229;
 
   transition: 0.3s;
 }
