@@ -9,7 +9,7 @@ import Rotation from "react-rotation";
 import "./RotatingImage.css";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import ProductInquiryModal from "./ProductInquiry"
+import PurchaseInquiryModal from "./PurchaseInquiry"
 
 import {
   mugcup_1,
@@ -20,7 +20,7 @@ const { Meta } = Card;
 
 
 function ProductDetailPage(props) {
-  const [ProductInquiryModalShow, setProductInquiryModalShow] = React.useState(false);
+  const [PurchaseInquiryModalShow, setPurchaseInquiryModalShow] = React.useState(false);
   const [RotatingImageModalShow, setRotatingImageModalShow] = React.useState(false); 
 
   const productId = props.match.params.id;
@@ -82,9 +82,9 @@ function ProductDetailPage(props) {
                       className="make-inquiry"
                       variant="dark"
                       buttonStyle="btn--outline"
-                      onClick={() => setProductInquiryModalShow(true)}
+                      onClick={() => setPurchaseInquiryModalShow(true)}
                     >
-                      Product Inquiry
+                      Purchase Inquiry
                     </Button>}>
               <div className="row">
                 <div className="col-sm-8">
@@ -110,9 +110,9 @@ function ProductDetailPage(props) {
           </div>
       
       </div>
-      <ProductInquiryModal
-        show={ProductInquiryModalShow}
-        onHide={() => setProductInquiryModalShow(false)}
+      <PurchaseInquiryModal
+        show={PurchaseInquiryModalShow}
+        onHide={() => setPurchaseInquiryModalShow(false)}
         dataToModal={productId}
 
       />

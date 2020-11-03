@@ -50,7 +50,7 @@ function InquiryModal(props) {
           <Col>
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control required size="lg" type="email" placeholder="merchandisng-society@msc.com" />
+              <Form.Control required size="lg" type="email" placeholder="Your Email" />
             </Form.Group>
         </Col>
           </Row>
