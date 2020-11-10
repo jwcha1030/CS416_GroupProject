@@ -26,13 +26,17 @@ const renderMembers = (item, index) => {
         <Card.Body>
           <Card.Title className="title">{item.name}</Card.Title>
           <Card.Subtitle className="subtitle mb-1 text-muted">
-            {item.position}
+            {item.position_desc}
           </Card.Subtitle>
           <p class="card-text">
-            <medium class="text-muted">{item.date}</medium>
+            <medium class="text-muted">{item.create_date}</medium>
           </p>
-          <Card.Text className="description">{item.description}</Card.Text>
-
+          <Card.Text className="description">{item.introduction}</Card.Text>
+          {/* id: INT, idx: INT,
+        position: STR, position_desc: STR, 
+        img: STR, name: STR, contact: STR
+        introduction: STR,
+        create_date: STR */}
           <OverlayTrigger
             placement="right"
             delay={{ show: 250, hide: 400 }}
