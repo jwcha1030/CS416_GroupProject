@@ -1,6 +1,5 @@
 .tab-logo {
-  width: 15rem;
-  padding: 0;
+  width: 13rem;
 }
 
 .search {
@@ -48,7 +47,7 @@
   padding-bottom: 1rem;
   padding-top: 0rem;
   margin-top: 0rem;
-  margin-bottom: 0.08rem;
+  margin-bottom: 0.1rem;
   background-color: white;
   font-size: medium;
 }
@@ -85,10 +84,15 @@
   border-bottom: 1px solid #e0e0e0;
 }
 @media screen and (max-width: 1200px) {
+  .react-tabs__tab-list {
+    display: block;
+    overflow-y: auto;
+    width: 100%;
+    white-space: nowrap;
+  }
   .product-list {
     column-gap: 1rem;
     row-gap: 1rem;
-
     padding-top: 1rem;
     padding-left: 0;
     padding-right: 0;
@@ -109,11 +113,12 @@
   }
   .react-tabs__tab {
     padding: 5px;
-    margin: 1rem;
-    font-size: small;
+    margin: 0px 5px 0px 5px;
+
+    font-size: 10px;
   }
   .react-tabs__tab:hover {
-    font-size: medium;
+    font-size: 12px;
     transition: 0.1s;
     border-radius: 2px;
   }
@@ -122,5 +127,9 @@
     text-align: center;
 
     transition: 0.3s;
+  }
+
+  .tab-logo {
+    width: 10rem;
   }
 }

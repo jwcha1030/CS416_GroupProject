@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: din-condensed, sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +26,7 @@ body::-webkit-scrollbar-thumb {
 }
 html {
   scroll-behavior: smooth;
+  font-family: din-condensed, sans-serif;
 }
 
 a,
@@ -37,5 +38,5 @@ a:focus {
 }
 
 code {
-  font-family: "Times New Roman", Times, serif;
+  font-family: din-condensed, sans-serif;
 }

@@ -2,6 +2,7 @@ import dummy from "../../../images/dummy.jpg";
 import member1 from "../../../images/member1.jpg";
 
 export const DataMembers = [
+  //THIS WAS USED FOR FRONTEND DATA BEFORE BACKEND WAS SETUP.
   {
     id: "1",
     name: "Rebecca",

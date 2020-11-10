@@ -5,9 +5,12 @@ import "./ProductList.css";
 import Product from "./Product";
 import { Card } from "antd";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import FIT_TAB_IMAGE from "../images/fit2.jpg";
+import ALL_TAB_IMAGE from "../images/all.png";
+import FIT_TAB_IMAGE from "../images/fit.jpg";
 import SBU_TAB_IMAGE from "../images/sbu2.png";
+import GOODS_TAB_IMAGE from "../images/tab_goods.JPG";
+import APPARELS_TAB_IMAGE from "../images/tab_apparels.JPG";
+
 import "antd/dist/antd.css";
 import ProductDataAll from "./ProductDataAll"; 
 import { SearchOutlined } from "@ant-design/icons";
@@ -148,11 +151,11 @@ const ProductList = (props, idex) => {
       </div>
       <div className="upperTab">
         <TabList>
-          <Tab>All</Tab>
+        <Tab> <img className="tab-logo" src={ALL_TAB_IMAGE}/></Tab>
           <Tab> <img className="tab-logo" src={FIT_TAB_IMAGE}/></Tab>
           <Tab><img className="tab-logo" src={SBU_TAB_IMAGE}/></Tab>
-          <Tab>Goods</Tab>
-          <Tab>Apparels</Tab>
+          <Tab><img className="tab-logo" src={GOODS_TAB_IMAGE}/></Tab>
+          <Tab><img className="tab-logo" src={APPARELS_TAB_IMAGE}/></Tab>
         </TabList>
       </div>
       <div className="nestedTab">
@@ -210,8 +213,7 @@ const ProductList = (props, idex) => {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>All</Tab>
-
+              <Tab>Schools All</Tab>
               <Tab>Fashion Institute of Technology</Tab>
               <Tab>Stony Brook University</Tab>
             </TabList>
@@ -232,7 +234,7 @@ const ProductList = (props, idex) => {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>All</Tab>
+              <Tab>Schools All</Tab>
               <Tab>Fashion Institute of Technology</Tab>
               <Tab>Stony Brook University</Tab>
             </TabList>

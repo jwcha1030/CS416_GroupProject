@@ -6,8 +6,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.7rem;
-  font-family: "Times New Roman", Times, serif;
+  font-size: 1 rem;
+  font-family: din-condensed, sans-serif;
+
   position: sticky;
   top: 0;
   z-index: 999;

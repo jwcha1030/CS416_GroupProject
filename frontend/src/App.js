@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/HomePage/Home";
 import Collections from "./components/pages/Collections/Collections";
@@ -10,7 +9,7 @@ import Navbar from "./components/Navbar";
 import ScrollToTop from "react-router-scroll-top";
 import ProductDetailPage from "./components/ProductDetailPage";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence} from "framer-motion";
 import Admin from "./components/pages/Admin/Admin";
 import CarouselEdit from "./components/pages/Admin/EditContents/EditCarousel/CarouselEdit";
 import CollectionsEdit from "./components/pages/Admin/EditContents/EditCollections/CollectionsEdit";

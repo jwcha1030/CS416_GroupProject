@@ -1,10 +1,6 @@
 import React from "react";
 import "./HeroSection.css";
 import "./CollectionsMain.css";
-import { Button } from "./Button";
-import { Link } from "react-router-dom";
-import ReactImageAppear from "react-image-appear";
-import Tab from "@material-ui/core/Tab";
 import TabComponent from "./TabComponent";
 import CollectionsCarousel from "./CollectionsCarousel";
 
@@ -15,9 +11,6 @@ function CollectionsMain({
   lightTextDesc,
   headline,
   description,
-  img,
-  alt,
-  imgStart,
 }) {
   return (
     <>
