@@ -1,11 +1,15 @@
 .tab-logo {
   width: 13rem;
 }
-
+.collections-title {
+  font-size: 4rem;
+  font-weight: 550;
+  margin-bottom: 1%;
+}
 .search {
   text-align: center;
   margin: 1rem;
-  width: 80%;
+  width: 91%;
   padding: 1.4rem;
   margin-bottom: 4rem;
   transition: 0.2s;
@@ -83,6 +87,12 @@
 .react-tabs__tab-list {
   border-bottom: 1px solid #e0e0e0;
 }
+
+.search-outline {
+  font-size: 4rem;
+  padding-right: 1rem;
+  margin: 3rem, 2%, 10%, 4%;
+}
 @media screen and (max-width: 1200px) {
   .react-tabs__tab-list {
     display: block;
@@ -131,5 +141,42 @@
 
   .tab-logo {
     width: 10rem;
+  }
+
+  .search-outline {
+    font-size: 3rem;
+    padding-left: 2.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .search {
+    text-align: center;
+    margin: 0.5rem;
+    width: 75%;
+    padding: 1rem;
+    margin-bottom: 3rem;
+    transition: 0.2s;
+    color: #000000;
+    font-size: medium;
+    border-radius: 10px;
+  }
+
+  .search::placeholder {
+    color: #868686;
+    font-size: medium;
+  }
+
+  .search:hover {
+    font-size: large;
+    transition: 0.2s;
+  }
+
+  .search:focus {
+    outline: none;
+  }
+  .collections-title {
+    font-size: 2rem;
+    font-weight: 550;
+    margin-bottom: 1%;
   }
 }

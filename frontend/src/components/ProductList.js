@@ -135,11 +135,11 @@ const ProductList = (props, idex) => {
 
   return (
     <Tabs className="main-category" forceRenderTabPanel defaultIndex={0}>
-        <h1 style={{fontSize:"5rem", marginBottom:"3%"}} align="center">MERCHANDISING SOCIETY COLLECTIONS</h1>
+        <h1 className="collections-title" align="center">MERCHANDISING SOCIETY COLLECTIONS</h1>
         <br/>
       <div className="row">
         <div className="mx-auto" style={{width:"1000px"}}>
-      <SearchOutlined style={{ marginTop: "3rem", marginLeft:"4%", marginRight:"2%", marginBottom:"10%",fontSize: "3rem" }} />
+      <SearchOutlined className="search-outline" align="center"/>
         <input
           className="search"
           type="text"
