@@ -130,29 +130,28 @@ function PurchaseInquiry(props) {
                     </Form.Control>
                 </Form.Group>
 
-              <Form.Group as={Col} md="8" controlId="validationFormikNotes">
-              <Form.Label>Note</Form.Label>
-                 <Form.Text>In the message below, please include your preferred option (size / color) of the product, 
+              <Form.Group as={Col} md="8" size="lg" controlId="validationFormikNotes">
+              <Form.Label size="lg">Note</Form.Label>
+                 <Form.Text style={{fontSize:"15px"}}>In the message below, please include your preferred option (size / color) of the product, 
                  and we will proceed your purchase after contacting you through your email again shortly. </Form.Text>
                 </Form.Group>
           </Form.Row>
              
           <Form.Row>
                 <Form.Group as={Col} md="4" controlId="validationFormikMessage">
-              <Form.Label>Product Information</Form.Label><br/>
-              <Form.Text>Product ID is {props.dataToModal}</Form.Text> <br/>
-              <Form.Text>Product Name is ??{props.dataToModal}</Form.Text> <br/>
-              <Form.Text>Product Price is ??{props.dataToModal}</Form.Text> <br/>
-              <Form.Text>More Details...img???{props.dataToModal}</Form.Text> <br/>
-
-            
+              <Form.Label >Product Information</Form.Label><br/>
+                 <Form.Text style={{fontSize:"15px"}}>Product ID is {props.dataToModal}</Form.Text> <br/>
+                <Form.Text style={{fontSize:"15px"}}>Product Name is ??{props.dataToModal}</Form.Text> <br/>
+                <Form.Text style={{fontSize:"15px"}}>Product Price is ??{props.dataToModal}</Form.Text> <br/>
+                <Form.Text style={{fontSize:"15px"}}>More Details...img???{props.dataToModal}</Form.Text> <br/>
+             
             </Form.Group> 
             <Form.Group as={Col} md="8" controlId="validationFormikMessage">
               <Form.Label>Message</Form.Label>  
 
              
               <Form.Control
-                placeholder="Your Message"
+                placeholder="Your Detailed Purchasing Inquiry on Color, Size, Quantity"
                 name="message"
                value={values.message}
                 onChange={handleChange}
@@ -167,10 +166,10 @@ function PurchaseInquiry(props) {
             <br/>
             <br/>
           <div align="right">
-          <Button variant="light" onClick={props.onHide}>
+          <Button variant="light"size="lg" onClick={props.onHide}>
             Close
           </Button>
-          <Button type="submit" variant="dark">Submit</Button>
+          <Button type="submit" size="lg" variant="dark">Submit</Button>
           </div>
         </Form>
       )}

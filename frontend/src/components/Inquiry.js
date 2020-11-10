@@ -56,7 +56,7 @@ function InquiryModal(props) {
         <Form noValidate onSubmit={handleSubmit}>
           <Form.Row>
               
-                  <Form.Group as={Col} md="5" controlId="validationFormikLastName">
+                  <Form.Group as={Col} md="6" controlId="validationFormikLastName">
                     <Form.Label>First Name</Form.Label>
                     
                       <Form.Control
@@ -73,7 +73,7 @@ function InquiryModal(props) {
                       </Form.Control.Feedback>
                   </Form.Group>
 
-                  <Form.Group as={Col} md="5" controlId="validationFormikLastName">
+                  <Form.Group as={Col} md="6" controlId="validationFormikLastName">
                     <Form.Label>Last Name</Form.Label>
                     
                       <Form.Control
@@ -93,7 +93,7 @@ function InquiryModal(props) {
 
           </Form.Row>
           <Form.Row>
-        <Form.Group as={Col} md="5" controlId="validationFormikEmail">
+        <Form.Group as={Col} md="6" controlId="validationFormikEmail">
                     <Form.Label>Email</Form.Label>
                     
                       <Form.Control
@@ -115,7 +115,7 @@ function InquiryModal(props) {
          
           <Form.Row>
               
-            <Form.Group as={Col} md="10" controlId="validationFormikMessage">
+            <Form.Group as={Col} md="12" controlId="validationFormikMessage">
               <Form.Label>Message</Form.Label>  
 
              
@@ -134,12 +134,14 @@ function InquiryModal(props) {
             </Form.Row>
             <br/>
             <br/>
+
           <div align="right">
-          <Button variant="light" onClick={props.onHide}>
+          <Button variant="light" size="lg" onClick={props.onHide}>
             Close
           </Button>
-          <Button type="submit" variant="dark">Submit</Button>
+          <Button type="submit" size="lg"variant="dark">Submit</Button>
           </div>
+         
         </Form>
       )}
     </Formik>

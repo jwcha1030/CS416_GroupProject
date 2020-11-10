@@ -11,11 +11,11 @@ import Footer from "../Footer.js/Footer";
 var axios = require('axios')
 
 function OurTeam() {
-  const [allMembers, setData] = useState();
+  const [allMembers, setData] = useState([{}]);
   useEffect(() => {
     axios.get('https://sunyk-msc-backend.herokuapp.com/team_page_person/get_all/',)
     .then(function (response) {
-      if(response.status == 200){
+      if(response.status == 200){ 
         if(response.data.res_code == 1){
           setData(response.data.results)
         } else {
@@ -37,7 +37,7 @@ function OurTeam() {
         <HeroSection {...members} />
       </motion.div>
 
-      <div className="members-list">{DataMembers.map(Member)}</div>
+      <div className="members-list">{allMembers.map(Member)}</div>
       <Footer />
     </div>
   );

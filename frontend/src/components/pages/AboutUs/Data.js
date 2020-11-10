@@ -25,7 +25,7 @@ export const virtualStore = {
   lightTextDesc: true,
   topLine: "Retail Revolution Store",
   headline: "Experience Our Store Online",
-  description: "Virtually experience Retail Revolution Store",
+  description: "Virtually Experience Retail Revolution Store",
   buttonLabel: "Collections",
   aboutUsRender: "TRUE_VR",
   aboutUsRenderSubButton: "VR",

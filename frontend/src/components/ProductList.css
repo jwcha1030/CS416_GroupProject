@@ -11,7 +11,7 @@
   margin: 1rem;
   width: 91%;
   padding: 1.4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
   transition: 0.2s;
   color: #000000;
   font-size: x-large;
@@ -51,9 +51,9 @@
   padding-bottom: 1rem;
   padding-top: 0rem;
   margin-top: 0rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.07rem;
   background-color: white;
-  font-size: medium;
+  font-size: small;
 }
 
 .react-tabs__tab:hover {
@@ -66,7 +66,7 @@
   border: none;
   text-align: center;
   font-weight: 700;
-  font-size: large;
+  font-size: small;
 
   color: #ea7229;
   border-bottom: 5px solid #ea7229;

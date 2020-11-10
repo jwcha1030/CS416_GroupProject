@@ -17,6 +17,8 @@ var axios = require('axios')
 
  
 function Home() {
+
+  //Home Carousel API Call-----------------------------------------------------------------------------
   const [carousels, setData] = useState([{}]);
   useEffect(() => {
     Aos.init({
@@ -27,6 +29,8 @@ function Home() {
 
     });
   }, []);
+  //https://github.com/michalsnik/aos#animations AOS animation on scroll library for animation on scrolling added**
+
   useEffect(() => {
     axios.get('https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/',)
     .then(function (response) {
@@ -42,7 +46,8 @@ function Home() {
       console.log(error);
     });
    },[]);
-  //https://github.com/michalsnik/aos#animations AOS animation on scroll library for anmation on scrolling added**
+  //Home Carousel API Call-----------------------------------------------------------------------------
+
    return (
     <motion.div
       initial={{ opacity: 0 }}
