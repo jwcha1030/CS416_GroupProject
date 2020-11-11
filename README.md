@@ -1,14 +1,13 @@
 # Merchandising Society Club Website
-## Purpose
->The Merchandising Society Club wishes to create an online platform for their business. 
-  	
 ## Roles and Group Members  
-
 >- Project Manager: David J. Cha (david.j.cha@stonybrook.edu)
 >- Lead Programmer: Daekyung Kim (daekyung.kim@stonybrook.edu)
 >- Product Owner: MSC (msc.sunykr@gmail.com)
 >- Designer: Haseung Lee (haseung.lee@stonybrook.edu)
 
+## Purpose
+>The Merchandising Society Club wishes to create an online platform for their business. 
+  	
 ## The Problem  
 The Merchandising Society Club (MSC) makes Fashion Institute of Technology (FIT) and Stony Brook University merchandise. Their goal is to not only produce merchandise for students and faculties but also to showcase and sell their products that are crafted after extensive research on fashion trends and sales planning. Thus, to display their products for sale, MSC runs its own physical Retail Revolution Store at FIT, and they are currently in need of expanding their collection online. Particularly during the COVID 19 crisis, customers cannot regularly access the offline retail store. Thus, having an online means of accessing MSC is a massive benefit for them. 
 
