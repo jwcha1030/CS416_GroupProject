@@ -1,3 +1,7 @@
+#google_translate_element {
+  width: 41%;
+  overflow-x: hidden;
+}
 .footer-container {
   background-color: #000000;
   padding: 1rem 0 6rem 0;
@@ -14,9 +18,11 @@
 }
 .admin-button {
   color: white;
+  fill: white;
 }
 .admin-button:hover {
   color: #ea7229;
+  fill: #ea7229;
 }
 .footer-inquiry {
 }
@@ -228,5 +234,10 @@
     font-size: 12px;
     margin-bottom: 16px;
     border: 2px solid #fff;
+  }
+
+  #google_translate_element {
+    width: 30%;
+    overflow-x: hidden;
   }
 }

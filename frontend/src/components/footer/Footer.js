@@ -14,7 +14,8 @@ import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
 import InquiryModal from "../inquiry/GeneralInquiry";
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
- 
+import GoogleTranslate from "../translate/GoogleTranslate";
+
 
 function Footer() {
   const [modalShow, setModalShow] = React.useState(false);
@@ -102,16 +103,31 @@ function Footer() {
           </smaller>
           <br></br>
           <br></br>
-          <Link
+          <div className="row">
+          <div className="col-sm-3">
+           </div>
+            <div className="col-sm-3">
+            <GoogleTranslate className="GoogleTranslate"/> 
+
+            </div>
+            <div className="col-sm-3">
+            <Link
               // ADMIN PAGE
               to="/adminlogin"
               className="admin-button"
           >
-              <FaUserLock
-                style={{ fill: "white", paddingRight: "6px" }}
+             
+              <div style={{ fontSize: "12px" }}>
+              <FaUserLock className="admin-icon"
+                style={{ paddingRight: "6px", fontSize:"2rem"}}
               />
-              <div style={{ fontSize: "12px" }}>Admin Log in</div>
-           </Link>  
+              Admin Log in</div>
+           </Link>
+           <div className="col-sm-3">
+           </div>  
+            </div>
+          </div>
+          
         </div>
        
       </section>

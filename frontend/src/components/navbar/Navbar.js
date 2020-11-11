@@ -7,7 +7,7 @@ import { IconContext } from "react-icons/lib";
 import SVG from "react-inlinesvg";
 import Logo from "../../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
-import GoogleTranslate from "../translate/GoogleTranslate";
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -108,11 +108,7 @@ function Navbar() {
                     
                   </Link>
                 </li> */}
-              
-                <li className="nav-item">
-
-                <GoogleTranslate className="GoogleTranslate"/> 
-                </li>
+               
               </div>
             </ul>
           </div>

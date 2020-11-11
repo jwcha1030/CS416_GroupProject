@@ -125,11 +125,6 @@
 .menu-icon {
   display: none;
 }
-#google_translate_element {
-  margin-top: 20%;
-  margin-left: 10%;
-  overflow: hidden;
-}
 
 @media screen and (max-width: 1200px) {
   .navbar-container {
