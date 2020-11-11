@@ -129,8 +129,9 @@ function Footer() {
           </div>
           
         </div>
-       
+        <br/>
       </section>
+   
 
       <InquiryModal
         show={modalShow}

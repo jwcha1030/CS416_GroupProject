@@ -1,8 +1,11 @@
 #google_translate_element {
-  width: 41%;
+  width: 60%;
   overflow-x: hidden;
 }
 .footer-container {
+  -webkit-box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.75);
   background-color: #000000;
   padding: 1rem 0 6rem 0;
   display: flex;
@@ -237,7 +240,7 @@
   }
 
   #google_translate_element {
-    width: 30%;
-    overflow-x: hidden;
+    width: 50%;
+    margin-bottom: 5%;
   }
 }
