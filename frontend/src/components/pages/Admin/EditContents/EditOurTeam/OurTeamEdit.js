@@ -214,7 +214,7 @@ export default function OurTeamEdit(props) {
             // Do something with the returned data
             console.log("Post SUCCESS", response.data.team_page_person);
             setData([...data, response.data.team_page_person]);
-            window.location.reload();
+            // window.location.reload();
           } else {
             // Unhandled res_code
             alert("Post: Unhandled res_code");
@@ -246,7 +246,7 @@ export default function OurTeamEdit(props) {
             // Do something with the returned data
             console.log("Post SUCCESS", response.data.team_page_person);
             setData([...data, response.data.team_page_person]);
-            window.location.reload();
+            // window.location.reload();
           } else {
             // Unhandled res_code
             alert("Post: Unhandled res_code");
