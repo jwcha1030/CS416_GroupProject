@@ -36,7 +36,7 @@ const renderProducts = (props, index) => {
               src={props.img}
               alt={"img"}
               animation="fillIn"
-              animationDuration={Math.random() * 3 + 1 + "s"}
+              animationDuration={Math.random() * 2 + 1 + "s"}
             />
           </a>
           //   <Rotation

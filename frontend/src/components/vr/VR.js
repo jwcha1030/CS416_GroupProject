@@ -60,7 +60,7 @@ return(
         pitch={11}
         yaw={-167}
         text="Info Hotspot Text 3"
-        URL="/collections"
+        URL="/collections/3"
         />
 
         {/* <Pannellum.Hotspot 

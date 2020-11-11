@@ -240,7 +240,7 @@ const ProductList = (props, idex) => {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>Schools All</Tab>
+              <Tab>All Schools</Tab>
               <Tab>Fashion Institute of Technology</Tab>
               <Tab>Stony Brook University</Tab>
             </TabList>
@@ -261,7 +261,7 @@ const ProductList = (props, idex) => {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab>Schools All</Tab>
+              <Tab>All Schools</Tab>
               <Tab>Fashion Institute of Technology</Tab>
               <Tab>Stony Brook University</Tab>
             </TabList>
