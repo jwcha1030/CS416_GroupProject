@@ -8,27 +8,26 @@ import {IoIosArrowBack} from "react-icons/io";
 
 export default function CarouselEdit() {
 
-  const [data,setData]=useState([]);
+  const [data, setData] = useState([]);
   const [current_item, setItem] = useState(null); //object
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
   const [newCaption, setNewCaption] = useState('');
   const [newDesc, setNewDesc] = useState('');
   const [newImg, setNewImg] = useState(null); //file object
+  const [newIdx, setNewIdx] = useState(0);
 
   //['id', 'img', 'idx', 'caption','desc']
   const [headers, setHeaders] = useState([]); //table headers
   let axios = require('axios');
   //initial fetch
-  const fetchAllData = ()=>{
+  const fetchAllData = () => {
     axios.get("https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/")
-      .then(response =>{
+      .then(response => {
         // console.log(response.data);
         // Check if internet connection was working
-        if(response.status === 200){
-          if(response.data.res_code === 1){
-            // Everything worked correctly
-            // Do something with the returned data
+        if (response.status === 200) {
+          if (response.data.res_code === 1) {
             // console.log(response.data.results);
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
@@ -51,7 +50,9 @@ export default function CarouselEdit() {
         console.log(error);
       });
   };
-  useEffect(()=>{fetchAllData()},[]); //fetch once
+  useEffect(() => {
+    fetchAllData()
+  }, []); //fetch once
 
 
   const handleCaption = (e) => {
@@ -61,18 +62,20 @@ export default function CarouselEdit() {
     setNewDesc(e.target.value);
   };
   const handleImg = (e) => {
-		// Changed from e.target.value to e.target.files[0] because the api needs a file
+    // Changed from e.target.value to e.target.files[0] because the api needs a file
     // console.log(e.target.files[0].name);
     setNewImg(e.target.files[0]);
   };
-
+  const handleIdx = (e) => {
+    setNewIdx(parseInt(e.target.value));
+  };
   const handleDelete = (id) => {
-    axios.delete("https://sunyk-msc-backend.herokuapp.com/home_page_carousel/del/"+id+"/")
-      .then(response =>{
+    axios.delete("https://sunyk-msc-backend.herokuapp.com/home_page_carousel/del/" + id + "/")
+      .then(response => {
         // console.log(response.data);
         // Check if internet connection was working
-        if(response.status === 200){
-          if(response.data.res_code === 1){
+        if (response.status === 200) {
+          if (response.data.res_code === 1) {
             // Everything worked correctly
             // Do something with the returned data
             // console.log(response.data.results);
@@ -111,7 +114,6 @@ export default function CarouselEdit() {
   };
   const handleEditSubmit = (e) => {
     let itemID = current_item.id;
-    e.preventDefault();
     let i;
     for (i = 0; i < data.length; i++) {
       if (data[i].id === itemID) {
@@ -124,23 +126,27 @@ export default function CarouselEdit() {
     let inputImg = newImg == null ? data[i].img : newImg;
     let inputCap = newCaption === '' ? data[i].caption : newCaption;
     let inputDesc = newDesc === '' ? data[i].desc : newDesc;
+    let inputIdx = newIdx === 0 ? data[i].idx : newIdx;
     formData.append('img', inputImg);
     formData.append('caption', inputCap);
     formData.append('desc', inputDesc);
-    axios.put(apiBaseUrl, formData).then(response=>{
+    formData.append('idx', inputIdx);
+    axios.put(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
-      if(response.status === 200){
-        if(response.data.res_code === 1){
+      if (response.status === 200) {
+        console.log("PUT rescode:", response.data.res_code);
+        if (response.data.res_code === 1) {
           // Everything worked correctly
           // Do something with the returned data
-          console.log("Put SUCCESS",response.data.home_page_carousel);
+          console.log("Put SUCCESS", response.data.home_page_carousel);
           //update frontend
           let newData = [...data];
           newData[i].caption = inputCap;
           newData[i].desc = inputDesc;
           newData[i].img = inputImg;
+          newData[i].idx = inputIdx;
           setData(newData);
-          window.location.reload();
+          // window.location.reload();
 
           // } else if (){
           // Check other res_code with else if
@@ -163,17 +169,18 @@ export default function CarouselEdit() {
     setNewCaption('');
     setNewDesc('');
     setNewImg(null);
-/*
-    //This part is only when frontend was working
-    let newData = [...data];
-    newData[i].caption = newCaption===''? data[i].caption:newCaption;
-    setNewCaption(''); //reinitialize
-    newData[i].description = newDesc===''? data[i].description:newDesc;
-    setNewDesc('');
-    newData[i].img = newImg === '' ? data[i].img : newImg;
-    setNewImg('');
-    setData(newData);
-*/
+    setNewIdx(0);
+    /*
+        //This part is only when frontend was working
+        let newData = [...data];
+        newData[i].caption = newCaption===''? data[i].caption:newCaption;
+        setNewCaption(''); //reinitialize
+        newData[i].description = newDesc===''? data[i].description:newDesc;
+        setNewDesc('');
+        newData[i].img = newImg === '' ? data[i].img : newImg;
+        setNewImg('');
+        setData(newData);
+    */
     setEditModalShow(false);
   };
 
@@ -182,29 +189,28 @@ export default function CarouselEdit() {
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/home_page_carousel/add/";
     // var apiBaseUrl = "http://127.0.0.1:8000/home_page_carousel/add/";
 
-		// if the data does not include a File (eg img) use a json
+    // if the data does not include a File (eg img) use a json
     // var payload = {
     //   caption: newCaption,
-		// 	desc: newDesc,
-		// 	img: newImg
-		// };
-		// if the new data includes a File (eg img) use FromData();
-    console.log("Post",newImg);
-    if(newImg){
+    // 	desc: newDesc,
+    // 	img: newImg
+    // };
+    // if the new data includes a File (eg img) use FromData();
+    console.log("Post", newImg);
+    if (newImg) {
       const formData = new FormData();
       formData.append('img', newImg);
       formData.append('caption', newCaption);
       formData.append('desc', newDesc);
-      axios.post(apiBaseUrl, formData ).then(response=>{
+      axios.post(apiBaseUrl, formData).then(response => {
         // Check if internet connection was working
-        if(response.status === 200){
-          if(response.data.res_code === 1){
+        if (response.status === 200) {
+          if (response.data.res_code === 1) {
             // Everything worked correctly
             // Do something with the returned data
-            console.log("Post SUCCESS",response.data.home_page_carousel);
+            console.log("Post SUCCESS", response.data.home_page_carousel);
+            setData([...data, response.data.home_page_carousel]);
             window.location.reload();
-            setData([...data,response.data.home_page_carousel]);
-            console.log(data);
             // } else if (){
             // Check other res_code with else if
             // }
@@ -217,26 +223,27 @@ export default function CarouselEdit() {
           alert("Post: unable to connect with database");
         }
       }).catch(function (error) {
-          // TODO handle error with the call
-          alert("Post: Call error");
-          console.log(error);
-        });
-    }else{
+        // TODO handle error with the call
+        alert("Post: Call error");
+        console.log(error);
+      });
+    } else {
       console.log("Create new slide without img");
       let payload = {
         caption: newCaption,
         desc: newDesc,
-        img: null
+        img: ""
       };
-      axios.post(apiBaseUrl, payload).then(response=>{
+      axios.post(apiBaseUrl, payload).then(response => {
         // Check if internet connection was working
-        if(response.status === 200){
-          alert("POST res_code:",response.data.res_code);
-          if(response.data.res_code === 1){
+        if (response.status === 200) {
+          console.log("POST res_code:", response.data.res_code);
+          if (response.data.res_code === 1) {
             // Everything worked correctly
             // Do something with the returned data
-            console.log("Post SUCCESS",response.data.home_page_carousel);
-            setData([...data,response.data.home_page_carousel]);
+            console.log("Post SUCCESS", response.data.home_page_carousel);
+            setData([...data, response.data.home_page_carousel]);
+            window.location.reload();
             // } else if (){
             // Check other res_code with else if
             // }
@@ -249,17 +256,18 @@ export default function CarouselEdit() {
           alert("Post: unable to connect with database");
         }
       }).catch(function (error) {
-          // TODO handle error with the call
-          alert("Post: Call error");
-          console.log(error);
-        });
+        // TODO handle error with the call
+        alert("Post: Call error");
+        console.log(error);
+      });
     }
     e.preventDefault();
     //reinitialize
     setNewCaption('');
     setNewDesc('');
     setNewImg(null);
-		setCreateModalShow(false);
+    setNewIdx(0);
+    setCreateModalShow(false);
   };
 
   const handleCreateClose = () => {
@@ -273,10 +281,10 @@ export default function CarouselEdit() {
   return (
     <div>
       {/*{console.log("DATA:",data)}*/}
-      <Link style={{fontSize:"17px"}} className="goBack" to="/admin">
+      <Link style={{fontSize: "17px"}} className="goBack" to="/admin">
         <IoIosArrowBack/>Go Back
       </Link>
-      <h1 style={{textAlign: "center", fontWeight: "bold"}} className="carouselEdit__header" >
+      <h1 style={{textAlign: "center", fontWeight: "bold"}} className="carouselEdit__header">
         Carousel List
       </h1>
       <DataTable
@@ -311,16 +319,17 @@ export default function CarouselEdit() {
             handleCaption={handleCaption}
             handleDesc={handleDesc}
             handleImg={handleImg}
+            handleIdx={handleIdx}
             handleClose={handleEditClose}
             handleSubmit={handleEditSubmit}
           />
         </Modal.Body>
       </Modal>
-        <div style={{display:"flex", justifyContent:"center"}}>
-          <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-            Create
-          </Button>
-        </div>
+      <div style={{display: "flex", justifyContent: "center"}}>
+        <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
+          Create
+        </Button>
+      </div>
     </div>
   );
 }
