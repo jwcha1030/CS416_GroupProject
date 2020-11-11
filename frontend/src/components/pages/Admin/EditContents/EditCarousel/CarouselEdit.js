@@ -67,7 +67,6 @@ export default function CarouselEdit() {
   };
 
   const handleDelete = (id) => {
-
     axios.delete("https://sunyk-msc-backend.herokuapp.com/home_page_carousel/del/"+id+"/")
       .then(response =>{
         // console.log(response.data);
@@ -131,7 +130,6 @@ export default function CarouselEdit() {
     axios.put(apiBaseUrl, formData).then(response=>{
       // Check if internet connection was working
       if(response.status === 200){
-        alert("PUT res_code:",response.data.res_code);
         if(response.data.res_code === 1){
           // Everything worked correctly
           // Do something with the returned data
@@ -142,6 +140,8 @@ export default function CarouselEdit() {
           newData[i].desc = inputDesc;
           newData[i].img = inputImg;
           setData(newData);
+          window.location.reload();
+
           // } else if (){
           // Check other res_code with else if
           // }
@@ -198,12 +198,13 @@ export default function CarouselEdit() {
       axios.post(apiBaseUrl, formData ).then(response=>{
         // Check if internet connection was working
         if(response.status === 200){
-          alert("POST res_code:",response.data.res_code);
           if(response.data.res_code === 1){
             // Everything worked correctly
             // Do something with the returned data
             console.log("Post SUCCESS",response.data.home_page_carousel);
+            window.location.reload();
             setData([...data,response.data.home_page_carousel]);
+            console.log(data);
             // } else if (){
             // Check other res_code with else if
             // }
