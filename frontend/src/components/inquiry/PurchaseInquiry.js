@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import InputGroup from 'react-bootstrap/InputGroup'
-import SampleImage from "../../images/model_hat.jpg"
+import SampleImage from "../../images/s1.jpg"
 
 const schema = yup.object({
   firstName: yup.string().required(),
@@ -70,7 +70,7 @@ function PurchaseInquiry(props) {
                   </Form.Group>
                   <Form.Group as={Col} md="4" controlId="validationFormikLastName">
                     
-                              <Form.Row>
+                   <Form.Row>
                                 <Form.Label>Last Name</Form.Label>
                                   <Form.Control
                                     type="text"
@@ -85,8 +85,9 @@ function PurchaseInquiry(props) {
                                   <Form.Control.Feedback type="invalid">
                                     {errors.lastName}
                                   </Form.Control.Feedback>
-                              </Form.Row>
-                              <Form.Row>
+                 </Form.Row>
+                 <br/>
+                <Form.Row>
                                   <Form.Label>First Name</Form.Label>
                                   <Form.Control
                                     type="text"
@@ -100,35 +101,28 @@ function PurchaseInquiry(props) {
                                   <Form.Control.Feedback type="invalid">
                                     {errors.firstName}
                                   </Form.Control.Feedback>
-                                </Form.Row>
+                   </Form.Row>
 
-
-                                <Form.Row>
-                    <Form.Label>Email</Form.Label>
-                    
-                      <Form.Control
-                        type="email"
-                        placeholder="Your Email"
-                        name="email"
-                        value={values.email}
-                        onChange={handleChange}
-                        isInvalid={!!errors.email}
-                        size="lg"
-                      />             
-                      <Form.Control.Feedback type="invalid">
-                        {errors.email}
-                      </Form.Control.Feedback>
+                    <br/>
+                    <Form.Row>
+                          <Form.Label>Email</Form.Label>
+                        
+                          <Form.Control
+                            type="email"
+                            placeholder="Your Email"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            isInvalid={!!errors.email}
+                            size="lg"
+                          />             
+                          <Form.Control.Feedback type="invalid">
+                            {errors.email}
+                          </Form.Control.Feedback>
                   </Form.Row>
-                  </Form.Group>
-
-          </Form.Row>
-          
-
-
-          <br/>
-          <Form.Row>
-              <Form.Group as={Col} md="4" controlId="validationFormikType">
-              <Form.Label>Purchase Methods</Form.Label>
+                  <br/><br/>
+                  <Form.Row>
+                  <Form.Label>Purchase Methods</Form.Label>
                   <Form.Control
                     as="select"
                     value={values.type}
@@ -138,21 +132,29 @@ function PurchaseInquiry(props) {
                       <option>Cash</option>
                       <option>Wire Bank Account</option>
                     </Form.Control>
-                </Form.Group>
+                  </Form.Row>
+                  </Form.Group>
 
-              <Form.Group as={Col} md="8" size="lg" controlId="validationFormikNotes">
+          </Form.Row>
+          
+
+
+          <br/>
+          <Form.Row>
+              {/* <Form.Group as={Col} md="4" controlId="validationFormikType">
+       
+                </Form.Group> */}
+
+              <Form.Group as={Col} md="11" size="lg" controlId="validationFormikNotes">
               <Form.Label size="lg">Note</Form.Label>
-                 <Form.Text style={{fontSize:"15px"}}>In the message below, please include your preferred option (size / color) of the product, 
+                 <Form.Text style={{fontSize:"15px"}}>In the message below, please include your preferred option (size / color / quantity) of the product, 
                  and we will proceed your purchase after contacting you through your email again shortly. </Form.Text>
                 </Form.Group>
           </Form.Row>
              
           <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormikMessage">
              
-             
-            </Form.Group> 
-            <Form.Group as={Col} md="8" controlId="validationFormikMessage">
+            <Form.Group as={Col} md="11" controlId="validationFormikMessage">
               <Form.Label>Message</Form.Label>  
 
              
