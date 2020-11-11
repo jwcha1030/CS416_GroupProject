@@ -10,7 +10,7 @@ import "../../collections/RotatingImage.css";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import PurchaseInquiryModal from "../../inquiry/PurchaseInquiry"
-
+ 
 import {
   mugcup_1,
   mugcup_2,
@@ -27,16 +27,16 @@ function ProductDetailPage(props) {
 
   const images = [
     {
-      original: "https://picsum.photos/id/1018/1000/600/",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
+      original: "https://kickslinks.com/wp-content/uploads/2016/11/nike-air-presto-flyknit-ultra-crimson-4.jpg",
+      thumbnail: "https://kickslinks.com/wp-content/uploads/2016/11/nike-air-presto-flyknit-ultra-crimson-4.jpg",
     },
     {
-      original: "https://picsum.photos/id/1015/1000/600/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
+      original: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcREPatJE3wakbtxXBlJlfTVupaH_zJ13Ek0SQ&usqp=CAU",
+      thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcREPatJE3wakbtxXBlJlfTVupaH_zJ13Ek0SQ&usqp=CAU",
     },
     {
-      original: "https://picsum.photos/id/1019/1000/600/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original: "https://swankism.com/wp-content/uploads/2016/04/nike-air-presto-ultra-flyknit-official-images-03.jpg?x95412",
+      thumbnail: "https://swankism.com/wp-content/uploads/2016/04/nike-air-presto-ultra-flyknit-official-images-03.jpg?x95412",
     },
   ];
   useEffect(() => {}, []);
@@ -46,7 +46,7 @@ function ProductDetailPage(props) {
       <h1
         style={{ display: "flex", justifyContent: "center", margin: "50px" }}
       >
-        DETAILED PAGE OF THE PRODUCT ID: {productId}
+        Detailed Product ID: {productId}
       </h1>
 
      
@@ -57,8 +57,6 @@ function ProductDetailPage(props) {
         id={productId}
         show={RotatingImageModalShow}
         onHide={() => setRotatingImageModalShow(false)}
-        
-
       />
 
 
@@ -86,21 +84,19 @@ function ProductDetailPage(props) {
                     >
                       Purchase Inquiry
                     </Button>}>
+      
               <div className="row">
-                <div className="col-sm-8">
-               Product Information
+                <div className="col-sm-5 text-left">
+                    <h1> $19.99 </h1>
+                    <p> Fashion Institute of Technology </p>
+                    <p> Apparels </p>
+                    <p> 13 Views</p>
                 </div>
-                <div className="col-sm-4">
-                   <Card
-                    style={{ width: "50%" }}
-                  >
-                    <p>Price:</p>
-                    <p>School:</p>
-                    <p>Type:</p>
-                    <p>Size:</p>
-                    <p>Color:</p>
-                    <p>View Count:</p>
-              
+                <div className="col-sm-7 text-left">
+                <Card >
+                    <p>This product is handcrafted by MSC members in 2018 Spring. It took over a year to craft the product, and we are now 
+                    finally offering it to everyone. Please take a close look at ... </p>
+                   
                   </Card>
                 </div>
               </div>
