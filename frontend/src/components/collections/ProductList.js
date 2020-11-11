@@ -9,7 +9,7 @@ import ALL_TAB_IMAGE from "../../images/all.png";
 import FIT_TAB_IMAGE from "../../images/fit.jpg";
 import SBU_TAB_IMAGE from "../../images/sbu2.png";
 import APPARELS_TAB_IMAGE from "../../images/tab_apparels.JPG";
-import GOODS_TAB_IMAGE from "../../images/tab_goods.jpg";
+import GOODS_TAB_IMAGE from "../../images/tab_goods.JPG";
 
 import "antd/dist/antd.css";
 import ProductDataAll from "./ProductDataAll"; 

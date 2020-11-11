@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import InputGroup from 'react-bootstrap/InputGroup'
+import SampleImage from "../../images/model_hat.jpg"
 
 const schema = yup.object({
   firstName: yup.string().required(),
@@ -57,46 +58,52 @@ function PurchaseInquiry(props) {
       }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <Form.Row>
-              
-
-                  <Form.Group as={Col} md="4" controlId="validationFormikLastName">
-                    <Form.Label>First Name</Form.Label>
-                    
-                      <Form.Control
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={values.firstName}
-                        onChange={handleChange}
-                        isInvalid={!!errors.firstName}
-                        size="lg"
-                      />             
-                      <Form.Control.Feedback type="invalid">
-                        {errors.firstName}
-                      </Form.Control.Feedback>
+                
+                  <Form.Group as={Col} md="6" controlId="validationFormikProduct">
+                  <Form.Label >Product Information</Form.Label><br/>
+                 <Form.Text style={{fontSize:"15px"}}>Product ID is {props.dataToModal}</Form.Text> <br/>
+                <Form.Text style={{fontSize:"15px"}}>Product Name is ... {props.dataToModal}</Form.Text> <br/>
+                <Form.Text style={{fontSize:"15px"}}>Product Price is ... {props.dataToModal}</Form.Text> <br/>
+                <Form.Text style={{fontSize:"15px"}}>Product Image <img src={SampleImage}/></Form.Text> <br/>   
                   </Form.Group>
-
-                  <Form.Group as={Col} md="4" controlId="validationFormikLastName">
-                    <Form.Label>Last Name</Form.Label>
-                    
-                      <Form.Control
-                        type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-
-                        value={values.lastName}
-                        onChange={handleChange}
-                        isInvalid={!!errors.lastName}
-                        size="lg"
-                      />             
-                      <Form.Control.Feedback type="invalid">
-                        {errors.lastName}
-                      </Form.Control.Feedback>
+                  <Form.Group as={Col} md="1" controlId="validationFormikLastName">
                   </Form.Group>
+                  <Form.Group as={Col} md="4" controlId="validationFormikLastName">
+                    
+                              <Form.Row>
+                                <Form.Label>Last Name</Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="lastName"
+                                    placeholder="Last Name"
 
-          </Form.Row>
-          <Form.Row>
-        <Form.Group as={Col} md="4" controlId="validationFormikEmail">
+                                    value={values.lastName}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.lastName}
+                                    size="lg"
+                                  />             
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.lastName}
+                                  </Form.Control.Feedback>
+                              </Form.Row>
+                              <Form.Row>
+                                  <Form.Label>First Name</Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="firstName"
+                                    placeholder="First Name"
+                                    value={values.firstName}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.firstName}
+                                    size="lg"
+                                  />             
+                                  <Form.Control.Feedback type="invalid">
+                                    {errors.firstName}
+                                  </Form.Control.Feedback>
+                                </Form.Row>
+
+
+                                <Form.Row>
                     <Form.Label>Email</Form.Label>
                     
                       <Form.Control
@@ -111,8 +118,11 @@ function PurchaseInquiry(props) {
                       <Form.Control.Feedback type="invalid">
                         {errors.email}
                       </Form.Control.Feedback>
+                  </Form.Row>
                   </Form.Group>
-        </Form.Row>
+
+          </Form.Row>
+          
 
 
           <br/>
@@ -139,11 +149,7 @@ function PurchaseInquiry(props) {
              
           <Form.Row>
                 <Form.Group as={Col} md="4" controlId="validationFormikMessage">
-              <Form.Label >Product Information</Form.Label><br/>
-                 <Form.Text style={{fontSize:"15px"}}>Product ID is {props.dataToModal}</Form.Text> <br/>
-                <Form.Text style={{fontSize:"15px"}}>Product Name is ??{props.dataToModal}</Form.Text> <br/>
-                <Form.Text style={{fontSize:"15px"}}>Product Price is ??{props.dataToModal}</Form.Text> <br/>
-                <Form.Text style={{fontSize:"15px"}}>More Details...img???{props.dataToModal}</Form.Text> <br/>
+             
              
             </Form.Group> 
             <Form.Group as={Col} md="8" controlId="validationFormikMessage">
@@ -151,7 +157,7 @@ function PurchaseInquiry(props) {
 
              
               <Form.Control
-                placeholder="Your Detailed Purchasing Inquiry on Color, Size, Quantity"
+                placeholder="Your detailed purchasing inquiry on color, size, quantity, and anything else ."
                 name="message"
                value={values.message}
                 onChange={handleChange}
