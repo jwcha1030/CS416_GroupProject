@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import DataTable from "../DataTable";
-import {Button} from "../../../../Button";
+import {Button} from "../../../../button/Button";
 import Modal from "react-bootstrap/Modal";
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
-import ProductDataAll from "../../../../ProductDataAll";
+import ProductDataAll from "../../../../collections/ProductDataAll";
 import CollectionsForm from "./CollectionsForm";
 
 export default function CollectionEdit() {

@@ -2,7 +2,7 @@ import React from 'react';
 import Form from "react-bootstrap/Form";
 import {Col} from "react-bootstrap";
 import Modal from "react-bootstrap/Modal"
-import {Button} from "../../../../Button";
+import {Button} from "../../../../button/Button";
 
 //TODO: Finish this form
 export default function OurTeamForm (props) {

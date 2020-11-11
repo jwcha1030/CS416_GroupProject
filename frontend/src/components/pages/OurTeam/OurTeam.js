@@ -1,22 +1,23 @@
 import React,{useState,useEffect} from "react";
-import HeroSection from "../../HeroSection";
+import HeroSection from "../../hero_section/HeroSection";
 import { members } from "./Data";
-import { AnimatePresence, motion } from "framer-motion";
+import {motion } from "framer-motion";
 
-import Member from "../../Member";
+import Member from "../../member/Member";
 import { DataMembers } from "./DataMembers";
-import Footer from "../Footer.js/Footer";
+import Footer from "../../footer/Footer";
 
 // import { Card, Icon, Image } from "semantic-ui-react";
 var axios = require('axios')
 
 function OurTeam() {
-  const [allMembers, setData] = useState();
+  const [allMembers, setData] = useState([{}]);
   useEffect(() => {
     axios.get('https://sunyk-msc-backend.herokuapp.com/team_page_person/get_all/',)
     .then(function (response) {
-      if(response.status == 200){
+      if(response.status == 200){ 
         if(response.data.res_code == 1){
+          // console.log(response.data.result)
           setData(response.data.results)
         } else {
         }
@@ -24,7 +25,7 @@ function OurTeam() {
       }
     })
     .catch(function (error) {
-      console.log(error);
+      console.log("code 0" + error);
     });
    },[]);
   return (
@@ -37,7 +38,7 @@ function OurTeam() {
         <HeroSection {...members} />
       </motion.div>
 
-      <div className="members-list">{DataMembers.map(Member)}</div>
+      <div className="members-list">{allMembers.map(Member)}</div>
       <Footer />
     </div>
   );

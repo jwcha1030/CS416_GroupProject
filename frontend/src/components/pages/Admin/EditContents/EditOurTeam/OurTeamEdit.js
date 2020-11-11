@@ -3,8 +3,8 @@ import {Link, Redirect} from "react-router-dom";
 import {DataMembers} from "../../../OurTeam/DataMembers";
 import {IoIosArrowBack} from "react-icons/io";
 import DataTable from "../DataTable";
-import ProductDataAll from "../../../../ProductDataAll";
-import {Button} from "../../../../Button";
+import ProductDataAll from "../../../../collections/ProductDataAll";
+import {Button} from "../../../../button/Button";
 import Modal from "react-bootstrap/Modal";
 import OurTeamForm from "./OurTeamForm";
 

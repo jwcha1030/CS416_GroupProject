@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 import {subscriptionData} from "./SubscriptionData"
 import DataTable from "../EditContents/DataTable";
-import {Button} from "../../../Button";
+import {Button} from "../../../button/Button";
 import Modal from "react-bootstrap/Modal";
 import SubscriptionForm from "./SubscriptionForm";
 

@@ -1,15 +1,15 @@
 import React from "react";
-import CollectionsMain from "../../CollectionsMain";
+import CollectionsMain from "../../collections/CollectionsMain";
 import { products } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
 
 import "pure-react-carousel/dist/react-carousel.es.css";
-import ProductList from "../../ProductList";
-import renderImages from "../../RotatingImage";
+import ProductList from "../../collections/ProductList";
+import renderImages from "../../collections/RotatingImage";
 import Rotation from "react-rotation";
-import "../../RotatingImage.css";
+import "../../collections/RotatingImage.css";
 import { mugcup_1, mugcup_2, sample } from "./DataRotatingImages";
-import Footer from "../Footer.js/Footer";
+import Footer from "../../footer/Footer";
 import ScrollToTop from "react-router-scroll-top";
 
 function Collection() {

@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../HeroSection";
+import HeroSection from "../../hero_section/HeroSection";
 import { aboutUs, virtualStore } from "./Data";
 import { AnimatePresence, motion } from "framer-motion";
-import Footer from "../Footer.js/Footer";
-import VR from "../../vr";
+import Footer from "../../footer/Footer";
+import VR from "../../vr/VR";
 
 
 //const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   

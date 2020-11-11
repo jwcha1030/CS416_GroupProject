@@ -1,16 +1,15 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/HomePage/Home";
 import Collections from "./components/pages/Collections/Collections";
 import OurTeam from "./components/pages/OurTeam/OurTeam";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import AdminLogin from "./components/pages/AdminLogin/AdminLogin";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import ScrollToTop from "react-router-scroll-top";
-import ProductDetailPage from "./components/ProductDetailPage";
+import ProductDetailPage from "./components/pages/CollectionsDetailedProduct/ProductDetailPage";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence} from "framer-motion";
 import Admin from "./components/pages/Admin/Admin";
 import CarouselEdit from "./components/pages/Admin/EditContents/EditCarousel/CarouselEdit";
 import CollectionsEdit from "./components/pages/Admin/EditContents/EditCollections/CollectionsEdit";

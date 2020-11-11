@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import DataTable from "../DataTable";
-import {Button} from "../../../../Button";
+import {Button} from "../../../../button/Button";
 import Modal from "react-bootstrap/Modal";
 import CarouselForm from "./CreateCarouselForm"
 import {Link} from "react-router-dom";
