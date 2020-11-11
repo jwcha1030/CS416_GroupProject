@@ -22,10 +22,11 @@ function Home() {
   const [carousels, setData] = useState([{}]);
   useEffect(() => {
     Aos.init({
-      duration: 3000, // values from 0 to 3000, with step 50ms
+      duration: 2000, // values from 0 to 3000, with step 50ms
       delay: 1000, // values from 0 to 3000, with step 50ms
       easing: "ease", // default easing for AOS animations});
-      once: true,
+      once: false,
+      disable:'mobile'
 
     });
   }, []);
@@ -65,10 +66,10 @@ function Home() {
       <div data-aos="slide-left">
         <HeroSection {...ourteam} />
       </div>
-
+      <div data-aos="slide-left">
          <HeroSection {...aboutus} /> 
          {/* Theres a bug in mobile view when adding aos on the last component... */}
-    
+      </div>
       <Footer />
       
     </motion.div>

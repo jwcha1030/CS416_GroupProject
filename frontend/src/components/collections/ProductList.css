@@ -48,14 +48,14 @@
 }
 
 .react-tabs__tab {
-  color: #b6b6b6;
+  color: #aaaaaa;
   padding: 10rem;
   padding-bottom: 1rem;
   padding-top: 0rem;
   margin-top: 0rem;
   margin-bottom: 0.07rem;
   background-color: white;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .react-tabs__tab:hover {
