@@ -4,8 +4,8 @@ import "./RotatingImage.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
-import RotateSign from "../images/view_in_360.png";
-import RotateSign2 from "../images/rotate.png";
+import RotateSign from "../../images/view_in_360.png";
+import RotateSign2 from "../../images/rotate.png";
 
 const renderImages = (item, index) => {
   return (

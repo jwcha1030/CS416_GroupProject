@@ -10,13 +10,13 @@ import {
   Slide,
   Slider,
 } from "pure-react-carousel";
-import a1 from "../images/model_orange.jpg";
-import a2 from "../images/model_hat.jpg";
-import a3 from "../images/aboutus.jpg";
-import a4 from "../images/model_white.jpg";
-import a5 from "../images/member.jpg";
-import a6 from "../images/dummy.jpg";
-import s from "./CollectionsCarousel.scss";
+import a1 from "../../images/model_orange.jpg";
+import a2 from "../../images/model_hat.jpg";
+import a3 from "../../images/aboutus.jpg";
+import a4 from "../../images/model_white.jpg";
+import a5 from "../../images/member.jpg";
+import a6 from "../../images/dummy.jpg";
+import s from "./CollectionsProductCarousel.scss";
 
 export default () => (
   <CarouselProvider
@@ -51,7 +51,7 @@ export default () => (
     <div align="center">
       <div>
         <ButtonBack className="CarouselButton">Back</ButtonBack>
-        {"   "}
+        {"     "}
         <ButtonNext className="CarouselButton">Next</ButtonNext>
       </div>
     </div>

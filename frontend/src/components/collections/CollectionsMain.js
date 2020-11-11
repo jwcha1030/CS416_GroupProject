@@ -1,8 +1,8 @@
 import React from "react";
-import "./HeroSection.css";
+import "../hero_section/HeroSection.css";
 import "./CollectionsMain.css";
-import TabComponent from "./TabComponent";
-import CollectionsCarousel from "./CollectionsCarousel";
+import TabComponent from "./InfoTab";
+import CollectionsCarousel from "./CollectionsProductCarousel";
 
 function CollectionsMain({
   lightBg,

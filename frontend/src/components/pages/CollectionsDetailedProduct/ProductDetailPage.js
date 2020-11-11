@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import Footer from "./pages/Footer.js/Footer";
+import Footer from "../../footer/Footer";
 import ImageGallery from "react-image-gallery";
 import "./ProductDetailPage.css";
 import { Card } from "antd";
-import renderImages from "./RotatingImage";
+import renderImages from "../../collections/RotatingImage";
 import Rotation from "react-rotation";
-import "./RotatingImage.css";
+import "../../collections/RotatingImage.css";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import PurchaseInquiryModal from "./PurchaseInquiry"
+import PurchaseInquiryModal from "../../inquiry/PurchaseInquiry"
 
 import {
   mugcup_1,
   mugcup_2,
   sample,
-} from "./pages/Collections/DataRotatingImages";
+} from "../Collections/DataRotatingImages";
 const { Meta } = Card;
 
 

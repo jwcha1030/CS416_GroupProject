@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "./Button";
+import { Button } from "../button/Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import SVG from "react-inlinesvg";
-import Logo from "../images/MSC.jpg";
+import Logo from "../../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
-import GoogleTranslate from "./GoogleTranslate";
+import GoogleTranslate from "../translate/GoogleTranslate";
 
 function Navbar() {
   const [click, setClick] = useState(false);

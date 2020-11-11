@@ -1,7 +1,7 @@
-import q1 from "../images/member.jpg";
-import q2 from "../images/model_orange.jpg";
-import q3 from "../images/model_hat.jpg";
-import q4 from "../images/model_white.jpg";
+import q1 from "../../images/member.jpg";
+import q2 from "../../images/model_orange.jpg";
+import q3 from "../../images/model_hat.jpg";
+import q4 from "../../images/model_white.jpg";
 //IMPORTANT: FIELD ORDER MUST BE CONSISTENT
 // NOTE THESE DATA FOR FRONT-END DATA, BEFORE BACKEND WAS SETUP
 export const ProductDataAll = [

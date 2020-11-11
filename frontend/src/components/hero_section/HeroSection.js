@@ -1,10 +1,8 @@
 import React from "react";
 import "./HeroSection.css";
-import { Button } from "./Button";
+import { Button } from "../button/Button";
 import { Link } from "react-router-dom";
 import ReactImageAppear from "react-image-appear";
-
-
 
  
 function HeroSection({

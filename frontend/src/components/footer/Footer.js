@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { Button } from "../../Button";
+import { Button } from "../button/Button";
 import { Link } from "react-router-dom";
 import {
   FaFacebook,
@@ -9,9 +9,9 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
-import Logo from "../../../images/MSC.jpg";
+import Logo from "../../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
-import InquiryModal from "../../Inquiry";
+import InquiryModal from "../inquiry/GeneralInquiry";
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
  

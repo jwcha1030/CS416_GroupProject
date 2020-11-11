@@ -4,7 +4,7 @@ import './Admin.css'
 import {subscriptionData} from './ManageSubscriptions/SubscriptionData'
 import {analysisData} from './WebUsageAnalysis/AnalysisData'
 import {Link} from "react-router-dom";
-import {Button} from "../../Button";
+import {Button} from "../../button/Button";
 import Chart from "./WebUsageAnalysis/LineGraph";
 
 export default function Admin() {

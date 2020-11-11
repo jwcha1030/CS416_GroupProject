@@ -8,7 +8,6 @@
   align-items: center;
   font-size: 1 rem;
   font-family: din-condensed, sans-serif;
-
   position: sticky;
   top: 0;
   z-index: 999;
@@ -85,9 +84,9 @@
 
 .nav-item {
   height: 80px;
-  font-size: 18px;
-  padding: 0.16rem;
-  font-weight: 700;
+  font-size: 15px;
+  padding: 0rem;
+  font-weight: 500;
   border-bottom: 2px solid transparent;
 }
 

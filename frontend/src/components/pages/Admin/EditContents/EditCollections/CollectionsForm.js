@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Form from "react-bootstrap/Form";
-import {Button} from "../../../../Button";
+import {Button} from "../../../../button/Button";
 import Modal from "react-bootstrap/Modal";
 import {Col} from "react-bootstrap";
 

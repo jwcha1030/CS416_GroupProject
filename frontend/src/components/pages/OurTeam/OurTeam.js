@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from "react";
-import HeroSection from "../../HeroSection";
+import HeroSection from "../../hero_section/HeroSection";
 import { members } from "./Data";
 import {motion } from "framer-motion";
 
-import Member from "../../Member";
+import Member from "../../member/Member";
 import { DataMembers } from "./DataMembers";
-import Footer from "../Footer.js/Footer";
+import Footer from "../../footer/Footer";
 
 // import { Card, Icon, Image } from "semantic-ui-react";
 var axios = require('axios')
