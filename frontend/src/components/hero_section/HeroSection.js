@@ -4,7 +4,6 @@ import { Button } from "../button/Button";
 import { Link } from "react-router-dom";
 import ReactImageAppear from "react-image-appear";
 
- 
 function HeroSection({
   lightBg,
   topLine,
@@ -18,7 +17,7 @@ function HeroSection({
   buttonLabel,
   buttonTo,
   aboutUsRender,
-  aboutUsRenderSubButton
+  aboutUsRenderSubButton,
 }) {
   return (
     <>
@@ -50,65 +49,71 @@ function HeroSection({
                 >
                   {description}
                 </p>
-
-              
-
                 {/* Check if buttonTo is External URL or not and uses a href or Link, respectively  */}
-                {/^https?:\/\//.test(buttonTo)
-                ? <a href={buttonTo}>
+                {/^https?:\/\//.test(buttonTo) ? (
+                  <a href={buttonTo}>
                     <Button
                       buttonSize="btn--wide"
                       lightBg
                       buttonColor={(lightBg = "msc_orange")}
-                >
-                  {buttonLabel}
-                </Button>
-                </a>
-                :   <Link to={buttonTo}>
-                <Button
-                  buttonSize="btn--wide"
-                  lightBg
-                  buttonColor={((buttonLabel==="Our Team" || buttonLabel ==="Collections") ?  "black": "msc_orange" )}
-                 >
-                  {buttonLabel}
-                </Button>
-              </Link>
-                }
-                  {" "}
-
+                    >
+                      {buttonLabel}
+                    </Button>
+                  </a>
+                ) : (
+                  <Link to={buttonTo}>
+                    <Button
+                      buttonSize="btn--wide"
+                      lightBg
+                      buttonColor={
+                        buttonLabel === "Our Team" ||
+                        buttonLabel === "Collections"
+                          ? "black"
+                          : "msc_orange"
+                      }
+                    >
+                      {buttonLabel}
+                    </Button>
+                  </Link>
+                )}{" "}
                 {/* dynamic render of AboutUs "Contact Button for scroll down using a href #"  */}
-                {aboutUsRender==="TRUE_CONTACT"?
-                  <Button
-                  buttonSize="btn--wide"
-                  lightBg
-                  buttonColor="black"
-                  onClick={function(e) {
-                  window.scroll({
-                    top: 99999999, 
-                    behavior: 'smooth'
-                  })   
-                }}
-                >
-                   {aboutUsRenderSubButton}
-                </Button>
-            
-                :
-                " "  //else nothing
+                {
+                  aboutUsRender === "TRUE_CONTACT" ? (
+                    <Button
+                      buttonSize="btn--wide"
+                      lightBg
+                      buttonColor="black"
+                      onClick={function (e) {
+                        window.scroll({
+                          top: 99999999,
+                          behavior: "smooth",
+                        });
+                      }}
+                    >
+                      {aboutUsRenderSubButton}
+                    </Button>
+                  ) : (
+                    " "
+                  ) //else nothing
                 }
-                {aboutUsRender==="TRUE_VR"?
-                  <Button
-                  buttonSize="btn--wide"
-                  lightBg
-                  buttonColor="black"
-                  onClick={function(e) {
-                  window.scroll({
-                    top: 1800, 
-                    behavior: 'smooth'
-                  })   
-                }}
-                >
-                   {aboutUsRenderSubButton}
-                </Button> : <div></div> //else nothing
+                {
+                  aboutUsRender === "TRUE_VR" ? (
+                    <Button
+                      buttonSize="btn--wide"
+                      lightBg
+                      buttonColor="black"
+                      onClick={function (e) {
+                        window.scroll({
+                          top: 1700,
+                          behavior: "smooth",
+                        });
+                      }}
+                    >
+                      {aboutUsRenderSubButton}
+                    </Button>
+                  ) : (
+                    <div></div>
+                  ) //else nothing
                 }
               </div>
             </div>

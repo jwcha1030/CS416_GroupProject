@@ -31,7 +31,9 @@ const renderMembers = (item, index) => {
           <p class="card-text">
             <medium class="text-muted">{item.introduction}</medium>
           </p>
-          <Card.Text style={{fontSize:"1.5rem"}} className="description">{item.position_desc}</Card.Text>
+          <Card.Text style={{ fontSize: "1.5rem" }} className="description">
+            {item.position_desc}
+          </Card.Text>
           {/* id: INT, idx: INT,
         position: STR, position_desc: STR, 
         img: STR, name: STR, contact: STR

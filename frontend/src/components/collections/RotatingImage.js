@@ -15,7 +15,6 @@ const renderImages = (item, index) => {
         <div className="rotate-sign-wrapper">
           <img className="rotate-sign" src={RotateSign}></img>
           <img className="rotate-sign-2" src={RotateSign2}></img>
-
           <Loader
             //   API https://www.npmjs.com/package/react-loader-spinner
             className="rotate-image-loader"
@@ -24,10 +23,11 @@ const renderImages = (item, index) => {
             secondaryColor="Grey"
             height={20}
             width={20}
-            timeout={3000} //3s loading animation for UI
+            timeout={2500} //2.5s loading animation for UI
           />
         </div>
         <br></br>
+
         <img className="rotating-image" src={item.img} />
       </div>
     </div>

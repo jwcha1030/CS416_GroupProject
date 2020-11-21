@@ -16,7 +16,6 @@ import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import GoogleTranslate from "../translate/GoogleTranslate";
 
-
 function Footer() {
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -44,14 +43,12 @@ function Footer() {
 
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
-         
         <div className="social-media-wrap">
-        
-           <Link to="/" className="social-logo-icon">
+          <Link to="/" className="social-logo-icon">
             <img src={Logo}></img>
           </Link>
-        
-        <small className="website-rights">
+
+          <small className="website-rights">
             Merchandising Society Club © 2020
           </small>
           <div className="social-icons">
@@ -104,39 +101,32 @@ function Footer() {
           <br></br>
           <br></br>
           <div className="row">
-          <div className="col-sm-3">
-           </div>
+            <div className="col-sm-3"></div>
             <div className="col-sm-3">
-            <GoogleTranslate className="GoogleTranslate"/> 
-
+              <GoogleTranslate className="GoogleTranslate" />
             </div>
             <div className="col-sm-3">
-            <Link
-              // ADMIN PAGE
-              to="/adminlogin"
-              className="admin-button"
-          >
-             
-              <div style={{ fontSize: "12px" }}>
-              <FaUserLock className="admin-icon"
-                style={{ paddingRight: "6px", fontSize:"2rem"}}
-              />
-              Admin Log in</div>
-           </Link>
-           <div className="col-sm-3">
-           </div>  
+              <Link
+                // ADMIN PAGE
+                to="/adminlogin"
+                className="admin-button"
+              >
+                <div style={{ fontSize: "12px" }}>
+                  <FaUserLock
+                    className="admin-icon"
+                    style={{ paddingRight: "6px", fontSize: "2rem" }}
+                  />
+                  Admin Log in
+                </div>
+              </Link>
+              <div className="col-sm-3"></div>
             </div>
           </div>
-          
         </div>
-        <br/>
+        <br />
       </section>
-   
 
-      <InquiryModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <InquiryModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 }

@@ -61,7 +61,8 @@ export const ProductDataAll = [
     title: "2020 Hoodie",
     new: "New",
 
-    description: "2020 Hoodie is made of premium cotton. This comes in 10 colors!",
+    description:
+      "2020 Hoodie is made of premium cotton. This comes in 10 colors!",
     img: q1,
     school: "FIT",
     type: "Apparel",

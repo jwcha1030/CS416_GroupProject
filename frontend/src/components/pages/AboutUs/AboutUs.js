@@ -5,8 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Footer from "../../footer/Footer";
 import VR from "../../vr/VR";
 
-
-//const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
+//const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
 function AboutUs() {
   // const myRef = useRef(null)
@@ -20,7 +19,6 @@ function AboutUs() {
       <HeroSection id="aboutUs" {...aboutUs}></HeroSection>
       <HeroSection id="VR" {...virtualStore} />
       <VR></VR>
-
 
       <Footer />
     </motion.div>

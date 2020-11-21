@@ -12,12 +12,9 @@ import "aos/dist/aos.css";
 import Footer from "../../footer/Footer";
 import ScrollToTop from "react-router-scroll-top";
 
+var axios = require("axios");
 
-var axios = require('axios')
-
- 
 function Home() {
-
   //Home Carousel API Call-----------------------------------------------------------------------------
   const [carousels, setData] = useState([{}]);
   useEffect(() => {
@@ -26,39 +23,40 @@ function Home() {
       delay: 1000, // values from 0 to 3000, with step 50ms
       easing: "ease", // default easing for AOS animations});
       once: false,
-      disable:'mobile'
-
+      disable: "mobile",
     });
   }, []);
   //https://github.com/michalsnik/aos#animations AOS animation on scroll library for animation on scrolling added**
 
   useEffect(() => {
-    axios.get('https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/',)
-    .then(function (response) {
-      if(response.status == 200){
-        if(response.data.res_code == 1){
-          setData(response.data.results)
+    axios
+      .get(
+        "https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/"
+      )
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            setData(response.data.results);
+          } else {
+          }
         } else {
         }
-      } else {
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-   },[]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
   //Home Carousel API Call-----------------------------------------------------------------------------
 
-   return (
+  return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      
       {/* now carousel is updated in CarouselData.js */}
       <Carousel>{carousels.map(renderCarousel)}</Carousel>
-       
+
       <div data-aos="slide-left">
         <HeroSection {...collections} />
       </div>
@@ -67,11 +65,10 @@ function Home() {
         <HeroSection {...ourteam} />
       </div>
       <div data-aos="slide-left">
-         <HeroSection {...aboutus} /> 
-         {/* Theres a bug in mobile view when adding aos on the last component... */}
+        <HeroSection {...aboutus} />
+        {/* Theres a bug in mobile view when adding aos on the last component... */}
       </div>
       <Footer />
-      
     </motion.div>
   );
 }

@@ -8,7 +8,6 @@ import SVG from "react-inlinesvg";
 import Logo from "../../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
 
-
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -62,7 +61,8 @@ function Navbar() {
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
                 <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  <FaHome style={{fill:"5a5a5a", paddingRight: "1rem" }} /> Home
+                  <FaHome style={{ fill: "5a5a5a", paddingRight: "1rem" }} />{" "}
+                  Home
                 </Link>
               </li>
 
@@ -108,7 +108,6 @@ function Navbar() {
                     
                   </Link>
                 </li> */}
-               
               </div>
             </ul>
           </div>

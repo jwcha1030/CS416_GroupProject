@@ -19,10 +19,9 @@ import {
 const { Meta } = Card;
 const toolTipMessage = "Need Help? Reach out to us!";
 
-
-// NOTE: Product.js is the small card component of product you see in Collection's Page. 
+// NOTE: Product.js is the small card component of product you see in Collection's Page.
 // List of these are ProductList.js
-// Detailed Product Page is in ProductDetailPage.js
+// Detailed Product Page is in ProductDetailPage.js ( in CollectionsDetailedProduct folder )
 const renderProducts = (props, index) => {
   return (
     <div>

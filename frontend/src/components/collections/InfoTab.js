@@ -85,7 +85,6 @@ export default function FullWidthTabs() {
           >
             <Tab label="Fashion Institute of Technology" {...a11yProps(0)} />
             <Tab label="Stony Brook University" {...a11yProps(1)} />
-            <Tab label="Others" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -134,11 +133,6 @@ export default function FullWidthTabs() {
                 one of four university centers of the SUNY system. It is the
                 largest public university in New York by area.
               </div>
-            </div>
-          </TabPanel>
-          <TabPanel value={value} index={2} dir={theme.direction}>
-            <div style={{ fontSize: "13px" }}>
-              Description of other IGC universities.
             </div>
           </TabPanel>
         </SwipeableViews>
