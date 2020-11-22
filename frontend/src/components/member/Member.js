@@ -29,11 +29,9 @@ const renderMembers = (item, index) => {
             {item.position}
           </Card.Subtitle>
           <p class="card-text">
-            <medium class="text-muted">{item.introduction}</medium>
+            <medium class="date text-muted">{item.introduction}</medium>
           </p>
-          <Card.Text style={{ fontSize: "1.5rem" }} className="description">
-            {item.position_desc}
-          </Card.Text>
+          <Card.Text className="description">{item.position_desc}</Card.Text>
           {/* id: INT, idx: INT,
         position: STR, position_desc: STR, 
         img: STR, name: STR, contact: STR
@@ -46,7 +44,7 @@ const renderMembers = (item, index) => {
           >
             <Button
               className="contact-button"
-              size="lg"
+              size="md"
               onClick={() => {
                 navigator.clipboard.writeText(item.contact);
                 alert("'" + item.contact + "' is copied to your clipboard.");

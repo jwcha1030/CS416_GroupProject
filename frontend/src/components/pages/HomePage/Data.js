@@ -27,7 +27,7 @@ export const ourteam = {
   lightTextDesc: true,
   topLine: "MSC Our Team",
   headline: "Join Us",
-  description: "Get to know about our team members  ",
+  description: "Get to know about our team members.",
   buttonLabel: "OUR TEAM",
   buttonTo: "/ourteam",
   imgStart: "",

@@ -10,6 +10,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import InputGroup from "react-bootstrap/InputGroup";
 import SampleImage from "../../images/s1.jpg";
+import ReactImageAppear from "react-image-appear";
 
 const schema = yup.object({
   firstName: yup
@@ -86,7 +87,12 @@ function PurchaseInquiry(props) {
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Image <img src={SampleImage} />
+                    Product Image{" "}
+                    <ReactImageAppear
+                      src={SampleImage}
+                      alt={"img"}
+                      animation="bounceIn"
+                    />
                   </Form.Text>{" "}
                   <br />
                 </Form.Group>

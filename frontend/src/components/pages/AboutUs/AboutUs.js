@@ -18,7 +18,7 @@ function AboutUs() {
     >
       <HeroSection id="aboutUs" {...aboutUs}></HeroSection>
       <HeroSection id="VR" {...virtualStore} />
-      <VR></VR>
+      {/* <VR></VR> NOW AS A MODAL  */}
 
       <Footer />
     </motion.div>

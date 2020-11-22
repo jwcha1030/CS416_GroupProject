@@ -3,7 +3,15 @@ import "./HeroSection.css";
 import { Button } from "../button/Button";
 import { Link } from "react-router-dom";
 import ReactImageAppear from "react-image-appear";
+import InquiryModal from "../inquiry/GeneralInquiry";
+import Modal from "react-bootstrap/Modal";
+import ButtonBootstrap from "react-bootstrap/Button";
+import VR from "../vr/VR";
+import { Card } from "antd";
+const { Meta } = Card;
 
+// THIS IS THE BASE COMPONENT OF MOST OF THE WEBSITE. SOME ARE RENDERED WITH === ? : HERE FOR CONVENIENCE.
+// THIS BASICALLY MEANS THAT CODE SUCH AS , IF (ABOUT US)  --> DO SOMETHING. IS IN THIS FILE.
 function HeroSection({
   lightBg,
   topLine,
@@ -19,6 +27,8 @@ function HeroSection({
   aboutUsRender,
   aboutUsRenderSubButton,
 }) {
+  const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
+  const [VRModalShow, setVRModalShow] = React.useState(false);
   return (
     <>
       <div
@@ -83,12 +93,7 @@ function HeroSection({
                       buttonSize="btn--wide"
                       lightBg
                       buttonColor="black"
-                      onClick={function (e) {
-                        window.scroll({
-                          top: 99999999,
-                          behavior: "smooth",
-                        });
-                      }}
+                      onClick={() => setInquiryModalShow(true)}
                     >
                       {aboutUsRenderSubButton}
                     </Button>
@@ -102,12 +107,7 @@ function HeroSection({
                       buttonSize="btn--wide"
                       lightBg
                       buttonColor="black"
-                      onClick={function (e) {
-                        window.scroll({
-                          top: 1700,
-                          behavior: "smooth",
-                        });
-                      }}
+                      onClick={() => setVRModalShow(true)}
                     >
                       {aboutUsRenderSubButton}
                     </Button>
@@ -130,10 +130,40 @@ function HeroSection({
               </div>
             </div>
           </div>
+          <VRModal
+            show={VRModalShow}
+            onHide={() => setVRModalShow(false)}
+          ></VRModal>
+
+          <InquiryModal
+            show={inquiryModalShow}
+            onHide={() => setInquiryModalShow(false)}
+          />
         </div>
       </div>
     </>
   );
 }
 
+function VRModal() {
+  return (
+    <Modal
+      style={{ opacity: 1 }}
+      animation={false}
+      fade={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Virtual Reality of Retail Revolution Shop
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body align="center">
+        <Card cover={<VR></VR>}></Card>
+      </Modal.Body>
+    </Modal>
+  );
+}
 export default HeroSection;

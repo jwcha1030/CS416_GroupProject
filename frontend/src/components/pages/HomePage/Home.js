@@ -23,7 +23,11 @@ function Home() {
       delay: 1000, // values from 0 to 3000, with step 50ms
       easing: "ease", // default easing for AOS animations});
       once: false,
-      disable: "mobile",
+      disable: function () {
+        // DISABLING AOS ON MOBILE/ OR WHEN THERE'S SIDE BAR - NAV BAR TRANSITION
+        var maxWidth = 1200; // IT HAS CONFLICTS WITH SIDE BAR
+        return window.innerWidth < maxWidth;
+      },
     });
   }, []);
   //https://github.com/michalsnik/aos#animations AOS animation on scroll library for animation on scrolling added**
@@ -66,7 +70,6 @@ function Home() {
       </div>
       <div data-aos="slide-left">
         <HeroSection {...aboutus} />
-        {/* Theres a bug in mobile view when adding aos on the last component... */}
       </div>
       <Footer />
     </motion.div>

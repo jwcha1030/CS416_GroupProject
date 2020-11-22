@@ -17,7 +17,7 @@ import Form from "react-bootstrap/Form";
 import GoogleTranslate from "../translate/GoogleTranslate";
 
 function Footer() {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
 
   return (
     <div className="footer-container">
@@ -80,7 +80,7 @@ function Footer() {
               <Button
                 className="make-inquiry"
                 buttonStyle="btn--outline"
-                onClick={() => setModalShow(true)}
+                onClick={() => setInquiryModalShow(true)}
               >
                 Make an Inquiry
               </Button>
@@ -126,7 +126,10 @@ function Footer() {
         <br />
       </section>
 
-      <InquiryModal show={modalShow} onHide={() => setModalShow(false)} />
+      <InquiryModal
+        show={inquiryModalShow}
+        onHide={() => setInquiryModalShow(false)}
+      />
     </div>
   );
 }
