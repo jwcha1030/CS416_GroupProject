@@ -268,8 +268,8 @@ const ProductList = (props, index) => {
           <Tabs forceRenderTabPanel>
             <TabList>
               <Tab>All Schools</Tab>
-              <Tab>Fashion Institute of Technology</Tab>
-              <Tab>Stony Brook University</Tab>
+              <Tab>FIT</Tab>
+              <Tab>SBU</Tab>
             </TabList>
             <TabPanel>
               <div className="product-list">{goodsAll.map(Product)}</div>
@@ -289,8 +289,8 @@ const ProductList = (props, index) => {
           <Tabs forceRenderTabPanel>
             <TabList>
               <Tab>All Schools</Tab>
-              <Tab>Fashion Institute of Technology</Tab>
-              <Tab>Stony Brook University</Tab>
+              <Tab>FIT</Tab>
+              <Tab>SBU</Tab>
             </TabList>
             <TabPanel>
               <div className="product-list">{apparelsAll.map(Product)}</div>

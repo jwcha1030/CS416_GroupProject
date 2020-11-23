@@ -111,15 +111,6 @@ img {
     overflow: hidden;
   }
 
-  .col {
-    margin-bottom: 15px;
-    padding-left: 10%;
-
-    flex: 1;
-    flex-basis: 60%;
-    max-width: 100%;
-  }
-
   .home__hero-section {
     color: #fff;
     padding: 30px 0;
@@ -130,6 +121,7 @@ img {
     padding-bottom: 2rem;
     max-width: 100%;
     margin: 2rem;
+    margin-left: 0;
   }
 
   .top-line {
@@ -152,9 +144,16 @@ img {
 
   .home__hero-img-wrapper {
     justify-content: center;
-    max-width: 80%;
+    max-width: 70%;
   }
 
+  .home__hero-img {
+  }
+
+  .col {
+    padding-left: 12%;
+    padding-right: 12%;
+  }
   .home__hero-subtitle {
     font-size: 14px;
     line-height: 20px;
