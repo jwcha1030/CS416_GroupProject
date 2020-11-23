@@ -8,6 +8,7 @@ import Modal from "react-bootstrap/Modal";
 import ButtonBootstrap from "react-bootstrap/Button";
 import VR from "../vr/VR";
 import { Card } from "antd";
+import { WindowsFilled } from "@ant-design/icons";
 const { Meta } = Card;
 
 // THIS IS THE BASE COMPONENT OF MOST OF THE WEBSITE. SOME ARE RENDERED WITH === ? : HERE FOR CONVENIENCE.
@@ -93,7 +94,9 @@ function HeroSection({
                       buttonSize="btn--wide"
                       lightBg
                       buttonColor="black"
-                      onClick={() => setInquiryModalShow(true)}
+                      onClick={() => {
+                        setInquiryModalShow(true);
+                      }}
                     >
                       {aboutUsRenderSubButton}
                     </Button>
@@ -107,7 +110,9 @@ function HeroSection({
                       buttonSize="btn--wide"
                       lightBg
                       buttonColor="black"
-                      onClick={() => setVRModalShow(true)}
+                      onClick={() => {
+                        setVRModalShow(true);
+                      }}
                     >
                       {aboutUsRenderSubButton}
                     </Button>
@@ -145,18 +150,18 @@ function HeroSection({
   );
 }
 
-function VRModal() {
+function VRModal(props) {
   return (
     <Modal
-      style={{ opacity: 1 }}
-      animation={false}
-      fade={false}
+      className="vr-modal-content"
+      {...props}
       size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
+      dialogClassName="vr-modal"
       centered
+      style={{ opacity: 1 }}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title id="vr-title">
           Virtual Reality of Retail Revolution Shop
         </Modal.Title>
       </Modal.Header>

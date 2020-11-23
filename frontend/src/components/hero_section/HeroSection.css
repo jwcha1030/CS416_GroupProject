@@ -1,3 +1,7 @@
+.vr-modal {
+  min-width: 80%;
+}
+
 .collections-main-img {
   width: 70%;
 }
@@ -91,6 +95,22 @@ img {
 }
 
 @media screen and (max-width: 1200px) {
+  .vr-modal {
+    width: 100%;
+  }
+  #vr-title {
+    font-size: 12px;
+  }
+
+  .vr-modal-content {
+    width: 80%;
+    height: 90%;
+    position: fixed;
+    left: 10%;
+    top: 5%;
+    overflow: hidden;
+  }
+
   .col {
     margin-bottom: 15px;
     padding-left: 10%;
@@ -124,7 +144,7 @@ img {
 
   .heading {
     margin-bottom: 12px;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
     font-weight: 600;
     color: #f7f8fa;
@@ -133,5 +153,14 @@ img {
   .home__hero-img-wrapper {
     justify-content: center;
     max-width: 80%;
+  }
+
+  .home__hero-subtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .top-line {
+    font-size: 9px;
+    font-weight: 600;
   }
 }

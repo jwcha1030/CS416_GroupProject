@@ -1,5 +1,4 @@
 .vr-container {
-  padding-bottom: 300px;
   display: flex;
   justify-content: center;
   background-color: black;
@@ -11,11 +10,4 @@
   overflow: hidden;
   position: relative;
   background-color: black;
-}
-
-@media screen and (max-width: 1200px) {
-  .vr-screen {
-    width: 100px;
-    height: 100px;
-  }
 }

@@ -2,9 +2,9 @@ import React, { Component, useState, useEffect } from "react";
 import "./VR.css";
 
 import { Pannellum, PannellumVideo } from "pannellum-react";
-import myImage from "../../images/vr_sample2.jpg";
-import myImage2 from "../../images/vr_sample3.jpg";
-import myImage3 from "../../images/vr_sample.jpg";
+import myImage from "../../images/vr1.jpg";
+import myImage2 from "../../images/vr2.jpg";
+import myImage3 from "../../images/vr3.jpg";
 
 // import myVideo from "./images/video.mp4";
 
@@ -22,8 +22,8 @@ function VR() {
     <div className="vr-container">
       <Pannellum
         className="vr-screen"
-        width="70%"
-        height="600px"
+        width="100%"
+        height="700px"
         resize
         image={currentVR}
         pitch={10}

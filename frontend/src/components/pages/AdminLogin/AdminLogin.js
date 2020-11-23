@@ -1,11 +1,13 @@
 import React, { useEffect, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { motion } from "framer-motion";
-
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
+
+var axios = require("axios");
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -16,42 +18,53 @@ class Login extends Component {
   }
 
   handleClick(event) {
-    var apiBaseUrl = "http://localhost:8000/api/SOMELINK";
-    var self = this;
+    var apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/admin/login/";
     var payload = {
       email: this.state.email,
       password: this.state.password,
     };
 
-    alert("Login Successful.");
-    window.location.href = "./admin";
+    // alert("Login Successful.");
+    // window.location.href = "./admin";
 
-    /* TODO Properly call API
+    //  TODO Properly call API
 
-
-		axios.post(apiBaseUrl+'login', payload)
-			.then( function (response) {
-				console.log(response);
-				if(response.data.code == 200){
-					console.log("Login successful");
-					var uploadScreen=[];
-					uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
-					self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
-				}
-				// TODO handle different res codes
-				// else if(response.data.code == 204){
-				// 	console.log("Username password do not match");
-				// 	alert("username password do not match")
-				// }
-				else{
-					console.log("Username does not exists");
-					alert("Username does not exist");
-				}
-			})
-		.catch(function (error) {
-			console.log(error);
-		});
-		*/
+    axios
+      .post(apiBaseUrl, payload)
+      .then(function (response) {
+        console.log(response);
+        if (response.data.code == 200) {
+          if (response.data.res_code == 1) {
+            // console.log(response.data.result)
+            console.log("Login successful");
+            // var uploadScreen = [];
+            // uploadScreen.push(
+            //   <UploadScreen appContext={self.props.appContext} />
+            // );
+            // self.props.appContext.setState({
+            //   loginPage: [],
+            //   uploadScreen: uploadScreen,
+            // });
+          } else if (response.data.res_code == 2) {
+            console.log("Email Does Not Exist");
+          } else if (response.data.res_code == 3) {
+            console.log("Incorrect Password");
+          } else {
+            // then.. what res code can it be..?
+          }
+        }
+        // TODO handle different res codes
+        else if (response.data.code == 204) {
+          console.log("Username password do not match");
+          alert("username password do not match");
+        } else {
+          console.log("Username does not exists");
+          alert("Username does not exist");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {

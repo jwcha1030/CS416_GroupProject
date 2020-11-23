@@ -1,4 +1,3 @@
-import model_orange from "../../../images/model_orange.jpg";
 import about_us from "../../../images/aboutus.jpg";
 import shop from "../../../images/shop.jpg";
 
@@ -9,7 +8,7 @@ export const aboutUs = {
   topLine: "MSC ABOUT US",
   headline: "ABOUT US",
   description:
-    "MSC stands for Merchandising Society Club where we learn about retailing in a fully-running business at our Retail Revolution store. Supported by the school since 2018, MSC now has more than 40 SKUs for FIT and SBU apparel and assorted goods sold at our physical store at SUNY Korea. As a club that’s fully run by students, and for students, it’s a safe learning base in a campus environment to develop retail skills and knowledge.",
+    'MSC stands for "Merchandising Society Club". We learn about Merchandising and Retailing at our "Retail Revolution" store, a fully-running business operated by students and for students. MSC is a safe learning environment on campus, where its members are able to develop their skills and put into practice and experiment all the kinds of industry knowledge learned in class, from design, to marketing, distribution, and retail. Founded in 2018 thanks to the SUNY Korea support, MSC now has developed and sells over 40 different products, from FIT and SBU merchandise to others assorted goods.',
   buttonLabel: "Our Team",
   aboutUsRender: "TRUE_CONTACT",
   aboutUsRenderSubButton: "Contact",
