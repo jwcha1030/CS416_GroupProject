@@ -103,12 +103,11 @@ img {
   }
 
   .vr-modal-content {
-    width: 80%;
-    height: 90%;
+    width: 84%;
+    max-height: 90%;
     position: fixed;
-    left: 10%;
+    left: 8%;
     top: 5%;
-    overflow: hidden;
   }
 
   .home__hero-section {

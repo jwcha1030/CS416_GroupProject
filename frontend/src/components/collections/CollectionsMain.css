@@ -1,3 +1,13 @@
 .collections-main-img {
   background-color: white;
 }
+
+#tab-component {
+  margin-left: 6rem;
+}
+
+@media screen and (max-width: 1200px) {
+  #tab-component {
+    margin-left: 0rem;
+  }
+}

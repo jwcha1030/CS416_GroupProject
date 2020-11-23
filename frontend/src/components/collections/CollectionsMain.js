@@ -27,7 +27,10 @@ function CollectionsMain({
 
             <div className="col-sm-4 ">
               <div className="row">
-                <div className="home__hero-text-wrapper">
+                <div
+                  className="home__hero-text-wrapper"
+                  style={{ paddingLeft: "3rem" }}
+                >
                   <div className="top-line">{topLine}</div>
                   <h1 className={lightText ? "heading " : "heading textBlack"}>
                     {headline}
@@ -43,7 +46,7 @@ function CollectionsMain({
                   </p>
                 </div>
               </div>
-              <div className="row" style={{ margin: "3rem" }}>
+              <div className="row" id="tab-component">
                 <TabComponent />
               </div>
             </div>

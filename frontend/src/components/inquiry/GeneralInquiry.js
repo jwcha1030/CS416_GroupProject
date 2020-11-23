@@ -32,6 +32,8 @@ const schema = yup.object({
 function InquiryModal(props) {
   return (
     <Modal
+      className="general-inquiry-modal-content"
+      dialogClassName="general-inquiry-modal"
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"

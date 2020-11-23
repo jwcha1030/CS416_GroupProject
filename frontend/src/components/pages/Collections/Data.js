@@ -6,7 +6,7 @@ export const products = {
   lightTextDesc: false,
   topLine: "MSC COLLECTIONS",
   headline: "Collections",
-  description: "Explore our latest products by schools!",
+  description: "Explore our merchandise by schools!",
   buttonLabel: "View Products",
   imgStart: "start",
   img: model_orange,

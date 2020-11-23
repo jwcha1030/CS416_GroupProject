@@ -5,3 +5,13 @@
 .MuiTab-textColorPrimary:focus {
   outline: none;
 }
+
+#school-description {
+  font-size: 12px;
+}
+@media screen and (max-width: 1200px) {
+  #school-description {
+    font-size: 10px;
+    margin-bottom: 7rem;
+  }
+}

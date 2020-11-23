@@ -107,7 +107,7 @@ export default function FullWidthTabs() {
                 <br />
                 <br />
               </div>
-              <div className="col" style={{ fontSize: "13px" }}>
+              <div className="col" id="school-description">
                 The Fashion Institute of Technology (FIT) is a public college in
                 Manhattan, New York City. It is part of the State University of
                 New York (SUNY) and focuses on art, business, design, mass
@@ -126,7 +126,7 @@ export default function FullWidthTabs() {
                 <br />
                 <br />
               </div>
-              <div className="col" style={{ fontSize: "13px" }}>
+              <div className="col" id="school-description">
                 The State University of New York at Stony Brook, more commonly
                 known as Stony Brook University (SBU), is a public sea-grant and
                 space-grant research university in Stony Brook, New York. It is
