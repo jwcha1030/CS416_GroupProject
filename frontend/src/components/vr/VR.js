@@ -38,7 +38,6 @@ function VR() {
         mouseZoom
         preview=""
         previewAuthor=""
-        previewTitle="Retail Revolution Shop"
         showControls
         showFullscreenCtrl
         showZoomCtrl
@@ -75,8 +74,8 @@ function VR() {
           type="info"
           pitch={11}
           yaw={-167}
-          text="Info Hotspot Text 3"
-          URL="/collections/3"
+          text="Apparels"
+          URL="/collections"
         />
 
         {/* <Pannellum.Hotspot 

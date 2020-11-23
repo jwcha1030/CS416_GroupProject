@@ -166,7 +166,7 @@ function VRModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body align="center">
-        <Card cover={<VR></VR>}></Card>
+        <Card bodyStyle={{ padding: "0" }} cover={<VR></VR>}></Card>
       </Modal.Body>
     </Modal>
   );
