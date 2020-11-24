@@ -70,7 +70,7 @@ function PurchaseInquiry(props) {
         <Formik
           validationSchema={schema}
           onSubmit={(values) => {
-            console.log("SUBMITTED");
+            alert("SUBMITTED");
           }}
           // {async (values) => {
           // let payload = {
