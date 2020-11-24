@@ -41,7 +41,7 @@ const typeMapping = (type_id) => {
 };
 
 let has360View;
-
+let api360ViewUrl;
 function ProductDetailPage(props) {
   const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
 
@@ -63,7 +63,7 @@ function ProductDetailPage(props) {
     "https://sunyk-msc-backend.herokuapp.com/catalog_display/" +
     hasCatalogDisplayID +
     "/images/get_all/";
-
+  api360ViewUrl = api360ViewImagesUrl;
   // product details
   useEffect(() => {
     axios
@@ -267,7 +267,7 @@ function RotatingImageModal(props) {
   const [catalogDisplayImages, setCatalogDisplayImages] = useState([{}]);
   useEffect(() => {
     axios
-      .get(apiHas360ViewUrl)
+      .get(api360ViewUrl)
       .then(function (response) {
         if (response.status == 200) {
           if (response.data.res_code == 1) {
