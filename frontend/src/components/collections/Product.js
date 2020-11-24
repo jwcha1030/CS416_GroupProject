@@ -14,7 +14,7 @@ import {
   mugcup_1,
   mugcup_2,
   sample,
-} from "../pages/Collections/DataRotatingImages";
+} from "../../pages/Collections/DataRotatingImages";
 
 const { Meta } = Card;
 const toolTipMessage = "Need Help? Reach out to us!";

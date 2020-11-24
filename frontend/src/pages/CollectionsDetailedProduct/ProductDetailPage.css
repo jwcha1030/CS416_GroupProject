@@ -1,0 +1,12 @@
+@import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
+
+.image-gallery-slide .image-gallery-image {
+}
+
+.image-gallery-content {
+  padding-bottom: 5%;
+}
+
+.rotating-images-modal {
+  margin-bottom: 100px;
+}
