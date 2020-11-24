@@ -14,7 +14,7 @@ import ReactImageAppear from "react-image-appear";
 
 const axios = require("axios");
 const apiBaseUrl =
-  "https://sunyk-msc-backend.herokuapp.com/inquiry/general/send/";
+  "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
 
 const schema = yup.object({
   firstName: yup
@@ -36,6 +36,7 @@ const schema = yup.object({
   type: yup.string().required(),
 });
 
+// Mapping dictionary for Purchase method ID
 const purchaseMapping = (option) => {
   if (option === "Cash") {
     return 0;

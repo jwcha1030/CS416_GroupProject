@@ -13,7 +13,7 @@ import * as yup from "yup";
 const axios = require("axios");
 
 const apiBaseUrl =
-  "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
+  "https://sunyk-msc-backend.herokuapp.com/inquiry/general/send/";
 
 const schema = yup.object({
   firstName: yup
