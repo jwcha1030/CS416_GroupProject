@@ -13,12 +13,15 @@ import Logo from "../../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
 import InquiryModal from "../inquiry/GeneralInquiry";
 import { Modal } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
 import GoogleTranslate from "../translate/GoogleTranslate";
+import Form from "react-bootstrap/Form";
+
+const axios = require("axios");
+const apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/email/subscribe/";
 
 function Footer() {
   const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
-
+  const [subEmail, setSubEmail] = React.useState("");
   return (
     <div className="footer-container">
       <section className="footer-subscription">
@@ -28,16 +31,61 @@ function Footer() {
         <p className="footer-subscription-text">
           You can unsubscribe at any time.
         </p>
-        <div className="input-areas">
-          <form>
+        <div>
+          <Form
+            onSubmit={async () => {
+              let payload = {
+                email: subEmail,
+              };
+
+              await new Promise((resolve) => setTimeout(resolve, 500));
+              alert(JSON.stringify(payload, null, 2));
+
+              axios
+                .post(apiBaseUrl, payload)
+                .then((response) => {
+                  // Check if internet connection was working
+                  if (response.status === 200) {
+                    if (response.data.res_code === 1) {
+                      // Everything worked correctly
+                      // Do something with the returned data
+                      console.log("Post SUCCESS", response.data.res_msg);
+                      alert("Successfully Subscribed to MSC");
+                      window.location.reload();
+                      // } else if (){
+                      // Check other res_code with else if
+                      // }
+                    } else {
+                      // Unhandled res_code
+                      alert("Post: Unhandled res_code");
+                    }
+                  } else {
+                    // TODO handle unable to connect with database
+                    alert("Post: unable to connect with database");
+                  }
+                })
+                .catch(function (error) {
+                  // TODO handle error with the call
+                  alert("Post: Call error");
+                  console.log(error);
+                });
+            }}
+          >
             <input
               className="footer-input"
               name="email"
               type="email"
               placeholder="Your Email"
+              value={subEmail}
+              onChange={subEmail}
+              onSubmit={() => {
+                setSubEmail(subEmail);
+              }}
             />
-            <Button buttonStyle="btn--outline">Subscribe</Button>
-          </form>
+            <Button type="submit" buttonStyle="btn--outline">
+              Subscribe
+            </Button>
+          </Form>
         </div>
       </section>
 

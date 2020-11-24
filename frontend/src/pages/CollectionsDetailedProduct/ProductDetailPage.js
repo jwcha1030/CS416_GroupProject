@@ -14,7 +14,63 @@ import PurchaseInquiryModal from "../../components/inquiry/PurchaseInquiry";
 import { mugcup_1, mugcup_2, sample } from "../Collections/DataRotatingImages";
 const { Meta } = Card;
 
+const axios = require("axios");
+
+const schoolMapping = (school_id) => {
+  if (school_id === 0) {
+    return "None";
+  } else if (school_id === 1) {
+    return "SBU";
+  } else if (school_id === 2) {
+    return "FIT";
+  } else {
+    return "ERR";
+  }
+};
+
+const typeMapping = (type_id) => {
+  if (type_id === 0) {
+    return "None";
+  } else if (type_id === 1) {
+    return "Goods";
+  } else if (type_id === 2) {
+    return "Apparel";
+  } else {
+    return "ERR";
+  }
+};
 function ProductDetailPage(props) {
+  const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
+
+  const apiBaseUrl =
+    "https://sunyk-msc-backend.herokuapp.com/collection/get/" +
+    cProductID +
+    "/";
+
+  const [productData, setData] = useState({});
+  useEffect(() => {
+    axios
+      .get(apiBaseUrl)
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully fetched product id " + cProductID,
+              response.data.res_msg
+            );
+            setData(response.data.collection);
+          } else {
+            alert("unhandled res_code error. Please contact an admin.");
+          }
+        } else {
+          alert("unhandled response status. Please contact an admin.");
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0" + error);
+        alert("unhandled error. Please contact an admin.");
+      });
+  }, []);
   const [
     PurchaseInquiryModalShow,
     setPurchaseInquiryModalShow,
@@ -22,8 +78,6 @@ function ProductDetailPage(props) {
   const [RotatingImageModalShow, setRotatingImageModalShow] = React.useState(
     false
   );
-
-  const productId = props.match.params.id;
 
   const images = [
     {
@@ -50,12 +104,12 @@ function ProductDetailPage(props) {
   return (
     <div className="details-container">
       <h1 style={{ display: "flex", justifyContent: "center", margin: "50px" }}>
-        Detailed Product ID: {productId}
+        Detailed Product ID: {cProductID}
       </h1>
 
       <RotatingImageModal
         //pass data to  modal using props...
-        id={productId}
+        id={cProductID}
         show={RotatingImageModalShow}
         onHide={() => setRotatingImageModalShow(false)}
       />
@@ -112,12 +166,36 @@ function ProductDetailPage(props) {
       <PurchaseInquiryModal
         show={PurchaseInquiryModalShow}
         onHide={() => setPurchaseInquiryModalShow(false)}
-        dataToModal={productId}
+        productID={cProductID}
+        productName={productData["name"]}
+        productPrice={productData["price"]}
+        productSchool={schoolMapping(productData["school_id"])}
+        productType={typeMapping(productData["type_id"])}
+        productDescription={productData["desc"]}
+        productDate={productData["create_date"]}
+        productClickCount={productData["click_count"]}
+        productCoverImage={productData["cover_img"]}
       />
       <Footer />
     </div>
   );
 }
+
+// res_code: INT
+// res_msg: STR
+// collection: {
+//     id: INT
+//     name: STR
+//     desc: STR
+//     school_id: INT
+//     type_id: INT
+//     cover_img: STR
+//     idx: INT
+//     create_date: STR (datetime)
+//     last_update: STR (datetime)
+//     is_active: BOOL
+//     click_count: INT
+// }
 
 function RotatingImageModal(props) {
   const id = props.id;

@@ -40,7 +40,7 @@ const schema = yup.object({
 const purchaseMapping = (option) => {
   if (option === "Cash") {
     return 0;
-  } else if (option === "Wire Bank Account") {
+  } else if (option === "Wire") {
     return 1;
   } else if (option === "Card") {
     return 2;
@@ -69,52 +69,55 @@ function PurchaseInquiry(props) {
 
         <Formik
           validationSchema={schema}
-          onSubmit={(values) => {
-            alert("SUBMITTED");
-          }}
-          // {async (values) => {
-          // let payload = {
-          //   first_name: values.firstName,
-          //   last_name: values.lastName,
-          //   email: values.email,
-          //   message: values.message,
-          //   purchase_method_id: purchaseMapping(values.type),
-          //   // collection_item_id:
-          // };
-          // await new Promise((resolve) => setTimeout(resolve, 500));
-          // alert(JSON.stringify(payload, null, 2));
+          onSubmit={async (values) => {
+            let payload = {
+              first_name: values.firstName,
+              last_name: values.lastName,
+              email: values.email,
+              message: values.message,
+              // type: values.type, method is eg. Wire -> 1, Cash ->0 using the purchaseMapping function.
+              purchase_method_id: purchaseMapping(values.type),
+              collection_item_id: props.productID,
+            };
 
-          // axios
-          //   .post(apiBaseUrl, payload) //values is the form's data
-          //   .then((response) => {
-          //     // Check if internet connection was working
-          //     if (response.status === 200) {
-          //       if (response.data.res_code === 1) {
-          //         // Everything worked correctly
-          //         // Do something with the returned data
-          //         console.log("Post SUCCESS", response.data.res_msg);
-          //         alert("Successfully Sent.");
-          //         window.location.reload();
-          //         // } else if (){
-          //         // Check other res_code with else if
-          //         // }
-          //       } else {
-          //         // Unhandled res_code
-          //         alert(
-          //           "Post: Unhandled res_code / the entered email may be wrong "
-          //         );
-          //       }
-          //     } else {
-          //       // TODO handle unable to connect with database
-          //       alert("Post: unable to connect with database");
-          //     }
-          //   })
-          //   .catch(function (error) {
-          //     // TODO handle error with the call
-          //     alert("Post: Call error");
-          //     console.log(error);
-          //   });
-          //  }}
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            alert(JSON.stringify(payload, null, 2));
+
+            axios
+              .post(apiBaseUrl, payload) //values is the form's data
+              .then((response) => {
+                // Check if internet connection was working
+                if (response.status === 200) {
+                  if (response.data.res_code === 1) {
+                    // Everything worked correctly
+                    // Do something with the returned data
+                    console.log("Post SUCCESS", response.data.res_msg);
+                    alert("Successfully Sent.");
+                    window.location.reload();
+                    // } else if (){
+                    // Check other res_code with else if
+                    // }
+                  } else if (response.data.res_code === 2) {
+                    alert(
+                      "Post: Email does not exist or the email is invalid."
+                    );
+                  } else {
+                    // Unhandled res_code
+                    alert(
+                      "Post: Unhandled res_code / the entered email may be wrong "
+                    );
+                  }
+                } else {
+                  // TODO handle unable to connect with database
+                  alert("Post: unable to connect with database");
+                }
+              })
+              .catch(function (error) {
+                // TODO handle error with the call
+                alert("Post: Call error");
+                console.log(error);
+              });
+          }}
           initialValues={{}}
         >
           {({
@@ -134,20 +137,48 @@ function PurchaseInquiry(props) {
                   <Form.Label>Product Information</Form.Label>
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Name {props.dataToModal}
+                    Product Name: <br /> {props.productName}
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Price {props.dataToModal}
+                    Product ID: <br /> {props.productID}
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Season ... {props.dataToModal}
+                    Product Price:
+                    <br /> {props.productPrice}
+                  </Form.Text>{" "}
+                  <br />
+                  <Form.Text style={{ fontSize: "15px" }}>
+                    Product Description:
+                    <br />
+                    {props.productDescription}
+                  </Form.Text>{" "}
+                  <br />
+                  <Form.Text style={{ fontSize: "15px" }}>
+                    Product School:
+                    <br /> {props.productSchool}
+                  </Form.Text>{" "}
+                  <br />
+                  <Form.Text style={{ fontSize: "15px" }}>
+                    Product Type:
+                    <br />
+                    {props.productType}
+                  </Form.Text>{" "}
+                  <br />
+                  <Form.Text style={{ fontSize: "15px" }}>
+                    Product Season:
+                    <br /> {props.productDate}
+                  </Form.Text>{" "}
+                  <br />
+                  <Form.Text style={{ fontSize: "15px" }}>
+                    Product Click Count:
+                    <br /> {props.productClickCount}
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
                     <ReactImageAppear
-                      src={SampleImage}
+                      src={props.productCoverImage}
                       alt={"img"}
                       animation="bounceIn"
                     />
@@ -215,17 +246,22 @@ function PurchaseInquiry(props) {
 
                   <Form.Row>
                     <Form.Group controlId="validationFormikPurchaseMethod">
-                      {" "}
                       <Form.Label>Purchase Methods</Form.Label>
                       <Form.Control
                         as="select"
+                        name="type"
                         value={values.type}
                         onChange={handleChange}
                         size="lg"
+                        isInvalid={!!errors.email}
                       >
-                        <option>Cash</option>
-                        <option>Wire Bank Account</option>
-                      </Form.Control>{" "}
+                        <option value="">Purchase Method</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Wire">Wire Bank Account</option>
+                      </Form.Control>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.type}
+                      </Form.Control.Feedback>
                     </Form.Group>
                   </Form.Row>
                 </Form.Group>

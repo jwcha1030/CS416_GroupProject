@@ -85,6 +85,10 @@ function InquiryModal(props) {
                     // } else if (){
                     // Check other res_code with else if
                     // }
+                  } else if (response.data.res_code === 2) {
+                    alert(
+                      "Post: Email does not exist or the email is invalid."
+                    );
                   } else {
                     // Unhandled res_code
                     alert(
