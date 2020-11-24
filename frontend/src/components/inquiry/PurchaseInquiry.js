@@ -65,58 +65,56 @@ function PurchaseInquiry(props) {
       <Modal.Body>
         <br></br>
 
-        <h4>
-          Fill out the inquiry form below about the Product ID:{" "}
-          {props.dataToModal}
-        </h4>
         <br></br>
 
         <Formik
           validationSchema={schema}
-          onSubmit={async (values) => {
-            let payload = {
-              first_name: values.firstName,
-              last_name: values.lastName,
-              email: values.email,
-              message: values.message,
-              purchase_method_id: purchaseMapping(values.type),
-              // collection_item_id:
-            };
-
-            await new Promise((resolve) => setTimeout(resolve, 500));
-            alert(JSON.stringify(payload, null, 2));
-
-            axios
-              .post(apiBaseUrl, payload) //values is the form's data
-              .then((response) => {
-                // Check if internet connection was working
-                if (response.status === 200) {
-                  if (response.data.res_code === 1) {
-                    // Everything worked correctly
-                    // Do something with the returned data
-                    console.log("Post SUCCESS", response.data.res_msg);
-                    alert("Successfully Sent.");
-                    window.location.reload();
-                    // } else if (){
-                    // Check other res_code with else if
-                    // }
-                  } else {
-                    // Unhandled res_code
-                    alert(
-                      "Post: Unhandled res_code / the entered email may be wrong "
-                    );
-                  }
-                } else {
-                  // TODO handle unable to connect with database
-                  alert("Post: unable to connect with database");
-                }
-              })
-              .catch(function (error) {
-                // TODO handle error with the call
-                alert("Post: Call error");
-                console.log(error);
-              });
+          onSubmit={(values) => {
+            console.log("SUBMITTED");
           }}
+          // {async (values) => {
+          // let payload = {
+          //   first_name: values.firstName,
+          //   last_name: values.lastName,
+          //   email: values.email,
+          //   message: values.message,
+          //   purchase_method_id: purchaseMapping(values.type),
+          //   // collection_item_id:
+          // };
+          // await new Promise((resolve) => setTimeout(resolve, 500));
+          // alert(JSON.stringify(payload, null, 2));
+
+          // axios
+          //   .post(apiBaseUrl, payload) //values is the form's data
+          //   .then((response) => {
+          //     // Check if internet connection was working
+          //     if (response.status === 200) {
+          //       if (response.data.res_code === 1) {
+          //         // Everything worked correctly
+          //         // Do something with the returned data
+          //         console.log("Post SUCCESS", response.data.res_msg);
+          //         alert("Successfully Sent.");
+          //         window.location.reload();
+          //         // } else if (){
+          //         // Check other res_code with else if
+          //         // }
+          //       } else {
+          //         // Unhandled res_code
+          //         alert(
+          //           "Post: Unhandled res_code / the entered email may be wrong "
+          //         );
+          //       }
+          //     } else {
+          //       // TODO handle unable to connect with database
+          //       alert("Post: unable to connect with database");
+          //     }
+          //   })
+          //   .catch(function (error) {
+          //     // TODO handle error with the call
+          //     alert("Post: Call error");
+          //     console.log(error);
+          //   });
+          //  }}
           initialValues={{}}
         >
           {({
@@ -130,109 +128,116 @@ function PurchaseInquiry(props) {
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
+
                 <Form.Group as={Col} md="6" controlId="validationFormikProduct">
                   <Form.Label>Product Information</Form.Label>
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product ID is {props.dataToModal}
+                    Product Name {props.dataToModal}
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Name is ... {props.dataToModal}
+                    Product Price {props.dataToModal}
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Price is ... {props.dataToModal}
+                    Product Season ... {props.dataToModal}
                   </Form.Text>{" "}
                   <br />
                   <Form.Text style={{ fontSize: "15px" }}>
-                    Product Image{" "}
                     <ReactImageAppear
                       src={SampleImage}
                       alt={"img"}
                       animation="bounceIn"
                     />
-                  </Form.Text>{" "}
+                  </Form.Text>
                   <br />
                 </Form.Group>
                 <Form.Group as={Col} md="1"></Form.Group>
                 {/* space between product and form */}
-                <Form.Group as={Col} md="4" controlId="userForm">
+                <Form.Group as={Col} md="4">
+                  <br />
                   <Form.Row>
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      placeholder="Last Name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isInvalid={!!errors.lastName}
-                      size="lg"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.lastName}
-                    </Form.Control.Feedback>
+                    <Form.Group controlId="validationFormikFirstName">
+                      <Form.Label>First Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.firstName}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.firstName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
                   </Form.Row>
                   <br />
                   <Form.Row>
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      placeholder="First Name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      isInvalid={!!errors.firstName}
-                      size="lg"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.firstName}
-                    </Form.Control.Feedback>
+                    <Form.Group controlId="validationFormikLastName">
+                      <Form.Label>Last Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        value={values.lastName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.lastName}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.lastName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
                   </Form.Row>
+                  <br />
+                  <Form.Row>
+                    <Form.Group controlId="validationFormikEmail">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        placeholder="Your Email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        isInvalid={!!errors.email}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
+                  <br />
 
-                  <br />
                   <Form.Row>
-                    <Form.Label>Email</Form.Label>
-
-                    <Form.Control
-                      type="email"
-                      placeholder="Your Email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      isInvalid={!!errors.email}
-                      size="lg"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email}
-                    </Form.Control.Feedback>
-                  </Form.Row>
-                  <br />
-                  <br />
-                  <Form.Row>
-                    <Form.Label>Purchase Methods</Form.Label>
-                    <Form.Control
-                      as="select"
-                      value={values.type}
-                      onChange={handleChange}
-                      size="lg"
-                    >
-                      <option>Cash</option>
-                      <option>Wire Bank Account</option>
-                    </Form.Control>
+                    <Form.Group controlId="validationFormikPurchaseMethod">
+                      {" "}
+                      <Form.Label>Purchase Methods</Form.Label>
+                      <Form.Control
+                        as="select"
+                        value={values.type}
+                        onChange={handleChange}
+                        size="lg"
+                      >
+                        <option>Cash</option>
+                        <option>Wire Bank Account</option>
+                      </Form.Control>{" "}
+                    </Form.Group>
                   </Form.Row>
                 </Form.Group>
               </Form.Row>
 
               <br />
               <Form.Row>
-                {/* <Form.Group as={Col} md="4" controlId="validationFormikType">
-       
-                </Form.Group> */}
+                <Form.Group as={Col} md="1"></Form.Group>
 
                 <Form.Group
                   as={Col}
-                  md="11"
+                  md="10"
                   size="lg"
                   controlId="validationFormikNotes"
                 >
@@ -247,9 +252,11 @@ function PurchaseInquiry(props) {
               </Form.Row>
 
               <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
+
                 <Form.Group
                   as={Col}
-                  md="11"
+                  md="10"
                   controlId="validationFormikMessage"
                 >
                   <Form.Label>Message</Form.Label>
