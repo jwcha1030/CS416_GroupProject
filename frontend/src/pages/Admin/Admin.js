@@ -8,6 +8,15 @@ import {Button} from "../../components/button/Button";
 import Chart from "./WebUsageAnalysis/LineGraph";
 
 export default function Admin() {
+  if(sessionStorage.getItem('isLoggedIn')){
+    // Admin is logged in
+  } else {
+    // Admin is not logged in
+    window.location.href = 'https://merchandising-society.web.app/adminlogin';
+    // return to prevent loading the page
+    return;
+  }
+  
   const handleAlert=()=>{
     alert("UNDER CONSTRUCTION - come back later!");
   };

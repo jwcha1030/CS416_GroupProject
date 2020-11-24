@@ -15,6 +15,12 @@ class Login extends Component {
       email: "",
       password: "",
     };
+
+    // Check if already logged in 
+    if( sessionStorage.getItem('isLoggedIn') ){
+      // navigate to admin page
+      window.location.href = 'https://merchandising-society.web.app/admin';
+    }
   }
 
   handleClick(event) {
@@ -45,6 +51,9 @@ class Login extends Component {
             //   loginPage: [],
             //   uploadScreen: uploadScreen,
             // });
+
+            sessionStorage.setItem('isLoggedIn', 'true');
+            
           } else if (response.data.res_code == 2) {
             console.log("Email Does Not Exist");
           } else if (response.data.res_code == 3) {
