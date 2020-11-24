@@ -13,7 +13,7 @@ import * as yup from "yup";
 const axios = require("axios");
 
 const apiBaseUrl =
-  "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
+  "https://sunyk-msc-backend.herokuapp.com/inquiry/general/send/";
 
 const schema = yup.object({
   firstName: yup
@@ -32,7 +32,6 @@ const schema = yup.object({
     .min(10, "Please provide more details (10-300 characters)")
     .max(300, "Too Long!")
     .required("Last name is required"),
-  type: yup.string().required("Purchase Method is required"),
 });
 
 function InquiryModal(props) {
