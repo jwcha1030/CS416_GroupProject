@@ -40,16 +40,31 @@ const typeMapping = (type_id) => {
   }
 };
 
+let has360View;
+
 function ProductDetailPage(props) {
   const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
+
+  const [productData, setData] = useState({});
+  const [hasCatalogDisplayID, setHasCatalogDisplayID] = useState();
+  const [hasCatalogDisplayBoolean, setHasCatalogDisplayBoolean] = useState();
 
   const apiBaseUrl =
     "https://sunyk-msc-backend.herokuapp.com/collection/item/get/" +
     cProductID +
     "/";
 
-  const [productData, setData] = useState({});
+  const apiHas360ViewUrl =
+    "https://sunyk-msc-backend.herokuapp.com/collection/item/get/collection/item/" +
+    cProductID +
+    "/catalog_display/has/";
 
+  const api360ViewImagesUrl =
+    "https://sunyk-msc-backend.herokuapp.com/catalog_display/" +
+    hasCatalogDisplayID +
+    "/images/get_all/";
+
+  // product details
   useEffect(() => {
     axios
       .get(apiBaseUrl)
@@ -62,20 +77,58 @@ function ProductDetailPage(props) {
             );
             setData(response.data.collection_item);
           } else {
-            alert("unhandled res_code error. Please contact an admin.");
+            alert(
+              "unhandled res_code error from get collection. Please contact an admin."
+            );
           }
         } else {
-          alert("unhandled response status. Please contact an admin.");
+          alert(
+            "unhandled response status get collection. Please contact an admin."
+          );
         }
       })
       .catch(function (error) {
-        console.log("code 0" + error);
+        console.log("code 0 " + error);
 
-        alert("unhandled error. Please contact an admin.");
+        alert("unhandled error from get collection. Please contact an admin.");
+      });
+  }, []);
+
+  // fetching whether the product has 360 degree view or not, No 360 means ID = -1 , otherwise ID exists.
+  useEffect(() => {
+    axios
+      .get(apiHas360ViewUrl)
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully fetched whether the product has catalog display or not: product id:" +
+                cProductID,
+              response.data.res_msg
+            );
+            setHasCatalogDisplayID(response.data.cd_id);
+            setHasCatalogDisplayBoolean(response.data.has);
+            has360View = response.daa.has;
+          } else {
+            alert(
+              "unhandled res_code error from catalog display. Please contact an admin."
+            );
+          }
+        } else {
+          alert(
+            "unhandled response status  catalog display. Please contact an admin."
+          );
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0 " + error);
+
+        alert("unhandled error from catalog display. Please contact an admin.");
       });
   }, []);
 
   console.log(productData);
+  console.log(hasCatalogDisplayID);
 
   const [
     PurchaseInquiryModalShow,
@@ -111,7 +164,6 @@ function ProductDetailPage(props) {
       thumbnail: productData["gallery_img6"],
     },
   ];
-  useEffect(() => {}, []);
 
   return (
     <div className="details-container">
@@ -131,13 +183,17 @@ function ProductDetailPage(props) {
         <div className="col-sm-5">
           <ImageGallery lazyLoad={true} items={images} />
           <div className="rotating-images-modal">
-            <Button
-              variant="dark"
-              size="lg"
-              onClick={() => setRotatingImageModalShow(true)}
-            >
-              Launch 360 Degree View
-            </Button>
+            {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
+              <Button
+                variant="dark"
+                size="lg"
+                onClick={() => setRotatingImageModalShow(true)}
+              >
+                Launch 360 Degree View
+              </Button>
+            ) : (
+              <p>360 Degree View Not Available</p> //else a text
+            )}
           </div>
         </div>
 
@@ -208,6 +264,36 @@ function ProductDetailPage(props) {
 // }
 
 function RotatingImageModal(props) {
+  const [catalogDisplayImages, setCatalogDisplayImages] = useState([{}]);
+  useEffect(() => {
+    axios
+      .get(apiHas360ViewUrl)
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully fetched 360 Degree Images with c_id " +
+                response.data.res_msg
+            );
+            setCatalogDisplayImages(response.data.results);
+          } else {
+            console.log(
+              "rescode other than 1. Catalog Display may not be available, or it has some other error."
+            );
+          }
+        } else {
+          alert(
+            "unhandled response status from loading catalog display images. Please contact an admin."
+          );
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0 " + error);
+        alert(
+          "unhandled error from loading catalog display images. Please contact an admin."
+        );
+      });
+  }, []);
   const id = props.id;
   //pass data from product using props...
   return (
@@ -233,7 +319,7 @@ function RotatingImageModal(props) {
               scroll={false}
               className="rotating-image"
             >
-              {mugcup_2.map(renderImages)}
+              {catalogDisplayImages.map(renderImages)}
             </Rotation>
           }
         >
