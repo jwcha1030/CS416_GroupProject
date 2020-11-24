@@ -167,8 +167,8 @@ function ProductDetailPage(props) {
 
   return (
     <div className="details-container">
-      <h1 style={{ display: "flex", justifyContent: "center", margin: "50px" }}>
-        Detailed Product ID: {cProductID}
+      <h1 style={{ display: "flex", justifyContent: "center", margin: "4%" }}>
+        {" "}
       </h1>
 
       <RotatingImageModal
