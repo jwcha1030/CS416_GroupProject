@@ -12,6 +12,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 import SampleImage from "../../images/s1.jpg";
 import ReactImageAppear from "react-image-appear";
 
+const axios = require("axios");
+const apiBaseUrl =
+  "https://sunyk-msc-backend.herokuapp.com/inquiry/general/send/";
+
 const schema = yup.object({
   firstName: yup
     .string()
@@ -32,6 +36,17 @@ const schema = yup.object({
   type: yup.string().required(),
 });
 
+const purchaseMapping = (option) => {
+  if (option === "Cash") {
+    return 0;
+  } else if (option === "Wire Bank Account") {
+    return 1;
+  } else if (option === "Card") {
+    return 2;
+  } else {
+    return -1;
+  }
+};
 function PurchaseInquiry(props) {
   return (
     <Modal
@@ -57,7 +72,50 @@ function PurchaseInquiry(props) {
 
         <Formik
           validationSchema={schema}
-          onSubmit={console.log(schema)}
+          onSubmit={async (values) => {
+            let payload = {
+              first_name: values.firstName,
+              last_name: values.lastName,
+              email: values.email,
+              message: values.message,
+              purchase_method_id: purchaseMapping(values.type),
+              // collection_item_id:
+            };
+
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            alert(JSON.stringify(payload, null, 2));
+
+            axios
+              .post(apiBaseUrl, payload) //values is the form's data
+              .then((response) => {
+                // Check if internet connection was working
+                if (response.status === 200) {
+                  if (response.data.res_code === 1) {
+                    // Everything worked correctly
+                    // Do something with the returned data
+                    console.log("Post SUCCESS", response.data.res_msg);
+                    alert("Successfully Sent.");
+                    window.location.reload();
+                    // } else if (){
+                    // Check other res_code with else if
+                    // }
+                  } else {
+                    // Unhandled res_code
+                    alert(
+                      "Post: Unhandled res_code / the entered email may be wrong "
+                    );
+                  }
+                } else {
+                  // TODO handle unable to connect with database
+                  alert("Post: unable to connect with database");
+                }
+              })
+              .catch(function (error) {
+                // TODO handle error with the call
+                alert("Post: Call error");
+                console.log(error);
+              });
+          }}
           initialValues={{}}
         >
           {({
@@ -96,16 +154,9 @@ function PurchaseInquiry(props) {
                   </Form.Text>{" "}
                   <br />
                 </Form.Group>
-                <Form.Group
-                  as={Col}
-                  md="1"
-                  controlId="validationFormikLastName"
-                ></Form.Group>
-                <Form.Group
-                  as={Col}
-                  md="4"
-                  controlId="validationFormikLastName"
-                >
+                <Form.Group as={Col} md="1"></Form.Group>
+                {/* space between product and form */}
+                <Form.Group as={Col} md="4" controlId="userForm">
                   <Form.Row>
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control

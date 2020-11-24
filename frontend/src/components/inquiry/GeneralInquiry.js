@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -9,6 +9,11 @@ import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
 
 import * as yup from "yup";
+
+const axios = require("axios");
+
+const apiBaseUrl =
+  "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
 
 const schema = yup.object({
   firstName: yup
@@ -27,6 +32,7 @@ const schema = yup.object({
     .min(10, "Please provide more details (10-300 characters)")
     .max(300, "Too Long!")
     .required("Last name is required"),
+  type: yup.string().required("Purchase Method is required"),
 });
 
 function InquiryModal(props) {
@@ -55,7 +61,48 @@ function InquiryModal(props) {
 
         <Formik
           validationSchema={schema}
-          onSubmit={console.log(schema)}
+          onSubmit={async (values) => {
+            let payload = {
+              first_name: values.firstName,
+              last_name: values.lastName,
+              email: values.email,
+              message: values.message,
+            };
+
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            alert(JSON.stringify(payload, null, 2));
+
+            axios
+              .post(apiBaseUrl, payload) //values is the form's data
+              .then((response) => {
+                // Check if internet connection was working
+                if (response.status === 200) {
+                  if (response.data.res_code === 1) {
+                    // Everything worked correctly
+                    // Do something with the returned data
+                    console.log("Post SUCCESS", response.data.res_msg);
+                    alert("Successfully Sent.");
+                    window.location.reload();
+                    // } else if (){
+                    // Check other res_code with else if
+                    // }
+                  } else {
+                    // Unhandled res_code
+                    alert(
+                      "Post: Unhandled res_code / the entered email may be wrong "
+                    );
+                  }
+                } else {
+                  // TODO handle unable to connect with database
+                  alert("Post: unable to connect with database");
+                }
+              })
+              .catch(function (error) {
+                // TODO handle error with the call
+                alert("Post: Call error");
+                console.log(error);
+              });
+          }}
           initialValues={{}}
         >
           {({
@@ -72,7 +119,7 @@ function InquiryModal(props) {
                 <Form.Group
                   as={Col}
                   md="6"
-                  controlId="validationFormikLastName"
+                  controlId="validationFormikFirstName"
                 >
                   <Form.Label>First Name</Form.Label>
 
