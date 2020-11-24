@@ -11,7 +11,6 @@ import * as yup from "yup";
 import InputGroup from "react-bootstrap/InputGroup";
 import SampleImage from "../../images/s1.jpg";
 import ReactImageAppear from "react-image-appear";
-
 const axios = require("axios");
 const apiBaseUrl =
   "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
@@ -136,47 +135,61 @@ function PurchaseInquiry(props) {
                 <Form.Group as={Col} md="6" controlId="validationFormikProduct">
                   <Form.Label>Product Information</Form.Label>
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Name: <br /> {props.productName}
+                  <Form.Text controlId="product-description">
+                    Product Name <br />{" "}
+                    <div className="product-detail">{props.productName}</div>
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product ID: <br /> {props.productID}
+                  <Form.Text controlId="product-description">
+                    Product ID <br />{" "}
+                    <div className="product-detail">{props.productID}</div>
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Price:
-                    <br /> {props.productPrice}
+                  <Form.Text controlId="product-description">
+                    Product Price
+                    <br />{" "}
+                    <div className="product-detail">{props.productPrice}</div>
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Description:
+                  <Form.Text controlId="product-description">
+                    Product Description
                     <br />
-                    {props.productDescription}
+                    <div className="product-detail">
+                      {props.productDescription}
+                    </div>
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product School:
-                    <br /> {props.productSchool}
+                  <Form.Text controlId="product-description">
+                    Product School
+                    <br />{" "}
+                    <div className="product-detail">{props.productSchool}</div>
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Type:
+                  <Form.Text controlId="product-description">
+                    Product Type
                     <br />
-                    {props.productType}
+                    <div className="product-detail">
+                      {" "}
+                      {props.productType}
+                    </div>{" "}
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Season:
-                    <br /> {props.productDate}
+                  <Form.Text controlId="product-description">
+                    Product Season
+                    <br />{" "}
+                    <div className="product-detail">{props.productDate}</div>
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Click Count:
-                    <br /> {props.productClickCount}
+                  <Form.Text controlId="product-description">
+                    Product Click Count
+                    <br />{" "}
+                    <div className="product-detail">
+                      {" "}
+                      {props.productClickCount}
+                    </div>{" "}
                   </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
+                  <Form.Text controlId="product-description">
                     <ReactImageAppear
                       src={props.productCoverImage}
                       alt={"img"}

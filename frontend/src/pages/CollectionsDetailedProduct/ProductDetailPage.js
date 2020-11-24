@@ -39,15 +39,17 @@ const typeMapping = (type_id) => {
     return "ERR";
   }
 };
+
 function ProductDetailPage(props) {
   const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
 
   const apiBaseUrl =
-    "https://sunyk-msc-backend.herokuapp.com/collection/get/" +
+    "https://sunyk-msc-backend.herokuapp.com/collection/item/get/" +
     cProductID +
     "/";
 
   const [productData, setData] = useState({});
+
   useEffect(() => {
     axios
       .get(apiBaseUrl)
@@ -58,7 +60,7 @@ function ProductDetailPage(props) {
               "Successfully fetched product id " + cProductID,
               response.data.res_msg
             );
-            setData(response.data.collection);
+            setData(response.data.collection_item);
           } else {
             alert("unhandled res_code error. Please contact an admin.");
           }
@@ -68,9 +70,13 @@ function ProductDetailPage(props) {
       })
       .catch(function (error) {
         console.log("code 0" + error);
+
         alert("unhandled error. Please contact an admin.");
       });
   }, []);
+
+  console.log(productData);
+
   const [
     PurchaseInquiryModalShow,
     setPurchaseInquiryModalShow,
@@ -81,22 +87,28 @@ function ProductDetailPage(props) {
 
   const images = [
     {
-      original:
-        "https://kickslinks.com/wp-content/uploads/2016/11/nike-air-presto-flyknit-ultra-crimson-4.jpg",
-      thumbnail:
-        "https://kickslinks.com/wp-content/uploads/2016/11/nike-air-presto-flyknit-ultra-crimson-4.jpg",
+      original: productData["gallery_img1"],
+      thumbnail: productData["gallery_img1"],
     },
     {
-      original:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcREPatJE3wakbtxXBlJlfTVupaH_zJ13Ek0SQ&usqp=CAU",
-      thumbnail:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcREPatJE3wakbtxXBlJlfTVupaH_zJ13Ek0SQ&usqp=CAU",
+      original: productData["gallery_img2"],
+      thumbnail: productData["gallery_img2"],
     },
     {
-      original:
-        "https://swankism.com/wp-content/uploads/2016/04/nike-air-presto-ultra-flyknit-official-images-03.jpg?x95412",
-      thumbnail:
-        "https://swankism.com/wp-content/uploads/2016/04/nike-air-presto-ultra-flyknit-official-images-03.jpg?x95412",
+      original: productData["gallery_img3"],
+      thumbnail: productData["gallery_img3"],
+    },
+    {
+      original: productData["gallery_img4"],
+      thumbnail: productData["gallery_img4"],
+    },
+    {
+      original: productData["gallery_img5"],
+      thumbnail: productData["gallery_img5"],
+    },
+    {
+      original: productData["gallery_img6"],
+      thumbnail: productData["gallery_img6"],
     },
   ];
   useEffect(() => {}, []);
@@ -132,7 +144,7 @@ function ProductDetailPage(props) {
         <div className="col-sm-1"></div>
         <div className="col-sm-4">
           <Card
-            title="Title of Product"
+            title={productData["name"]}
             extra={
               <Button
                 className="make-inquiry"
@@ -146,23 +158,21 @@ function ProductDetailPage(props) {
           >
             <div className="row">
               <div className="col-sm-5 text-left">
-                <h1> $19.99 </h1>
-                <p> Fashion Institute of Technology </p>
-                <p> Apparels </p>
-                <p> 13 Views</p>
+                <h1> ₩{productData["price"]} </h1>
+                <p> {schoolMapping(productData["school_id"])}</p>
+                <p> {typeMapping(productData["type_id"])} </p>
+                <p> {productData["click_count"]} Views (Clicks)</p>
               </div>
               <div className="col-sm-7 text-left">
-                <p>
-                  This product is handcrafted by MSC members in 2018 Spring. It
-                  took over a year to craft the product, and we are now finally
-                  offering it to everyone. Please take a close look at ...{" "}
-                </p>
+                <p>{productData["desc"]}</p>
               </div>
             </div>
           </Card>
           <div className="col-sm-1"></div>
         </div>
       </div>
+      {/* 
+      pass values as props to the modal */}
       <PurchaseInquiryModal
         show={PurchaseInquiryModalShow}
         onHide={() => setPurchaseInquiryModalShow(false)}
@@ -174,7 +184,7 @@ function ProductDetailPage(props) {
         productDescription={productData["desc"]}
         productDate={productData["create_date"]}
         productClickCount={productData["click_count"]}
-        productCoverImage={productData["cover_img"]}
+        productCoverImage={productData["main_img"]}
       />
       <Footer />
     </div>
