@@ -67,7 +67,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 1.2rem;
+    column-gap: 0.8rem;
     row-gap: 3rem;
     padding-top: 3rem;
     padding-left: 1rem;

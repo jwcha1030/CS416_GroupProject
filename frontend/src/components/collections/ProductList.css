@@ -103,8 +103,8 @@
     white-space: nowrap;
   }
   .product-list {
-    column-gap: 1rem;
-    row-gap: 2rem;
+    column-gap: 0.7rem;
+    row-gap: 2.4rem;
     padding-top: 1rem;
     padding-left: 0;
     padding-right: 0;

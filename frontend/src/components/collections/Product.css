@@ -10,25 +10,26 @@
 }
 @media screen and (max-width: 1200px) {
   .product-card {
-    width: 11.5rem;
+    width: 11rem;
     height: auto;
   }
 
   .ant-card-body {
-    padding: 0.7rem;
+    padding: 0.4rem;
+    padding-right: 0.2rem;
   }
 
   .product-description {
     font-size: 0.8rem;
   }
   .ant-card-meta-description {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .ant-card-meta-title {
     padding-top: 0.7rem;
     margin-bottom: 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: bold;
   }
 }
