@@ -137,14 +137,11 @@ function Footer() {
         </div>
         <br />
         <div align="center">
-          <smaller style={{ color: "white" }}>032-1234-1234</smaller>
-          <br></br>
-          <smaller style={{ color: "white" }}>msc.sunykr@gmail.com</smaller>
-
-          <br></br>
-
           <smaller style={{ color: "white" }}>
-            SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
+            Retail Revolution Store <br />
+            SUNY Korea Academic Building C608 <br /> 119-2 Songdo Munhwa-ro,
+            Yeonsu-gu <br />
+            Incheon South Korea 21985
           </smaller>
           <br></br>
           <br></br>

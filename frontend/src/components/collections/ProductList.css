@@ -80,8 +80,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 2rem;
-  row-gap: 2rem;
+  column-gap: 3rem;
+  row-gap: 2.5rem;
   padding-top: 3rem;
   padding-left: 3%;
   padding-right: 3%;
@@ -103,9 +103,9 @@
     white-space: nowrap;
   }
   .product-list {
-    column-gap: 1rem;
-    row-gap: 1rem;
-    padding-top: 1rem;
+    column-gap: 0.8rem;
+    row-gap: 0.8rem;
+    padding-top: 0.9rem;
     padding-left: 0;
     padding-right: 0;
     margin-left: 0;
