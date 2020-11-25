@@ -60,15 +60,15 @@
   }
 
   .member {
-    width: 10rem;
+    width: 11rem;
   }
 
   .members-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 0.6rem;
-    row-gap: 1rem;
+    column-gap: 1.2rem;
+    row-gap: 3rem;
     padding-top: 3rem;
     padding-left: 1rem;
     padding-right: 1rem;

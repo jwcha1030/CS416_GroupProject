@@ -10,7 +10,7 @@
 }
 @media screen and (max-width: 1200px) {
   .product-card {
-    width: 11rem;
+    width: 11.5rem;
     height: auto;
   }
 
@@ -26,6 +26,8 @@
   }
 
   .ant-card-meta-title {
+    padding-top: 0.7rem;
+    margin-bottom: 0;
     font-size: 0.9rem;
     font-weight: bold;
   }
