@@ -24,6 +24,8 @@ function Footer() {
   const [subEmail, setSubEmail] = React.useState("");
   return (
     <div className="footer-container">
+      <br />
+
       <section className="footer-subscription">
         <p className="footer-subscription-heading">
           Join our exclusive membership and receive the latest news & arrivals!
@@ -71,24 +73,31 @@ function Footer() {
                 });
             }}
           >
+            {subEmail === "" ? ( //button for 360 degree view if it is available.
+              <div></div>
+            ) : (
+              <p style={{ color: "#ea7229 " }}>
+                Thank you {subEmail} for subscribing.
+              </p>
+              //else a text
+            )}
             <input
               className="footer-input"
               name="email"
               type="email"
               placeholder="Your Email"
-              value={subEmail}
-              onChange={subEmail}
-              onSubmit={() => {
-                setSubEmail(subEmail);
+              onChange={(e) => {
+                setSubEmail(e.target.value);
               }}
             />
+
             <Button type="submit" buttonStyle="btn--outline">
               Subscribe
             </Button>
           </Form>
         </div>
       </section>
-
+      <br></br>
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
         <div className="social-media-wrap">
@@ -136,6 +145,8 @@ function Footer() {
           </div>
         </div>
         <br />
+        <br />
+
         <div align="center">
           <smaller style={{ color: "white" }}>
             Retail Revolution Store <br />
@@ -145,6 +156,8 @@ function Footer() {
           </smaller>
           <br></br>
           <br></br>
+          <br />
+
           <div className="row">
             <div className="col-sm-3"></div>
             <div className="col-sm-3">
@@ -163,6 +176,7 @@ function Footer() {
                   />
                   Admin Log in
                 </div>
+                <br />
               </Link>
               <div className="col-sm-3"></div>
             </div>

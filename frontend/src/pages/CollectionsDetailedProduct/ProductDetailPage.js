@@ -10,7 +10,11 @@ import "../../components/collections/RotatingImage.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import PurchaseInquiryModal from "../../components/inquiry/PurchaseInquiry";
-
+import Moment from "react-moment";
+import { MdRemoveRedEye } from "react-icons/md";
+import NumberFormat from "react-number-format";
+import sbu from "../../images/sbu3.png";
+import fit from "../../images/fit3.png";
 import { mugcup_1, mugcup_2, sample } from "../Collections/DataRotatingImages";
 const { Meta } = Card;
 
@@ -20,9 +24,9 @@ const schoolMapping = (school_id) => {
   if (school_id === 0) {
     return "None";
   } else if (school_id === 1) {
-    return "SBU";
+    return sbu;
   } else if (school_id === 2) {
-    return "FIT";
+    return fit;
   } else {
     return "ERR";
   }
@@ -212,15 +216,47 @@ function ProductDetailPage(props) {
               </Button>
             }
           >
+            {" "}
+            <br />
             <div className="row">
-              <div className="col-sm-5 text-left">
-                <h1> ₩{productData["price"]} </h1>
-                <p> {schoolMapping(productData["school_id"])}</p>
-                <p> {typeMapping(productData["type_id"])} </p>
-                <p> {productData["click_count"]} Views (Clicks)</p>
+              <div className="col-sm-1"></div>
+              <div className="col-sm-3 text-left">
+                <div className="product-price">
+                  <NumberFormat
+                    value={productData["price"]}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₩"}
+                  />
+                </div>
+                <br />
+                <br />
+
+                <div className="product-school">
+                  <img
+                    className="product-school-img"
+                    src={schoolMapping(productData["school_id"])}
+                  />
+                </div>
+                <br></br>
+                <div className="product-type">
+                  <br></br>
+                  {typeMapping(productData["type_id"])}
+                </div>
+
+                <br />
+                <br />
+
+                <div className="product-click-count">
+                  <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
+                  {productData["click_count"]}
+                </div>
+                <br />
               </div>
+              <div className="col-sm-1"></div>
+
               <div className="col-sm-7 text-left">
-                <p>{productData["desc"]}</p>
+                <div className="product-description">{productData["desc"]}</div>
               </div>
             </div>
           </Card>
@@ -246,22 +282,6 @@ function ProductDetailPage(props) {
     </div>
   );
 }
-
-// res_code: INT
-// res_msg: STR
-// collection: {
-//     id: INT
-//     name: STR
-//     desc: STR
-//     school_id: INT
-//     type_id: INT
-//     cover_img: STR
-//     idx: INT
-//     create_date: STR (datetime)
-//     last_update: STR (datetime)
-//     is_active: BOOL
-//     click_count: INT
-// }
 
 function RotatingImageModal(props) {
   const [catalogDisplayImages, setCatalogDisplayImages] = useState([{}]);

@@ -69,6 +69,7 @@
   font-size: 14px;
   margin-bottom: 16px;
   color: #ea7229;
+  transition: 0.1s;
 }
 
 .footer-input:focus {
@@ -77,9 +78,10 @@
   margin-right: 12px;
   outline: none;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 16px;
   color: #ea7229;
+  background-color: black;
   transition: 0.1s;
 }
 

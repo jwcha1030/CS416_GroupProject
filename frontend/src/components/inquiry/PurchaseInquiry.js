@@ -11,6 +11,11 @@ import * as yup from "yup";
 import InputGroup from "react-bootstrap/InputGroup";
 import SampleImage from "../../images/s1.jpg";
 import ReactImageAppear from "react-image-appear";
+import Moment from "react-moment";
+import { MdRemoveRedEye } from "react-icons/md";
+import NumberFormat from "react-number-format";
+
+import "./Inquiry.css";
 const axios = require("axios");
 const apiBaseUrl =
   "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
@@ -35,6 +40,36 @@ const schema = yup.object({
   type: yup.string().required(),
 });
 
+function getSeason(data) {
+  var myDate = new Date(date);
+  var date = myDate.month.value;
+  var month = (date.getMonth() + 1).toString();
+  var year = date.getFullYear().toString();
+  var season = "";
+  switch (month) {
+    case "12":
+    case "1":
+    case "2":
+      season = "Winter";
+      break;
+    case "3":
+    case "4":
+    case "5":
+      season = "Spring";
+      break;
+    case "6":
+    case "7":
+    case "8":
+      season = "Summer";
+      break;
+    case "9":
+    case "10":
+    case "11":
+      season = "Fall";
+      break;
+  }
+  return season + " " + year;
+}
 // Mapping dictionary for Purchase method ID
 const purchaseMapping = (option) => {
   if (option === "Cash") {
@@ -134,68 +169,58 @@ function PurchaseInquiry(props) {
 
                 <Form.Group as={Col} md="6" controlId="validationFormikProduct">
                   <Form.Label>Product Information</Form.Label>
+                  <ReactImageAppear
+                    src={props.productCoverImage}
+                    alt={"img"}
+                    animation="bounceIn"
+                  />
                   <br />
-                  <Form.Text controlId="product-description">
-                    Product Name <br />{" "}
-                    <div className="product-detail">{props.productName}</div>
-                  </Form.Text>{" "}
                   <br />
-                  <Form.Text controlId="product-description">
-                    Product ID <br />{" "}
-                    <div className="product-detail">{props.productID}</div>
-                  </Form.Text>{" "}
-                  <br />
-                  <Form.Text controlId="product-description">
-                    Product Price
-                    <br />{" "}
-                    <div className="product-detail">{props.productPrice}</div>
-                  </Form.Text>{" "}
-                  <br />
-                  <Form.Text controlId="product-description">
-                    Product Description
-                    <br />
-                    <div className="product-detail">
-                      {props.productDescription}
+                  <div className="row">
+                    <div className="col-sm-8 product-name">
+                      {props.productName}
                     </div>
-                  </Form.Text>{" "}
+                    <div align="right" className="col-sm-4 product-price">
+                      <NumberFormat
+                        value={props.productPrice}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"₩"}
+                      />
+                    </div>
+                  </div>
                   <br />
-                  <Form.Text controlId="product-description">
-                    Product School
-                    <br />{" "}
-                    <div className="product-detail">{props.productSchool}</div>
-                  </Form.Text>{" "}
-                  <br />
-                  <Form.Text controlId="product-description">
-                    Product Type
-                    <br />
-                    <div className="product-detail">
+                  <div className="row">
+                    <div className="col-sm-3 product-school">
+                      <br />
+                      <img
+                        className="product-school-img"
+                        src={props.productSchool}
+                      ></img>
+                    </div>
+                    <div className="col-sm-3 product-type">
                       {" "}
+                      <br />
                       {props.productType}
-                    </div>{" "}
-                  </Form.Text>{" "}
-                  <br />
-                  <Form.Text controlId="product-description">
-                    Product Season
-                    <br />{" "}
-                    <div className="product-detail">{props.productDate}</div>
-                  </Form.Text>{" "}
-                  <br />
-                  <Form.Text controlId="product-description">
-                    Product Click Count
-                    <br />{" "}
-                    <div className="product-detail">
-                      {" "}
+                    </div>
+
+                    <div className="col-sm-3 product-date">
+                      <br />
+                      {<Moment format="MMM YYYY" date={props.productDate} />}
+                      {/* {getSeason(props.productDate)} */}
+                    </div>
+                    <div className="col-sm-3 product-click-count">
+                      <br />
+                      <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
                       {props.productClickCount}
-                    </div>{" "}
-                  </Form.Text>{" "}
+                    </div>
+                  </div>
                   <br />
-                  <Form.Text controlId="product-description">
-                    <ReactImageAppear
-                      src={props.productCoverImage}
-                      alt={"img"}
-                      animation="bounceIn"
-                    />
-                  </Form.Text>
+                  <br />
+                  <div className="product-description">
+                    {props.productDescription}
+                  </div>
+                  <br />
                   <br />
                 </Form.Group>
                 <Form.Group as={Col} md="1"></Form.Group>
@@ -280,7 +305,6 @@ function PurchaseInquiry(props) {
                 </Form.Group>
               </Form.Row>
 
-              <br />
               <Form.Row>
                 <Form.Group as={Col} md="1"></Form.Group>
 
