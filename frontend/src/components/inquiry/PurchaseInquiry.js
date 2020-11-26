@@ -11,6 +11,14 @@ import * as yup from "yup";
 import InputGroup from "react-bootstrap/InputGroup";
 import SampleImage from "../../images/s1.jpg";
 import ReactImageAppear from "react-image-appear";
+import Moment from "react-moment";
+import { MdRemoveRedEye } from "react-icons/md";
+import NumberFormat from "react-number-format";
+
+import "./Inquiry.css";
+const axios = require("axios");
+const apiBaseUrl =
+  "https://sunyk-msc-backend.herokuapp.com/inquiry/purchase/send/";
 
 const schema = yup.object({
   firstName: yup
@@ -32,6 +40,48 @@ const schema = yup.object({
   type: yup.string().required(),
 });
 
+function getSeason(data) {
+  var myDate = new Date(date);
+  var date = myDate.month.value;
+  var month = (date.getMonth() + 1).toString();
+  var year = date.getFullYear().toString();
+  var season = "";
+  switch (month) {
+    case "12":
+    case "1":
+    case "2":
+      season = "Winter";
+      break;
+    case "3":
+    case "4":
+    case "5":
+      season = "Spring";
+      break;
+    case "6":
+    case "7":
+    case "8":
+      season = "Summer";
+      break;
+    case "9":
+    case "10":
+    case "11":
+      season = "Fall";
+      break;
+  }
+  return season + " " + year;
+}
+// Mapping dictionary for Purchase method ID
+const purchaseMapping = (option) => {
+  if (option === "Cash") {
+    return 0;
+  } else if (option === "Wire") {
+    return 1;
+  } else if (option === "Card") {
+    return 2;
+  } else {
+    return -1;
+  }
+};
 function PurchaseInquiry(props) {
   return (
     <Modal
@@ -49,15 +99,59 @@ function PurchaseInquiry(props) {
       <Modal.Body>
         <br></br>
 
-        <h4>
-          Fill out the inquiry form below about the Product ID:{" "}
-          {props.dataToModal}
-        </h4>
         <br></br>
 
         <Formik
           validationSchema={schema}
-          onSubmit={console.log(schema)}
+          onSubmit={async (values) => {
+            let payload = {
+              first_name: values.firstName,
+              last_name: values.lastName,
+              email: values.email,
+              message: values.message,
+              // type: values.type, method is eg. Wire -> 1, Cash ->0 using the purchaseMapping function.
+              purchase_method_id: purchaseMapping(values.type),
+              collection_item_id: props.productID,
+            };
+
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            alert(JSON.stringify(payload, null, 2));
+
+            axios
+              .post(apiBaseUrl, payload) //values is the form's data
+              .then((response) => {
+                // Check if internet connection was working
+                if (response.status === 200) {
+                  if (response.data.res_code === 1) {
+                    // Everything worked correctly
+                    // Do something with the returned data
+                    console.log("Post SUCCESS", response.data.res_msg);
+                    alert("Successfully Sent.");
+                    window.location.reload();
+                    // } else if (){
+                    // Check other res_code with else if
+                    // }
+                  } else if (response.data.res_code === 2) {
+                    alert(
+                      "Post: Email does not exist or the email is invalid."
+                    );
+                  } else {
+                    // Unhandled res_code
+                    alert(
+                      "Post: Unhandled res_code / the entered email may be wrong "
+                    );
+                  }
+                } else {
+                  // TODO handle unable to connect with database
+                  alert("Post: unable to connect with database");
+                }
+              })
+              .catch(function (error) {
+                // TODO handle error with the call
+                alert("Post: Call error");
+                console.log(error);
+              });
+          }}
           initialValues={{}}
         >
           {({
@@ -71,116 +165,152 @@ function PurchaseInquiry(props) {
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
+
                 <Form.Group as={Col} md="6" controlId="validationFormikProduct">
                   <Form.Label>Product Information</Form.Label>
+                  <ReactImageAppear
+                    src={props.productCoverImage}
+                    alt={"img"}
+                    animation="bounceIn"
+                  />
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product ID is {props.dataToModal}
-                  </Form.Text>{" "}
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Name is ... {props.dataToModal}
-                  </Form.Text>{" "}
+                  <div className="row">
+                    <div className="col-sm-8 product-name">
+                      {props.productName}
+                    </div>
+                    <div align="right" className="col-sm-4 product-price">
+                      <NumberFormat
+                        value={props.productPrice}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"₩"}
+                      />
+                    </div>
+                  </div>
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Price is ... {props.dataToModal}
-                  </Form.Text>{" "}
+                  <div className="row">
+                    <div className="col-sm-3 product-school">
+                      <br />
+                      <img
+                        className="product-school-img"
+                        src={props.productSchool}
+                      ></img>
+                    </div>
+                    <div className="col-sm-3 product-type">
+                      {" "}
+                      <br />
+                      {props.productType}
+                    </div>
+
+                    <div className="col-sm-3 product-date">
+                      <br />
+                      {<Moment format="MMM YYYY" date={props.productDate} />}
+                      {/* {getSeason(props.productDate)} */}
+                    </div>
+                    <div className="col-sm-3 product-click-count">
+                      <br />
+                      <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
+                      {props.productClickCount}
+                    </div>
+                  </div>
                   <br />
-                  <Form.Text style={{ fontSize: "15px" }}>
-                    Product Image{" "}
-                    <ReactImageAppear
-                      src={SampleImage}
-                      alt={"img"}
-                      animation="bounceIn"
-                    />
-                  </Form.Text>{" "}
+                  <br />
+                  <div className="product-description">
+                    {props.productDescription}
+                  </div>
+                  <br />
                   <br />
                 </Form.Group>
-                <Form.Group
-                  as={Col}
-                  md="1"
-                  controlId="validationFormikLastName"
-                ></Form.Group>
-                <Form.Group
-                  as={Col}
-                  md="4"
-                  controlId="validationFormikLastName"
-                >
+                <Form.Group as={Col} md="1"></Form.Group>
+                {/* space between product and form */}
+                <Form.Group as={Col} md="4">
+                  <br />
                   <Form.Row>
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      placeholder="Last Name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isInvalid={!!errors.lastName}
-                      size="lg"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.lastName}
-                    </Form.Control.Feedback>
+                    <Form.Group controlId="validationFormikFirstName">
+                      <Form.Label>First Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.firstName}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.firstName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
                   </Form.Row>
                   <br />
                   <Form.Row>
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      placeholder="First Name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      isInvalid={!!errors.firstName}
-                      size="lg"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.firstName}
-                    </Form.Control.Feedback>
+                    <Form.Group controlId="validationFormikLastName">
+                      <Form.Label>Last Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        value={values.lastName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.lastName}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.lastName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
                   </Form.Row>
+                  <br />
+                  <Form.Row>
+                    <Form.Group controlId="validationFormikEmail">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        placeholder="Your Email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        isInvalid={!!errors.email}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
+                  <br />
 
-                  <br />
                   <Form.Row>
-                    <Form.Label>Email</Form.Label>
-
-                    <Form.Control
-                      type="email"
-                      placeholder="Your Email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      isInvalid={!!errors.email}
-                      size="lg"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email}
-                    </Form.Control.Feedback>
-                  </Form.Row>
-                  <br />
-                  <br />
-                  <Form.Row>
-                    <Form.Label>Purchase Methods</Form.Label>
-                    <Form.Control
-                      as="select"
-                      value={values.type}
-                      onChange={handleChange}
-                      size="lg"
-                    >
-                      <option>Cash</option>
-                      <option>Wire Bank Account</option>
-                    </Form.Control>
+                    <Form.Group controlId="validationFormikPurchaseMethod">
+                      <Form.Label>Purchase Methods</Form.Label>
+                      <Form.Control
+                        as="select"
+                        name="type"
+                        value={values.type}
+                        onChange={handleChange}
+                        size="lg"
+                        isInvalid={!!errors.email}
+                      >
+                        <option value="">Purchase Method</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Wire">Wire Bank Account</option>
+                      </Form.Control>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.type}
+                      </Form.Control.Feedback>
+                    </Form.Group>
                   </Form.Row>
                 </Form.Group>
               </Form.Row>
 
-              <br />
               <Form.Row>
-                {/* <Form.Group as={Col} md="4" controlId="validationFormikType">
-       
-                </Form.Group> */}
+                <Form.Group as={Col} md="1"></Form.Group>
 
                 <Form.Group
                   as={Col}
-                  md="11"
+                  md="10"
                   size="lg"
                   controlId="validationFormikNotes"
                 >
@@ -195,9 +325,11 @@ function PurchaseInquiry(props) {
               </Form.Row>
 
               <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
+
                 <Form.Group
                   as={Col}
-                  md="11"
+                  md="10"
                   controlId="validationFormikMessage"
                 >
                   <Form.Label>Message</Form.Label>

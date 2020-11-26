@@ -53,7 +53,7 @@ function Navbar() {
               <div className="navbar-icon">
                 <img src={Logo} />
               </div>
-              Merchandising Society
+              MERCHANDISING SOCIETY
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}

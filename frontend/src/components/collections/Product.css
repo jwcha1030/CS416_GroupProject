@@ -1,24 +1,35 @@
 .product-card {
-  width: 250px;
+  width: 23rem;
 }
 .ant-card-meta-description {
-  font-size: 12px;
+  font-size: 1.2rem;
+}
+
+.ant-card-body {
+  padding: 1.3rem;
 }
 @media screen and (max-width: 1200px) {
   .product-card {
-    width: 150px;
+    width: 11rem;
     height: auto;
   }
 
+  .ant-card-body {
+    padding: 0.4rem;
+    padding-right: 0.2rem;
+  }
+
   .product-description {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
   .ant-card-meta-description {
-    font-size: 10px;
+    font-size: 0.65rem;
   }
 
   .ant-card-meta-title {
-    font-size: 11px;
-    font-weight: bolder;
+    padding-top: 0.7rem;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
   }
 }

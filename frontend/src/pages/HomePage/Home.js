@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeroSection from "../../components/hero_section/HeroSection";
 import { collections, ourteam, aboutus } from "./Data";
-import renderCarousel from "../../components/home_carousel/Carousel";
+import carouselItem from "../../components/home_carousel/CarouselItem";
 import { motion } from "framer-motion";
 import Carousel from "react-bootstrap/esm/Carousel";
 import Aos from "aos";
@@ -13,21 +13,22 @@ var axios = require("axios");
 
 function Home() {
   //Home Carousel API Call-----------------------------------------------------------------------------
-  const [carousels, setData] = useState([{}]);
+  const [carouselItemsFromBackend, setData] = useState([{}]);
   useEffect(() => {
+    //https://github.com/michalsnik/aos#animations
+    //AOS animation on scroll library for animation on scrolling
     Aos.init({
       duration: 2000, // values from 0 to 3000, with step 50ms
       delay: 1000, // values from 0 to 3000, with step 50ms
-      easing: "ease", // default easing for AOS animations});
+      easing: "ease", // default easing for AOS animations
       once: false,
       disable: function () {
         // DISABLING AOS ON MOBILE/ OR WHEN THERE'S SIDE BAR - NAV BAR TRANSITION
-        var maxWidth = 1200; // IT HAS CONFLICTS WITH SIDE BAR
+        var maxWidth = 1200; // IT HAS CONFLICTS WITH OUR MOBILE VIEW SIDE BAR
         return window.innerWidth < maxWidth;
       },
     });
   }, []);
-  //https://github.com/michalsnik/aos#animations AOS animation on scroll library for animation on scrolling added**
 
   useEffect(() => {
     axios
@@ -39,12 +40,13 @@ function Home() {
           if (response.data.res_code == 1) {
             setData(response.data.results);
           } else {
+            console.log("Unexpected error: res_code 0");
           }
         } else {
         }
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("Code 0", error);
       });
   }, []);
   //Home Carousel API Call-----------------------------------------------------------------------------
@@ -55,18 +57,24 @@ function Home() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Carousel>{carousels.map(renderCarousel)}</Carousel>
+      {/*-carousels is the carousel items data from the backend
+         -renderCarousel is the carousel component */}
+      <Carousel>{carouselItemsFromBackend.map(carouselItem)}</Carousel>
 
+      {/* COLLECTIONS */}
       <div data-aos="slide-left">
         <HeroSection {...collections} />
       </div>
-
+      {/* OUR TEAM */}
       <div data-aos="slide-left">
         <HeroSection {...ourteam} />
       </div>
+      {/* ABOUT US*/}
       <div data-aos="slide-left">
         <HeroSection {...aboutus} />
       </div>
+
+      {/* FOOTER */}
       <Footer />
     </motion.div>
   );

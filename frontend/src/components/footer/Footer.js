@@ -13,14 +13,19 @@ import Logo from "../../images/MSC.jpg";
 import { FaLanguage, FaUserLock, FaHome } from "react-icons/fa";
 import InquiryModal from "../inquiry/GeneralInquiry";
 import { Modal } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
 import GoogleTranslate from "../translate/GoogleTranslate";
+import Form from "react-bootstrap/Form";
+
+const axios = require("axios");
+const apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/email/subscribe/";
 
 function Footer() {
   const [inquiryModalShow, setInquiryModalShow] = React.useState(false);
-
+  const [subEmail, setSubEmail] = React.useState("");
   return (
     <div className="footer-container">
+      <br />
+
       <section className="footer-subscription">
         <p className="footer-subscription-heading">
           Join our exclusive membership and receive the latest news & arrivals!
@@ -28,19 +33,71 @@ function Footer() {
         <p className="footer-subscription-text">
           You can unsubscribe at any time.
         </p>
-        <div className="input-areas">
-          <form>
+        <div>
+          <Form
+            onSubmit={async () => {
+              let payload = {
+                email: subEmail,
+              };
+
+              await new Promise((resolve) => setTimeout(resolve, 500));
+              alert(JSON.stringify(payload, null, 2));
+
+              axios
+                .post(apiBaseUrl, payload)
+                .then((response) => {
+                  // Check if internet connection was working
+                  if (response.status === 200) {
+                    if (response.data.res_code === 1) {
+                      // Everything worked correctly
+                      // Do something with the returned data
+                      console.log("Post SUCCESS", response.data.res_msg);
+                      alert("Successfully Subscribed to MSC");
+                      window.location.reload();
+                      // } else if (){
+                      // Check other res_code with else if
+                      // }
+                    } else {
+                      // Unhandled res_code
+                      alert("Post: Unhandled res_code");
+                    }
+                  } else {
+                    // TODO handle unable to connect with database
+                    alert("Post: unable to connect with database");
+                  }
+                })
+                .catch(function (error) {
+                  // TODO handle error with the call
+                  alert("Post: Call error");
+                  console.log(error);
+                });
+            }}
+          >
+            {subEmail === "" ? ( //button for 360 degree view if it is available.
+              <div></div>
+            ) : (
+              <p style={{ color: "#ea7229 " }}>
+                Thank you {subEmail} for subscribing.
+              </p>
+              //else a text
+            )}
             <input
               className="footer-input"
               name="email"
               type="email"
               placeholder="Your Email"
+              onChange={(e) => {
+                setSubEmail(e.target.value);
+              }}
             />
-            <Button buttonStyle="btn--outline">Subscribe</Button>
-          </form>
+
+            <Button type="submit" buttonStyle="btn--outline">
+              Subscribe
+            </Button>
+          </Form>
         </div>
       </section>
-
+      <br></br>
       {/* <div className="footer-links">for later</div> */}
       <section className="social-media">
         <div className="social-media-wrap">
@@ -88,18 +145,19 @@ function Footer() {
           </div>
         </div>
         <br />
+        <br />
+
         <div align="center">
-          <smaller style={{ color: "white" }}>032-1234-1234</smaller>
-          <br></br>
-          <smaller style={{ color: "white" }}>msc.sunykr@gmail.com</smaller>
-
-          <br></br>
-
           <smaller style={{ color: "white" }}>
-            SUNY Korea, 119 Songdo Moonhwa-Ro Incheon, Korea (21985)
+            Retail Revolution Store <br />
+            SUNY Korea Academic Building C608 <br /> 119-2 Songdo Munhwa-ro,
+            Yeonsu-gu <br />
+            Incheon South Korea 21985
           </smaller>
           <br></br>
           <br></br>
+          <br />
+
           <div className="row">
             <div className="col-sm-3"></div>
             <div className="col-sm-3">
@@ -118,6 +176,7 @@ function Footer() {
                   />
                   Admin Log in
                 </div>
+                <br />
               </Link>
               <div className="col-sm-3"></div>
             </div>

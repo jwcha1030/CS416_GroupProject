@@ -10,11 +10,130 @@ import "../../components/collections/RotatingImage.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import PurchaseInquiryModal from "../../components/inquiry/PurchaseInquiry";
-
+import Moment from "react-moment";
+import { MdRemoveRedEye } from "react-icons/md";
+import NumberFormat from "react-number-format";
+import sbu from "../../images/sbu3.png";
+import fit from "../../images/fit3.png";
 import { mugcup_1, mugcup_2, sample } from "../Collections/DataRotatingImages";
 const { Meta } = Card;
 
+const axios = require("axios");
+
+const schoolMapping = (school_id) => {
+  if (school_id === 0) {
+    return "None";
+  } else if (school_id === 1) {
+    return sbu;
+  } else if (school_id === 2) {
+    return fit;
+  } else {
+    return "ERR";
+  }
+};
+
+const typeMapping = (type_id) => {
+  if (type_id === 0) {
+    return "None";
+  } else if (type_id === 1) {
+    return "Goods";
+  } else if (type_id === 2) {
+    return "Apparel";
+  } else {
+    return "ERR";
+  }
+};
+
+let has360View;
+let api360ViewUrl;
 function ProductDetailPage(props) {
+  const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
+
+  const [productData, setData] = useState({});
+  const [hasCatalogDisplayID, setHasCatalogDisplayID] = useState();
+  const [hasCatalogDisplayBoolean, setHasCatalogDisplayBoolean] = useState();
+
+  const apiBaseUrl =
+    "https://sunyk-msc-backend.herokuapp.com/collection/item/get/" +
+    cProductID +
+    "/";
+
+  const apiHas360ViewUrl =
+    "https://sunyk-msc-backend.herokuapp.com/collection/item/get/collection/item/" +
+    cProductID +
+    "/catalog_display/has/";
+
+  const api360ViewImagesUrl =
+    "https://sunyk-msc-backend.herokuapp.com/catalog_display/" +
+    hasCatalogDisplayID +
+    "/images/get_all/";
+  api360ViewUrl = api360ViewImagesUrl;
+  // product details
+  useEffect(() => {
+    axios
+      .get(apiBaseUrl)
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully fetched product id " + cProductID,
+              response.data.res_msg
+            );
+            setData(response.data.collection_item);
+          } else {
+            alert(
+              "unhandled res_code error from get collection. Please contact an admin."
+            );
+          }
+        } else {
+          alert(
+            "unhandled response status get collection. Please contact an admin."
+          );
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0 " + error);
+
+        alert("unhandled error from get collection. Please contact an admin.");
+      });
+  }, []);
+
+  // fetching whether the product has 360 degree view or not, No 360 means ID = -1 , otherwise ID exists.
+  useEffect(() => {
+    axios
+      .get(apiHas360ViewUrl)
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully fetched whether the product has catalog display or not: product id:" +
+                cProductID,
+              response.data.res_msg
+            );
+            setHasCatalogDisplayID(response.data.cd_id);
+            setHasCatalogDisplayBoolean(response.data.has);
+            has360View = response.daa.has;
+          } else {
+            alert(
+              "unhandled res_code error from catalog display. Please contact an admin."
+            );
+          }
+        } else {
+          alert(
+            "unhandled response status  catalog display. Please contact an admin."
+          );
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0 " + error);
+
+        alert("unhandled error from catalog display. Please contact an admin.");
+      });
+  }, []);
+
+  console.log(productData);
+  console.log(hasCatalogDisplayID);
+
   const [
     PurchaseInquiryModalShow,
     setPurchaseInquiryModalShow,
@@ -23,39 +142,42 @@ function ProductDetailPage(props) {
     false
   );
 
-  const productId = props.match.params.id;
-
   const images = [
     {
-      original:
-        "https://kickslinks.com/wp-content/uploads/2016/11/nike-air-presto-flyknit-ultra-crimson-4.jpg",
-      thumbnail:
-        "https://kickslinks.com/wp-content/uploads/2016/11/nike-air-presto-flyknit-ultra-crimson-4.jpg",
+      original: productData["gallery_img1"],
+      thumbnail: productData["gallery_img1"],
     },
     {
-      original:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcREPatJE3wakbtxXBlJlfTVupaH_zJ13Ek0SQ&usqp=CAU",
-      thumbnail:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcREPatJE3wakbtxXBlJlfTVupaH_zJ13Ek0SQ&usqp=CAU",
+      original: productData["gallery_img2"],
+      thumbnail: productData["gallery_img2"],
     },
     {
-      original:
-        "https://swankism.com/wp-content/uploads/2016/04/nike-air-presto-ultra-flyknit-official-images-03.jpg?x95412",
-      thumbnail:
-        "https://swankism.com/wp-content/uploads/2016/04/nike-air-presto-ultra-flyknit-official-images-03.jpg?x95412",
+      original: productData["gallery_img3"],
+      thumbnail: productData["gallery_img3"],
+    },
+    {
+      original: productData["gallery_img4"],
+      thumbnail: productData["gallery_img4"],
+    },
+    {
+      original: productData["gallery_img5"],
+      thumbnail: productData["gallery_img5"],
+    },
+    {
+      original: productData["gallery_img6"],
+      thumbnail: productData["gallery_img6"],
     },
   ];
-  useEffect(() => {}, []);
 
   return (
     <div className="details-container">
-      <h1 style={{ display: "flex", justifyContent: "center", margin: "50px" }}>
-        Detailed Product ID: {productId}
+      <h1 style={{ display: "flex", justifyContent: "center", margin: "4%" }}>
+        {" "}
       </h1>
 
       <RotatingImageModal
         //pass data to  modal using props...
-        id={productId}
+        id={cProductID}
         show={RotatingImageModalShow}
         onHide={() => setRotatingImageModalShow(false)}
       />
@@ -65,20 +187,24 @@ function ProductDetailPage(props) {
         <div className="col-sm-5">
           <ImageGallery lazyLoad={true} items={images} />
           <div className="rotating-images-modal">
-            <Button
-              variant="dark"
-              size="lg"
-              onClick={() => setRotatingImageModalShow(true)}
-            >
-              Launch 360 Degree View
-            </Button>
+            {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
+              <Button
+                variant="dark"
+                size="lg"
+                onClick={() => setRotatingImageModalShow(true)}
+              >
+                Launch 360 Degree View
+              </Button>
+            ) : (
+              <p>360 Degree View Not Available</p> //else a text
+            )}
           </div>
         </div>
 
         <div className="col-sm-1"></div>
         <div className="col-sm-4">
           <Card
-            title="Title of Product"
+            title={productData["name"]}
             extra={
               <Button
                 className="make-inquiry"
@@ -90,29 +216,67 @@ function ProductDetailPage(props) {
               </Button>
             }
           >
+            {" "}
+            <br />
             <div className="row">
-              <div className="col-sm-5 text-left">
-                <h1> $19.99 </h1>
-                <p> Fashion Institute of Technology </p>
-                <p> Apparels </p>
-                <p> 13 Views</p>
+              <div className="col-sm-1"></div>
+              <div className="col-sm-3 text-left">
+                <div className="product-price">
+                  <NumberFormat
+                    value={productData["price"]}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₩"}
+                  />
+                </div>
+                <br />
+                <br />
+
+                <div className="product-school">
+                  <img
+                    className="product-school-img"
+                    src={schoolMapping(productData["school_id"])}
+                  />
+                </div>
+                <br></br>
+                <div className="product-type">
+                  <br></br>
+                  {typeMapping(productData["type_id"])}
+                </div>
+
+                <br />
+                <br />
+
+                <div className="product-click-count">
+                  <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
+                  {productData["click_count"]}
+                </div>
+                <br />
               </div>
+              <div className="col-sm-1"></div>
+
               <div className="col-sm-7 text-left">
-                <p>
-                  This product is handcrafted by MSC members in 2018 Spring. It
-                  took over a year to craft the product, and we are now finally
-                  offering it to everyone. Please take a close look at ...{" "}
-                </p>
+                <div className="product-description">{productData["desc"]}</div>
               </div>
             </div>
           </Card>
           <div className="col-sm-1"></div>
         </div>
       </div>
+      {/* 
+      pass values as props to the modal */}
       <PurchaseInquiryModal
         show={PurchaseInquiryModalShow}
         onHide={() => setPurchaseInquiryModalShow(false)}
-        dataToModal={productId}
+        productID={cProductID}
+        productName={productData["name"]}
+        productPrice={productData["price"]}
+        productSchool={schoolMapping(productData["school_id"])}
+        productType={typeMapping(productData["type_id"])}
+        productDescription={productData["desc"]}
+        productDate={productData["create_date"]}
+        productClickCount={productData["click_count"]}
+        productCoverImage={productData["main_img"]}
       />
       <Footer />
     </div>
@@ -120,6 +284,36 @@ function ProductDetailPage(props) {
 }
 
 function RotatingImageModal(props) {
+  const [catalogDisplayImages, setCatalogDisplayImages] = useState([{}]);
+  useEffect(() => {
+    axios
+      .get(api360ViewUrl)
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully fetched 360 Degree Images with c_id " +
+                response.data.res_msg
+            );
+            setCatalogDisplayImages(response.data.results);
+          } else {
+            console.log(
+              "rescode other than 1. Catalog Display may not be available, or it has some other error."
+            );
+          }
+        } else {
+          alert(
+            "unhandled response status from loading catalog display images. Please contact an admin."
+          );
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0 " + error);
+        alert(
+          "unhandled error from loading catalog display images. Please contact an admin."
+        );
+      });
+  }, []);
   const id = props.id;
   //pass data from product using props...
   return (
@@ -145,7 +339,7 @@ function RotatingImageModal(props) {
               scroll={false}
               className="rotating-image"
             >
-              {mugcup_2.map(renderImages)}
+              {catalogDisplayImages.map(renderImages)}
             </Rotation>
           }
         >

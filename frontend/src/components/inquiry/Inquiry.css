@@ -1,0 +1,27 @@
+.product-name {
+  font-size: 2.5rem;
+}
+
+.product-price {
+  font-size: 2.5rem;
+}
+
+.product-sub-details {
+}
+.product-school {
+  color: #959595;
+}
+.product-type {
+  color: #959595;
+}
+.product-date {
+  color: #959595;
+}
+.product-click-count {
+  font-size: 1.5rem;
+  color: #b9b9b9;
+}
+
+.product-school-img {
+  width: 60%;
+}

@@ -2,9 +2,8 @@ import React, { Component, useState, useEffect } from "react";
 import "./VR.css";
 
 import { Pannellum, PannellumVideo } from "pannellum-react";
-import myImage from "../../images/vr1.jpg";
+import myImage from "../../images/vr1.png";
 import myImage2 from "../../images/vr2.jpg";
-import myImage3 from "../../images/vr3.jpg";
 
 // import myVideo from "./images/video.mp4";
 
