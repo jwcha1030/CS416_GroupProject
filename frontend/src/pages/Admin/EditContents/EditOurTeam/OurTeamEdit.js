@@ -29,12 +29,12 @@ export default function OurTeamEdit(props) {
     let yyyy = today.getFullYear();
 
     today = yyyy + '-' + mm;
-    return today
+    return today;
   };
 
   let axios = require('axios');
-  const fetchAllData = () => {
-     axios.get("https://sunyk-msc-backend.herokuapp.com/team_page_person/get_all/")
+  const fetchAllData = async () => {
+     await axios.get("https://sunyk-msc-backend.herokuapp.com/team_page_person/get_all/")
       .then(response => {
         // console.log(response.data);
         // Check if internet connection was working
@@ -62,8 +62,8 @@ export default function OurTeamEdit(props) {
         console.log(error);
       });
   };
-  useEffect( async () => {
-    await fetchAllData()
+  useEffect(  () => {
+    fetchAllData();
   }, []); //fetch once
 
 

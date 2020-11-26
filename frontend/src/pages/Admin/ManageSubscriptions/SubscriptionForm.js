@@ -9,19 +9,23 @@ export default function SubscriptionForm (prop) {
     <div style={{margin: "auto"}} className="subscription-form-container">
       <Form validated onSubmit={prop.handleSubmit}>
         <Form.Row>
+          <Form.Group as={Col} md={"2"} controlId="formName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control onChange={prop.handleFirstName} placeholder='Enter First Name' required/>
+          </Form.Group>
           <Form.Group as={Col} md={"4"} controlId="formName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control onChange={prop.handleName} placeholder='Enter Name' required/>
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control onChange={prop.handleLastName} placeholder='Enter Last Name' required/>
           </Form.Group>
-          <Form.Group as={Col} md={"2"} controlId="formSubscribed">
-            <Form.Label>Subscribe?</Form.Label>
-            <div className="isSubscribed_checkbox-container">
-              <input name="isSubscribed" type="checkbox" onChange={prop.handleSubscribed} defaultChecked="true"/>
-            </div>
-          </Form.Group>
+          {/*<Form.Group as={Col} md={"2"} controlId="formSubscribed">*/}
+          {/*  <Form.Label>Subscribe?</Form.Label>*/}
+          {/*  <div className="isSubscribed_checkbox-container">*/}
+          {/*    <input name="isSubscribed" type="checkbox" onChange={prop.handleSubscribed} defaultChecked="true"/>*/}
+          {/*  </div>*/}
+          {/*</Form.Group>*/}
         </Form.Row>
         <Form.Row>
-          <Form.Group as={Col} md={"4"} controlId="formEmail">
+          <Form.Group as={Col} md={"6"} controlId="formEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email" onChange={prop.handleEmail} placeholder='Enter Email' required/>
           </Form.Group>

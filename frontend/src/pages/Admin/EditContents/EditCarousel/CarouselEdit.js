@@ -51,7 +51,7 @@ export default function CarouselEdit() {
       });
   };
   useEffect(() => {
-    fetchAllData()
+    fetchAllData();
   }, []); //fetch once
 
 

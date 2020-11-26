@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 import {subscriptionData} from "./SubscriptionData"
@@ -8,15 +8,15 @@ import Modal from "react-bootstrap/Modal";
 import SubscriptionForm from "./SubscriptionForm";
 
 export default function () {
-  const table_headers = Object.keys(subscriptionData.mailList[0]);
-
-  const [data, setData]= useState(subscriptionData.mailList);
+  const [data, setData]= useState([]);
   const [current_item, setItem] = useState(data[0]);
   const [showCreateModal, setCreateModalShow] = useState(false);
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate]= useState('');
-  const [isSubscribed, setIsSubscribed]= useState("yes");
+  const [headers, setHeaders] = useState([]);
+  // const [isSubscribed, setIsSubscribed]= useState("yes");
 
   const getCurrentDate = () => {
     let today = new Date();
@@ -28,6 +28,34 @@ export default function () {
     return today
   };
 
+  let axios = require('axios');
+  const fetchAllData = async () =>{
+     await axios.get("https://sunyk-msc-backend.herokuapp.com/email/get_all/")
+      .then(response =>{
+        if (response.status === 200){
+          if(response.data.res_code === 1){
+            // console.log(response.data.results);
+            setData(response.data.results);
+            setHeaders(Object.keys(response.data.results[0]));
+            console.log("fetch complete");
+          }
+          else{
+            alert("Fetch Data: Unhandled res_code");
+          }
+        }
+        else{
+          alert("Fetch: Unable to connect with database");
+        }
+      }).catch(function(error){
+        alert("Fetch: Call error");
+        console.log(error);
+    })
+  };
+
+  useEffect( ()=>{
+    fetchAllData();
+  },[]);
+
   const changeItem = (id) => {
     const currentItem = (data.filter(item => item.id === id))[0]; //selects the item that is clicked
     setItem(currentItem);
@@ -37,14 +65,19 @@ export default function () {
     const removedItems = [...data].filter(item => item.id !== id);
     setData(removedItems);
   };
-  const handleName=(e)=>{
-    setName(e.target.value);
+  const handleFirstName=(e)=>{
+    setFirstName(e.target.value);
   };
+  const handleLastName=(e)=>{
+    setLastName(e.target.value);
+  };
+
   const handleEmail =(e)=>{
     setEmail(e.target.value);
   };
 
-  const handleSubscribed = (e)=>{
+/*
+const handleSubscribed = (e)=>{
     let target = e.target;
     let val;
     if(target.type==='checkbox'){
@@ -54,8 +87,9 @@ export default function () {
       val=target.value;
     }
     setIsSubscribed(val);
-  };
-  //create modal
+  };*/
+
+//create modal
   const handleCreateSubmit = (e) => {
     e.preventDefault();
     let maxID = 0;
@@ -67,16 +101,18 @@ export default function () {
     }
     setData([...data, {
       id: maxID + 1,
-      name: name,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       date: getCurrentDate(), //get current date if 'date' is empty
-      subscribed: isSubscribed
+      // subscribed: isSubscribed
     }]);
     //reinitialize
-    setName('');
+    setFirstName('');
+    setLastName('');
     setDate('');
     setEmail('');
-    setIsSubscribed("yes");
+    // setIsSubscribed("yes");
     setCreateModalShow(false);
   };
   const handleCreateClose = () => {
@@ -96,7 +132,7 @@ export default function () {
       </h1>
       <DataTable
         data={data}
-        headers={table_headers}
+        headers={headers}
         changeItem={changeItem}
         deleteItem={handleDelete}
       />
@@ -107,9 +143,10 @@ export default function () {
         </Modal.Header>
         <Modal.Body>
           <SubscriptionForm
-            handleName={handleName}
+            handleFirstName={handleFirstName}
+            handleLastName={handleLastName}
             handleEmail={handleEmail}
-            handleSubscribed = {handleSubscribed}
+            // handleSubscribed = {handleSubscribed}
             handleClose={handleCreateClose}
             handleSubmit={handleCreateSubmit}
           />
