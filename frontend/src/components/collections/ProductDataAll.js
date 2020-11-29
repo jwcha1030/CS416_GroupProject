@@ -8,7 +8,7 @@ import q4 from "../../images/model_white.jpg";
 export const ProductDataAll = [
   {
     id: 1,
-    price: "29.99",
+    price: "291299",
     date_added: "Spring 2020",
     title: "2020 Hoodie",
     new: "New",
@@ -21,19 +21,19 @@ export const ProductDataAll = [
 
   {
     id: 2,
-    price: "19.99",
+    price: "149600",
     title: "2020 Pants",
     date_added: "Fall 2018",
     new: "",
 
     description: "This pants will make your legs shine.",
     img: q2,
-    school: "FIT",
+    school: "SBU",
     type: "Apparel",
   },
   {
     id: 3,
-    price: "9.99",
+    price: "92332",
     title: "2020 Mugcup",
     date_added: "Summer 2020",
     new: "",
@@ -45,7 +45,7 @@ export const ProductDataAll = [
   },
   {
     id: 4,
-    price: "59.99",
+    price: "59299",
     date_added: "Winter 2019",
     title: "2020 Jacket",
     new: "",
@@ -57,7 +57,7 @@ export const ProductDataAll = [
   },
   {
     id: 5,
-    price: "69.99",
+    price: "12399",
     date_added: "Spring 2020",
     title: "2020 Hoodie",
     new: "New",
@@ -71,7 +71,7 @@ export const ProductDataAll = [
 
   {
     id: 6,
-    price: "79.99",
+    price: "79339",
     date_added: "Fall 2019",
     title: "2020 Shoes",
     new: "",
@@ -83,7 +83,7 @@ export const ProductDataAll = [
   },
   {
     id: 7,
-    price: "8.99",
+    price: "18199",
     date_added: "Summer 2020",
     title: "2020 Shorts",
     new: "",
@@ -95,7 +95,7 @@ export const ProductDataAll = [
   },
   {
     id: 8,
-    price: "99.99",
+    price: "9999",
     date_added: "Winter 2017",
     title: "2017 Legendary Jacket",
     new: "",
@@ -109,7 +109,7 @@ export const ProductDataAll = [
 
   {
     id: 9,
-    price: "8.99",
+    price: "8199",
     date_added: "Summer 2010",
     title: "2020 T-Shirts",
     new: "",
@@ -123,7 +123,7 @@ export const ProductDataAll = [
 
   {
     id: 10,
-    price: "299.99",
+    price: "29999",
     date_added: "Winter 2019",
     title: "SBU Water Bottle",
     new: "",
@@ -137,7 +137,7 @@ export const ProductDataAll = [
 
   {
     id: 11,
-    price: "18.99",
+    price: "18399",
     date_added: "Fall 2020",
     title: "Phone Charger",
     new: "",
@@ -150,7 +150,7 @@ export const ProductDataAll = [
   //ORDER: ID, PRICE, DATE_ADDED, TITLE, NEW, DESCRIPTION, IMG, SCHOOL, TYPE
   {
     id: 12,
-    price: "29.99",
+    price: "29499",
     date_added: "Summer 2014",
     title: "Beach Ball",
     new: "",

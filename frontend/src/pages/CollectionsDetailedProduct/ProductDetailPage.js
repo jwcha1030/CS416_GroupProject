@@ -107,7 +107,7 @@ function ProductDetailPage(props) {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully fetched whether the product has catalog display or not: product id:" +
-                cProductID,
+              cProductID,
               response.data.res_msg
             );
             setHasCatalogDisplayID(response.data.cd_id);
@@ -196,8 +196,8 @@ function ProductDetailPage(props) {
                 Launch 360 Degree View
               </Button>
             ) : (
-              <p>360 Degree View Not Available</p> //else a text
-            )}
+                <p>360 Degree View Not Available</p> //else a text
+              )}
           </div>
         </div>
 
@@ -293,7 +293,7 @@ function RotatingImageModal(props) {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully fetched 360 Degree Images with c_id " +
-                response.data.res_msg
+              response.data.res_msg
             );
             setCatalogDisplayImages(response.data.results);
           } else {

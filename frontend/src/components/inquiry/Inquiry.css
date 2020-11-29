@@ -25,3 +25,12 @@
 .product-school-img {
   width: 60%;
 }
+
+@media screen and (max-width: 1200px) {
+  .product-school-img {
+    width: 20%;
+  }
+  .product-image {
+    width: 50%;
+  }
+}

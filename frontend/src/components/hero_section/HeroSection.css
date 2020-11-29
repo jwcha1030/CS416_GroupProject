@@ -93,8 +93,13 @@
 img {
   width: 100%;
 }
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
+  .col {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+}
+@media screen and (max-width: 415px) {
   .vr-modal {
     width: 100%;
   }
@@ -147,11 +152,12 @@ img {
   }
 
   .home__hero-img {
+    width: 100%;
   }
 
   .col {
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
   .home__hero-subtitle {
     font-size: 14px;

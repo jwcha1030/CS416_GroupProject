@@ -13,12 +13,16 @@ import "./Product.css";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
+import { MdRemoveRedEye } from "react-icons/md";
+import NumberFormat from "react-number-format";
 import {
   mugcup_1,
   mugcup_2,
   sample,
 } from "../../pages/Collections/DataRotatingImages";
 
+import sbu from "../../images/sbu3.png";
+import fit from "../../images/fit3.png";
 const { Meta } = Card;
 const toolTipMessage = "Need Help? Reach out to us!";
 
@@ -57,23 +61,36 @@ const renderProducts = (props, index) => {
         <Meta
           className="product-properties"
           title={props.title}
-          description={
-
-            " ₩" +
-            props.price +
-            " | " +
-            props.school +
-            " " +
-            props.type
-
-
-          }
         />
 
-        <br />
-        <div className="additional">
-          <p className="product-description">{props.description}</p>
+
+        <div className="price">
+          <span className="won">₩ </span>
+          <NumberFormat
+            value={props.price}
+            displayType={"text"}
+            thousandSeparator={true}
+          /></div>
+
+
+        <div className="school-type">
+
+          {props.school == "SBU" ? (
+            <img className="sbu-fit-image" src={sbu} />
+          ) : (
+              <img className="sbu-fit-image" src={fit} />
+
+            )}
+          {props.school} {props.type}
         </div>
+
+        <div className="count">
+          <MdRemoveRedEye style={{ paddingRight: "2px" }} />
+          {props.click_count}
+        </div>
+        {/* <br /> */}
+        {/* <p className="product-description">{props.description}</p> */}
+
       </Card>
     </div>
   );
