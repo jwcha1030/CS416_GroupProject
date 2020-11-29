@@ -30,9 +30,13 @@
 .won {
   color: #aaaaaa;
 }
-.count {
-  font-size: 1.2rem;
+.count-wrapper {
+  font-size: 1.3rem;
   color: #aaaaaa;
+}
+.count-number {
+  padding-left: 4px;
+  font-size: 1.3rem;
 }
 
 .sbu-fit-image {
@@ -68,6 +72,14 @@
   }
   .sbu-fit-image {
     width: 17px;
+  }
+  .count-wrapper {
+    font-size: 1rem;
+    color: #aaaaaa;
+  }
+  .count-number {
+    padding-left: 4px;
+    font-size: 1rem;
   }
 }
 
@@ -106,5 +118,13 @@
   }
   .sbu-fit-image {
     width: 15px;
+  }
+  .count-wrapper {
+    font-size: 1rem;
+    color: #aaaaaa;
+  }
+  .count-number {
+    padding-left: 4px;
+    font-size: 0.8rem;
   }
 }

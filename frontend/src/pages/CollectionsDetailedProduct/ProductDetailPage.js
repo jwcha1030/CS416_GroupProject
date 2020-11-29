@@ -81,12 +81,12 @@ function ProductDetailPage(props) {
             );
             setData(response.data.collection_item);
           } else {
-            alert(
+            console.log(
               "unhandled res_code error from get collection. Please contact an admin."
             );
           }
         } else {
-          alert(
+          console.log(
             "unhandled response status get collection. Please contact an admin."
           );
         }
@@ -94,7 +94,7 @@ function ProductDetailPage(props) {
       .catch(function (error) {
         console.log("code 0 " + error);
 
-        alert("unhandled error from get collection. Please contact an admin.");
+        console.log("unhandled error from get collection. Please contact an admin.");
       });
   }, []);
 
@@ -114,12 +114,12 @@ function ProductDetailPage(props) {
             setHasCatalogDisplayBoolean(response.data.has);
             has360View = response.daa.has;
           } else {
-            alert(
+            console.log(
               "unhandled res_code error from catalog display. Please contact an admin."
             );
           }
         } else {
-          alert(
+          console.log(
             "unhandled response status  catalog display. Please contact an admin."
           );
         }
@@ -127,7 +127,7 @@ function ProductDetailPage(props) {
       .catch(function (error) {
         console.log("code 0 " + error);
 
-        alert("unhandled error from catalog display. Please contact an admin.");
+        console.log("unhandled error from catalog display. Please contact an admin.");
       });
   }, []);
 
@@ -302,14 +302,14 @@ function RotatingImageModal(props) {
             );
           }
         } else {
-          alert(
+          console.log(
             "unhandled response status from loading catalog display images. Please contact an admin."
           );
         }
       })
       .catch(function (error) {
         console.log("code 0 " + error);
-        alert(
+        console.log(
           "unhandled error from loading catalog display images. Please contact an admin."
         );
       });

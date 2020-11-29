@@ -28,9 +28,21 @@
 
 @media screen and (max-width: 1200px) {
   .product-school-img {
-    width: 20%;
+    width: 10%;
   }
-  .product-image {
-    width: 50%;
+  .product-name {
+    font-size: 2.5rem;
+  }
+
+  .product-price {
+    font-size: 2.5rem;
+  }
+
+  .product-sub-details {
+  }
+
+  .product-click-count {
+    font-size: 1.5rem;
+    color: #b9b9b9;
   }
 }

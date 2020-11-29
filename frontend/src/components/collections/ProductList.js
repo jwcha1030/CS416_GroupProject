@@ -41,7 +41,7 @@ const ProductList = (props, index) => {
   const [allProducts, setData] = useState([{}]);
   useEffect(() => {
     axios
-      .get("https://sunyk-msc-backend.herokuapp.com/collection/get_all/")
+      .get("https://sunyk-msc-backend.herokuapp.com/collection/item/get_all/")
       .then(function (response) {
         if (response.status == 200) {
           if (response.data.res_code == 1) {

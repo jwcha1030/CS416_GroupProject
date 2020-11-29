@@ -84,9 +84,10 @@ const renderProducts = (props, index) => {
           {props.school} {props.type}
         </div>
 
-        <div className="count">
-          <MdRemoveRedEye style={{ paddingRight: "2px" }} />
-          {props.click_count}
+        <div className="count-wrapper">
+          <MdRemoveRedEye />
+          <span className="count-number">
+            {props.click_count}</span>
         </div>
         {/* <br /> */}
         {/* <p className="product-description">{props.description}</p> */}

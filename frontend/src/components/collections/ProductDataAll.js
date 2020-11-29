@@ -17,6 +17,8 @@ export const ProductDataAll = [
     img: q1,
     school: "FIT",
     type: "Apparel",
+    click_count: "4",
+
   },
 
   {
