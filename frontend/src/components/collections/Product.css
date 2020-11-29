@@ -5,10 +5,85 @@
   font-size: 1.2rem;
 }
 
+.cover-image {
+}
+
+.ant-card-meta-title {
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
 .ant-card-body {
   padding: 1.3rem;
 }
+
+.school-type {
+  color: #a0a0a0;
+  font-size: 0.7rem;
+}
+
+.price {
+  color: #777777;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.won {
+  color: #aaaaaa;
+}
+.count-wrapper {
+  font-size: 1.3rem;
+  color: #aaaaaa;
+}
+.count-number {
+  padding-left: 4px;
+  font-size: 1.3rem;
+}
+
+.sbu-fit-image {
+  width: 20px;
+  padding-right: 5px;
+}
 @media screen and (max-width: 1200px) {
+  .product-card {
+    width: 18rem;
+    height: auto;
+  }
+
+  .ant-card-body {
+    padding: 0.4rem;
+    padding-right: 0.2rem;
+  }
+
+  .product-description {
+    font-size: 0.8rem;
+  }
+  .ant-card-meta-description {
+    font-size: 1rem;
+  }
+  .ant-card-meta-title {
+    font-weight: 600;
+    padding-bottom: 0.7rem;
+  }
+  .school-type {
+    font-size: 0.7rem;
+  }
+  .price {
+    font-size: 1.2rem;
+  }
+  .sbu-fit-image {
+    width: 17px;
+  }
+  .count-wrapper {
+    font-size: 1rem;
+    color: #aaaaaa;
+  }
+  .count-number {
+    padding-left: 4px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .product-card {
     width: 11rem;
     height: auto;
@@ -23,13 +98,33 @@
     font-size: 0.8rem;
   }
   .ant-card-meta-description {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .ant-card-meta-title {
     padding-top: 0.7rem;
     margin-bottom: 0;
-    font-size: 0.85rem;
-    font-weight: bold;
+    font-size: 0.9rem;
+    padding-bottom: 0.7rem;
+    font-weight: 600;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .school-type {
+    font-size: 0.5rem;
+  }
+  .sbu-fit-image {
+    width: 15px;
+  }
+  .count-wrapper {
+    font-size: 1rem;
+    color: #aaaaaa;
+  }
+  .count-number {
+    padding-left: 4px;
+    font-size: 0.8rem;
   }
 }

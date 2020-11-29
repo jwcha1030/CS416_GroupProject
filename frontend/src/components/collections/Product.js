@@ -10,12 +10,19 @@ import Rotation from "react-rotation";
 import "./RotatingImage.css";
 import ReactImageAppear from "react-image-appear";
 import "./Product.css";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import { MdRemoveRedEye } from "react-icons/md";
+import NumberFormat from "react-number-format";
 import {
   mugcup_1,
   mugcup_2,
   sample,
 } from "../../pages/Collections/DataRotatingImages";
 
+import sbu from "../../images/sbu3.png";
+import fit from "../../images/fit3.png";
 const { Meta } = Card;
 const toolTipMessage = "Need Help? Reach out to us!";
 
@@ -28,10 +35,13 @@ const renderProducts = (props, index) => {
       <Card
         className="product-card"
         hoverable
+
         cover={
-          <a href={`/collections/${props.id}`}>
+          <a
+            href={`/collections/${props.id}`}>
             <ReactImageAppear
-              className="home__hero-img"
+              className="cover-image"
+
               src={props.img}
               alt={"img"}
               animation="fillIn"
@@ -50,22 +60,38 @@ const renderProducts = (props, index) => {
       >
         <Meta
           className="product-properties"
-          title={props.new + " " + props.title}
-          description={
-            props.school +
-            " " +
-            props.type +
-            " | " +
-            props.date_added +
-            " | $" +
-            props.price
-          }
+          title={props.title}
         />
 
-        <br />
-        <div className="additional">
-          <p className="product-description">{props.description}</p>
+
+        <div className="price">
+          <span className="won">₩ </span>
+          <NumberFormat
+            value={props.price}
+            displayType={"text"}
+            thousandSeparator={true}
+          /></div>
+
+
+        <div className="school-type">
+
+          {props.school == "SBU" ? (
+            <img className="sbu-fit-image" src={sbu} />
+          ) : (
+              <img className="sbu-fit-image" src={fit} />
+
+            )}
+          {props.school} {props.type}
         </div>
+
+        <div className="count-wrapper">
+          <MdRemoveRedEye />
+          <span className="count-number">
+            {props.click_count}</span>
+        </div>
+        {/* <br /> */}
+        {/* <p className="product-description">{props.description}</p> */}
+
       </Card>
     </div>
   );

@@ -49,7 +49,7 @@
 
 .react-tabs__tab {
   color: #aaaaaa;
-  padding: 10rem;
+  padding: 9rem;
   padding-bottom: 1rem;
   padding-top: 0rem;
   margin-top: 0rem;
@@ -95,7 +95,54 @@
   padding-right: 1rem;
   margin: 3rem, 2%, 10%, 4%;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1830px) {
+  .product-list {
+    column-gap: 2rem;
+    row-gap: 2.4rem;
+    padding-top: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .main-category {
+    padding: 1rem;
+  }
+
+  .upperTab {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .nestedTab {
+    margin-left: 5%;
+    margin-right: 0;
+  }
+  .react-tabs__tab {
+    padding: 5rem;
+    padding-bottom: 1rem;
+    padding-top: 0rem;
+    margin: 0px 5px 0px 5px;
+
+    font-size: 10px;
+  }
+  .react-tabs__tab:hover {
+    font-size: 12px;
+    transition: 0.1s;
+    border-radius: 2px;
+  }
+
+  .react-tabs__tab--selected {
+    text-align: center;
+
+    transition: 0.3s;
+  }
+
+  .tab-logo {
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
   .react-tabs__tab-list {
     display: block;
     overflow-y: auto;
@@ -120,11 +167,13 @@
     margin-right: 1%;
   }
   .nestedTab {
-    margin-left: 0;
+    margin-left: 5%;
     margin-right: 0;
   }
   .react-tabs__tab {
-    padding: 5px;
+    padding: 2rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0rem;
     margin: 0px 5px 0px 5px;
 
     font-size: 10px;
@@ -180,5 +229,12 @@
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 1%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nestedTab {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

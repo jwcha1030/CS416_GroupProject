@@ -9,8 +9,15 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import "./InfoTab.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+
 import sbu from "../../images/sbu.png";
 import fit from "../../images/fit.jpg";
+import suny from "../../images/suny.png";
+
+//This is the school info tab compnent
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -85,6 +92,8 @@ export default function FullWidthTabs() {
           >
             <Tab label="Fashion Institute of Technology" {...a11yProps(0)} />
             <Tab label="Stony Brook University" {...a11yProps(1)} />
+            <Tab label="SUNY Korea" {...a11yProps(2)} />
+
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -102,7 +111,10 @@ export default function FullWidthTabs() {
               <div className="col">
                 <br />
                 <a href="https://www.fitnyc.edu" target="_blank">
-                  <img style={{ width: "180px" }} src={fit} />
+                  <LazyLoadImage
+                    effect="blur"
+                    style={{ width: "180px" }}
+                    src={fit} />
                 </a>
                 <br />
                 <br />
@@ -121,18 +133,40 @@ export default function FullWidthTabs() {
               <div className="col">
                 <br />
                 <a href="https://www.stonybrook.edu" target="_blank">
-                  <img style={{ width: "180px" }} src={sbu} />
+                  <LazyLoadImage
+                    effect="blur"
+                    style={{ width: "180px" }}
+                    src={sbu} />
                 </a>
                 <br />
                 <br />
               </div>
               <div className="col" id="school-description">
                 The State University of New York at Stony Brook, more commonly
-                known as Stony Brook University (SBU), is a public sea-grant and
+                known as Stony Brook University, is a public sea-grant and
                 space-grant research university in Stony Brook, New York. It is
                 one of four university centers of the SUNY system. It is the
-                largest public university in New York by area.
+                largest public university in NY by area.
               </div>
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <div className="row">
+              <div className="col">
+                <br />
+                <a href="https://www.http://www.sunykorea.ac.kr/" target="_blank">
+                  <LazyLoadImage
+                    effect="blur"
+                    style={{ width: "160px" }}
+                    src={suny} />
+                </a>
+                <br />
+                <br />
+              </div>
+              <div className="col" id="school-description">
+                The State University of New York Korea (SUNY Korea) was established in March 2012 as the
+                first American university in Songdo, Korea. SUNY Korea currently offers program degrees from
+                SBU and FIT as an extended campus from New York.</div>
             </div>
           </TabPanel>
         </SwipeableViews>

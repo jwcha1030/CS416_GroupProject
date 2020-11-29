@@ -81,12 +81,12 @@ function ProductDetailPage(props) {
             );
             setData(response.data.collection_item);
           } else {
-            alert(
+            console.log(
               "unhandled res_code error from get collection. Please contact an admin."
             );
           }
         } else {
-          alert(
+          console.log(
             "unhandled response status get collection. Please contact an admin."
           );
         }
@@ -94,7 +94,7 @@ function ProductDetailPage(props) {
       .catch(function (error) {
         console.log("code 0 " + error);
 
-        alert("unhandled error from get collection. Please contact an admin.");
+        console.log("unhandled error from get collection. Please contact an admin.");
       });
   }, []);
 
@@ -107,19 +107,19 @@ function ProductDetailPage(props) {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully fetched whether the product has catalog display or not: product id:" +
-                cProductID,
+              cProductID,
               response.data.res_msg
             );
             setHasCatalogDisplayID(response.data.cd_id);
             setHasCatalogDisplayBoolean(response.data.has);
             has360View = response.daa.has;
           } else {
-            alert(
+            console.log(
               "unhandled res_code error from catalog display. Please contact an admin."
             );
           }
         } else {
-          alert(
+          console.log(
             "unhandled response status  catalog display. Please contact an admin."
           );
         }
@@ -127,7 +127,7 @@ function ProductDetailPage(props) {
       .catch(function (error) {
         console.log("code 0 " + error);
 
-        alert("unhandled error from catalog display. Please contact an admin.");
+        console.log("unhandled error from catalog display. Please contact an admin.");
       });
   }, []);
 
@@ -196,8 +196,8 @@ function ProductDetailPage(props) {
                 Launch 360 Degree View
               </Button>
             ) : (
-              <p>360 Degree View Not Available</p> //else a text
-            )}
+                <p>360 Degree View Not Available</p> //else a text
+              )}
           </div>
         </div>
 
@@ -293,7 +293,7 @@ function RotatingImageModal(props) {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully fetched 360 Degree Images with c_id " +
-                response.data.res_msg
+              response.data.res_msg
             );
             setCatalogDisplayImages(response.data.results);
           } else {
@@ -302,14 +302,14 @@ function RotatingImageModal(props) {
             );
           }
         } else {
-          alert(
+          console.log(
             "unhandled response status from loading catalog display images. Please contact an admin."
           );
         }
       })
       .catch(function (error) {
         console.log("code 0 " + error);
-        alert(
+        console.log(
           "unhandled error from loading catalog display images. Please contact an admin."
         );
       });

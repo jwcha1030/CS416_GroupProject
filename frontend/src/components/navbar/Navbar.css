@@ -4,7 +4,7 @@
   box-shadow: 0 6px 4px -4px #999;
 
   background: #ffffff;
-  height: 8vh;
+  height: 8rem;
   margin-top: 0;
   padding-top: 0;
   display: flex;
@@ -84,7 +84,7 @@
   justify-content: center;
   list-style: none;
   text-align: center;
-  justify-content: end;
+  justify-content: flex-start;
 }
 
 .nav-item {
@@ -139,12 +139,11 @@
     overflow-x: hidden;
   }
   .navbar {
-    height: 10%;
+    height: 9%;
   }
   .navbar-logo {
     font-size: 1.4rem;
     letter-spacing: 0.1px;
-
     padding-top: 1.5rem;
   }
 
@@ -186,7 +185,6 @@
     background: #ffffff;
     left: 40%;
     top: 70%;
-
     opacity: 0.85;
     transition: all 0.6s ease;
     z-index: 1;
