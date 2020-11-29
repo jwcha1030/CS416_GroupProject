@@ -5,10 +5,39 @@
   font-size: 1.2rem;
 }
 
+.cover-image {
+}
+
 .ant-card-body {
   padding: 1.3rem;
 }
 @media screen and (max-width: 1200px) {
+  .product-card {
+    width: 18rem;
+    height: auto;
+  }
+
+  .ant-card-body {
+    padding: 0.4rem;
+    padding-right: 0.2rem;
+  }
+
+  .product-description {
+    font-size: 0.8rem;
+  }
+  .ant-card-meta-description {
+    font-size: 1rem;
+  }
+
+  .ant-card-meta-title {
+    padding-top: 0.7rem;
+    margin-bottom: 0;
+    font-size: 1 rem;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .product-card {
     width: 11rem;
     height: auto;
@@ -23,7 +52,7 @@
     font-size: 0.8rem;
   }
   .ant-card-meta-description {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .ant-card-meta-title {

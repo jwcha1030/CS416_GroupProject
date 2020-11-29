@@ -27,8 +27,8 @@ import s from "./CollectionsProductCarousel.scss";
 
 const NUM_CAROUSEL = 11;
 
-// randomly generated 0-10 unique numbers for randomizing the carousels
-// NOTE: THIS could not be done with loops because of FILE name cannot be changed.
+// randomly generated 0-10 unique numbers for randomizing the carousel images order.
+// NOTE: THIS could not be done with loops because of FILE name cannot be dynamically changed.
 
 var randomSlideNumber = [];
 while (randomSlideNumber.length < NUM_CAROUSEL) {

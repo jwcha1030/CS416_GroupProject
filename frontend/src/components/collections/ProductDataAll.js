@@ -2,8 +2,9 @@ import q1 from "../../images/member.jpg";
 import q2 from "../../images/model_orange.jpg";
 import q3 from "../../images/model_hat.jpg";
 import q4 from "../../images/model_white.jpg";
-//IMPORTANT: FIELD ORDER MUST BE CONSISTENT
-// NOTE THESE DATA FOR FRONT-END DATA, BEFORE BACKEND WAS SETUP
+// IMPORTANT: FIELD ORDER MUST BE CONSISTENT
+// NOTE THESE MOCK-UP DATA WERE FOR FRONT-END TESTING, BEFORE BACKEND WAS SETUP
+// THESE ARE NO LONGER USED. KEEPING THESE FOR REFERENCE.
 export const ProductDataAll = [
   {
     id: 1,

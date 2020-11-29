@@ -10,6 +10,9 @@ import Rotation from "react-rotation";
 import "./RotatingImage.css";
 import ReactImageAppear from "react-image-appear";
 import "./Product.css";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import {
   mugcup_1,
   mugcup_2,
@@ -28,10 +31,13 @@ const renderProducts = (props, index) => {
       <Card
         className="product-card"
         hoverable
+
         cover={
-          <a href={`/collections/${props.id}`}>
+          <a
+            href={`/collections/${props.id}`}>
             <ReactImageAppear
-              className="home__hero-img"
+              className="cover-image"
+
               src={props.img}
               alt={"img"}
               animation="fillIn"
@@ -50,15 +56,17 @@ const renderProducts = (props, index) => {
       >
         <Meta
           className="product-properties"
-          title={props.new + " " + props.title}
+          title={props.title}
           description={
+
+            " ₩" +
+            props.price +
+            " | " +
             props.school +
             " " +
-            props.type +
-            " | " +
-            props.date_added +
-            " | $" +
-            props.price
+            props.type
+
+
           }
         />
 

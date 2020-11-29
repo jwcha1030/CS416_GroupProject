@@ -17,6 +17,9 @@ import { SearchOutlined } from "@ant-design/icons";
 
 var axios = require("axios");
 
+//This component is in the collections page, after the CollectionsMain. 
+// This includes search bar, filtering tabs, and layouts of collection
+
 const ProductList = (props, index) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);

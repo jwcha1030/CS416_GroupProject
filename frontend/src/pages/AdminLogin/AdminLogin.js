@@ -85,7 +85,11 @@ class Login extends Component {
                 margin: "200px",
               }}
             >
-              <h3 style={{ color: "grey" }}>Admin Login</h3>
+              <h3 style={{ color: "grey" }}>Merchandise Society Admin Login</h3>
+              <p style={{ color: "grey" }}>This is a login page for
+              administrators of Merchandising Society Club. <br />This page and beyond is not inteded for normal users.
+              <br /> Please contact MSC for any inquiries.</p>
+
               <br />
               <br />
               {/* <AppBar title="Login" /> */}

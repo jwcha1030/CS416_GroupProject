@@ -54,6 +54,7 @@ function Footer() {
                       console.log("Post SUCCESS", response.data.res_msg);
                       alert("Successfully Subscribed to MSC");
                       window.location.reload();
+
                       // } else if (){
                       // Check other res_code with else if
                       // }
@@ -76,11 +77,12 @@ function Footer() {
             {subEmail === "" ? ( //button for 360 degree view if it is available.
               <div></div>
             ) : (
-              <p style={{ color: "#ea7229 " }}>
-                Thank you {subEmail} for subscribing.
-              </p>
-              //else a text
-            )}
+                <p id="thank-you-text">
+                  Thank you <span id="subscribe-email-text">{subEmail}</span>. We
+                will keep you updated.
+                </p>
+                //else a text
+              )}
             <input
               className="footer-input"
               name="email"
