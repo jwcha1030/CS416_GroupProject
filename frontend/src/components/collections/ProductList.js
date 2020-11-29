@@ -17,8 +17,35 @@ import { SearchOutlined } from "@ant-design/icons";
 
 var axios = require("axios");
 
-//This component is in the collections page, after the CollectionsMain. 
+//This component is in the collections page, after the CollectionsMain.
 // This includes search bar, filtering tabs, and layouts of collection
+const schoolMapping = (school_id) => {
+  if (school_id === 0) {
+    return "None";
+  } else if (school_id === 1) {
+    return "SBU";
+  } else if (school_id === 2) {
+    return "FIT";
+  } else {
+    return "ERR";
+  }
+};
+
+const typeMapping = (type_id) => {
+  if (type_id === 0) {
+    return "None";
+  } else if (type_id === 1) {
+    return "Goods";
+  } else if (type_id === 2) {
+    return "Apparel";
+  } else {
+    return "ERR";
+  }
+};
+
+const compareStrings = (a, b) => {
+  a.toLowerCase().includes(b.toLowerCase());
+};
 
 const ProductList = (props, index) => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -38,18 +65,28 @@ const ProductList = (props, index) => {
     setSearchTerm(e.target.value);
   };
 
-  const [allProducts, setData] = useState([{}]);
+  //ALL COLLECTION ITEMS LIST.. everything...
+  const [allCollectionItems, setData] = useState([{}]);
   useEffect(() => {
     axios
-      .get("https://sunyk-msc-backend.herokuapp.com/collection/item/get_all/")
+      .get(
+        "https://sunyk-msc-backend.herokuapp.com/collection/item/get_all/with_collection_info/"
+      )
       .then(function (response) {
         if (response.status == 200) {
           if (response.data.res_code == 1) {
-            // console.log(response.data.result)
+            console.log(
+              "Sucessfully connected to API for all data..." +
+                response.data.res_msg +
+                "...AND data.results: " +
+                response.data.results
+            );
             setData(response.data.results);
           } else {
+            console.log("other than res_code 1...");
           }
         } else {
+          console.log("Some connection error status not 200...");
         }
       })
       .catch(function (error) {
@@ -58,120 +95,96 @@ const ProductList = (props, index) => {
   }, []);
 
   React.useEffect(() => {
-    const results = ProductDataAll.filter(
+    const results = allCollectionItems.filter(
       (product) =>
-        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.date_added.toLowerCase().includes(searchTerm.toLowerCase())
+        compareStrings(product.name, searchTerm) ||
+        compareStrings(product.desc, searchTerm) ||
+        compareStrings(typeMapping(product.type_id), searchTerm) ||
+        compareStrings(schoolMapping(product.school_id), searchTerm)
     );
+
     setSearchResults(results);
 
-    const fitAll = ProductDataAll.filter(
+    const fitAll = allCollectionItems.filter(
       (product) =>
-        product.school.toLowerCase() == "fit" &&
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(schoolMapping(product.school_id), "fit") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setFitAll(fitAll);
 
-    const fitGoods = ProductDataAll.filter(
+    const fitGoods = allCollectionItems.filter(
       (product) =>
-        product.school.toLowerCase() == "fit" &&
-        product.type.toLowerCase().includes("good") &&
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(schoolMapping(product.school_id), "fit") &&
+        compareStrings(typeMapping(product.type_id), "good") && // used .include() with good
+        (compareStrings(product.name, searchTerm) || // to avoid good vs goods confusion
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setFitGoods(fitGoods);
 
-    const fitApparels = ProductDataAll.filter(
+    const fitApparels = allCollectionItems.filter(
       (product) =>
-        product.school.toLowerCase() == "fit" &&
-        product.type.toLowerCase().includes("apparel") &&
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(schoolMapping(product.school_id), "fit") &&
+        compareStrings(typeMapping(product.type_id), "apparel") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setFitApparels(fitApparels);
 
-    const sbuAll = ProductDataAll.filter(
+    const sbuAll = allCollectionItems.filter(
       (product) =>
-        product.school.toLowerCase() == "sbu" &&
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(schoolMapping(product.school_id), "sbu") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setSbuAll(sbuAll);
 
-    const sbuGoods = ProductDataAll.filter(
+    const sbuGoods = allCollectionItems.filter(
       (product) =>
-        product.school.toLowerCase() == "sbu" &&
-        product.type.toLowerCase().includes("good") &&
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(schoolMapping(product.school_id), "sbu") &&
+        compareStrings(typeMapping(product.type_id), "good") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setSbuGoods(sbuGoods);
 
-    const sbuApparels = ProductDataAll.filter(
+    const sbuApparels = allCollectionItems.filter(
       (product) =>
-        product.school.toLowerCase() == "sbu" &&
-        product.type.toLowerCase().includes("apparel") &&
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(schoolMapping(product.school_id), "sbu") &&
+        compareStrings(typeMapping(product.type_id), "apparel") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setSbuApparels(sbuApparels);
 
-    const goodsAll = ProductDataAll.filter(
+    const goodsAll = allCollectionItems.filter(
       (product) =>
-        product.type.toLowerCase().includes("good") && //to avoid good vs goods mix
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(typeMapping(product.type_id), "good") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setGoodsAll(goodsAll);
-    const apparelsAll = ProductDataAll.filter(
+    const apparelsAll = allCollectionItems.filter(
       (product) =>
-        product.type.toLowerCase().includes("apparel") && //to avoid apparel vs apparels mix
-        (product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.description
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.date_added.toLowerCase().includes(searchTerm.toLowerCase()))
+        compareStrings(typeMapping(product.type_id), "apparel") &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
     setApparelsAll(apparelsAll);
   }, [searchTerm]);

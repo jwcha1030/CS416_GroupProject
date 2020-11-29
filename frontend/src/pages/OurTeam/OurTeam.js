@@ -18,7 +18,7 @@ function OurTeam() {
       .then(function (response) {
         if (response.status == 200) {
           if (response.data.res_code == 1) {
-            // console.log(response.data.result)
+            console.log(response.data.results);
             setData(response.data.results);
           } else {
           }

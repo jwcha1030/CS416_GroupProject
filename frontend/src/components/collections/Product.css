@@ -10,6 +10,8 @@
 
 .ant-card-meta-title {
   font-weight: 600;
+
+  letter-spacing: 0.2px;
   padding-bottom: 1rem;
 }
 
@@ -19,16 +21,18 @@
 
 .school-type {
   color: #a0a0a0;
-  font-size: 0.7rem;
+  font-size: 1.2rem;
 }
 
 .price {
   color: #777777;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.3px;
 }
 .won {
   color: #aaaaaa;
+  font-size: 1.3rem;
 }
 .count-wrapper {
   font-size: 1.3rem;
@@ -65,10 +69,13 @@
     padding-bottom: 0.7rem;
   }
   .school-type {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
   .price {
     font-size: 1.2rem;
+  }
+  .won {
+    font-size: 1rem;
   }
   .sbu-fit-image {
     width: 17px;
@@ -103,18 +110,24 @@
 
   .ant-card-meta-title {
     padding-top: 0.7rem;
+
+    letter-spacing: 0.1px;
     margin-bottom: 0;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     padding-bottom: 0.7rem;
     font-weight: 600;
   }
 
   .price {
-    font-size: 1rem;
-  }
+    font-size: 1.1rem;
 
+    letter-spacing: 0.1px;
+  }
+  .won {
+    font-size: 0.9rem;
+  }
   .school-type {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
   .sbu-fit-image {
     width: 15px;
