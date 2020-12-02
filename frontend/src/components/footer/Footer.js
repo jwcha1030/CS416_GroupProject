@@ -41,7 +41,7 @@ function Footer() {
               };
 
               await new Promise((resolve) => setTimeout(resolve, 500));
-              alert(JSON.stringify(payload, null, 2));
+              console.log(JSON.stringify(payload, null, 2));
 
               axios
                 .post(apiBaseUrl, payload)
@@ -52,7 +52,9 @@ function Footer() {
                       // Everything worked correctly
                       // Do something with the returned data
                       console.log("Post SUCCESS", response.data.res_msg);
-                      alert("Successfully Subscribed to MSC");
+                      alert(
+                        "Thanks! You've been successfully Subscribed to MSC. We will keep you updated!"
+                      );
                       window.location.reload();
 
                       // } else if (){
@@ -77,12 +79,12 @@ function Footer() {
             {subEmail === "" ? ( //button for 360 degree view if it is available.
               <div></div>
             ) : (
-                <p id="thank-you-text">
-                  Thank you <span id="subscribe-email-text">{subEmail}</span>. We
+              <p id="thank-you-text">
+                Thank you <span id="subscribe-email-text">{subEmail}</span>. We
                 will keep you updated.
-                </p>
-                //else a text
-              )}
+              </p>
+              //else a text
+            )}
             <input
               className="footer-input"
               name="email"

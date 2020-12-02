@@ -8,6 +8,7 @@ import ROTATE_SIGN_IMG from "../../images/view_in_360.png";
 import ROTATE_SIGN_2_IMG from "../../images/rotate.png";
 
 // 360 degree view of a collection item
+// BACKEND refers it has catalogDisplay*
 
 const renderImages = (item, index) => {
   return (

@@ -222,6 +222,7 @@ function ProductDetailPage(props) {
           id={cProductID}
           show={RotatingImageModalShow}
           onHide={() => setRotatingImageModalShow(false)}
+          productName={productData["name"]}
         />
 
         <div className="row" align="center">
@@ -229,7 +230,16 @@ function ProductDetailPage(props) {
           <div className="col-sm-5">
             <ImageGallery lazyLoad={true} items={galleryImagesData} />
             <div className="rotating-images-modal">
-              {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
+              {/*TEMPORARILY SET ALL PRODUCTS TO FIXED MOCKUP 360 VIEW. MSC HAS NOT PREPARED THE DATA YET. */}
+              <Button
+                variant="dark"
+                size="lg"
+                onClick={() => setRotatingImageModalShow(true)}
+              >
+                Launch 360 Degree View
+              </Button>
+              {/* BELOW IS THE DYNAMIC CHECKING OF WHETHER THE ITEM HAS 360 VIEW OR NOT. IT RENDERS A BUTTON OR A "NOT AVAILABLE TEXT" ACCORDINGLY. */}
+              {/* {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
                 <Button
                   variant="dark"
                   size="lg"
@@ -241,7 +251,7 @@ function ProductDetailPage(props) {
                 <p style={{ color: "#aaaaaa" }}>
                   360 Degree View Not Available
                 </p> //else a text
-              )}
+              )} */}
             </div>
           </div>
 
@@ -372,6 +382,7 @@ function RotatingImageModal(props) {
   }, []);
   const id = props.id;
   //pass data from product using props...
+
   return (
     <Modal
       {...props}
@@ -395,13 +406,17 @@ function RotatingImageModal(props) {
               scroll={false}
               className="rotating-image"
             >
-              {catalogDisplayImages.map(renderImages)}
+              {/*    TEMPORARY MOCKUP DATA */}
+              {mugcup_1.map(renderImages)}
+
+              {/*  BACKEND DATA API CALL -- MSC IS NOT READY TO PROVIDE THE DATA YET -12/3/2020 **********************************/}
+              {/* {catalogDisplayImages.map(renderImages)} */}
             </Rotation>
           }
         >
           {" "}
           <Meta
-            title={"Product ID is " + id}
+            title={props.productName}
             description="Drag around the see different angles"
           />
         </Card>

@@ -89,8 +89,7 @@ function PurchaseInquiry(props) {
             };
 
             await new Promise((resolve) => setTimeout(resolve, 500));
-            alert(JSON.stringify(payload, null, 2));
-
+            console.log(JSON.stringify(payload, null, 2));
             axios
               .post(apiBaseUrl, payload) //values is the form's data
               .then((response) => {
@@ -100,7 +99,7 @@ function PurchaseInquiry(props) {
                     // Everything worked correctly
                     // Do something with the returned data
                     console.log("Post SUCCESS", response.data.res_msg);
-                    alert("Successfully Sent.");
+                    alert("Successfully Sent. We will contact you shortly!");
                     window.location.reload();
                     // } else if (){
                     // Check other res_code with else if

@@ -81,33 +81,32 @@ const ProductList = (props, index) => {
   useEffect(() => {
     // trackPromise(
     setLoading(true);
-    if (loading) {
-      axios
-        .get(
-          "https://sunyk-msc-backend.herokuapp.com/collection/item/get_all/with_collection_info/"
-        )
-        .then(function (response) {
-          if (response.status == 200) {
-            if (response.data.res_code == 1) {
-              console.log(
-                "Successfully connected to API for all data..." +
-                  response.data.res_msg
-              );
-              console.log(response.data.results);
-              setData(response.data.results);
-              setLoading(false);
-              // console.log(response.data.results[0].name); //returns some name
-            } else {
-              console.log("other than res_code 1...");
-            }
+    axios
+      .get(
+        "https://sunyk-msc-backend.herokuapp.com/collection/item/get_all/with_collection_info/"
+      )
+      .then(function (response) {
+        if (response.status == 200) {
+          if (response.data.res_code == 1) {
+            console.log(
+              "Successfully connected to API for all data..." +
+                response.data.res_msg
+            );
+            console.log(response.data.results);
+            setData(response.data.results);
+            setLoading(false);
+            // console.log(response.data.results[0].name); //returns some name
           } else {
-            console.log("Some connection error status not 200...");
+            console.log("other than res_code 1...");
           }
-        })
-        .catch(function (error) {
-          console.log("code 0" + error);
-        });
-    }
+        } else {
+          console.log("Some connection error status not 200...");
+        }
+      })
+      .catch(function (error) {
+        console.log("code 0" + error);
+      });
+
     // );
   }, []);
   // END OF LOADING DATA
