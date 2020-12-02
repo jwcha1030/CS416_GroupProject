@@ -16,6 +16,8 @@ import NumberFormat from "react-number-format";
 import SBU_IMG from "../../images/sbu3.png";
 import FIT_IMG from "../../images/fit3.png";
 import { mugcup_1, mugcup_2, sample } from "../Collections/DataRotatingImages";
+import LOADER_GIF from "../../images/loading.gif";
+
 const { Meta } = Card;
 
 const axios = require("axios");
@@ -67,6 +69,8 @@ const typeMapping = (type_id) => {
 let has360View;
 let api360ViewUrl;
 function ProductDetailPage(props) {
+  const [loading, setLoading] = useState(false);
+
   const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
 
   const [productData, setData] = useState({});
@@ -90,7 +94,8 @@ function ProductDetailPage(props) {
   api360ViewUrl = api360ViewImagesUrl;
 
   // product details api call
-  useLayoutEffect(() => {
+  useEffect(() => {
+    setLoading(true);
     axios
       .get(apiBaseUrl)
       .then(function (response) {
@@ -101,6 +106,7 @@ function ProductDetailPage(props) {
               response.data.res_msg
             );
             setData(response.data.collection_item);
+            setLoading(false);
           } else {
             console.log(
               "unhandled res_code error from get collection. Please contact an admin."
@@ -122,7 +128,9 @@ function ProductDetailPage(props) {
   }, []);
 
   // calling api calls - whether the product has 360 degree view or not, No 360 means ID = -1 , otherwise ID exists.
-  useLayoutEffect(() => {
+  useEffect(() => {
+    setLoading(true);
+
     axios
       .get(apiHas360ViewUrl)
       .then(function (response) {
@@ -136,6 +144,7 @@ function ProductDetailPage(props) {
             setHasCatalogDisplayID(response.data.cd_id);
             setHasCatalogDisplayBoolean(response.data.has);
             has360View = response.daa.has;
+            setLoading(false);
           } else {
             console.log(
               "unhandled res_code error from catalog display. Please contact an admin."
@@ -190,128 +199,144 @@ function ProductDetailPage(props) {
       });
     }
   }
+  if (loading) {
+    return (
+      <p
+        style={{
+          marginTop: "10rem",
+        }}
+        align="center"
+      >
+        <img style={{ width: "500px" }} src={LOADER_GIF} />
+      </p>
+    );
+  } else {
+    return (
+      <div className="details-container">
+        <h1 style={{ display: "flex", justifyContent: "center", margin: "4%" }}>
+          {" "}
+        </h1>
 
-  return (
-    <div className="details-container">
-      <h1 style={{ display: "flex", justifyContent: "center", margin: "4%" }}>
-        {" "}
-      </h1>
+        <RotatingImageModal
+          //pass data to  modal using props...
+          id={cProductID}
+          show={RotatingImageModalShow}
+          onHide={() => setRotatingImageModalShow(false)}
+        />
 
-      <RotatingImageModal
-        //pass data to  modal using props...
-        id={cProductID}
-        show={RotatingImageModalShow}
-        onHide={() => setRotatingImageModalShow(false)}
-      />
+        <div className="row" align="center">
+          <div className="col-sm-1"></div>
+          <div className="col-sm-5">
+            <ImageGallery lazyLoad={true} items={galleryImagesData} />
+            <div className="rotating-images-modal">
+              {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
+                <Button
+                  variant="dark"
+                  size="lg"
+                  onClick={() => setRotatingImageModalShow(true)}
+                >
+                  Launch 360 Degree View
+                </Button>
+              ) : (
+                <p style={{ color: "#aaaaaa" }}>
+                  360 Degree View Not Available
+                </p> //else a text
+              )}
+            </div>
+          </div>
 
-      <div className="row" align="center">
-        <div className="col-sm-1"></div>
-        <div className="col-sm-5">
-          <ImageGallery lazyLoad={true} items={galleryImagesData} />
-          <div className="rotating-images-modal">
-            {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
-              <Button
-                variant="dark"
-                size="lg"
-                onClick={() => setRotatingImageModalShow(true)}
-              >
-                Launch 360 Degree View
-              </Button>
-            ) : (
-              <p style={{ color: "#aaaaaa" }}>360 Degree View Not Available</p> //else a text
-            )}
+          <div className="col-sm-1"></div>
+          <div className="col-sm-4">
+            <Card
+              title={productData["name"]}
+              extra={
+                <Button
+                  className="make-inquiry"
+                  variant="dark"
+                  buttonStyle="btn--outline"
+                  onClick={() => setPurchaseInquiryModalShow(true)}
+                >
+                  Purchase Inquiry
+                </Button>
+              }
+            >
+              {" "}
+              <br />
+              <div className="row" id="mobileRow">
+                <div className="col-sm-1" id="space"></div>
+                <div className="col-sm-4 text-left" id="product-side-details">
+                  <div className="product-price">
+                    <span className="detailed-page-won">₩ </span>
+                    <NumberFormat
+                      className="detailed-page-price"
+                      value={productData["price"]}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                    />
+                  </div>
+                  <br />
+                  <br />
+
+                  <div className="product-school">
+                    <img
+                      className="product-school-img"
+                      src={schoolMapping(productData["school_id"])}
+                    />
+                    {schoolMappingStr(productData["school_id"])}
+                  </div>
+                  <br></br>
+                  <div className="product-type">
+                    <br></br>
+                    {typeMapping(productData["type_id"])}
+                  </div>
+
+                  <br />
+                  <br />
+
+                  <div className="product-click-count">
+                    <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
+                    {productData["click_count"]}
+                  </div>
+                  <br />
+                </div>
+                <div className="col-sm-1" id="space">
+                  {" "}
+                </div>
+
+                <div
+                  className="col-sm-6 text-left"
+                  id="product-description-container"
+                >
+                  <div className="product-description">
+                    {productData["desc"]}
+                  </div>
+                </div>
+              </div>
+            </Card>
+            <div className="col-sm-1"></div>
           </div>
         </div>
 
-        <div className="col-sm-1"></div>
-        <div className="col-sm-4">
-          <Card
-            title={productData["name"]}
-            extra={
-              <Button
-                className="make-inquiry"
-                variant="dark"
-                buttonStyle="btn--outline"
-                onClick={() => setPurchaseInquiryModalShow(true)}
-              >
-                Purchase Inquiry
-              </Button>
-            }
-          >
-            {" "}
-            <br />
-            <div className="row" id="mobileRow">
-              <div className="col-sm-1" id="space"></div>
-              <div className="col-sm-4 text-left" id="product-side-details">
-                <div className="product-price">
-                  <span className="detailed-page-won">₩ </span>
-                  <NumberFormat
-                    className="detailed-page-price"
-                    value={productData["price"]}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                  />
-                </div>
-                <br />
-                <br />
-
-                <div className="product-school">
-                  <img
-                    className="product-school-img"
-                    src={schoolMapping(productData["school_id"])}
-                  />
-                  {schoolMappingStr(productData["school_id"])}
-                </div>
-                <br></br>
-                <div className="product-type">
-                  <br></br>
-                  {typeMapping(productData["type_id"])}
-                </div>
-
-                <br />
-                <br />
-
-                <div className="product-click-count">
-                  <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
-                  {productData["click_count"]}
-                </div>
-                <br />
-              </div>
-              <div className="col-sm-1" id="space">
-                {" "}
-              </div>
-
-              <div
-                className="col-sm-6 text-left"
-                id="product-description-container"
-              >
-                <div className="product-description">{productData["desc"]}</div>
-              </div>
-            </div>
-          </Card>
-          <div className="col-sm-1"></div>
-        </div>
-      </div>
-
-      {/* 
+        {/* 
       pass values as props to the modal */}
-      <PurchaseInquiryModal
-        show={PurchaseInquiryModalShow}
-        onHide={() => setPurchaseInquiryModalShow(false)}
-        productID={cProductID}
-        productName={productData["name"]}
-        productPrice={productData["price"]}
-        productSchool={schoolMapping(productData["school_id"])}
-        productSchoolStr={schoolMappingStr(productData["school_id"])}
-        productType={typeMapping(productData["type_id"])}
-        productDescription={productData["desc"]}
-        productDate={productData["create_date"]}
-        productClickCount={productData["click_count"]}
-        productCoverImage={productData["main_img"]}
-      />
-      <Footer />
-    </div>
-  );
+        <PurchaseInquiryModal
+          show={PurchaseInquiryModalShow}
+          onHide={() => setPurchaseInquiryModalShow(false)}
+          productID={cProductID}
+          productName={productData["name"]}
+          productPrice={productData["price"]}
+          productSchool={schoolMapping(productData["school_id"])}
+          productSchoolStr={schoolMappingStr(productData["school_id"])}
+          productType={typeMapping(productData["type_id"])}
+          productDescription={productData["desc"]}
+          productDate={productData["create_date"]}
+          productClickCount={productData["click_count"]}
+          productCoverImage={productData["main_img"]}
+        />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 function RotatingImageModal(props) {

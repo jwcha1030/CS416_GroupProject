@@ -80,6 +80,7 @@ const ProductList = (props, index) => {
 
   useEffect(() => {
     // trackPromise(
+    setLoading(true);
     if (loading) {
       axios
         .get(
@@ -222,14 +223,15 @@ const ProductList = (props, index) => {
 
   if (loading) {
     return (
-      <p
+      <img
         style={{
-          marginBottom: "10rem",
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "50%",
         }}
-        align="center"
-      >
-        <img style={{ width: "100px" }} src={LOADER_GIF} />
-      </p>
+        src={LOADER_GIF}
+      />
     );
   }
   // END OF FILTERING BY TABS

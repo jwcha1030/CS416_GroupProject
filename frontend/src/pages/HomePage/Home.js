@@ -8,10 +8,13 @@ import Carousel from "react-bootstrap/esm/Carousel";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Footer from "../../components/footer/Footer";
+import LOADER_GIF from "../../images/loading.gif";
 
 var axios = require("axios");
 
 function Home() {
+  const [loading, setLoading] = useState(true);
+
   //Home Carousel API Call-----------------------------------------------------------------------------
   const [carouselItemsFromBackend, setData] = useState([{}]);
   useEffect(() => {
@@ -31,6 +34,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         "https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/"
@@ -39,6 +43,7 @@ function Home() {
         if (response.status == 200) {
           if (response.data.res_code == 1) {
             setData(response.data.results);
+            setLoading(false);
           } else {
             console.log("Unexpected error: res_code 0");
           }
@@ -51,6 +56,19 @@ function Home() {
   }, []);
   //Home Carousel API Call-----------------------------------------------------------------------------
 
+  if (loading) {
+    return (
+      <img
+        style={{
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "50%",
+        }}
+        src={LOADER_GIF}
+      />
+    );
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
