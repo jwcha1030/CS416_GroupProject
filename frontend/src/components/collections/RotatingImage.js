@@ -4,8 +4,8 @@ import "./RotatingImage.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
-import RotateSign from "../../images/view_in_360.png";
-import RotateSign2 from "../../images/rotate.png";
+import ROTATE_SIGN_IMG from "../../images/view_in_360.png";
+import ROTATE_SIGN_2_IMG from "../../images/rotate.png";
 
 // 360 degree view of a collection item
 
@@ -15,8 +15,8 @@ const renderImages = (item, index) => {
       <br></br>
       <div className="roating-image-wrapper">
         <div className="rotate-sign-wrapper">
-          <img className="rotate-sign" src={RotateSign}></img>
-          <img className="rotate-sign-2" src={RotateSign2}></img>
+          <img className="rotate-sign" src={ROTATE_SIGN_IMG}></img>
+          <img className="rotate-sign-2" src={ROTATE_SIGN_2_IMG}></img>
           <Loader
             //   API https://www.npmjs.com/package/react-loader-spinner
             className="rotate-image-loader"

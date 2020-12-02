@@ -9,13 +9,12 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import "./InfoTab.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
-
-import sbu from "../../images/sbu.png";
-import fit from "../../images/fit.jpg";
-import suny from "../../images/suny.png";
+import SBU_IMG from "../../images/sbu.png";
+import FIT_IMG from "../../images/fit.jpg";
+import SUNYK_IMG from "../../images/suny.png";
 
 //This is the school info tab compnent
 
@@ -45,6 +44,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
+//for info tab map
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
@@ -93,7 +93,6 @@ export default function FullWidthTabs() {
             <Tab label="Fashion Institute of Technology" {...a11yProps(0)} />
             <Tab label="Stony Brook University" {...a11yProps(1)} />
             <Tab label="SUNY Korea" {...a11yProps(2)} />
-
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -114,7 +113,8 @@ export default function FullWidthTabs() {
                   <LazyLoadImage
                     effect="blur"
                     style={{ width: "180px" }}
-                    src={fit} />
+                    src={FIT_IMG}
+                  />
                 </a>
                 <br />
                 <br />
@@ -136,7 +136,8 @@ export default function FullWidthTabs() {
                   <LazyLoadImage
                     effect="blur"
                     style={{ width: "180px" }}
-                    src={sbu} />
+                    src={SBU_IMG}
+                  />
                 </a>
                 <br />
                 <br />
@@ -154,19 +155,22 @@ export default function FullWidthTabs() {
             <div className="row">
               <div className="col">
                 <br />
-                <a href="https://www.http://www.sunykorea.ac.kr/" target="_blank">
+                <a href="http://www.sunykorea.ac.kr/" target="_blank">
                   <LazyLoadImage
                     effect="blur"
                     style={{ width: "160px" }}
-                    src={suny} />
+                    src={SUNYK_IMG}
+                  />
                 </a>
                 <br />
                 <br />
               </div>
               <div className="col" id="school-description">
-                The State University of New York Korea (SUNY Korea) was established in March 2012 as the
-                first American university in Songdo, Korea. SUNY Korea currently offers program degrees from
-                SBU and FIT as an extended campus from New York.</div>
+                The State University of New York Korea (SUNY Korea) was
+                established in March 2012 as the first American university in
+                Songdo, Korea. SUNY Korea currently offers program degrees from
+                SBU and FIT as an extended campus from New York.
+              </div>
             </div>
           </TabPanel>
         </SwipeableViews>

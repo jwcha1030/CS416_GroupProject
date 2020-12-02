@@ -23,12 +23,14 @@
 }
 
 .product-school-img {
-  width: 60%;
+  width: 20px;
+  padding-right: 5px;
 }
 
 @media screen and (max-width: 1200px) {
   .product-school-img {
-    width: 10%;
+    width: 15px;
+    padding-right: 5px;
   }
   .product-name {
     font-size: 2.5rem;

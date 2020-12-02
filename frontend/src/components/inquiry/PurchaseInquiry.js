@@ -25,58 +25,32 @@ const schema = yup.object({
     .string()
     .min(2, "Too Short!")
     .max(30, "Too Long!")
-    .required("First name is required"),
+    .required("First name is required."),
   lastName: yup
     .string()
     .min(2, "Too Short!")
     .max(30, "Too Long!")
-    .required("Last name is required"),
-  email: yup.string().email().required("Email is required"),
+    .required("Last name is required."),
+  email: yup.string().email().required("Email is required."),
   message: yup
     .string()
-    .min(10, "Please provide more details (10-300 characters)")
+    .min(10, "Please provide more details (10-300 characters).")
     .max(300, "Too Long!")
-    .required("Last name is required"),
-  type: yup.string().required(),
+    .required("Your message is required."),
+  type: yup.string().required("Purchase Method is required."),
 });
 
-function getSeason(data) {
-  var myDate = new Date(date);
-  var date = myDate.month.value;
-  var month = (date.getMonth() + 1).toString();
-  var year = date.getFullYear().toString();
-  var season = "";
-  switch (month) {
-    case "12":
-    case "1":
-    case "2":
-      season = "Winter";
-      break;
-    case "3":
-    case "4":
-    case "5":
-      season = "Spring";
-      break;
-    case "6":
-    case "7":
-    case "8":
-      season = "Summer";
-      break;
-    case "9":
-    case "10":
-    case "11":
-      season = "Fall";
-      break;
-  }
-  return season + " " + year;
-}
+const CASH_STRING = "Cash";
+const WIRE_STRING = "Wire";
+const CARD_STRING = "Card";
+
 // Mapping dictionary for Purchase method ID
 const purchaseMapping = (option) => {
-  if (option === "Cash") {
+  if (option === CASH_STRING) {
     return 0;
-  } else if (option === "Wire") {
+  } else if (option === WIRE_STRING) {
     return 1;
-  } else if (option === "Card") {
+  } else if (option === CARD_STRING) {
     return 2;
   } else {
     return -1;
@@ -109,9 +83,9 @@ function PurchaseInquiry(props) {
               last_name: values.lastName,
               email: values.email,
               message: values.message,
-              // type: values.type, method is eg. Wire -> 1, Cash ->0 using the purchaseMapping function.
+              // type: values.type, method is eg. Wire -> 1, Cash ->0
               purchase_method_id: purchaseMapping(values.type),
-              collection_item_id: props.productID,
+              collection_item_id: parseInt(props.productID),
             };
 
             await new Promise((resolve) => setTimeout(resolve, 500));
@@ -163,206 +137,210 @@ function PurchaseInquiry(props) {
             isValid,
             errors,
           }) => (
-              <Form noValidate onSubmit={handleSubmit}>
-                <Form.Row>
-                  <Form.Group as={Col} md="1"></Form.Group>
+            <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
 
-                  <Form.Group as={Col} md="6" controlId="validationFormikProduct">
-                    <Form.Label>Product Information</Form.Label>
-                    <ReactImageAppear
-                      className="product-image"
-                      src={props.productCoverImage}
-                      alt={"img"}
-                      animation="bounceIn"
-                    />
-                    <br />
-                    <br />
-                    <div className="row">
-                      <div className="col-sm-8 product-name">
-                        {props.productName}
-                      </div>
-                      <div align="right" className="col-sm-4 product-price">
+                <Form.Group as={Col} md="6" controlId="validationFormikProduct">
+                  <Form.Label>Product Information</Form.Label>
+                  <ReactImageAppear
+                    className="product-image"
+                    src={props.productCoverImage}
+                    alt={"img"}
+                    animation="bounceIn"
+                  />
+                  <br />
+                  <br />
+
+                  <div className="row">
+                    <div className="col-sm-8 product-name">
+                      {props.productName}
+                    </div>
+                    <div align="right" className="col-sm-4 product-price">
+                      <div className="price">
+                        <span className="won">₩ </span>
                         <NumberFormat
                           value={props.productPrice}
                           displayType={"text"}
                           thousandSeparator={true}
-                          prefix={"₩"}
                         />
                       </div>
                     </div>
-                    <br />
-                    <div className="row">
-                      <div className="col-sm-3 product-school">
-                        <br />
-                        <img
-                          className="product-school-img"
-                          src={props.productSchool}
-                        ></img>
-                      </div>
-                      <div className="col-sm-3 product-type">
-                        {" "}
-                        <br />
-                        {props.productType}
-                      </div>
-
-                      <div className="col-sm-3 product-date">
-                        <br />
-                        {<Moment format="MMM YYYY" date={props.productDate} />}
-                        {/* {getSeason(props.productDate)} */}
-                      </div>
-                      <div className="col-sm-3 product-click-count">
-                        <br />
-                        <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
-                        {props.productClickCount}
-                      </div>
+                  </div>
+                  <br />
+                  <div className="row">
+                    <div className="col-sm-3 product-school">
+                      <br />
+                      <img
+                        className="product-school-img"
+                        src={props.productSchool}
+                      ></img>
+                      {props.productSchoolStr}
                     </div>
-                    <br />
-                    <br />
-                    <div className="product-description">
-                      {props.productDescription}
+                    <div className="col-sm-3 product-type">
+                      {" "}
+                      <br />
+                      {props.productType}
                     </div>
-                    <br />
-                    <br />
-                  </Form.Group>
-                  <Form.Group as={Col} md="1"></Form.Group>
-                  {/* space between product and form */}
-                  <Form.Group as={Col} md="4">
-                    <br />
-                    <Form.Row>
-                      <Form.Group controlId="validationFormikFirstName">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="firstName"
-                          placeholder="First Name"
-                          value={values.firstName}
-                          onChange={handleChange}
-                          isInvalid={!!errors.firstName}
-                          size="lg"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.firstName}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Form.Row>
-                    <br />
-                    <Form.Row>
-                      <Form.Group controlId="validationFormikLastName">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="lastName"
-                          placeholder="Last Name"
-                          value={values.lastName}
-                          onChange={handleChange}
-                          isInvalid={!!errors.lastName}
-                          size="lg"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.lastName}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Form.Row>
-                    <br />
-                    <Form.Row>
-                      <Form.Group controlId="validationFormikEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                          type="email"
-                          placeholder="Your Email"
-                          name="email"
-                          value={values.email}
-                          onChange={handleChange}
-                          isInvalid={!!errors.email}
-                          size="lg"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.email}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Form.Row>
-                    <br />
 
-                    <Form.Row>
-                      <Form.Group controlId="validationFormikPurchaseMethod">
-                        <Form.Label>Purchase Methods</Form.Label>
-                        <Form.Control
-                          as="select"
-                          name="type"
-                          value={values.type}
-                          onChange={handleChange}
-                          size="lg"
-                          isInvalid={!!errors.email}
-                        >
-                          <option value="">Purchase Method</option>
-                          <option value="Cash">Cash</option>
-                          <option value="Wire">Wire Bank Account</option>
-                        </Form.Control>
-                        <Form.Control.Feedback type="invalid">
-                          {errors.type}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Form.Row>
-                  </Form.Group>
-                </Form.Row>
+                    <div className="col-sm-3 product-date">
+                      <br />
+                      {<Moment format="MMM YYYY" date={props.productDate} />}
+                      {/* {getSeason(props.productDate)} */}
+                    </div>
+                    <div className="col-sm-3 product-click-count">
+                      <br />
+                      <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
+                      {props.productClickCount}
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                  <div className="product-description">
+                    {props.productDescription}
+                  </div>
+                  <br />
+                  <br />
+                </Form.Group>
+                <Form.Group as={Col} md="1"></Form.Group>
+                {/* space between product and form */}
+                <Form.Group as={Col} md="4">
+                  <br />
+                  <Form.Row>
+                    <Form.Group controlId="validationFormikFirstName">
+                      <Form.Label>First Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.firstName}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.firstName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
+                  <br />
+                  <Form.Row>
+                    <Form.Group controlId="validationFormikLastName">
+                      <Form.Label>Last Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        value={values.lastName}
+                        onChange={handleChange}
+                        isInvalid={!!errors.lastName}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.lastName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
+                  <br />
+                  <Form.Row>
+                    <Form.Group controlId="validationFormikEmail">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        placeholder="Your Email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        isInvalid={!!errors.email}
+                        size="lg"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
+                  <br />
 
-                <Form.Row>
-                  <Form.Group as={Col} md="1"></Form.Group>
+                  <Form.Row>
+                    <Form.Group controlId="validationFormikPurchaseMethod">
+                      <Form.Label>Purchase Methods</Form.Label>
+                      <Form.Control
+                        as="select"
+                        name="type"
+                        value={values.type}
+                        onChange={handleChange}
+                        size="lg"
+                        isInvalid={!!errors.email}
+                      >
+                        <option>Purchase Method</option>
+                        <option value={CASH_STRING}>Cash</option>
+                        <option value={WIRE_STRING}>Wire Bank Account</option>
+                      </Form.Control>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.type}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
+                </Form.Group>
+              </Form.Row>
 
-                  <Form.Group
-                    as={Col}
-                    md="10"
-                    size="lg"
-                    controlId="validationFormikNotes"
-                  >
-                    <Form.Label size="lg">Note</Form.Label>
-                    <Form.Text style={{ fontSize: "15px" }}>
-                      In the message below, please include your preferred option
-                      (size / color / quantity) of the product, and we will
-                      proceed your purchase after contacting you through your
+              <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
+
+                <Form.Group
+                  as={Col}
+                  md="10"
+                  size="lg"
+                  controlId="validationFormikNotes"
+                >
+                  <Form.Label size="lg">Note</Form.Label>
+                  <Form.Text style={{ fontSize: "15px" }}>
+                    In the message below, please include your preferred option
+                    (size / color / quantity) of the product, and we will
+                    proceed your purchase after contacting you through your
                     email again shortly.{" "}
-                    </Form.Text>
-                  </Form.Group>
-                </Form.Row>
+                  </Form.Text>
+                </Form.Group>
+              </Form.Row>
 
-                <Form.Row>
-                  <Form.Group as={Col} md="1"></Form.Group>
+              <Form.Row>
+                <Form.Group as={Col} md="1"></Form.Group>
 
-                  <Form.Group
-                    as={Col}
-                    md="10"
-                    controlId="validationFormikMessage"
-                  >
-                    <Form.Label>Message</Form.Label>
+                <Form.Group
+                  as={Col}
+                  md="10"
+                  controlId="validationFormikMessage"
+                >
+                  <Form.Label>Message</Form.Label>
 
-                    <Form.Control
-                      placeholder="Your detailed purchasing inquiry on color, size, quantity, and anything else ."
-                      name="message"
-                      value={values.message}
-                      onChange={handleChange}
-                      isInvalid={!!errors.message}
-                      size="lg"
-                      as="textarea"
-                      rows="10"
-                    />
+                  <Form.Control
+                    placeholder="Your detailed purchasing inquiry on color, size, quantity, and anything else ."
+                    name="message"
+                    value={values.message}
+                    onChange={handleChange}
+                    isInvalid={!!errors.message}
+                    size="lg"
+                    as="textarea"
+                    rows="10"
+                  />
 
-                    <Form.Control.Feedback type="invalid">
-                      {errors.message}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <br />
-                <br />
-                <div align="right">
-                  <Button variant="light" size="lg" onClick={props.onHide}>
-                    Close
+                  <Form.Control.Feedback type="invalid">
+                    {errors.message}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Form.Row>
+              <br />
+              <br />
+              <div align="right">
+                <Button variant="light" size="lg" onClick={props.onHide}>
+                  Close
                 </Button>
-                  <Button type="submit" size="lg" variant="dark">
-                    Submit
+                <Button type="submit" size="lg" variant="dark">
+                  Submit
                 </Button>
-                </div>
-              </Form>
-            )}
+              </div>
+            </Form>
+          )}
         </Formik>
       </Modal.Body>
     </Modal>

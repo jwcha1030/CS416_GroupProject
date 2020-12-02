@@ -10,3 +10,59 @@
 .rotating-images-modal {
   margin-bottom: 100px;
 }
+
+.detailed-page-won {
+  font-size: 1.7rem;
+  color: #aaaaaa;
+}
+
+.detailed-page-price {
+  font-size: 2.5rem;
+  color: #747474;
+}
+
+#side-info {
+  padding-left: 2rem;
+}
+
+.ant-card-body {
+  margin-bottom: 12rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .product-description {
+    font-size: 1.2rem;
+  }
+  #product-side-details {
+    width: 35%;
+    font-size: 0.9em;
+  }
+
+  .ant-card-body {
+    margin-bottom: 12rem;
+  }
+
+  .detailed-page-price {
+    font-size: 1.5rem;
+  }
+  .detailed-page-won {
+    font-size: 0.8rem;
+  }
+  #product-description-container {
+    padding-top: 1rem;
+    width: 75%;
+  }
+
+  #space {
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .flex-container > div {
+    width: 0;
+    text-align: center;
+  }
+}
