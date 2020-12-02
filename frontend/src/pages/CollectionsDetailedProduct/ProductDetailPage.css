@@ -28,8 +28,49 @@
 .ant-card-body {
   margin-bottom: 12rem;
 }
+#product-description-container {
+  width: 100%;
+}
 
 @media screen and (max-width: 1200px) {
+  .product-description {
+    font-size: 1rem;
+  }
+  #product-side-details {
+    width: 35%;
+    font-size: 0.8em;
+  }
+
+  .ant-card-body {
+    margin-bottom: 14rem;
+  }
+
+  .detailed-page-price {
+    font-size: 1.5rem;
+  }
+  .detailed-page-won {
+    font-size: 1rem;
+  }
+  #product-description-container {
+    padding-top: 1.5rem;
+    padding-right: 6rem;
+    width: 75%;
+  }
+
+  #space {
+    padding: 0;
+    width: 0;
+    padding-left: 4rem;
+  }
+
+  #mobileRow {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .product-description {
     font-size: 1.2rem;
   }
@@ -50,19 +91,19 @@
   }
   #product-description-container {
     padding-top: 1rem;
+    padding-right: 5rem;
     width: 75%;
   }
 
   #space {
+    padding: 0;
+    width: 0;
+    padding-left: 3rem;
   }
 
-  .flex-container {
+  #mobileRow {
     display: flex;
     flex-wrap: nowrap;
-  }
-
-  .flex-container > div {
-    width: 0;
-    text-align: center;
+    justify-content: start;
   }
 }

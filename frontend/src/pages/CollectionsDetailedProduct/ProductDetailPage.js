@@ -218,7 +218,7 @@ function ProductDetailPage(props) {
                 Launch 360 Degree View
               </Button>
             ) : (
-              <p>360 Degree View Not Available</p> //else a text
+              <p style={{ color: "#aaaaaa" }}>360 Degree View Not Available</p> //else a text
             )}
           </div>
         </div>
@@ -240,56 +240,52 @@ function ProductDetailPage(props) {
           >
             {" "}
             <br />
-            <div className="row">
-              <div class="flex-container">
-                <div className="col-sm-1"></div>
-                <div className="col-sm-4 text-left" id="product-side-details">
-                  <div className="product-price">
-                    <span className="detailed-page-won">₩ </span>
-                    <NumberFormat
-                      className="detailed-page-price"
-                      value={productData["price"]}
-                      displayType={"text"}
-                      thousandSeparator={true}
-                    />
-                  </div>
-                  <br />
-                  <br />
+            <div className="row" id="mobileRow">
+              <div className="col-sm-1" id="space"></div>
+              <div className="col-sm-5 text-left" id="product-side-details">
+                <div className="product-price">
+                  <span className="detailed-page-won">₩ </span>
+                  <NumberFormat
+                    className="detailed-page-price"
+                    value={productData["price"]}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                  />
+                </div>
+                <br />
+                <br />
 
-                  <div className="product-school">
-                    <img
-                      className="product-school-img"
-                      src={schoolMapping(productData["school_id"])}
-                    />
-                    {schoolMappingStr(productData["school_id"])}
-                  </div>
+                <div className="product-school">
+                  <img
+                    className="product-school-img"
+                    src={schoolMapping(productData["school_id"])}
+                  />
+                  {schoolMappingStr(productData["school_id"])}
+                </div>
+                <br></br>
+                <div className="product-type">
                   <br></br>
-                  <div className="product-type">
-                    <br></br>
-                    {typeMapping(productData["type_id"])}
-                  </div>
-
-                  <br />
-                  <br />
-
-                  <div className="product-click-count">
-                    <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
-                    {productData["click_count"]}
-                  </div>
-                  <br />
-                </div>
-                <div className="col-sm-1" id="space">
-                  {" "}
+                  {typeMapping(productData["type_id"])}
                 </div>
 
-                <div
-                  className="col-sm-6 text-left"
-                  id="product-description-container"
-                >
-                  <div className="product-description">
-                    {productData["desc"]}
-                  </div>
+                <br />
+                <br />
+
+                <div className="product-click-count">
+                  <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
+                  {productData["click_count"]}
                 </div>
+                <br />
+              </div>
+              <div className="col-sm-1" id="space">
+                {" "}
+              </div>
+
+              <div
+                className="col-sm-5 text-left"
+                id="product-description-container"
+              >
+                <div className="product-description">{productData["desc"]}</div>
               </div>
             </div>
           </Card>

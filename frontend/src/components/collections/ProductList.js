@@ -10,7 +10,6 @@ import FIT_TAB_IMAGE from "../../images/fit.jpg";
 import SBU_TAB_IMAGE from "../../images/sbu2.png";
 import APPARELS_TAB_IMAGE from "../../images/tab_apparels.JPG";
 import GOODS_TAB_IMAGE from "../../images/tab_goods.JPG";
-import ProductListDataLoader from "./ProductListDataLoader";
 import "antd/dist/antd.css";
 import ProductDataAll from "./ProductDataAll";
 import { SearchOutlined } from "@ant-design/icons";
@@ -53,10 +52,10 @@ const typeMapping = (type_id) => {
   }
 };
 const compareStrings = (a, b) => {
-  return a.toLowerCase().includes(b.toLowerCase());
+  return a?.toLowerCase().includes(b?.toLowerCase());
 };
 
-function ProductList(props, index) {
+const ProductList = (props, index) => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
@@ -77,19 +76,8 @@ function ProductList(props, index) {
 
   //ALL COLLECTION ITEMS LIST.. SETTING UP DATA FROM BACKEND
   const [allCollectionItems, setData] = useState([{}]);
-  // const [id, setData] = useState([{}]);
-  // const [name, setName] = useState([{}]);
-  // const [desc, setDesc] = useState([{}]);
-  // const [school_id, setSchooId] = useState([{}]);
-  // const [type_id, setTypeId] = useState([{}]);
-  // const [price, setPrice] = useState([{}]);
-  // const [main_img, setMainImg] = useState([{}]);
-  // const [create_date, setCreateDate] = useState([{}]);
-  // const [last_update, setLastUpdate] = useState([{}]);
-  // const [click_count, setClickCount] = useState([{}]);
 
   useEffect(() => {
-    setLoading(true);
     // trackPromise(
     if (loading) {
       axios
@@ -114,154 +102,129 @@ function ProductList(props, index) {
             console.log("Some connection error status not 200...");
           }
         })
-        .catch((error) => console.log("code 0" + error));
+        .catch(function (error) {
+          console.log("code 0" + error);
+        });
     }
     // );
   }, []);
   // END OF LOADING DATA
 
-  //oops i meant here this part below works.
-  // if (typeof allCollectionItems[0].name !== "undefined") {
-  //   console.log("22about to call toLowerCase");
-  //   console.log(allCollectionItems); //all the data
-  //   console.log(typeof allCollectionItems[0].name); //initially undefined, (1second after ->) String
-  //   console.log(allCollectionItems[0].name); //initially undefined, (1second after->) BlooperName
-  //   console.log(typeof allCollectionItems[0]); //
-  //   console.log(allCollectionItems[0]);
-  //   console.log(allCollectionItems[0].name.toLowerCase());
-  //   console.log(allCollectionItems[0].name.toLowerCase());
-  //   console.log(allCollectionItems[0].desc);
-  //   console.log(allCollectionItems[0].school_id);
-  //   console.log(allCollectionItems[0].price);
-  //   console.log(
-  //     allCollectionItems[0].name
-  //       .toLowerCase()
-  //       .includes("BlooperDooper".toLowerCase())
-  //   );
-  //   console.log(compareStrings(allCollectionItems[0].name, "BlooperDooper"));
-  //  }
-
-  // THIS SHOULD BE AFTER LOADING DATA
   // FILTERING BY TABS: ALL, FIT_ALL, FIT_GOODS, SBU_ALL, SBU_GOODS, ALL_APPARELS, ALL_GOODS
-
   useEffect(() => {
     //all tab filtering
-    console.log("Start of useEffect2...");
-    console.log("Working loading data to filter...");
-    console.log(allCollectionItems); // value --> [{…}]0: {}length: 1__proto__: Array(0)
+    console.log("Loading data to filter...");
+    console.log(allCollectionItems);
 
-    setSearchResults(
-      allCollectionItems.filter(
-        (product) =>
-          product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          typeMapping(product.type_id)
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()) ||
-          schoolMapping(product.school_id)
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase())
-      )
+    const results = allCollectionItems.filter(
+      (product) =>
+        product?.name?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+        product?.desc?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+        typeMapping(product.type_id)
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        schoolMapping(product.school_id)
+          ?.toLowerCase()
+          ?.includes(searchTerm.toLowerCase())
     );
+
+    setSearchResults(results);
 
     //fit all tab filtering
-    setFitAll(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(schoolMapping(product.school_id), FIT_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const fitAll = allCollectionItems.filter(
+      (product) =>
+        compareStrings(schoolMapping(product?.school_id), FIT_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+
+    setFitAll(fitAll);
 
     //fit goods tab filtering
-    setFitGoods(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(schoolMapping(product.school_id), FIT_STRING) &&
-          compareStrings(typeMapping(product.type_id), GOODS_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const fitGoods = allCollectionItems.filter(
+      (product) =>
+        compareStrings(schoolMapping(product.school_id), FIT_STRING) &&
+        compareStrings(typeMapping(product.type_id), GOODS_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+
+    setFitGoods(fitGoods);
 
     //fit apparels tab filtering
-    setFitApparels(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(schoolMapping(product.school_id), FIT_STRING) &&
-          compareStrings(typeMapping(product.type_id), APPARELS_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const fitApparels = allCollectionItems.filter(
+      (product) =>
+        compareStrings(schoolMapping(product.school_id), FIT_STRING) &&
+        compareStrings(typeMapping(product.type_id), APPARELS_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+    setFitApparels(fitApparels);
 
-    setSbuAll(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(schoolMapping(product.school_id), SBU_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const sbuAll = allCollectionItems.filter(
+      (product) =>
+        compareStrings(schoolMapping(product.school_id), SBU_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+    setSbuAll(sbuAll);
 
-    setSbuGoods(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(schoolMapping(product.school_id), SBU_STRING) &&
-          compareStrings(typeMapping(product.type_id), GOODS_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const sbuGoods = allCollectionItems.filter(
+      (product) =>
+        compareStrings(schoolMapping(product.school_id), SBU_STRING) &&
+        compareStrings(typeMapping(product.type_id), GOODS_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+    setSbuGoods(sbuGoods);
 
-    setSbuApparels(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(schoolMapping(product.school_id), SBU_STRING) &&
-          compareStrings(typeMapping(product.type_id), APPARELS_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const sbuApparels = allCollectionItems.filter(
+      (product) =>
+        compareStrings(schoolMapping(product.school_id), SBU_STRING) &&
+        compareStrings(typeMapping(product.type_id), APPARELS_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+    setSbuApparels(sbuApparels);
 
-    setGoodsAll(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(typeMapping(product.type_id), GOODS_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    const goodsAll = allCollectionItems.filter(
+      (product) =>
+        compareStrings(typeMapping(product.type_id), GOODS_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
-
-    setApparelsAll(
-      allCollectionItems.filter(
-        (product) =>
-          compareStrings(typeMapping(product.type_id), APPARELS_STRING) &&
-          (compareStrings(product.name, searchTerm) ||
-            compareStrings(product.desc, searchTerm) ||
-            compareStrings(typeMapping(product.type_id), searchTerm) ||
-            compareStrings(schoolMapping(product.school_id), searchTerm))
-      )
+    setGoodsAll(goodsAll);
+    const apparelsAll = allCollectionItems.filter(
+      (product) =>
+        compareStrings(typeMapping(product.type_id), APPARELS_STRING) &&
+        (compareStrings(product.name, searchTerm) ||
+          compareStrings(product.desc, searchTerm) ||
+          compareStrings(typeMapping(product.type_id), searchTerm) ||
+          compareStrings(schoolMapping(product.school_id), searchTerm))
     );
+    setApparelsAll(apparelsAll);
   }, [searchTerm, allCollectionItems]);
 
   if (loading) {
-    return <p>Loading collection items...</p>;
+    return (
+      <p align="center" style={{ fontSize: "2rem" }}>
+        Loading collection items...
+      </p>
+    );
   }
   // END OF FILTERING BY TABS
 
@@ -400,6 +363,6 @@ function ProductList(props, index) {
       </div>
     </Tabs>
   );
-}
+};
 
 export default ProductList;
