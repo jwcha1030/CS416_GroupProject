@@ -32,9 +32,7 @@ const NUM_CAROUSEL = 11;
 
 // randomly generated 0-10 unique numbers for randomizing the carousel images order.
 // NOTE: THIS could not be done with loops because of FILE name cannot be dynamically changed.
-
-var randomSlideNumber = [];
-
+let randomSlideNumber = [];
 while (randomSlideNumber.length < NUM_CAROUSEL) {
   var r = Math.floor(Math.random() * NUM_CAROUSEL);
   if (randomSlideNumber.indexOf(r) === -1) randomSlideNumber.push(r);
