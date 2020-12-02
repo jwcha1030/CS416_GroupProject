@@ -393,7 +393,7 @@ function RotatingImageModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          360 Degree View
+          Sample 360 Degree View
         </Modal.Title>
       </Modal.Header>
       <Modal.Body align="center">

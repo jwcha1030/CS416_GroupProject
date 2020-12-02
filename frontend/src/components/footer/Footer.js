@@ -15,6 +15,7 @@ import InquiryModal from "../inquiry/GeneralInquiry";
 import { Modal } from "react-bootstrap";
 import GoogleTranslate from "../translate/GoogleTranslate";
 import Form from "react-bootstrap/Form";
+import { Formik } from "formik";
 
 const axios = require("axios");
 const apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/email/subscribe/";
@@ -34,7 +35,7 @@ function Footer() {
           You can unsubscribe at any time.
         </p>
         <div>
-          <Form
+          <Formik
             onSubmit={async () => {
               let payload = {
                 email: subEmail,
@@ -42,7 +43,9 @@ function Footer() {
 
               await new Promise((resolve) => setTimeout(resolve, 500));
               console.log(JSON.stringify(payload, null, 2));
-
+              alert(
+                "There is a small error with the MSC's system. Please try again or contact us directly."
+              );
               axios
                 .post(apiBaseUrl, payload)
                 .then((response) => {
@@ -62,43 +65,56 @@ function Footer() {
                       // }
                     } else {
                       // Unhandled res_code
-                      alert("Post: Unhandled res_code");
+                      console.log("Post: Unhandled res_code");
                     }
                   } else {
                     // TODO handle unable to connect with database
-                    alert("Post: unable to connect with database");
+                    console.log("Post: unable to connect with database");
                   }
                 })
                 .catch(function (error) {
                   // TODO handle error with the call
-                  alert("Post: Call error");
+                  console.log("Post: Call error");
                   console.log(error);
                 });
             }}
+            initialValues={{}}
           >
-            {subEmail === "" ? ( //button for 360 degree view if it is available.
-              <div></div>
-            ) : (
-              <p id="thank-you-text">
-                Thank you <span id="subscribe-email-text">{subEmail}</span>. We
-                will keep you updated.
-              </p>
-              //else a text
-            )}
-            <input
-              className="footer-input"
-              name="email"
-              type="email"
-              placeholder="Your Email"
-              onChange={(e) => {
-                setSubEmail(e.target.value);
-              }}
-            />
+            {({
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isValid,
+              errors,
+            }) => (
+              <Form noValidate onSubmit={handleSubmit}>
+                {subEmail === "" ? ( //button for 360 degree view if it is available.
+                  <div></div>
+                ) : (
+                  <p id="thank-you-text">
+                    Thank you <span id="subscribe-email-text">{subEmail}</span>.
+                    We will keep you updated.
+                  </p>
+                  //else a text
+                )}
+                <input
+                  className="footer-input"
+                  name="email"
+                  type="email"
+                  placeholder="Your Email"
+                  onChange={(e) => {
+                    setSubEmail(e.target.value);
+                  }}
+                />
 
-            <Button type="submit" buttonStyle="btn--outline">
-              Subscribe
-            </Button>
-          </Form>
+                <Button type="submit" buttonStyle="btn--outline">
+                  Subscribe
+                </Button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </section>
       <br></br>

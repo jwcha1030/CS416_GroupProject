@@ -90,6 +90,9 @@ function PurchaseInquiry(props) {
 
             await new Promise((resolve) => setTimeout(resolve, 500));
             console.log(JSON.stringify(payload, null, 2));
+            alert(
+              "There is a small error with the MSC's system. Please try again or contact us directly."
+            );
             axios
               .post(apiBaseUrl, payload) //values is the form's data
               .then((response) => {
@@ -105,23 +108,23 @@ function PurchaseInquiry(props) {
                     // Check other res_code with else if
                     // }
                   } else if (response.data.res_code === 2) {
-                    alert(
+                    console.log(
                       "Post: Email does not exist or the email is invalid."
                     );
                   } else {
                     // Unhandled res_code
-                    alert(
+                    console.log(
                       "Post: Unhandled res_code / the entered email may be wrong "
                     );
                   }
                 } else {
                   // TODO handle unable to connect with database
-                  alert("Post: unable to connect with database");
+                  console.log("Post: unable to connect with database");
                 }
               })
               .catch(function (error) {
                 // TODO handle error with the call
-                alert("Post: Call error");
+                console.log("Post: Call error");
                 console.log(error);
               });
           }}
@@ -337,7 +340,12 @@ function PurchaseInquiry(props) {
                 <Button variant="light" size="lg" onClick={props.onHide}>
                   Close
                 </Button>
-                <Button type="submit" size="lg" variant="dark">
+                <Button
+                  type="submit"
+                  size="lg"
+                  variant="dark"
+                  onClick={props.onHide}
+                >
                   Submit
                 </Button>
               </div>

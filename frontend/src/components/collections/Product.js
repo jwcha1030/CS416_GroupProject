@@ -80,16 +80,16 @@ const viewCountIncrement = (id) => {
           // }
         } else {
           // Unhandled res_code
-          alert("Post: Unhandled res_code");
+          console.log("Post: Unhandled res_code");
         }
       } else {
         // TODO handle unable to connect with database
-        alert("Post: unable to connect with database");
+        console.log("Post: unable to connect with database");
       }
     })
     .catch(function (error) {
       // TODO handle error with the call
-      alert("Post: Call error");
+      console.log("Post: Call error");
       console.log(error);
     });
 };
