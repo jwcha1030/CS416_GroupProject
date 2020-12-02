@@ -242,7 +242,7 @@ function ProductDetailPage(props) {
             <br />
             <div className="row" id="mobileRow">
               <div className="col-sm-1" id="space"></div>
-              <div className="col-sm-5 text-left" id="product-side-details">
+              <div className="col-sm-4 text-left" id="product-side-details">
                 <div className="product-price">
                   <span className="detailed-page-won">₩ </span>
                   <NumberFormat
@@ -282,7 +282,7 @@ function ProductDetailPage(props) {
               </div>
 
               <div
-                className="col-sm-5 text-left"
+                className="col-sm-6 text-left"
                 id="product-description-container"
               >
                 <div className="product-description">{productData["desc"]}</div>

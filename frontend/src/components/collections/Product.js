@@ -24,6 +24,39 @@ import SBU_IMG from "../../images/sbu3.png";
 import FIT_IMG from "../../images/fit3.png";
 const { Meta } = Card;
 
+const NONE_STRING = "None";
+const ERROR_STRING = "Error";
+const LOADING_STRING = "Loading...";
+
+const FIT_STRING = "FIT";
+const SBU_STRING = "SBU";
+const GOODS_STRING = "Goods";
+const APPARELS_STRING = "Apparels";
+
+const schoolMappingStr = (school_id) => {
+  if (school_id === 0) {
+    return NONE_STRING;
+  } else if (school_id === 1) {
+    return SBU_STRING; //school logo img
+  } else if (school_id === 2) {
+    return FIT_STRING; //school logo img
+  } else {
+    return ERROR_STRING;
+  }
+};
+
+const typeMapping = (type_id) => {
+  if (type_id === 0) {
+    return NONE_STRING;
+  } else if (type_id === 1) {
+    return GOODS_STRING;
+  } else if (type_id === 2) {
+    return APPARELS_STRING;
+  } else {
+    return ERROR_STRING;
+  }
+};
+
 // NOTE: Product.js is the small card component of product you see in Collection's Page.
 // List of these are ProductList.js
 // Detailed Product Page is in ProductDetailPage.js ( in CollectionsDetailedProduct folder )
@@ -37,7 +70,7 @@ const renderProducts = (props, index) => {
           <a href={`/collections/${props.id}`}>
             <ReactImageAppear
               className="cover-image"
-              src={props.img}
+              src={props.main_img}
               alt={"img"}
               animation="fillIn"
               animationDuration={Math.random() * 2 + 1 + "s"}
@@ -53,7 +86,7 @@ const renderProducts = (props, index) => {
           // </Rotation>
         }
       >
-        <Meta className="product-properties" title={props.title} />
+        <Meta className="product-properties" title={props.name} />
 
         <div className="price">
           <span className="won">₩ </span>
@@ -65,12 +98,12 @@ const renderProducts = (props, index) => {
         </div>
 
         <div className="school-type">
-          {props.school == "SBU" ? (
+          {schoolMappingStr(props.school_id) == SBU_STRING ? (
             <img className="sbu-fit-image" src={SBU_IMG} />
           ) : (
             <img className="sbu-fit-image" src={FIT_IMG} />
           )}
-          {props.school} {props.type}
+          {schoolMappingStr(props.school_id)} {typeMapping(props.type_id)}
         </div>
 
         <div className="count-wrapper">

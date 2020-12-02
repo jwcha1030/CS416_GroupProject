@@ -14,6 +14,7 @@ import "antd/dist/antd.css";
 import ProductDataAll from "./ProductDataAll";
 import { SearchOutlined } from "@ant-design/icons";
 import { trackPromise } from "react-promise-tracker"; //API CALL LOADER
+import LOADER_GIF from "../../images/loading.gif";
 
 var axios = require("axios");
 
@@ -221,8 +222,8 @@ const ProductList = (props, index) => {
 
   if (loading) {
     return (
-      <p align="center" style={{ fontSize: "2rem" }}>
-        Loading collection items...
+      <p style={{ padding: "15rem" }} align="center">
+        <img style={{ width: "60px" }} src={LOADER_GIF} />
       </p>
     );
   }
