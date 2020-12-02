@@ -93,6 +93,9 @@ function PurchaseInquiry(props) {
             alert(
               "There is a small error with the MSC's system. Please try again or contact us directly."
             );
+            //hide the modal after submit and this alert above
+            props.onHide();
+
             axios
               .post(apiBaseUrl, payload) //values is the form's data
               .then((response) => {
@@ -104,6 +107,7 @@ function PurchaseInquiry(props) {
                     console.log("Post SUCCESS", response.data.res_msg);
                     alert("Successfully Sent. We will contact you shortly!");
                     window.location.reload();
+
                     // } else if (){
                     // Check other res_code with else if
                     // }
@@ -340,12 +344,7 @@ function PurchaseInquiry(props) {
                 <Button variant="light" size="lg" onClick={props.onHide}>
                   Close
                 </Button>
-                <Button
-                  type="submit"
-                  size="lg"
-                  variant="dark"
-                  onClick={props.onHide}
-                >
+                <Button type="submit" size="lg" variant="dark">
                   Submit
                 </Button>
               </div>

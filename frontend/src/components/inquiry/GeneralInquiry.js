@@ -73,6 +73,7 @@ function InquiryModal(props) {
             alert(
               "There is a small error with the MSC's system. Please try again or contact us directly."
             );
+            props.onHide();
 
             axios
               .post(apiBaseUrl, payload) //values is the form's data
@@ -105,7 +106,7 @@ function InquiryModal(props) {
               })
               .catch(function (error) {
                 // TODO handle error with the call
-                alert("Post: Call error");
+                console("Post: Call error");
                 console.log(error);
               });
           }}
@@ -214,12 +215,7 @@ function InquiryModal(props) {
                 <Button variant="light" size="lg" onClick={props.onHide}>
                   Close
                 </Button>
-                <Button
-                  type="submit"
-                  size="lg"
-                  variant="dark"
-                  onClick={props.onHide}
-                >
+                <Button type="submit" size="lg" variant="dark">
                   Submit
                 </Button>
               </div>
