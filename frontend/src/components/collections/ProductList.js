@@ -222,8 +222,13 @@ const ProductList = (props, index) => {
 
   if (loading) {
     return (
-      <p style={{ padding: "15rem" }} align="center">
-        <img style={{ width: "60px" }} src={LOADER_GIF} />
+      <p
+        style={{
+          marginBottom: "10rem",
+        }}
+        align="center"
+      >
+        <img style={{ width: "100px" }} src={LOADER_GIF} />
       </p>
     );
   }

@@ -142,9 +142,8 @@ function PurchaseInquiry(props) {
                 <Form.Group as={Col} md="1"></Form.Group>
 
                 <Form.Group as={Col} md="6" controlId="validationFormikProduct">
-                  <Form.Label>Product Information</Form.Label>
                   <ReactImageAppear
-                    className="product-image"
+                    className="iproduct-image"
                     src={props.productCoverImage}
                     alt={"img"}
                     animation="bounceIn"
@@ -156,8 +155,8 @@ function PurchaseInquiry(props) {
                     <div className="col-sm-8 product-name">
                       {props.productName}
                     </div>
-                    <div align="right" className="col-sm-4 product-price">
-                      <div className="price">
+                    <div className="col-sm-4 product-price">
+                      <div className="iproduct-price" id="iproduct-price">
                         <span className="won">₩ </span>
                         <NumberFormat
                           value={props.productPrice}
@@ -172,7 +171,8 @@ function PurchaseInquiry(props) {
                     <div className="col-sm-3 product-school">
                       <br />
                       <img
-                        className="product-school-img"
+                        className="iproduct-school-img"
+                        id="iproduct-school-img"
                         src={props.productSchool}
                       ></img>
                       {props.productSchoolStr}
@@ -183,12 +183,15 @@ function PurchaseInquiry(props) {
                       {props.productType}
                     </div>
 
-                    <div className="col-sm-3 product-date">
+                    <div className="col-sm-3 product-date" id="iproduct-date">
                       <br />
                       {<Moment format="MMM YYYY" date={props.productDate} />}
                       {/* {getSeason(props.productDate)} */}
                     </div>
-                    <div className="col-sm-3 product-click-count">
+                    <div
+                      className="col-sm-3 iproduct-click-count"
+                      id="iproduct-click-count"
+                    >
                       <br />
                       <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
                       {props.productClickCount}
@@ -196,7 +199,7 @@ function PurchaseInquiry(props) {
                   </div>
                   <br />
                   <br />
-                  <div className="product-description">
+                  <div className="iproduct-description">
                     {props.productDescription}
                   </div>
                   <br />
