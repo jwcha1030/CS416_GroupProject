@@ -17,7 +17,7 @@ Our solution is to create a flexible website for MSC that will allow them to man
 ## Current Version <br> 
 > #### 1.00 Beta Release 12/03/2020   <br>
 Deployed complete design with all API calls; some parts are still yet to be discussed with the project owner.
-User side and Admin sides are mostly interactive, in terms of managing the data. Collections with real data, mobile view of the web application, loading Gifs by sections that require loading time, admin login, admin data analysis, admin collections data management are complete. *Gmail's strict security policy has stopped SMTP, therefore this part needs to be discussed with the project owner; possibly making another domain email account.    
+User side and Admin sides are mostly interactive, in terms of managing the data. Collections with real data, mobile view of the web application, loading Gifs by sections that require loading time, admin login, admin data analysis, admin collections data management are complete. *Gmail's strict security policy has stopped SMTP, therefore this part needs to be discussed with the project owner (possibly creating another domain email account).    
 > #### 0.03 Beta Release 11/11/2020   <br>
 Deployed iterated design with additional API Calls implemented in the front-end.  searching & filtering feature of collection items, our team members management by admins, inquiry forms are added. 
 > #### 0.02 Beta Release 11/3/2020    <br>
