@@ -227,7 +227,9 @@ const ProductList = (props, index) => {
           display: "block",
           marginLeft: "auto",
           marginRight: "auto",
+          marginBottom: "3rem",
           width: "50%",
+          height: "50%",
         }}
         src={LOADER_GIF}
       />
