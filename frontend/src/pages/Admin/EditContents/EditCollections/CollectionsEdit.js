@@ -21,7 +21,7 @@ export default function CollectionEdit() {
   const [showEditModal, setEditModalShow] = useState(false);
   const [headers, setHeaders] = useState([]); //table headers
 
-  const [collectionId, setCollectionId] = useState(-1);
+  const [collectionId, setCollectionId] = useState(0);
   const [name, setName]=useState("");
   const [price, setPrice] = useState(-1);
   const [desc, setDesc] = useState('');
@@ -127,7 +127,7 @@ export default function CollectionEdit() {
   };
 
   const reinitializeStates =()=>{
-    setCollectionId(-1);
+    setCollectionId(0);
     setName("");
     setPrice(-1);
     setDesc("");
@@ -185,7 +185,7 @@ export default function CollectionEdit() {
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/collection/item/edit/" + itemID + "/";
     const formData = new FormData();
 
-    let inputColID = collectionId ===-1 ? data[i].collection_id: collectionId;
+    let inputColID = collectionId ===0 ? data[i].collection_id: collectionId;
     let inputName = name === "" ? data[i].name: name;
     let inputPrice = price === -1 ? data[i].price:price;
     let inputDesc = desc === "" ? data[i].desc: desc;
