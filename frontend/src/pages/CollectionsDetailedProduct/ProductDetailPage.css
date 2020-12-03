@@ -81,7 +81,7 @@
   }
 
   .ant-card-body-detailed {
-    margin-bottom: 14rem;
+    margin-bottom: 2rem;
   }
 
   .detailed-page-price {
@@ -116,10 +116,6 @@
   #product-side-details {
     width: 35%;
     font-size: 0.9em;
-  }
-
-  .ant-card-body {
-    margin-bottom: 12rem;
   }
 
   .detailed-page-price {

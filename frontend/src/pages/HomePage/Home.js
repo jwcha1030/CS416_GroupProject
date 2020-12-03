@@ -56,19 +56,6 @@ function Home() {
   }, []);
   //Home Carousel API Call-----------------------------------------------------------------------------
 
-  if (loading) {
-    return (
-      <img
-        style={{
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "50%",
-        }}
-        src={LOADER_GIF}
-      />
-    );
-  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -77,8 +64,19 @@ function Home() {
     >
       {/*-carousels is the carousel items data from the backend
          -renderCarousel is the carousel component */}
-      <Carousel>{carouselItemsFromBackend.map(carouselItem)}</Carousel>
-
+      {loading ? (
+        <img
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "50%",
+          }}
+          src={LOADER_GIF}
+        />
+      ) : (
+        <Carousel>{carouselItemsFromBackend.map(carouselItem)}</Carousel>
+      )}
       {/* COLLECTIONS */}
       <div data-aos="slide-left">
         <HeroSection {...collections} />
