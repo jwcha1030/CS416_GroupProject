@@ -3,20 +3,38 @@ import Form from "react-bootstrap/Form";
 import {Button} from "../../../../components/button/Button";
 import Modal from "react-bootstrap/Modal";
 import {Col} from "react-bootstrap";
+import {galImage1, galImage2, galImage3, galImage4, galImage5, galImage6, mainImage} from "./CollectionsEdit";
 
 export default function CollectionsForm(prop) {
   const isEditForm = prop.currentItem !== undefined; //true if this form is called when edit button is pressed.
 
-  const titleForm = isEditForm ?
-    <Form.Control onChange={prop.handleTitle} placeholder={prop.currentItem.title}/> :
-    <Form.Control onChange={prop.handleTitle} placeholder='Enter Title' required/>;
+  const collectionIdForm = isEditForm ?
+    <Form.Control type="number" onChange={prop.handleCollectionId} placeholder={prop.currentItem.collection_id}/> :
+    <Form.Control type="number" onChange={prop.handleCollectionId} placeholder='Enter Collection ID' required/>;
+  const nameForm = isEditForm ?
+    <Form.Control onChange={prop.handleName} placeholder={prop.currentItem.name} />:
+    <Form.Control onChange={prop.handleName} placeholder="Enter Name of the Product" required />;
+
   const priceForm = isEditForm ?
     <Form.Control type="number" step="0.01" onChange={prop.handlePrice} placeholder={prop.currentItem.price}/> :
     <Form.Control type="number" step="0.01" onChange={prop.handlePrice} placeholder='Enter Price' required/>;
-  const dateForm = isEditForm ?
-    <Form.Control type="date" onChange={prop.handleDate} placeholder={prop.currentItem.date}/> :
-    <Form.Control type="date" onChange={prop.handleDate} placeholder='Enter Date'/>;
-  const schoolForm = isEditForm ?
+
+  const descForm = isEditForm ?
+    <Form.Control type="textarea" onChange={prop.handleDesc} placeholder={prop.currentItem.desc}/> :
+    <Form.Control type="textarea" onChange={prop.handleDesc} placeholder='Enter Details about the Product' required/>;
+  const mainImgForm = isEditForm ?
+    <Form.File onChange={prop.handleMainImg}  accept=".jpg, .jpeg., .png" label="Product Main Img (e.g., .png/jpeg/jpg files)"/>:
+    <Form.File onChange={prop.handleMainImg}  accept=".jpg, .jpeg., .png" label="Product Main Img (e.g., .png/jpeg/jpg files)" required/>
+  const isActiveForm = isEditForm ?
+    //when editing
+      (
+        prop.currentItem.is_active ?
+        <input name="isActive" type="checkbox" onChange={prop.handleActive} defaultChecked='true'/> :
+        <input name="isActive" type="checkbox" onChange={prop.handleActive}/>
+      ) :
+    //when creating, this form is not necessary
+    null;
+  /*const schoolForm = isEditForm ?
     (prop.currentItem.school === "SBU" ?
       <Form.Control as="select" onChange={prop.handleSchool}>
         <option>FIT</option>
@@ -30,8 +48,8 @@ export default function CollectionsForm(prop) {
     <Form.Control as="select" onChange={prop.handleSchool}>
       <option selected="selected">FIT</option>
       <option>SBU</option>
-    </Form.Control>;
-  const typeForm = isEditForm ?
+    </Form.Control>;*/
+  /*const typeForm = isEditForm ?
     (prop.currentItem.type === "Apparel" ?
       <Form.Control as="select" onChange={prop.handleType}>
         <option selected="selected">Apparel</option>
@@ -45,58 +63,68 @@ export default function CollectionsForm(prop) {
     <Form.Control as="select" onChange={prop.handleType}>
       <option selected="selected">Apparel</option>
       <option>Goods</option>
-    </Form.Control>;
+    </Form.Control>;*/
 
-  const newLabelForm = isEditForm ?
-    (prop.currentItem.new !== "" ?
-      <input name="isNew" type="checkbox" onChange={prop.handleNewLabel} defaultChecked='true'/> :
-      <input name="isNew" type="checkbox" onChange={prop.handleNewLabel}/>) :
-    <input name="isNew" type="checkbox" onChange={prop.handleNewLabel}/>;
-  const descForm = isEditForm ?
-    <Form.Control type="textarea" onChange={prop.handleDesc} placeholder={prop.currentItem.description}/> :
-    <Form.Control type="textarea" onChange={prop.handleDesc} placeholder='Enter Details' required/>;
+
 
   return (
     <div style={{margin: "auto"}} className="editContent__collections-form-container">
       <Form validated onSubmit={prop.handleSubmit}>
         <Form.Row>
-          <Form.Group as={Col} md={"4"} controlId="formTitle">
-            <Form.Label>Title</Form.Label>
-            {titleForm}
+          <Form.Group as={Col} md={"4"}>
+            <Form.Label>Product Name</Form.Label>
+            {nameForm}
           </Form.Group>
-          <Form.Group as={Col} md={"4"} controlId="formSchool">
-            <Form.Label>School</Form.Label>
-            {schoolForm}
-          </Form.Group>
-          <Form.Group as={Col} md={2} controlId="formType">
-            <Form.Label>Type</Form.Label>
-            {typeForm}
-          </Form.Group>
-        </Form.Row>
-        <Form.Row>
-          <Form.Group as={Col} md={"4"} controlId="formPrice">
+          <Form.Group as={Col} md={"4"}>
             <Form.Label>Price</Form.Label>
             {priceForm}
           </Form.Group>
-          <Form.Group as={Col} md={"4"} controlId="formDate">
-            <Form.Label>Date Added</Form.Label>
-            {dateForm}
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col} md={"2"}>
+            <Form.Label>Collection ID</Form.Label>
+            {collectionIdForm}
           </Form.Group>
-          <Form.Group as={Col} md={"2"} controlId="formNewLabel">
-            <Form.Label>Is New?</Form.Label>
-            <div className="isNew_checkbox-container"> {/*mandatory container for layout*/}
-              {newLabelForm}
+          {isEditForm && <Form.Group as={Col} md={"2"}>
+            <Form.Label>In Stock?</Form.Label>
+            <div className="isActive_checkbox-container"> {/*mandatory container for layout*/}
+              {isActiveForm}
             </div>
-          </Form.Group>
+          </Form.Group>}
         </Form.Row>
         <Form.Row rows={4}>
-          <Form.Group as={Col} md={8} controlId="formDesc">
-            <Form.Label>Description</Form.Label>
+          <Form.Group as={Col} md={8}>
+            <Form.Label>Description of the Product</Form.Label>
             {descForm}
           </Form.Group>
         </Form.Row>
-        <Form.Group controlId="formFileUpload">
-          <Form.File onChange={prop.handleImg}  accept=".jpg, .jpeg., .png" label="Product Thumbnail (e.g., .png/jpeg/jpg files)"/>
+        <Form.Group>
+          {mainImgForm}
+          <img src={mainImage}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.File onChange={prop.handleGalImg1}  accept=".jpg, .jpeg., .png" label="Gallery Img1 (e.g., .png/jpeg/jpg files)"/>
+          <img src={galImage1}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.File onChange={prop.handleGalImg2}  accept=".jpg, .jpeg., .png" label="Gallery Img2 (e.g., .png/jpeg/jpg files)"/>
+          <img src={galImage2}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.File onChange={prop.handleGalImg3}  accept=".jpg, .jpeg., .png" label="Gallery Img3 (e.g., .png/jpeg/jpg files)"/>
+          <img src={galImage3}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.File onChange={prop.handleGalImg4}  accept=".jpg, .jpeg., .png" label="Gallery Img4 (e.g., .png/jpeg/jpg files)"/>
+          <img src={galImage4}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.File onChange={prop.handleGalImg5}  accept=".jpg, .jpeg., .png" label="Gallery Img5 (e.g., .png/jpeg/jpg files)"/>
+          <img src={galImage5}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.File onChange={prop.handleGalImg6}  accept=".jpg, .jpeg., .png" label="Gallery Img6 (e.g., .png/jpeg/jpg files)"/>
+          <img src={galImage6}/>
         </Form.Group>
         <Modal.Footer>
           <Button onClick={prop.handleClose} buttonColor="msc_orange_invert"

@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import {Col} from "react-bootstrap";
 import Modal from "react-bootstrap/Modal"
 import {Button} from "../../../../components/button/Button";
+import {memberImage} from "./OurTeamEdit";
 
 //TODO: Finish this form
 export default function OurTeamForm (props) {
@@ -65,10 +66,11 @@ export default function OurTeamForm (props) {
           </Form.Group>
         </Form.Row>
         <Form.Group>
-          <Form.File onChange={props.handleImg}  accept=".jpg, .jpeg., .png" label="Profile Image of the Member (in .png/jpeg/jpg files)"/>
+          <Form.File onChange={props.handleImg}  accept=".jpg, .jpeg., .png" label="Profile Image of the Member (in .png/jpeg/jpg files) [Optimal Img Size: 225 x 225 pixels]"/>
+          <img src={memberImage}/>
         </Form.Group>
         <Modal.Footer>
-          <Button onClick={props.handleClose} buttonColor="msc_orange_invert" buttonSize="btn--medium">Close</Button>
+          <Button type="button" onClick={props.handleClose} buttonColor="msc_orange_invert" buttonSize="btn--medium">Close</Button>
           <Button type="submit" buttonColor="msc_orange" buttonSize="btn--medium">
             Submit
           </Button>

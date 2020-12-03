@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import OurTeamForm from "./OurTeamForm";
 import portrait from "../../../../images/male.jpg";
 
+export let memberImage=null;
 export default function OurTeamEdit(props) {
   const [current_item, setItem] = useState(null);
   const [data, setData] = useState([]);
@@ -63,6 +64,11 @@ export default function OurTeamEdit(props) {
       });
   };
   useEffect(  () => {
+    if (!sessionStorage.getItem("isLoggedIn")){
+      alert("You must log in!");
+      window.location.href="/adminlogin";
+      return;
+    }
     fetchAllData();
   }, []); //fetch once
 
@@ -82,6 +88,7 @@ export default function OurTeamEdit(props) {
     setDesc(e.target.value)
   };
   const handleImg = (e) => {
+    memberImage=URL.createObjectURL(e.target.files[0]);
     setImg(e.target.files[0])
   };
   const handleContact = (e) => {
@@ -166,7 +173,7 @@ export default function OurTeamEdit(props) {
           newData[i].contact = inputContact;
           newData[i].introduction = inputDateJoined;
           setData(newData);
-          // window.location.reload();
+          window.location.reload();
         } else {
           // Unhandled res_code
           alert("Put: Unhandled res_code");
@@ -193,7 +200,6 @@ export default function OurTeamEdit(props) {
 
   //create modal handler
   const handleCreateSubmit = (e) => {
-    e.preventDefault();
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/team_page_person/add/";
     let inputDate = dateJoined === '' ? "Joined " + getCurrentDate() : dateJoined;
     let formData = new FormData();
@@ -212,7 +218,7 @@ export default function OurTeamEdit(props) {
             // Everything worked correctly
             // Do something with the returned data
             console.log("Post SUCCESS", response.data.team_page_person);
-            window.location.reload();
+            //window.location.reload();
           } else {
             // Unhandled res_code
             alert("Post: Unhandled res_code");
@@ -332,7 +338,7 @@ export default function OurTeamEdit(props) {
         </Modal.Body>
       </Modal>
       <div style={{display: "flex", justifyContent: "center"}}>
-        <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
+        <Button type="button" onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
           Add a New Member
         </Button>
       </div>

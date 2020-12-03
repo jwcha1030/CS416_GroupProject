@@ -6,8 +6,8 @@ import CarouselForm from "./CreateCarouselForm"
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 
+export let bannerImg=null;
 export default function CarouselEdit() {
-
   const [data, setData] = useState([]);
   const [current_item, setItem] = useState(null); //object
   const [showCreateModal, setCreateModalShow] = useState(false);
@@ -19,6 +19,7 @@ export default function CarouselEdit() {
 
   //['id', 'img', 'idx', 'caption','desc']
   const [headers, setHeaders] = useState([]); //table headers
+
   let axios = require('axios');
   //initial fetch
   const fetchAllData = () => {
@@ -51,6 +52,11 @@ export default function CarouselEdit() {
       });
   };
   useEffect(() => {
+    if (!sessionStorage.getItem("isLoggedIn")){
+      alert("You must log in!");
+      window.location.href="/adminlogin";
+      return;
+    }
     fetchAllData();
   }, []); //fetch once
 
@@ -64,6 +70,7 @@ export default function CarouselEdit() {
   const handleImg = (e) => {
     // Changed from e.target.value to e.target.files[0] because the api needs a file
     // console.log(e.target.files[0].name);
+    bannerImg=URL.createObjectURL(e.target.files[0]);
     setNewImg(e.target.files[0]);
   };
   const handleIdx = (e) => {
@@ -188,13 +195,6 @@ export default function CarouselEdit() {
   const handleCreateSubmit = (e) => {
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/home_page_carousel/add/";
     // var apiBaseUrl = "http://127.0.0.1:8000/home_page_carousel/add/";
-
-    // if the data does not include a File (eg img) use a json
-    // var payload = {
-    //   caption: newCaption,
-    // 	desc: newDesc,
-    // 	img: newImg
-    // };
     // if the new data includes a File (eg img) use FromData();
     console.log("Post", newImg);
     if (newImg) {

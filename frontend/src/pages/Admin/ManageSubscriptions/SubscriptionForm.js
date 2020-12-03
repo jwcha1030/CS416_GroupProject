@@ -11,11 +11,11 @@ export default function SubscriptionForm (prop) {
         <Form.Row>
           <Form.Group as={Col} md={"2"} controlId="formName">
             <Form.Label>First Name</Form.Label>
-            <Form.Control onChange={prop.handleFirstName} placeholder='Enter First Name' required/>
+            <Form.Control onChange={prop.handleFirstName} placeholder='Enter First Name' />
           </Form.Group>
           <Form.Group as={Col} md={"4"} controlId="formName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control onChange={prop.handleLastName} placeholder='Enter Last Name' required/>
+            <Form.Control onChange={prop.handleLastName} placeholder='Enter Last Name' />
           </Form.Group>
           {/*<Form.Group as={Col} md={"2"} controlId="formSubscribed">*/}
           {/*  <Form.Label>Subscribe?</Form.Label>*/}
@@ -31,8 +31,8 @@ export default function SubscriptionForm (prop) {
           </Form.Group>
         </Form.Row>
         <Modal.Footer>
-          <Button onClick={prop.handleClose} buttonColor="msc_orange_invert"
-                  buttonSize="btn--medium">Close</Button>
+          {/*<Button type="button" onClick={prop.handleClose} buttonColor="msc_orange_invert"*/}
+          {/*        buttonSize="btn--medium">Close</Button>*/}
           <Button type="submit" buttonColor="msc_orange" buttonSize="btn--medium">
             Submit
           </Button>

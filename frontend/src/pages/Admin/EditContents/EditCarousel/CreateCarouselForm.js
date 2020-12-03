@@ -2,6 +2,7 @@ import React from 'react';
 import Form from "react-bootstrap/Form";
 import {Button} from "../../../../components/button/Button";
 import Modal from "react-bootstrap/Modal";
+import {bannerImg} from "./CarouselEdit";
 
 export default function CarouselForm(prop) {
   const isEditForm = prop.currentItem !== undefined; //true if this form is called when edit button is pressed.
@@ -37,10 +38,12 @@ export default function CarouselForm(prop) {
       </Form.Group>
       <Form.Group controlId="formFileUpload">
         <Form.File onChange={prop.handleImg} accept=".jpg, .jpeg., .png"
-                   label="Banner Image (e.g., .png/jpeg/jpg files) [Optimal Img Size: 2700 x 900 pixels]"/>
+                   label="Banner Image (e.g., .png/jpeg/jpg files) [Optimal Img Size: 1350 x 450 pixels]" required
+        />
+        <img src={bannerImg}/>
       </Form.Group>
       <Modal.Footer>
-        <Button onClick={prop.handleClose} buttonColor="msc_orange_invert" buttonSize="btn--medium">Close</Button>
+        <Button type="button" onClick={prop.handleClose} buttonColor="msc_orange_invert" buttonSize="btn--medium">Close</Button>
         <Button type="submit" buttonColor="msc_orange" buttonSize="btn--medium">
           Submit
         </Button>

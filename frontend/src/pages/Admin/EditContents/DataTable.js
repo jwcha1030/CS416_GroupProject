@@ -11,6 +11,20 @@ export default function DataTable({data, headers, changeItem, showEdit, deleteIt
     if (key === "price")
       return priceUnit + item[key];
 
+    //school id: 1sbu, 2fit
+    if (key.toLowerCase()==="school_id" && item[key]===1)
+      return "SBU";
+    else if(key.toLowerCase()==="school_id" && item[key]===2)
+      return "FIT";
+
+    //type_id: 0none, 1goods, 2apparel
+    if(key.toLowerCase()==="type_id" && item[key]===0)
+      return "None";
+    else if(key.toLowerCase()==="type_id" && item[key]===1)
+      return "Goods";
+    else if(key.toLowerCase()==="type_id" && item[key]===2)
+      return "Apparel";
+
     //file object
     if (key.toLowerCase()==="img" && (typeof item[key])!=="string" && item[key]!==null)
       return item[key].name;
