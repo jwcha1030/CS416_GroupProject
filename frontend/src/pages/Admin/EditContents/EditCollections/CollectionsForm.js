@@ -22,9 +22,16 @@ export default function CollectionsForm(prop) {
   const descForm = isEditForm ?
     <Form.Control type="textarea" onChange={prop.handleDesc} placeholder={prop.currentItem.desc}/> :
     <Form.Control type="textarea" onChange={prop.handleDesc} placeholder='Enter Details about the Product' required/>;
+  //mainImg is required when creating
   const mainImgForm = isEditForm ?
     <Form.File onChange={prop.handleMainImg}  accept=".jpg, .jpeg., .png" label="Product Main Img (e.g., .png/jpeg/jpg files)"/>:
-    <Form.File onChange={prop.handleMainImg}  accept=".jpg, .jpeg., .png" label="Product Main Img (e.g., .png/jpeg/jpg files)" required/>
+    <Form.File onChange={prop.handleMainImg}  accept=".jpg, .jpeg., .png" label="Product Main Img (e.g., .png/jpeg/jpg files)" required/>;
+  //galImg1 is required when creating
+  const galImg1Form = isEditForm ?
+    <Form.File onChange={prop.handleGalImg1}  accept=".jpg, .jpeg., .png" label="Gallery Img1 (e.g., .png/jpeg/jpg files)"/>:
+    <Form.File onChange={prop.handleGalImg1}  accept=".jpg, .jpeg., .png" label="Gallery Img1 (e.g., .png/jpeg/jpg files)" required/>;
+
+
   const isActiveForm = isEditForm ?
     //when editing
       (
@@ -103,7 +110,7 @@ export default function CollectionsForm(prop) {
           <img src={mainImage}/>
         </Form.Group>
         <Form.Group>
-          <Form.File onChange={prop.handleGalImg1}  accept=".jpg, .jpeg., .png" label="Gallery Img1 (e.g., .png/jpeg/jpg files)"/>
+          {galImg1Form}
           <img src={galImage1}/>
         </Form.Group>
         <Form.Group>
