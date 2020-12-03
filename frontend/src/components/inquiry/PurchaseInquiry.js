@@ -25,58 +25,32 @@ const schema = yup.object({
     .string()
     .min(2, "Too Short!")
     .max(30, "Too Long!")
-    .required("First name is required"),
+    .required("First name is required."),
   lastName: yup
     .string()
     .min(2, "Too Short!")
     .max(30, "Too Long!")
-    .required("Last name is required"),
-  email: yup.string().email().required("Email is required"),
+    .required("Last name is required."),
+  email: yup.string().email().required("Email is required."),
   message: yup
     .string()
-    .min(10, "Please provide more details (10-300 characters)")
+    .min(10, "Please provide more details (10-300 characters).")
     .max(300, "Too Long!")
-    .required("Last name is required"),
-  type: yup.string().required(),
+    .required("Your message is required."),
+  type: yup.string().required("Purchase Method is required."),
 });
 
-function getSeason(data) {
-  var myDate = new Date(date);
-  var date = myDate.month.value;
-  var month = (date.getMonth() + 1).toString();
-  var year = date.getFullYear().toString();
-  var season = "";
-  switch (month) {
-    case "12":
-    case "1":
-    case "2":
-      season = "Winter";
-      break;
-    case "3":
-    case "4":
-    case "5":
-      season = "Spring";
-      break;
-    case "6":
-    case "7":
-    case "8":
-      season = "Summer";
-      break;
-    case "9":
-    case "10":
-    case "11":
-      season = "Fall";
-      break;
-  }
-  return season + " " + year;
-}
+const CASH_STRING = "Cash";
+const WIRE_STRING = "Wire";
+const CARD_STRING = "Card";
+
 // Mapping dictionary for Purchase method ID
 const purchaseMapping = (option) => {
-  if (option === "Cash") {
+  if (option === CASH_STRING) {
     return 0;
-  } else if (option === "Wire") {
+  } else if (option === WIRE_STRING) {
     return 1;
-  } else if (option === "Card") {
+  } else if (option === CARD_STRING) {
     return 2;
   } else {
     return -1;
@@ -109,13 +83,18 @@ function PurchaseInquiry(props) {
               last_name: values.lastName,
               email: values.email,
               message: values.message,
-              // type: values.type, method is eg. Wire -> 1, Cash ->0 using the purchaseMapping function.
+              // type: values.type, method is eg. Wire -> 1, Cash ->0
               purchase_method_id: purchaseMapping(values.type),
-              collection_item_id: props.productID,
+              collection_item_id: parseInt(props.productID),
             };
 
             await new Promise((resolve) => setTimeout(resolve, 500));
-            alert(JSON.stringify(payload, null, 2));
+            console.log(JSON.stringify(payload, null, 2));
+            alert(
+              "There is a small error with the MSC's system. Please try again or contact us directly."
+            );
+            //hide the modal after submit and this alert above
+            props.onHide();
 
             axios
               .post(apiBaseUrl, payload) //values is the form's data
@@ -126,29 +105,30 @@ function PurchaseInquiry(props) {
                     // Everything worked correctly
                     // Do something with the returned data
                     console.log("Post SUCCESS", response.data.res_msg);
-                    alert("Successfully Sent.");
+                    alert("Successfully Sent. We will contact you shortly!");
                     window.location.reload();
+
                     // } else if (){
                     // Check other res_code with else if
                     // }
                   } else if (response.data.res_code === 2) {
-                    alert(
+                    console.log(
                       "Post: Email does not exist or the email is invalid."
                     );
                   } else {
                     // Unhandled res_code
-                    alert(
+                    console.log(
                       "Post: Unhandled res_code / the entered email may be wrong "
                     );
                   }
                 } else {
                   // TODO handle unable to connect with database
-                  alert("Post: unable to connect with database");
+                  console.log("Post: unable to connect with database");
                 }
               })
               .catch(function (error) {
                 // TODO handle error with the call
-                alert("Post: Call error");
+                console.log("Post: Call error");
                 console.log(error);
               });
           }}
@@ -168,25 +148,28 @@ function PurchaseInquiry(props) {
                 <Form.Group as={Col} md="1"></Form.Group>
 
                 <Form.Group as={Col} md="6" controlId="validationFormikProduct">
-                  <Form.Label>Product Information</Form.Label>
                   <ReactImageAppear
+                    className="iproduct-image"
                     src={props.productCoverImage}
                     alt={"img"}
                     animation="bounceIn"
                   />
                   <br />
                   <br />
+
                   <div className="row">
                     <div className="col-sm-8 product-name">
                       {props.productName}
                     </div>
-                    <div align="right" className="col-sm-4 product-price">
-                      <NumberFormat
-                        value={props.productPrice}
-                        displayType={"text"}
-                        thousandSeparator={true}
-                        prefix={"₩"}
-                      />
+                    <div className="col-sm-4 product-price">
+                      <div className="iproduct-price" id="iproduct-price">
+                        <span className="won">₩ </span>
+                        <NumberFormat
+                          value={props.productPrice}
+                          displayType={"text"}
+                          thousandSeparator={true}
+                        />
+                      </div>
                     </div>
                   </div>
                   <br />
@@ -194,9 +177,11 @@ function PurchaseInquiry(props) {
                     <div className="col-sm-3 product-school">
                       <br />
                       <img
-                        className="product-school-img"
+                        className="iproduct-school-img"
+                        id="iproduct-school-img"
                         src={props.productSchool}
                       ></img>
+                      {props.productSchoolStr}
                     </div>
                     <div className="col-sm-3 product-type">
                       {" "}
@@ -204,12 +189,15 @@ function PurchaseInquiry(props) {
                       {props.productType}
                     </div>
 
-                    <div className="col-sm-3 product-date">
+                    <div className="col-sm-3 product-date" id="iproduct-date">
                       <br />
                       {<Moment format="MMM YYYY" date={props.productDate} />}
                       {/* {getSeason(props.productDate)} */}
                     </div>
-                    <div className="col-sm-3 product-click-count">
+                    <div
+                      className="col-sm-3 iproduct-click-count"
+                      id="iproduct-click-count"
+                    >
                       <br />
                       <MdRemoveRedEye style={{ paddingRight: "2px" }} />{" "}
                       {props.productClickCount}
@@ -217,7 +205,7 @@ function PurchaseInquiry(props) {
                   </div>
                   <br />
                   <br />
-                  <div className="product-description">
+                  <div className="iproduct-description">
                     {props.productDescription}
                   </div>
                   <br />
@@ -293,9 +281,9 @@ function PurchaseInquiry(props) {
                         size="lg"
                         isInvalid={!!errors.email}
                       >
-                        <option value="">Purchase Method</option>
-                        <option value="Cash">Cash</option>
-                        <option value="Wire">Wire Bank Account</option>
+                        <option>Purchase Method</option>
+                        <option value={CASH_STRING}>Cash</option>
+                        <option value={WIRE_STRING}>Wire Bank Account</option>
                       </Form.Control>
                       <Form.Control.Feedback type="invalid">
                         {errors.type}

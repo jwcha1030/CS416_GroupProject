@@ -1,27 +1,145 @@
-.product-name {
+.iproduct-name {
   font-size: 2.5rem;
 }
 
-.product-price {
+.iproduct-price {
   font-size: 2.5rem;
 }
 
-.product-sub-details {
+.iproduct-sub-details {
 }
-.product-school {
+.iproduct-school {
   color: #959595;
 }
-.product-type {
+.iproduct-type {
   color: #959595;
 }
-.product-date {
+.iproduct-date {
   color: #959595;
 }
-.product-click-count {
+.iproduct-click-count {
   font-size: 1.5rem;
   color: #b9b9b9;
 }
 
-.product-school-img {
-  width: 60%;
+.iproduct-school-img {
+  width: 20px;
+  padding-right: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .iproduct-school-img {
+    width: 15px;
+    padding-right: 5px;
+  }
+  .iproduct-name {
+    font-size: 2.5rem;
+    padding-left: 5rem;
+  }
+
+  .iproduct-price {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  .iproduct-type {
+    width: 10rem;
+  }
+  .iproduct-date {
+    width: 10rem;
+  }
+  .iproduct-school {
+    padding-left: 3rem;
+    width: 10rem;
+  }
+  .iproduct-description {
+  }
+
+  .iproduct-click-count {
+    font-size: 1.5rem;
+    color: #b9b9b9;
+    width: 10rem;
+  }
+  .iproduct-sub-details {
+    padding-left: 5rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .iproduct-school-img {
+    width: 15px;
+    padding-right: 5px;
+  }
+  .iproduct-name {
+    font-size: 2rem;
+    padding-left: 5rem;
+  }
+
+  .iproduct-price {
+    font-size: 1.5rem;
+    text-align: left;
+    padding-top: 0.7rem;
+  }
+
+  .iproduct-type {
+    width: 10rem;
+  }
+  .iproduct-date {
+    width: 10rem;
+  }
+  .iproduct-school {
+    padding-left: 3rem;
+    width: 10rem;
+  }
+  .iproduct-description {
+  }
+
+  .iproduct-click-count {
+    font-size: 1.5rem;
+    color: #b9b9b9;
+    width: 10rem;
+  }
+  .iproduct-sub-details {
+    padding-left: 5rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .iproduct-school-img {
+    width: 15px;
+    padding-right: 5px;
+  }
+  .iproduct-name {
+    font-size: 1.5rem;
+    padding-left: 5rem;
+  }
+
+  .iproduct-price {
+    font-size: 1.2rem;
+    text-align: left;
+    padding-top: 0.7rem;
+  }
+
+  .iproduct-type {
+    width: 7rem;
+  }
+  .iproduct-date {
+    width: 7rem;
+  }
+  .iproduct-school {
+    padding-left: 3rem;
+    width: 7rem;
+  }
+  .iproduct-description {
+  }
+
+  .iproduct-click-count {
+    font-size: 1rem;
+    color: #b9b9b9;
+    width: 7rem;
+  }
+  .iproduct-sub-details {
+    padding-left: 5rem;
+  }
 }

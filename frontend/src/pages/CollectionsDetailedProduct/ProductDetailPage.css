@@ -1,12 +1,148 @@
 @import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 .image-gallery-slide .image-gallery-image {
+  width: 30rem;
 }
 
 .image-gallery-content {
-  padding-bottom: 5%;
+  padding-bottom: 10%;
 }
 
 .rotating-images-modal {
   margin-bottom: 100px;
+}
+
+.detailed-page-won {
+  font-size: 1.7rem;
+  color: #aaaaaa;
+}
+
+.detailed-page-price {
+  font-size: 2.5rem;
+  color: #747474;
+}
+.product-name {
+  font-size: 2.5rem;
+}
+
+.product-price {
+  font-size: 2.5rem;
+}
+
+.product-sub-details {
+}
+.product-school {
+  color: #959595;
+}
+.product-type {
+  color: #959595;
+}
+.product-date {
+  color: #959595;
+}
+.product-click-count {
+  font-size: 1.5rem;
+  color: #b9b9b9;
+}
+
+.product-school-img {
+  width: 20px;
+  padding-right: 5px;
+}
+
+#side-info {
+  padding-left: 2rem;
+}
+#product-side-details {
+  padding-left: 0;
+  padding-right: 0;
+}
+.ant-card-body-detailed {
+  margin-bottom: 12rem;
+}
+#space {
+  width: 50%;
+  padding-left: 0;
+  padding-right: 0;
+}
+#product-description-container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 3rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .product-description {
+    font-size: 1rem;
+  }
+  #product-side-details {
+    width: 35%;
+    font-size: 0.8em;
+  }
+
+  .ant-card-body-detailed {
+    margin-bottom: 14rem;
+  }
+
+  .detailed-page-price {
+    font-size: 1.5rem;
+  }
+  .detailed-page-won {
+    font-size: 1rem;
+  }
+  #product-description-container {
+    padding-top: 1.5rem;
+    padding-right: 6rem;
+    width: 75%;
+  }
+
+  #space {
+    padding: 0;
+    width: 0;
+    padding-left: 4rem;
+  }
+
+  #mobileRow {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product-description {
+    font-size: 1.2rem;
+  }
+  #product-side-details {
+    width: 35%;
+    font-size: 0.9em;
+  }
+
+  .ant-card-body {
+    margin-bottom: 12rem;
+  }
+
+  .detailed-page-price {
+    font-size: 1.5rem;
+  }
+  .detailed-page-won {
+    font-size: 0.8rem;
+  }
+  #product-description-container {
+    padding-top: 1rem;
+    padding-right: 5rem;
+    width: 75%;
+  }
+
+  #space {
+    padding: 0;
+    width: 0;
+    padding-left: 3rem;
+  }
+
+  #mobileRow {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+  }
 }

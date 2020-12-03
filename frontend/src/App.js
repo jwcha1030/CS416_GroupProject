@@ -9,7 +9,7 @@ import Navbar from "./components/navbar/Navbar";
 import ScrollToTop from "react-router-scroll-top";
 import ProductDetailPage from "./pages/CollectionsDetailedProduct/ProductDetailPage";
 
-import { AnimatePresence} from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Admin from "./pages/Admin/Admin";
 import CarouselEdit from "./pages/Admin/EditContents/EditCarousel/CarouselEdit";
 import CollectionsEdit from "./pages/Admin/EditContents/EditCollections/CollectionsEdit";
@@ -41,8 +41,11 @@ function App() {
             <Route path="/admin" exact component={Admin} />
             <Route path="/admin/carousel_edit" component={CarouselEdit} />
             <Route path="/admin/collections_edit" component={CollectionsEdit} />
-            <Route path="/admin/subscription_edit" component={SubscriptionEdit}/>
-            <Route path="/admin/web_usage" component={WebUsageAnalysis}/>
+            <Route
+              path="/admin/subscription_edit"
+              component={SubscriptionEdit}
+            />
+            <Route path="/admin/web_usage" component={WebUsageAnalysis} />
             <Route path="/admin/team_edit" component={OurTeamEdit} />
 
             <Route path="/adminlogin" component={AdminLogin} />

@@ -15,9 +15,15 @@ The Merchandising Society Club (MSC) makes Fashion Institute of Technology (FIT)
 Our solution is to create a flexible website for MSC that will allow them to manage and maintain an online platform that has several different sections which include an MSC about page, mailing subscriptions, an MSC product collection for showcasing merchandise, and a virtual showroom to replicate their physical Retail Revolution Store online.
 
 ## Current Version <br> 
-> 0.03 Beta Release 11/11/2020   Deployed iterated design with additional API Calls implemented in the front-end   <br>
-> 0.02 Beta Release 11/3/2020    Deployed initial design and look of the web application with carousel CRUD in admin feature.  <br>
-> 0.01 Beta Release 10/26/2020   Deployed initial design and look of the web application with zero-features. 
+> #### 1.00 Beta Release 12/03/2020   <br>
+Deployed complete design with all API calls; some parts are still yet to be discussed with the project owner.
+User side and Admin sides are mostly interactive, in terms of managing the data. Collections with real data, mobile view of the web application, loading Gifs by sections that require loading time, admin login, admin data analysis, admin collections data management are complete. *Gmail's strict security policy has stopped SMTP, therefore this part needs to be discussed with the project owner (possibly creating another domain email account).    
+> #### 0.03 Beta Release 11/11/2020   <br>
+Deployed iterated design with additional API Calls implemented in the front-end.  searching & filtering feature of collection items, our team members management by admins, inquiry forms are added. 
+> #### 0.02 Beta Release 11/3/2020    <br>
+Deployed initial design and look of the web application with carousel CRUD in admin feature. Most of the requried APIs from the backend, 360 degree view of a product feature, page animations, scroll, and general responsive design are added.    
+> #### 0.01 Beta Release 10/26/2020  <br>
+Deployed initial design and look of the web application with zero-features. 
 
 ## Deployment <br>
 >**Front-end deployed on Firebase** <br>
