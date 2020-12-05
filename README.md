@@ -21,7 +21,7 @@ Deployed complete design with all API calls; some parts (mostly inquiry forms) a
 User side and Admin sides are mostly interactive, in terms of managing the data. Collections with real data, mobile view of the web application, loading gifs by sections that require loading time, admin login, admin data analysis, admin collections data management are complete.
 *Gmail's strict security policy has stopped SMTP, therefore this part needs to be discussed with the project owner (possibly creating another domain email account).
 Thus, purchase inquiry, general inquiry, and email subscription are not stable at the moment. <br>
-Edit: 12/5/2020 General inquiry seems to be party working, but the other 2 forms are not.
+###### Edit: [12/5/2020] General inquiry seems to be party stable (may break after a few more submissions), but the other 2 forms are not functional yet.
 
 > #### 0.03 Beta Release 11/11/2020   <br>
 Deployed iterated design with additional API Calls implemented in the front-end.  Searching & filtering feature of collection items, our team members management by admins, inquiry forms are added. 
