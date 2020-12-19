@@ -22,7 +22,6 @@
     "fusioncharts": "^3.15.3",
     "material-ui": "^0.20.2",
     "moment": "^2.29.1",
-    "node-sass": "^4.14.1",
     "pannellum-react": "^1.2.4",
     "pure-react-carousel": "^1.27.4",
     "ra-data-drf": "^2.0.0",
@@ -77,6 +76,7 @@
   },
   "devDependencies": {
     "eslint-plugin-react-hooks": "^4.1.2",
-    "file-loader": "^6.1.0"
+    "file-loader": "^6.1.0",
+    "sass": "^1.30.0"
   }
 }

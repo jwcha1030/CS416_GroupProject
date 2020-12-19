@@ -138,7 +138,7 @@ function ProductDetailPage(props) {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully fetched whether the product has catalog display or not: product id:" +
-                cProductID,
+              cProductID,
               response.data.res_msg
             );
             setHasCatalogDisplayID(response.data.cd_id);
@@ -231,15 +231,15 @@ function ProductDetailPage(props) {
             <ImageGallery lazyLoad={true} items={galleryImagesData} />
             <div className="rotating-images-modal">
               {/*TEMPORARILY SET ALL PRODUCTS TO FIXED MOCKUP 360 VIEW. MSC HAS NOT PREPARED THE DATA YET. */}
-              <Button
+              {/* <Button
                 variant="dark"
                 size="lg"
                 onClick={() => setRotatingImageModalShow(true)}
               >
                 Launch 360 Degree View
-              </Button>
+              </Button> */}
               {/* BELOW IS THE DYNAMIC CHECKING OF WHETHER THE ITEM HAS 360 VIEW OR NOT. IT RENDERS A BUTTON OR A "NOT AVAILABLE TEXT" ACCORDINGLY. */}
-              {/* {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
+              {hasCatalogDisplayBoolean ? ( //button for 360 degree view if it is available.
                 <Button
                   variant="dark"
                   size="lg"
@@ -248,10 +248,10 @@ function ProductDetailPage(props) {
                   Launch 360 Degree View
                 </Button>
               ) : (
-                <p style={{ color: "#aaaaaa" }}>
-                  360 Degree View Not Available
-                </p> //else a text
-              )} */}
+                  <p style={{ color: "#aaaaaa" }}>
+                    360 Degree View Not Available
+                  </p> //else a text
+                )}
             </div>
           </div>
 
@@ -359,7 +359,7 @@ function RotatingImageModal(props) {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully fetched 360 Degree Images with c_id " +
-                response.data.res_msg
+              response.data.res_msg
             );
             setCatalogDisplayImages(response.data.results);
           } else {
@@ -407,10 +407,11 @@ function RotatingImageModal(props) {
               className="rotating-image"
             >
               {/*    TEMPORARY MOCKUP DATA */}
-              {mugcup_1.map(renderImages)}
+              {/* {mugcup_1.map(renderImages)} */}
 
               {/*  BACKEND DATA API CALL -- MSC IS NOT READY TO PROVIDE THE DATA YET -12/3/2020 **********************************/}
-              {/* {catalogDisplayImages.map(renderImages)} */}
+              {/* enabled --12/20/2020 */}
+              {catalogDisplayImages.map(renderImages)}
             </Rotation>
           }
         >

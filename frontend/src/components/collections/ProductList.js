@@ -90,7 +90,7 @@ const ProductList = (props, index) => {
           if (response.data.res_code == 1) {
             console.log(
               "Successfully connected to API for all data..." +
-                response.data.res_msg
+              response.data.res_msg
             );
             console.log(response.data.results);
             setData(response.data.results);
