@@ -22,7 +22,7 @@ export default function BarGraph(props) {
   const[viewedData, setViewedData]=useState(()=>{
     let ret= [];
     props.dataInput.map(item=>{
-      ret.push({value: item.num_of_clicked.toString()})
+      ret.push({value: item.num_of_clicked})
     });
     // console.log("getViewedData:",ret);
     return ret;
@@ -31,7 +31,7 @@ export default function BarGraph(props) {
   const[inquiriesData, setInquiriesData]=useState(()=>{
     let ret= [];
     props.dataInput.map(item=>{
-      ret.push({value: item.num_of_inquiries.toString()})
+      ret.push({value: item.num_of_inquiries})
     });
     // console.log("getInquiriesData:",ret);
     return ret;

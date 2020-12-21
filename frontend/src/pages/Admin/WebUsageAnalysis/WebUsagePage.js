@@ -4,21 +4,22 @@ import {IoIosArrowBack} from "react-icons/io";
 import BarGraph from "./BarGraph";
 import DataTable from "../EditContents/DataTable";
 import LOADER_GIF from "../../../images/loading.gif";
-let sampleData= [
+
+let sampleData = [
   {
-    id:1,
+    id: 1,
     name: "2020 Hoodie",
     num_of_clicked: 5,
     num_of_inquiries: 2
   },
   {
-    id:2,
+    id: 2,
     name: "2020 Shoes",
     num_of_clicked: 10,
     num_of_inquiries: 1
   },
   {
-    id:3,
+    id: 3,
     name: "2020 Shorts",
     num_of_clicked: 11,
     num_of_inquiries: 5
@@ -26,7 +27,7 @@ let sampleData= [
 ];
 export default function WebUsagePage() {
   const [data, setData] = useState([]);
-  const [headers,setHeaders] = useState([]);
+  const [headers, setHeaders] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   let axios = require('axios');
@@ -58,10 +59,10 @@ export default function WebUsagePage() {
         console.log(error);
       });
   };
-  useEffect(  () => {
-    if (!sessionStorage.getItem("isLoggedIn")){
+  useEffect(() => {
+    if (!sessionStorage.getItem("isLoggedIn")) {
       alert("You must log in!");
-      window.location.href="/adminlogin";
+      window.location.href = "/adminlogin";
       return;
     }
     fetchAllData();
@@ -75,28 +76,30 @@ export default function WebUsagePage() {
         <h1 style={{textAlign: "center", fontWeight: "bold"}} className="web-analysis__header">
           Web Usage Analysis
         </h1>
-        <div className="web-analysis__body-container">
-          <div className="web-analysis__charts-wrapper">
-            <BarGraph dataInput={data}/>
-          </div>
-          <div className="web-analysis__table-wrapper">
-            <h3 style={{color: "black", fontWeight: "bold"}} className="web-analysis__table-header">
-              Analysis Details
-            </h3>
-            {isLoading ?
-              <img
-                style={{
-                  display: "block",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  width: "50%",
-                }}
-                src={LOADER_GIF}
-              /> :
+        {isLoading ?
+          <img
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: "50%",
+            }}
+            src={LOADER_GIF}
+          /> :
+          <div className="web-analysis__body-container">
+            <div className="web-analysis__charts-wrapper">
+              <BarGraph dataInput={data}/>
+            </div>
+            <div className="web-analysis__table-wrapper">
+              <h3 style={{color: "black", fontWeight: "bold"}} className="web-analysis__table-header">
+                Analysis Details
+              </h3>
+
               <DataTable data={data} headers={headers}/>
-            }
+
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   );
