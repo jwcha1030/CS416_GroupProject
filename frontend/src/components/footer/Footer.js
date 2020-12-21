@@ -43,9 +43,9 @@ function Footer() {
 
               await new Promise((resolve) => setTimeout(resolve, 500));
               console.log(JSON.stringify(payload, null, 2));
-              alert(
-                "There is a small error with the MSC's system. Please try again or contact us directly."
-              );
+              // alert(
+              //   "There is a small error with the MSC's system. Please try again or contact us directly."
+              // );
               axios
                 .post(apiBaseUrl, payload)
                 .then((response) => {
@@ -93,12 +93,12 @@ function Footer() {
                 {subEmail === "" ? ( //button for 360 degree view if it is available.
                   <div></div>
                 ) : (
-                  <p id="thank-you-text">
-                    Thank you <span id="subscribe-email-text">{subEmail}</span>.
+                    <p id="thank-you-text">
+                      Thank you <span id="subscribe-email-text">{subEmail}</span>.
                     We will keep you updated.
-                  </p>
-                  //else a text
-                )}
+                    </p>
+                    //else a text
+                  )}
                 <input
                   className="footer-input"
                   name="email"

@@ -109,9 +109,9 @@ function PurchaseInquiry(props) {
 
               await new Promise((resolve) => setTimeout(resolve, 500));
               console.log(JSON.stringify(payload, null, 2));
-              alert(
-                "There is a small error with the MSC's system. Please try again or contact us directly."
-              );
+              // alert(
+              //   "There is a small error with the MSC's system. Please try again or contact us directly."
+              // );
               //hide the modal after submit and this alert above
               props.onHide();
 
