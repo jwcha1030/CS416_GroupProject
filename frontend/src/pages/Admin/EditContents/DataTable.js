@@ -60,8 +60,7 @@ export default function DataTable({data, headers, changeItem, showEdit, deleteIt
               <TiEdit onClick={() => {
                 showEdit();
                 changeItem(item.id)
-              }}
-                      className='edit-icon'
+              }} className='edit-icon'
               />
             </td>
             }

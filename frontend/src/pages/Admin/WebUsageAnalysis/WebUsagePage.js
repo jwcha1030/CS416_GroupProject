@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 import BarGraph from "./BarGraph";
 import DataTable from "../EditContents/DataTable";
+import LOADER_GIF from "../../../images/loading.gif";
 let sampleData= [
   {
     id:1,
@@ -24,11 +25,13 @@ let sampleData= [
   }
 ];
 export default function WebUsagePage() {
-  const [data, setData] = useState(sampleData);
-  const [headers,setHeaders] = useState(Object.keys(sampleData[0]));
+  const [data, setData] = useState([]);
+  const [headers,setHeaders] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   let axios = require('axios');
   const fetchAllData = async () => {
+    setLoading(true);
     await axios.get("https://sunyk-msc-backend.herokuapp.com/admin/analysis/get_all/")
       .then(response => {
         // console.log(response.data);
@@ -38,6 +41,7 @@ export default function WebUsagePage() {
             // console.log(response.data.results);
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
+            setLoading(false);
             console.log("fetch complete");
           } else {
             // Unhandled res_code
@@ -79,7 +83,18 @@ export default function WebUsagePage() {
             <h3 style={{color: "black", fontWeight: "bold"}} className="web-analysis__table-header">
               Analysis Details
             </h3>
-            <DataTable data={data} headers={headers}/>
+            {isLoading ?
+              <img
+                style={{
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  width: "50%",
+                }}
+                src={LOADER_GIF}
+              /> :
+              <DataTable data={data} headers={headers}/>
+            }
           </div>
         </div>
       </div>

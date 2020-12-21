@@ -4,6 +4,7 @@ import "./Admin.css";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import Chart from "./WebUsageAnalysis/MonthlyVisitGraph";
+import LOADER_GIF from "../../images/loading.gif";
 
 let sampleChartData=
   [
@@ -35,10 +36,12 @@ let sampleChartData=
 export default function Admin() {
   const [subscriptionData, setSubscriptionData] =useState({});
   const [analysisData, setAnalysisData] =useState({});
-  const [chartData, setChartData] = useState(sampleChartData); //change to [] when fetching data
+  const [chartData, setChartData] = useState([]); //change to [] when fetching data
+  const [isLoading, setLoading]= useState(true);
 
   let axios = require('axios');
   const fetchAllData = async() =>{
+    setLoading(true);
     await axios.get("https://sunyk-msc-backend.herokuapp.com/admin/get_front_page_data/")
       .then(response => {
         // console.log(response.data);
@@ -48,7 +51,8 @@ export default function Admin() {
             // console.log(response.data.results);
             setSubscriptionData(response.data.subscription_info);
             setAnalysisData(response.data.analysis_summary);
-            setChartData(response.data.analysis_chart_data);
+            setChartData(response.data.analysis_chart_data.results);
+            setLoading(false);
             console.log("fetch frontpage data complete");
             // } else if (){
             // Check other res_code with else if
@@ -146,7 +150,18 @@ export default function Admin() {
             <div className="admin__colInfo admin__analysis-wrapper">
               <h2>Web Usage Analysis</h2>
               <div className="admin__analysis-chart-container">
-                <Chart dataInput={chartData} width="300" />
+                {isLoading ?
+                  <img
+                    style={{
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                      width: "50%",
+                    }}
+                    src={LOADER_GIF}
+                  /> :
+                  <Chart dataInput={chartData} width="340"/>
+                }
               </div>
               <ul className="admin__list admin__analysis-list">
                 <li>

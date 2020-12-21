@@ -6,12 +6,14 @@ import {Button} from "../../../../components/button/Button";
 import Modal from "react-bootstrap/Modal";
 import OurTeamForm from "./OurTeamForm";
 import portrait from "../../../../images/male.jpg";
+import LOADER_GIF from "../../../../images/loading.gif";
 
-export let memberImage=null;
+export let memberImage = null;
 export default function OurTeamEdit(props) {
   const [current_item, setItem] = useState(null);
   const [data, setData] = useState([]);
   const [headers, setHeaders] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
@@ -35,7 +37,8 @@ export default function OurTeamEdit(props) {
 
   let axios = require('axios');
   const fetchAllData = async () => {
-     await axios.get("https://sunyk-msc-backend.herokuapp.com/team_page_person/get_all/")
+    setLoading(true);
+    await axios.get("https://sunyk-msc-backend.herokuapp.com/team_page_person/get_all/")
       .then(response => {
         // console.log(response.data);
         // Check if internet connection was working
@@ -44,6 +47,7 @@ export default function OurTeamEdit(props) {
             // console.log(response.data.results);
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
+            setLoading(false);
             console.log("fetch complete");
             // } else if (){
             // Check other res_code with else if
@@ -63,10 +67,10 @@ export default function OurTeamEdit(props) {
         console.log(error);
       });
   };
-  useEffect(  () => {
-    if (!sessionStorage.getItem("isLoggedIn")){
+  useEffect(() => {
+    if (!sessionStorage.getItem("isLoggedIn")) {
       alert("You must log in!");
-      window.location.href="/adminlogin";
+      window.location.href = "/adminlogin";
       return;
     }
     fetchAllData();
@@ -88,7 +92,7 @@ export default function OurTeamEdit(props) {
     setDesc(e.target.value)
   };
   const handleImg = (e) => {
-    memberImage=URL.createObjectURL(e.target.files[0]);
+    memberImage = URL.createObjectURL(e.target.files[0]);
     setImg(e.target.files[0])
   };
   const handleContact = (e) => {
@@ -230,8 +234,7 @@ export default function OurTeamEdit(props) {
         alert("Post: Call error");
         console.log(error);
       });
-    }
-    else{
+    } else {
 
       console.log("Create new slide without img");
       // let payload = {
@@ -254,7 +257,7 @@ export default function OurTeamEdit(props) {
             window.location.reload();
           } else {
             // Unhandled res_code
-            console.log("res_code error:",response.data.res_code);
+            console.log("res_code error:", response.data.res_code);
             alert("Post: Unhandled res_code");
           }
         } else {
@@ -292,13 +295,24 @@ export default function OurTeamEdit(props) {
       <h1 style={{textAlign: "center", fontWeight: "bold"}} className="ourTeamEdit__header">
         Members List
       </h1>
-      <DataTable
-        data={data}
-        headers={headers}
-        changeItem={changeItem}
-        showEdit={handleEditShow}
-        deleteItem={handleDelete}
-      />
+      {isLoading ?
+        <img
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "50%",
+          }}
+          src={LOADER_GIF}
+        /> :
+        <DataTable
+          data={data}
+          headers={headers}
+          changeItem={changeItem}
+          showEdit={handleEditShow}
+          deleteItem={handleDelete}
+        />
+      }
       {/*Create Modal*/}
       <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
@@ -338,7 +352,8 @@ export default function OurTeamEdit(props) {
         </Modal.Body>
       </Modal>
       <div style={{display: "flex", justifyContent: "center"}}>
-        <Button type="button" onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
+        <Button type="button" onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline"
+                buttonColor="msc_orange">
           Add a New Member
         </Button>
       </div>

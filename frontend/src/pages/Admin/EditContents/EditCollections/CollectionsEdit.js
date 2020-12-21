@@ -5,14 +5,15 @@ import Modal from "react-bootstrap/Modal";
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 import CollectionsForm from "./CollectionsForm";
+import LOADER_GIF from "../../../../images/loading.gif";
 
-export let mainImage=null;
-export let galImage1=null;
-export let galImage2=null;
-export let galImage3=null;
-export let galImage4=null;
-export let galImage5=null;
-export let galImage6=null;
+export let mainImage = null;
+export let galImage1 = null;
+export let galImage2 = null;
+export let galImage3 = null;
+export let galImage4 = null;
+export let galImage5 = null;
+export let galImage6 = null;
 
 export default function CollectionEdit() {
   const [current_item, setItem] = useState(null);
@@ -20,9 +21,10 @@ export default function CollectionEdit() {
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
   const [headers, setHeaders] = useState([]); //table headers
+  const [isLoading, setLoading] = useState(true);
 
   const [collectionId, setCollectionId] = useState(0);
-  const [name, setName]=useState("");
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(-1);
   const [desc, setDesc] = useState('');
   const [mainImg, setMainImg] = useState(null);
@@ -37,6 +39,7 @@ export default function CollectionEdit() {
   let axios = require('axios');
   //initial fetch
   const fetchAllData = () => {
+    setLoading(true);
     axios.get("https://sunyk-msc-backend.herokuapp.com/collection/item/get_all/with_collection_info/")
       .then(response => {
         // Check if internet connection was working
@@ -45,6 +48,7 @@ export default function CollectionEdit() {
             // console.log(response.data.results);
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
+            setLoading(false);
             console.log("fetch complete");
             // } else if (){
             // Check other res_code with else if
@@ -52,7 +56,7 @@ export default function CollectionEdit() {
           } else {
             // Unhandled res_code
             alert("Fetch Data: Unhandled res_code");
-            console.log("Rescode:",response.data.res_code);
+            console.log("Rescode:", response.data.res_code);
           }
         } else {
           // TODO handle unable to connect with database
@@ -65,10 +69,47 @@ export default function CollectionEdit() {
         console.log(error);
       });
   };
+  const fetchGalleryImages = (id) => {
+    setLoading(true);
+    axios.get("https://sunyk-msc-backend.herokuapp.com/collection/item/get/" + id + "/")
+      .then(response => {
+        // Check if internet connection was working
+        if (response.status === 200) {
+          if (response.data.res_code === 1) {
+            // console.log(response.data.results);
+            let itemData = response.data.collection_item;
+            // console.log("ItemID:", id, "itemObj:", itemData);
+            setGalImg1(itemData.gallery_img1);
+            setGalImg2(itemData.gallery_img2);
+            setGalImg3(itemData.gallery_img3);
+            setGalImg4(itemData.gallery_img4);
+            setGalImg5(itemData.gallery_img5);
+            setGalImg6(itemData.gallery_img6);
+            setLoading(false);
+            console.log("fetch gallery images complete");
+            // } else if (){
+            // Check other res_code with else if
+            // }
+          } else {
+            // Unhandled res_code
+            alert("Fetch Gallery Images: Unhandled res_code");
+            console.log("Rescode:", response.data.res_code);
+          }
+        } else {
+          // TODO handle unable to connect with database
+          alert("Fetch Gallery Images: Unable to connect with database");
+        }
+      })
+      .catch(function (error) {
+        // TODO handle error with the call
+        alert("Fetch Gallery Images: Call error");
+        console.log(error);
+      });
+  };
   useEffect(() => {
-    if (!sessionStorage.getItem("isLoggedIn")){
+    if (!sessionStorage.getItem("isLoggedIn")) {
       alert("You must log in!");
-      window.location.href="/adminlogin";
+      window.location.href = "/adminlogin";
       return;
     }
     fetchAllData();
@@ -78,7 +119,7 @@ export default function CollectionEdit() {
   const handleCollectionId = (e) => {
     setCollectionId(e.target.value);
   };
-  const handleName = (e) =>{
+  const handleName = (e) => {
     setName(e.target.value);
   };
   const handlePrice = (e) => {
@@ -87,46 +128,47 @@ export default function CollectionEdit() {
   const handleDesc = (e) => {
     setDesc(e.target.value);
   };
-  const handleMainImg = (e) =>{
-    mainImage=URL.createObjectURL(e.target.files[0]);
+  const handleMainImg = (e) => {
+    mainImage = URL.createObjectURL(e.target.files[0]);
     setMainImg(e.target.files[0]);
   };
   const handleGalImg1 = (e) => {
-    galImage1=URL.createObjectURL(e.target.files[0]);
+    galImage1 = URL.createObjectURL(e.target.files[0]);
     setGalImg1(e.target.files[0]);
   };
   const handleGalImg2 = (e) => {
-    galImage2=URL.createObjectURL(e.target.files[0]);
+    galImage2 = URL.createObjectURL(e.target.files[0]);
     setGalImg2(e.target.files[0]);
+
   };
   const handleGalImg3 = (e) => {
-    galImage3=URL.createObjectURL(e.target.files[0]);
+    galImage3 = URL.createObjectURL(e.target.files[0]);
     setGalImg3(e.target.files[0]);
   };
   const handleGalImg4 = (e) => {
-    galImage4=URL.createObjectURL(e.target.files[0]);
+    galImage4 = URL.createObjectURL(e.target.files[0]);
     setGalImg4(e.target.files[0]);
   };
   const handleGalImg5 = (e) => {
-    galImage5=URL.createObjectURL(e.target.files[0]);
+    galImage5 = URL.createObjectURL(e.target.files[0]);
     setGalImg5(e.target.files[0]);
   };
   const handleGalImg6 = (e) => {
-    galImage6=URL.createObjectURL(e.target.files[0]);
+    galImage6 = URL.createObjectURL(e.target.files[0]);
     setGalImg6(e.target.files[0]);
   };
-  const handleActive = (e) =>{
+  const handleActive = (e) => {
     let target = e.target;
     let val;
-    if(target.type==='checkbox'){
-      val=target.checked;
-    }else{
-      val=target.value;
+    if (target.type === 'checkbox') {
+      val = target.checked;
+    } else {
+      val = target.value;
     }
     setIsActive(val);
   };
 
-  const reinitializeStates =()=>{
+  const reinitializeStates = () => {
     setCollectionId(0);
     setName("");
     setPrice(-1);
@@ -139,6 +181,13 @@ export default function CollectionEdit() {
     setGalImg5("");
     setGalImg6("");
     setIsActive(true);
+    mainImage=null;
+    galImage1=null;
+    galImage2=null;
+    galImage3=null;
+    galImage4=null;
+    galImage5=null;
+    galImage6=null;
     console.log("states reinitialized");
   };
 
@@ -166,11 +215,13 @@ export default function CollectionEdit() {
   const changeItem = (id) => {
     const currentItem = (data.filter(item => item.id === id))[0]; //selects the item that is clicked
     setItem(currentItem);
+    fetchGalleryImages(id);
   };
   const handleEditShow = () => {
     setEditModalShow(true);
   };
   const handleEditClose = () => {
+    reinitializeStates();
     setEditModalShow(false);
   };
   const handleEditSubmit = (e) => {
@@ -185,48 +236,29 @@ export default function CollectionEdit() {
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/collection/item/edit/" + itemID + "/";
     const formData = new FormData();
 
-    let inputColID = collectionId ===0 ? data[i].collection_id: collectionId;
-    let inputName = name === "" ? data[i].name: name;
-    let inputPrice = price === -1 ? data[i].price:price;
-    let inputDesc = desc === "" ? data[i].desc: desc;
-    let inputMainImg = mainImg === null ? data[i].main_img: mainImg;
-    let inputGalImg1 = galImg1 === "" ? data[i].gallery_img1: galImg1;
-    let inputGalImg2 = galImg2 === "" ? data[i].gallery_img2: galImg2;
-    let inputGalImg3 = galImg3 === "" ? data[i].gallery_img3: galImg3;
-    let inputGalImg4 = galImg4 === "" ? data[i].gallery_img4: galImg4;
-    let inputGalImg5 = galImg5 === "" ? data[i].gallery_img5: galImg5;
-    let inputGalImg6 = galImg6 === "" ? data[i].gallery_img6: galImg6;
-    formData.append("collection_id",inputColID);
-    formData.append("name",inputName);
-    formData.append("price",inputPrice);
-    formData.append("desc",inputDesc);
-    formData.append("main_img",inputMainImg);
-    formData.append("gallery_img1",inputGalImg1);
-    formData.append("gallery_img2",inputGalImg2);
-    formData.append("gallery_img3",inputGalImg3);
-    formData.append("gallery_img4",inputGalImg4);
-    formData.append("gallery_img5",inputGalImg5);
-    formData.append("gallery_img6",inputGalImg6);
-
+    let inputColID = collectionId === 0 ? data[i].collection_id : collectionId;
+    let inputName = name === "" ? data[i].name : name;
+    let inputPrice = price === -1 ? data[i].price : price;
+    let inputDesc = desc === "" ? data[i].desc : desc;
+    let inputMainImg = mainImg === null ? data[i].main_img : mainImg;
+    //No need to check for empty galImges because fetchGalleryImage is done when edit modal is displayed
+    formData.append("collection_id", inputColID);
+    formData.append("name", inputName);
+    formData.append("price", inputPrice);
+    formData.append("desc", inputDesc);
+    formData.append("main_img", inputMainImg);
+    formData.append("gallery_img1", galImg1);
+    formData.append("gallery_img2", galImg2);
+    formData.append("gallery_img3", galImg3);
+    formData.append("gallery_img4", galImg4);
+    formData.append("gallery_img5", galImg5);
+    formData.append("gallery_img6", galImg6);
+    formData.append("is_active",isActive);
     axios.put(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {
         if (response.data.res_code === 1) {
           console.log("Put SUCCESS", response.data.collection_item);
-          //update frontend
-          let newData = [...data];
-          newData[i].collection_id = inputColID;
-          newData[i].name = inputName;
-          newData[i].price = inputPrice;
-          newData[i].desc = inputDesc;
-          newData[i].main_img = inputMainImg;
-          newData[i].gallery_img1 = inputGalImg1;
-          newData[i].gallery_img2 = inputGalImg2;
-          newData[i].gallery_img3 = inputGalImg3;
-          newData[i].gallery_img4 = inputGalImg4;
-          newData[i].gallery_img5 = inputGalImg5;
-          newData[i].gallery_img6 = inputGalImg6;
-          setData(newData);
           window.location.reload();
         } else {
           // Unhandled res_code
@@ -253,28 +285,27 @@ export default function CollectionEdit() {
     e.preventDefault();
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/collection/item/add/";
     const formData = new FormData();
-    formData.append('collection_id',collectionId);
-    formData.append('name',name);
-    formData.append('price',price);
-    formData.append('desc',desc);
-    formData.append('main_img',mainImg);
-    formData.append('gallery_img1',galImg1);
-    formData.append('gallery_img2',galImg2);
-    formData.append('gallery_img3',galImg3);
-    formData.append('gallery_img4',galImg4);
-    formData.append('gallery_img5',galImg5);
-    formData.append('gallery_img6',galImg6);
+    formData.append('collection_id', collectionId);
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('desc', desc);
+    formData.append('main_img', mainImg);
+    formData.append('gallery_img1', galImg1);
+    formData.append('gallery_img2', galImg2);
+    formData.append('gallery_img3', galImg3);
+    formData.append('gallery_img4', galImg4);
+    formData.append('gallery_img5', galImg5);
+    formData.append('gallery_img6', galImg6);
     axios.post(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {
         if (response.data.res_code === 1) {
           console.log("Post SUCCESS", response.data.collection_item);
-          setData([...data, response.data.collection_item]);
           window.location.reload();
         } else {
           // Unhandled res_code
           alert("Post: Unhandled res_code");
-          console.log("Res_code:",response.data.res_code);
+          console.log("Res_code:", response.data.res_code);
         }
       } else {
         // TODO handle unable to connect with database
@@ -304,12 +335,23 @@ export default function CollectionEdit() {
       <h1 style={{textAlign: "center", fontWeight: "bold"}} className="collectionsEdit__header">
         Collections List
       </h1>
-      <DataTable
-        data={data}
-        headers={headers}
-        changeItem={changeItem}
-        showEdit={handleEditShow}
-        deleteItem={handleDelete}/>
+      {isLoading ?
+        <img
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "50%",
+          }}
+          src={LOADER_GIF}
+        /> :
+        <DataTable
+          data={data}
+          headers={headers}
+          changeItem={changeItem}
+          showEdit={handleEditShow}
+          deleteItem={handleDelete}/>
+      }
       {/*Create Modal*/}
       <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
@@ -317,17 +359,17 @@ export default function CollectionEdit() {
         </Modal.Header>
         <Modal.Body>
           <CollectionsForm
-            handleCollectionId = {handleCollectionId}
+            handleCollectionId={handleCollectionId}
             handleName={handleName}
             handlePrice={handlePrice}
             handleDesc={handleDesc}
-            handleMainImg = {handleMainImg}
-            handleGalImg1 = {handleGalImg1}
-            handleGalImg2 = {handleGalImg2}
-            handleGalImg3 = {handleGalImg3}
-            handleGalImg4 = {handleGalImg4}
-            handleGalImg5 = {handleGalImg5}
-            handleGalImg6 = {handleGalImg6}
+            handleMainImg={handleMainImg}
+            handleGalImg1={handleGalImg1}
+            handleGalImg2={handleGalImg2}
+            handleGalImg3={handleGalImg3}
+            handleGalImg4={handleGalImg4}
+            handleGalImg5={handleGalImg5}
+            handleGalImg6={handleGalImg6}
             handleClose={handleCreateClose}
             handleSubmit={handleCreateSubmit}
           />
@@ -339,24 +381,39 @@ export default function CollectionEdit() {
           <Modal.Title>Edit Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CollectionsForm
-            handleCollectionId = {handleCollectionId}
-            handleName={handleName}
-            handlePrice={handlePrice}
-            handleDesc={handleDesc}
-            handleMainImg = {handleMainImg}
-            handleGalImg1 = {handleGalImg1}
-            handleGalImg2 = {handleGalImg2}
-            handleGalImg3 = {handleGalImg3}
-            handleGalImg4 = {handleGalImg4}
-            handleGalImg5 = {handleGalImg5}
-            handleGalImg6 = {handleGalImg6}
-            handleActive = {handleActive}
-            handleClose={handleEditClose}
-            handleSubmit={handleEditSubmit}
-            currentItem={current_item}
-
-          />
+          {isLoading ?
+            <img
+              style={{
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "50%",
+              }}
+              src={LOADER_GIF}
+            /> : <CollectionsForm
+              handleCollectionId={handleCollectionId}
+              handleName={handleName}
+              handlePrice={handlePrice}
+              handleDesc={handleDesc}
+              handleMainImg={handleMainImg}
+              handleGalImg1={handleGalImg1}
+              handleGalImg2={handleGalImg2}
+              handleGalImg3={handleGalImg3}
+              handleGalImg4={handleGalImg4}
+              handleGalImg5={handleGalImg5}
+              handleGalImg6={handleGalImg6}
+              handleActive={handleActive}
+              handleClose={handleEditClose}
+              handleSubmit={handleEditSubmit}
+              currentItem={current_item}
+              galImg1={galImg1}
+              galImg2={galImg2}
+              galImg3={galImg3}
+              galImg4={galImg4}
+              galImg5={galImg5}
+              galImg6={galImg6}
+            />
+          }
         </Modal.Body>
       </Modal>
       <div style={{display: "flex", justifyContent: "center"}}>

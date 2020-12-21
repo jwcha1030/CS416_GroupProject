@@ -9,12 +9,21 @@ import {useState} from "react";
 ReactFC.fcRoot(FusionCharts, FusionTheme);
 
 export default function MonthlyVisitGraph(props) {
+  const formatDate=(dateStr)=>{
+    let ret;
+    let months=["Jan","Feb","Mar", "Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    let month= months[parseInt(dateStr.substring(5,7))-1]; //convert number into string format as in months array.
+    let year= dateStr.substring(0,4);
+    ret=month+"-"+year;
+    return ret;
+  };
+
   const [chartData, setChartData] = useState(() => {
     let ret = [];
-    props.dataInput.map(entry => {
+    props.dataInput.map((entry,i) => {
       ret.push(
         {
-          label: entry.date,
+          label: formatDate(entry.date),
           value: entry.count
         })
     });

@@ -5,6 +5,7 @@ import DataTable from "../EditContents/DataTable";
 import {Button} from "../../../components/button/Button";
 import Modal from "react-bootstrap/Modal";
 import SubscriptionForm from "./SubscriptionForm";
+import LOADER_GIF from "../../../images/loading.gif";
 
 export default function () {
   const [data, setData] = useState([]);
@@ -16,6 +17,7 @@ export default function () {
   //const [date, setDate]= useState('');
   const [headers, setHeaders] = useState([]);
   // const [isSubscribed, setIsSubscribed]= useState("yes");
+  const [isLoading, setLoading] = useState(true);
 
   const getCurrentDate = () => {
     let today = new Date();
@@ -29,6 +31,7 @@ export default function () {
 
   let axios = require('axios');
   const fetchAllData = async () => {
+    setLoading(true);
     await axios.get("https://sunyk-msc-backend.herokuapp.com/email/get_all/")
       .then(response => {
         if (response.status === 200) {
@@ -36,6 +39,7 @@ export default function () {
             // console.log(response.data.results);
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
+            setLoading(false);
             console.log("fetch complete");
           } else {
             alert("Fetch Data: Unhandled res_code");
@@ -50,9 +54,9 @@ export default function () {
   };
 
   useEffect(() => {
-    if (!sessionStorage.getItem("isLoggedIn")){
+    if (!sessionStorage.getItem("isLoggedIn")) {
       alert("You must log in!");
-      window.location.href="/adminlogin";
+      window.location.href = "/adminlogin";
       return;
     }
     fetchAllData();
@@ -66,10 +70,10 @@ export default function () {
   const handleDelete = (id) => {
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/email/unsubscribe/";
     let emailToBeRemoved;
-    console.log("length:",data.length);
-    data.map((subscription,i)=>{
-      if(subscription.id===id){
-        emailToBeRemoved=subscription.email;
+    console.log("length:", data.length);
+    data.map((subscription, i) => {
+      if (subscription.id === id) {
+        emailToBeRemoved = subscription.email;
       }
     });
     const formData = new FormData();
@@ -93,7 +97,7 @@ export default function () {
         // TODO handle unable to connect with database
         alert("Unsubscribe POST: unable to connect with database");
       }
-    }).catch(function (error){
+    }).catch(function (error) {
       alert("Unsubscribe POST: Call error");
       console.log(error);
     });
@@ -139,12 +143,10 @@ export default function () {
         if (response.data.res_code === 1) {
           console.log("Subscribe Post Success", response.data.results);
           window.location.reload();
-        }
-        else{
+        } else {
           alert("Subscribe POST: Unhandled res_code", response.data.res_code);
         }
-      }
-      else{
+      } else {
         alert("Subscribe POST: Unable to connect with database")
       }
     }).catch(function (error) {
@@ -174,33 +176,45 @@ export default function () {
       <h1 style={{textAlign: "center", fontWeight: "bold"}} className="subscriptionEdit__header">
         Subscription Mail List
       </h1>
-      <DataTable
-        data={data}
-        headers={headers}
-        changeItem={changeItem}
-        deleteItem={handleDelete}
-      />
+      {isLoading ?
+        <img
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "50%",
+          }}
+          src={LOADER_GIF}
+        /> :
+        <DataTable
+          data={data}
+          headers={headers}
+          changeItem={changeItem}
+          deleteItem={handleDelete}
+        />
+      }
       {/*Create Modal*/}
-      <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
+        <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Subscribe a User</Modal.Title>
+        <Modal.Title>Subscribe a User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SubscriptionForm
-            handleFirstName={handleFirstName}
-            handleLastName={handleLastName}
-            handleEmail={handleEmail}
-            // handleSubscribed = {handleSubscribed}
-            handleClose={handleCreateClose}
-            handleSubmit={handleCreateSubmit}
-          />
+        <SubscriptionForm
+        handleFirstName={handleFirstName}
+        handleLastName={handleLastName}
+        handleEmail={handleEmail}
+        // handleSubscribed = {handleSubscribed}
+        handleClose={handleCreateClose}
+        handleSubmit={handleCreateSubmit}
+        />
         </Modal.Body>
-      </Modal>
-      <div style={{display: "flex", justifyContent: "center"}}>
+        </Modal>
+        <div style={{display: "flex", justifyContent: "center"}}>
         <Button type="button" onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-          Subscribe a User
+        Subscribe a User
         </Button>
-      </div>
-    </div>
-  );
-}
+        </div>
+        </div>
+        );
+        }
+;

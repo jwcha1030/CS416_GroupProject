@@ -5,8 +5,11 @@ import Modal from "react-bootstrap/Modal";
 import CarouselForm from "./CreateCarouselForm"
 import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
+import LOADER_GIF from "../../../../images/loading.gif";
+import carouselItem from "../../../../components/home_carousel/CarouselItem";
 
-export let bannerImg=null;
+export let bannerImg = null;
+
 export default function CarouselEdit() {
   const [data, setData] = useState([]);
   const [current_item, setItem] = useState(null); //object
@@ -19,10 +22,12 @@ export default function CarouselEdit() {
 
   //['id', 'img', 'idx', 'caption','desc']
   const [headers, setHeaders] = useState([]); //table headers
-
+  const [isLoading, setLoading] = useState(true);
   let axios = require('axios');
+
   //initial fetch
   const fetchAllData = () => {
+    setLoading(true);
     axios.get("https://sunyk-msc-backend.herokuapp.com/home_page_carousel/get_all/")
       .then(response => {
         // console.log(response.data);
@@ -32,6 +37,7 @@ export default function CarouselEdit() {
             // console.log(response.data.results);
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
+            setLoading(false);
             console.log("fetch complete");
             // } else if (){
             // Check other res_code with else if
@@ -52,9 +58,9 @@ export default function CarouselEdit() {
       });
   };
   useEffect(() => {
-    if (!sessionStorage.getItem("isLoggedIn")){
+    if (!sessionStorage.getItem("isLoggedIn")) {
       alert("You must log in!");
-      window.location.href="/adminlogin";
+      window.location.href = "/adminlogin";
       return;
     }
     fetchAllData();
@@ -70,7 +76,7 @@ export default function CarouselEdit() {
   const handleImg = (e) => {
     // Changed from e.target.value to e.target.files[0] because the api needs a file
     // console.log(e.target.files[0].name);
-    bannerImg=URL.createObjectURL(e.target.files[0]);
+    bannerImg = URL.createObjectURL(e.target.files[0]);
     setNewImg(e.target.files[0]);
   };
   const handleIdx = (e) => {
@@ -177,17 +183,6 @@ export default function CarouselEdit() {
     setNewDesc('');
     setNewImg(null);
     setNewIdx(0);
-    /*
-        //This part is only when frontend was working
-        let newData = [...data];
-        newData[i].caption = newCaption===''? data[i].caption:newCaption;
-        setNewCaption(''); //reinitialize
-        newData[i].description = newDesc===''? data[i].description:newDesc;
-        setNewDesc('');
-        newData[i].img = newImg === '' ? data[i].img : newImg;
-        setNewImg('');
-        setData(newData);
-    */
     setEditModalShow(false);
   };
 
@@ -287,12 +282,23 @@ export default function CarouselEdit() {
       <h1 style={{textAlign: "center", fontWeight: "bold"}} className="carouselEdit__header">
         Carousel List
       </h1>
-      <DataTable
-        data={data}
-        headers={headers}
-        changeItem={changeItem}
-        showEdit={handleEditShow}
-        deleteItem={handleDelete}/>
+      {isLoading ?
+        <img
+          style={{
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "50%",
+          }}
+          src={LOADER_GIF}
+        /> : <DataTable
+          data={data}
+          headers={headers}
+          changeItem={changeItem}
+          showEdit={handleEditShow}
+          deleteItem={handleDelete}/>
+      }
+
       {/*Create Modal*/}
       <Modal centered={true} size='lg' animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
