@@ -58,11 +58,11 @@ function InquiryModal(props) {
         {loading ? (
           <div>{""}</div>
         ) : (
-          <h4>
-            Please feel free to ask anything by filling out the form below, and
-            we will get back to you within a few days.
-          </h4>
-        )}
+            <h4>
+              Please feel free to ask anything by filling out the form below, and
+              we will get back to you within a few days.
+            </h4>
+          )}
 
         <br></br>
 
@@ -116,8 +116,9 @@ function InquiryModal(props) {
               })
               .catch(function (error) {
                 // TODO handle error with the call
-                console("Post: Call error");
                 console.log(error);
+                alert(error);
+
               });
           }}
           initialValues={{}}
@@ -143,110 +144,110 @@ function InquiryModal(props) {
                   src={LOADER_GIF}
                 />
               ) : (
-                <div>
-                  <Form.Row>
-                    <Form.Group
-                      as={Col}
-                      md="6"
-                      controlId="validationFormikFirstName"
-                    >
-                      <Form.Label>First Name</Form.Label>
+                  <div>
+                    <Form.Row>
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        controlId="validationFormikFirstName"
+                      >
+                        <Form.Label>First Name</Form.Label>
 
-                      <Form.Control
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={values.firstName}
-                        onChange={handleChange}
-                        isInvalid={!!errors.firstName}
-                        size="lg"
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.firstName}
-                      </Form.Control.Feedback>
-                    </Form.Group>
+                        <Form.Control
+                          type="text"
+                          name="firstName"
+                          placeholder="First Name"
+                          value={values.firstName}
+                          onChange={handleChange}
+                          isInvalid={!!errors.firstName}
+                          size="lg"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.firstName}
+                        </Form.Control.Feedback>
+                      </Form.Group>
 
-                    <Form.Group
-                      as={Col}
-                      md="6"
-                      controlId="validationFormikLastName"
-                    >
-                      <Form.Label>Last Name</Form.Label>
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        controlId="validationFormikLastName"
+                      >
+                        <Form.Label>Last Name</Form.Label>
 
-                      <Form.Control
-                        type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-                        value={values.lastName}
-                        onChange={handleChange}
-                        isInvalid={!!errors.lastName}
-                        size="lg"
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.lastName}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row>
-                    <Form.Group
-                      as={Col}
-                      md="6"
-                      controlId="validationFormikEmail"
-                    >
-                      <Form.Label>Email</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="lastName"
+                          placeholder="Last Name"
+                          value={values.lastName}
+                          onChange={handleChange}
+                          isInvalid={!!errors.lastName}
+                          size="lg"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.lastName}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        controlId="validationFormikEmail"
+                      >
+                        <Form.Label>Email</Form.Label>
 
-                      <Form.Control
-                        type="email"
-                        placeholder="Your Email"
-                        name="email"
-                        value={values.email}
-                        onChange={handleChange}
-                        isInvalid={!!errors.email}
-                        size="lg"
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.email}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form.Row>
+                        <Form.Control
+                          type="email"
+                          placeholder="Your Email"
+                          name="email"
+                          value={values.email}
+                          onChange={handleChange}
+                          isInvalid={!!errors.email}
+                          size="lg"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.email}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Form.Row>
 
-                  <Form.Row>
-                    <Form.Group
-                      as={Col}
-                      md="12"
-                      controlId="validationFormikMessage"
-                    >
-                      <Form.Label>Message</Form.Label>
+                    <Form.Row>
+                      <Form.Group
+                        as={Col}
+                        md="12"
+                        controlId="validationFormikMessage"
+                      >
+                        <Form.Label>Message</Form.Label>
 
-                      <Form.Control
-                        placeholder="Your Message"
-                        name="message"
-                        value={values.message}
-                        onChange={handleChange}
-                        isInvalid={!!errors.message}
-                        size="lg"
-                        as="textarea"
-                        rows="15"
-                      />
+                        <Form.Control
+                          placeholder="Your Message"
+                          name="message"
+                          value={values.message}
+                          onChange={handleChange}
+                          isInvalid={!!errors.message}
+                          size="lg"
+                          as="textarea"
+                          rows="15"
+                        />
 
-                      <Form.Control.Feedback type="invalid">
-                        {errors.message}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form.Row>
-                  <br />
-                  <br />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.message}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Form.Row>
+                    <br />
+                    <br />
 
-                  <div align="right">
-                    <Button variant="light" size="lg" onClick={props.onHide}>
-                      Close
+                    <div align="right">
+                      <Button variant="light" size="lg" onClick={props.onHide}>
+                        Close
                     </Button>
-                    <Button type="submit" size="lg" variant="dark">
-                      Submit
+                      <Button type="submit" size="lg" variant="dark">
+                        Submit
                     </Button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </Form>
           )}
         </Formik>

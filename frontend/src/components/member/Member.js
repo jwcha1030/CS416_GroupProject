@@ -10,7 +10,7 @@ import Popover from "react-bootstrap/Popover";
 import PopoverContent from "react-bootstrap/PopoverContent";
 import PopoverTitle from "react-bootstrap/PopoverTitle";
 
-const toolTipMessage = "Click & Copy to Clipboard";
+const toolTipMessage = "Click & send an email.";
 
 const renderTooltip = (props) => (
   <Tooltip id="button-tooltip" {...props}>
@@ -46,8 +46,9 @@ const renderMembers = (item, index) => {
               className="contact-button"
               size="md"
               onClick={() => {
+                window.location.href = 'mail' + "to:" + item.contact + ";"
                 navigator.clipboard.writeText(item.contact);
-                alert("'" + item.contact + "' is copied to your clipboard.");
+                alert("Preparing to send an email to '" + item.contact + "'. It has also been copied to your clipboard.");
               }}
               variant="dark"
             >
