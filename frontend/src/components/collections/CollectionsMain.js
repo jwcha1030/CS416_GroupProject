@@ -7,6 +7,7 @@ import CollectionsCarousel from "./CollectionsProductCarousel";
 
 // This is the "big" main component at the collections page.
 // It consists of collections carousel, collections information, school information (tab).
+
 function CollectionsMain({
   lightBg,
   topLine,

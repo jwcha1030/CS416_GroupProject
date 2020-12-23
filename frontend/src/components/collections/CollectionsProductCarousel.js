@@ -27,7 +27,7 @@ import s from "./CollectionsProductCarousel.scss";
 
 const NUM_CAROUSEL = 11;
 
-//NOTE THIS CAROUSEL IS NOT MANAGED BY THE ADMINS OR THE BACKEND.
+// NOTE THIS CAROUSEL IS NOT MANAGED BY THE ADMINS OR THE BACKEND.
 // MAY BE MOVED TO BACKEND IN THE FUTURE.
 
 // randomly generated 0-10 unique numbers for randomizing the carousel images order.

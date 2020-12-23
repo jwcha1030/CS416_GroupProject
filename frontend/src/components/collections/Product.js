@@ -64,8 +64,8 @@ const viewCountIncrement = (id) => {
   axios
     .post(
       "https://sunyk-msc-backend.herokuapp.com/collection/item/click/" +
-        id +
-        "/"
+      id +
+      "/"
     )
     .then((response) => {
       // Check if internet connection was working
@@ -115,7 +115,7 @@ const renderProducts = (props, index) => {
               src={props.main_img}
               alt={"img"}
               animation="fillIn"
-              animationDuration={Math.random() * 2 + 1 + "s"}
+              animationDuration={Math.random() * 1 + .5 + "s"}
             />
             //   <Rotation
             //   autoPlay={false}
@@ -142,8 +142,8 @@ const renderProducts = (props, index) => {
             {schoolMappingStr(props.school_id) == SBU_STRING ? (
               <img className="sbu-fit-image" src={SBU_IMG} />
             ) : (
-              <img className="sbu-fit-image" src={FIT_IMG} />
-            )}
+                <img className="sbu-fit-image" src={FIT_IMG} />
+              )}
             {schoolMappingStr(props.school_id)} {typeMapping(props.type_id)}
           </div>
 

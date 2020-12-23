@@ -128,7 +128,8 @@ const ProductList = (props, index) => {
           ?.toLowerCase()
           ?.includes(searchTerm.toLowerCase())
     );
-
+    console.log("testestestset")
+    console.log(results)
     setSearchResults(results);
 
     //fit all tab filtering
@@ -228,8 +229,8 @@ const ProductList = (props, index) => {
           marginLeft: "auto",
           marginRight: "auto",
           marginBottom: "3rem",
-          width: "50%",
-          height: "50%",
+          width: "30%",
+          height: "30%",
         }}
         src={LOADER_GIF}
       />
