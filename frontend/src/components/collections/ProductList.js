@@ -28,7 +28,8 @@ const FIT_STRING = "FIT";
 const SBU_STRING = "SBU";
 const GOODS_STRING = "Goods";
 const APPARELS_STRING = "Apparels";
-
+const SAMPLE_SEARCH_LIST = ["Hoodie", "Hat", "Jacket", "SBU", "FIT", "Goods", "Apparels", "Mug"]
+const SAMPLE_ORDER = Math.floor(Math.random() * SAMPLE_SEARCH_LIST.length)
 const schoolMapping = (school_id) => {
   if (school_id === 0) {
     return NONE_STRING;
@@ -128,9 +129,8 @@ const ProductList = (props, index) => {
           ?.toLowerCase()
           ?.includes(searchTerm.toLowerCase())
     );
-    console.log("testestestset")
-    console.log(results)
     setSearchResults(results);
+
 
     //fit all tab filtering
     const fitAll = allCollectionItems.filter(
@@ -251,7 +251,7 @@ const ProductList = (props, index) => {
           <input
             className="search"
             type="text"
-            placeholder='Search  "Hoodie"'
+            placeholder={'Try Searching for "' + SAMPLE_SEARCH_LIST[SAMPLE_ORDER] + '"'}
             value={searchTerm}
             onChange={handleChange}
           />

@@ -172,7 +172,7 @@ function Footer() {
             Retail Revolution Store <br />
             SUNY Korea Academic Building C608 <br /> 119-2 Songdo Munhwa-ro,
             Yeonsu-gu <br />
-            Incheon South Korea 21985
+            Incheon, South Korea 21985
           </smaller>
           <br></br>
           <br></br>
