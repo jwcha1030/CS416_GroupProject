@@ -1,33 +1,35 @@
-import React, { useEffect, Component } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { motion } from "framer-motion";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
+import LOADER_GIF from "../../images/loading.gif";
 
 var axios = require("axios");
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
+export default function Login() {
+  const style = {
+    margin: 15,
+  };
 
-    // Check if already logged in
-    if (sessionStorage.getItem("isLoggedIn")) {
-      // navigate to admin page
-      window.location.href = "/admin";
-    }
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  // Check if already logged in
+  if (sessionStorage.getItem("isLoggedIn")) {
+    // navigate to admin page
+    window.location.href = "/admin";
   }
 
-  handleClick(event) {
+
+  const handleClick = () => {
     var apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/admin/login/";
     var payload = {
-      email: this.state.email,
-      password: this.state.password,
+      email: email,
+      password: password,
     };
 
     // alert("Login Successful.");
@@ -35,6 +37,8 @@ class Login extends Component {
 
     //  TODO Properly call API
 
+
+    setLoading(true)
     axios
       .post(apiBaseUrl, payload)
       .then(function (response) {
@@ -44,6 +48,7 @@ class Login extends Component {
           if (response.data.res_code == 1) {
             // console.log(response.data.result)
             console.log("Login successful");
+            setLoading(false)
             sessionStorage.setItem("isLoggedIn", "true");
             window.location.href = "/admin";
           } else if (response.data.res_code == 2) {
@@ -70,60 +75,70 @@ class Login extends Component {
       });
   }
 
-  render() {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <div>
-          <MuiThemeProvider>
-            <div
-              align="center"
-              style={{
-                margin: "200px",
-              }}
-            >
-              <h3 style={{ color: "grey" }}>Merchandise Society Admin Login</h3>
-              <p style={{ color: "grey" }}>This is a login page for
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <div>
+        <MuiThemeProvider>
+          <div
+            align="center"
+            style={{
+              margin: "200px",
+            }}
+          >
+            <h3 style={{ color: "grey" }}>Merchandise Society Admin Login</h3>
+            <p style={{ color: "grey" }}>This is a login page for
               administrators of Merchandising Society Club. <br />This page and beyond is not inteded for normal users.
               <br /> Please contact MSC for any inquiries.</p>
 
-              <br />
-              <br />
-              {/* <AppBar title="Login" /> */}
-              <TextField
-                hintText="Enter your Email"
-                floatingLabelText="Email"
-                onChange={(event, newValue) =>
-                  this.setState({ email: newValue })
-                }
+            <br />
+            <br />
+            {/* <AppBar title="Login" /> */}
+            <TextField
+              hintText="Enter your Email"
+              floatingLabelText="Email"
+              onChange={(event, newValue) =>
+                setEmail(newValue)
+              }
+            />
+            <br />
+            <TextField
+              type="password"
+              hintText="Enter your Password"
+              floatingLabelText="Password"
+              onChange={(event, newValue) =>
+                setPassword(newValue)
+              }
+            />
+            <br />
+            {loading ? (
+              <img
+                style={{
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  width: "50%",
+                }}
+                src={LOADER_GIF}
               />
-              <br />
-              <TextField
-                type="password"
-                hintText="Enter your Password"
-                floatingLabelText="Password"
-                onChange={(event, newValue) =>
-                  this.setState({ password: newValue })
-                }
-              />
-              <br />
-              <RaisedButton
+            ) :
+              (<RaisedButton
                 label="Login"
                 primary={true}
                 style={style}
-                onClick={(event) => this.handleClick(event)}
-              />
-            </div>
-          </MuiThemeProvider>
-        </div>
-      </motion.div>
-    );
-  }
+                onClick={() => handleClick()}
+              />)
+            }
+          </div>
+        </MuiThemeProvider>
+      </div>
+    </motion.div>
+  );
+
+
 }
-const style = {
-  margin: 15,
-};
-export default Login;
+

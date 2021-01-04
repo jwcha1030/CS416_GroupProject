@@ -1,11 +1,13 @@
 .tab-logo {
   width: 13rem;
 }
+
 .collections-title {
   color: #d4d4d4;
-  font-size: 5rem;
-  font-weight: 500;
+  font-size: 3rem;
+  font-weight: 400;
   margin-bottom: 1%;
+  letter-spacing: 7px;
 }
 .search {
   text-align: center;
@@ -16,7 +18,7 @@
   transition: 0.2s;
   color: #000000;
   font-size: x-large;
-  border-color: #d4d4d4;
+  border-color: #d1d1d1;
   border-radius: 10px;
 }
 
@@ -27,13 +29,20 @@
 
 .search:hover {
   background-color: #fbfbfb;
-  color: #000000;
+  color: #292929;
   font-size: xx-large;
   transition: 0.2s;
 }
 
 .search:focus {
+  color: #969696;
+  letter-spacing: 1px;
+
   outline: none;
+}
+
+.search {
+  letter-spacing: 2px;
 }
 .upperTab {
   margin-left: 2%;
@@ -56,10 +65,13 @@
   margin-bottom: 0.07rem;
   background-color: white;
   font-size: 11px;
+  letter-spacing: 1px;
 }
 
 .react-tabs__tab:hover {
   transition: 0.1s;
+  letter-spacing: 1px;
+
   font-weight: bold;
   color: #ea7229;
 }
@@ -68,12 +80,11 @@
   border: none;
   text-align: center;
   font-weight: 700;
-  font-size: 12px;
-
+  font-size: 15px;
   color: #ea7229;
   border-bottom: 5px solid #ea7229;
-
   transition: 0.3s;
+  letter-spacing: 2.5px;
 }
 
 .product-list {

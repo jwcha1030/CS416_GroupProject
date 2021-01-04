@@ -10915,7 +10915,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@^16.13.1":
+"react-dom@^16.13.1", "react-dom@>=16.8.0":
   "integrity" "sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.13.1.tgz"
   "version" "16.13.1"
@@ -11081,6 +11081,11 @@
 "react-moment@^1.0.0":
   "integrity" "sha512-J4iIiwUT4oZcL7cp2U7naQKbQtqvmzGXXBMg/DLj+Pi7n9EW0VhBRx/1aJ1Tp2poCqTCAPoadLEoUIkReGnNNg=="
   "resolved" "https://registry.npmjs.org/react-moment/-/react-moment-1.0.0.tgz"
+  "version" "1.0.0"
+
+"react-multiple-image-input@^1.0.0":
+  "integrity" "sha512-gyhrZMvgd5F9jTUrD84T2CpZiNIUWNzLNIavwOu/d5oQKxD4DtnPCN08q4YH2Gf3CPkoM59UrBOQJbcUG+7aTg=="
+  "resolved" "https://registry.npmjs.org/react-multiple-image-input/-/react-multiple-image-input-1.0.0.tgz"
   "version" "1.0.0"
 
 "react-number-format@^4.4.1":
@@ -11393,7 +11398,7 @@
     "object-assign" "^4.1.0"
     "prop-types" "^15.5.10"
 
-"react@^16.13.1":
+"react@^16.13.1", "react@>=16.8.0":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
