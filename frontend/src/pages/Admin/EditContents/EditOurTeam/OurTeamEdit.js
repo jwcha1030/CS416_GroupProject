@@ -219,10 +219,8 @@ export default function OurTeamEdit(props) {
         if (response.status === 200) {
           console.log("POST res_code:", response.data.res_code);
           if (response.data.res_code === 1) {
-            // Everything worked correctly
-            // Do something with the returned data
+            window.location.reload();
             console.log("Post SUCCESS", response.data.team_page_person);
-            //window.location.reload();
           } else {
             // Unhandled res_code
             alert("Post: Unhandled res_code");

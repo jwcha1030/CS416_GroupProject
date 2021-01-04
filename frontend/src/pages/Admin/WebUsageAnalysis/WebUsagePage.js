@@ -91,8 +91,8 @@ export default function WebUsagePage() {
               <BarGraph dataInput={data}/>
             </div>
             <div className="web-analysis__table-wrapper">
-              <h3 style={{color: "black", fontWeight: "bold"}} className="web-analysis__table-header">
-                Analysis Details
+              <h3 style={{textAlign: "center", color:"black", fontWeight: "bold"}} className="web-analysis__table-header">
+                Analysis Table
               </h3>
 
               <DataTable data={data} headers={headers}/>

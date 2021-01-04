@@ -19,16 +19,6 @@ export default function () {
   // const [isSubscribed, setIsSubscribed]= useState("yes");
   const [isLoading, setLoading] = useState(true);
 
-  const getCurrentDate = () => {
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    return today
-  };
-
   let axios = require('axios');
   const fetchAllData = async () => {
     setLoading(true);
@@ -83,12 +73,13 @@ export default function () {
       if (response.status === 200) {
         console.log("Unsubscribe POST rescode:", response.data.res_code);
         if (response.data.res_code === 1) {
-          console.log("Unsubscribe POST success:", response.data.res_msg);
           //only changes deletion in the frontend
           const removedItems = [...data].filter(item => item.id !== id);
           setData(removedItems);
           //reload to see updates from the backend
           window.location.reload();
+          console.log("Unsubscribe POST success:", response.data.res_msg);
+
         } else {
           // Unhandled res_code
           alert("Unsubscribe POST: Unhandled res_code");
@@ -141,8 +132,8 @@ export default function () {
       if (response.status === 200) {
         console.log("Subscribe POST res_code:", response.data.res_code);
         if (response.data.res_code === 1) {
-          console.log("Subscribe Post Success", response.data.results);
           window.location.reload();
+          console.log("Subscribe Post Success", response.data.results);
         } else {
           alert("Subscribe POST: Unhandled res_code", response.data.res_code);
         }
@@ -189,32 +180,32 @@ export default function () {
         <DataTable
           data={data}
           headers={headers}
-          changeItem={changeItem}
+          editItem={changeItem}
           deleteItem={handleDelete}
         />
       }
       {/*Create Modal*/}
-        <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
+      <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
         <Modal.Header closeButton>
-        <Modal.Title>Subscribe a User</Modal.Title>
+          <Modal.Title>Subscribe a User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <SubscriptionForm
-        handleFirstName={handleFirstName}
-        handleLastName={handleLastName}
-        handleEmail={handleEmail}
-        // handleSubscribed = {handleSubscribed}
-        handleClose={handleCreateClose}
-        handleSubmit={handleCreateSubmit}
-        />
+          <SubscriptionForm
+            handleFirstName={handleFirstName}
+            handleLastName={handleLastName}
+            handleEmail={handleEmail}
+            // handleSubscribed = {handleSubscribed}
+            handleClose={handleCreateClose}
+            handleSubmit={handleCreateSubmit}
+          />
         </Modal.Body>
-        </Modal>
-        <div style={{display: "flex", justifyContent: "center"}}>
-        <Button type="button" onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-        Subscribe a User
+      </Modal>
+      <div style={{display: "flex", justifyContent: "center"}}>
+        <Button type="button" onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline"
+                buttonColor="msc_orange">
+          Subscribe a User
         </Button>
-        </div>
-        </div>
-        );
-        }
-;
+      </div>
+    </div>
+  );
+};

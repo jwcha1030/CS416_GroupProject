@@ -66,7 +66,10 @@ export default function OurTeamForm (props) {
           </Form.Group>
         </Form.Row>
         <Form.Group>
-          <Form.File onChange={props.handleImg}  accept=".jpg, .jpeg., .png" label="Profile Image of the Member (in .png/jpeg/jpg files) [Optimal Img Size: 225 x 225 pixels]"/>
+          <Form.File onChange={props.handleImg}  accept=".jpg, .jpeg., .png"
+                     label="Profile Image of the Member (in .png/jpeg/jpg files) [Optimal Img Size: 225 x 225 pixels]"
+                     required
+          />
           <img src={memberImage}/>
         </Form.Group>
         <Modal.Footer>

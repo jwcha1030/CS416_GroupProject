@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io";
 import CollectionsForm from "./CollectionsForm";
 import LOADER_GIF from "../../../../images/loading.gif";
+import CatalogDisplayModal from "./CatalogDisplayModal";
 
 export let mainImage = null;
 export let galImage1 = null;
@@ -18,8 +19,11 @@ export let galImage6 = null;
 export default function CollectionEdit() {
   const [current_item, setItem] = useState(null);
   const [data, setData] = useState([]);
+
   const [showCreateModal, setCreateModalShow] = useState(false);
   const [showEditModal, setEditModalShow] = useState(false);
+  const [showCatalogModal, setCatalogModalShow] = useState(false); //state for displaying 360view image CRUD modal
+
   const [headers, setHeaders] = useState([]); //table headers
   const [isLoading, setLoading] = useState(true);
 
@@ -35,6 +39,10 @@ export default function CollectionEdit() {
   const [galImg5, setGalImg5] = useState("");
   const [galImg6, setGalImg6] = useState("");
   const [isActive, setIsActive] = useState(true);
+
+  const [hasCatalog, setHasCatalog] = useState(false);
+  const [catalogImgList, setCatalogImgList] = useState({}); //in format of {0: img1 file, 1: img2 file, 2: img3 file, ...}
+  const [catalogID, setCatalogID] = useState(-1);
 
   let axios = require('axios');
   //initial fetch
@@ -69,6 +77,16 @@ export default function CollectionEdit() {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("isLoggedIn")) {
+      alert("You must log in!");
+      window.location.href = "/adminlogin";
+      return;
+    }
+    fetchAllData();
+  }, []); //fetch once when loaded
+
   const fetchGalleryImages = (id) => {
     setLoading(true);
     axios.get("https://sunyk-msc-backend.herokuapp.com/collection/item/get/" + id + "/")
@@ -106,14 +124,72 @@ export default function CollectionEdit() {
         console.log(error);
       });
   };
-  useEffect(() => {
-    if (!sessionStorage.getItem("isLoggedIn")) {
-      alert("You must log in!");
-      window.location.href = "/adminlogin";
-      return;
-    }
-    fetchAllData();
-  }, []); //fetch once
+
+  const checkAndFetchCatalogImages = (itemID) => {
+    setLoading(true);
+    let cd_id = catalogID; //initialize
+    axios.get("https://sunyk-msc-backend.herokuapp.com/collection/item/" + itemID + "/catalog_display/has/")
+      .then(response => {
+        if (response.status === 200) {
+          if (response.data.res_code === 1) {
+            // console.log(response.data.results);
+            cd_id = response.data.cd_id;
+            console.log("catlogID:", cd_id, "hasCatalog?:", response.data.has);
+            setCatalogID(cd_id);
+            console.log("fetch hasCatalogImages complete");
+            if(cd_id > -1){
+              console.log("CALLING fetchCatalogImages()");
+              fetchCatalogImages(cd_id);
+            }
+            else{
+              console.log("No catalog images found");
+              setLoading(false);
+            }
+          } else {
+            // Unhandled res_code
+            alert("Fetch hasCatalogImages: Unhandled res_code");
+            console.log("res_code:", response.data.res_code);
+            setLoading(false);
+          }
+        } else {
+          // TODO handle unable to connect with database
+          alert("Fetch hasCatalogImages: Unable to connect with database");
+          setLoading(false);
+        }
+      });
+
+  };
+
+  const fetchCatalogImages = (cd_id) => {
+    console.log("CatalogImages Found; loading fetchCatalogImages()");
+    //setLoading(true) is not necessary as fetchCatalogImages is called from checkAndFetchCatalogImagesExist().
+    axios.get("https://sunyk-msc-backend.herokuapp.com/catalog_display/" + cd_id + "/images/get_formatted/")
+      .then(response => {
+        // Check if internet connection was working
+        if (response.status === 200) {
+          if (response.data.res_code === 1) {
+            console.log("fetchCatalogImages:", response.data.results);
+            for (const [key, val] of Object.entries(response.data.results)){
+              console.log("key:",key,"value:",val);
+            }
+            setLoading(false);
+            console.log("fetch catalogImageList complete");
+          } else {
+            // Unhandled res_code
+            alert("Fetch catalogImageList: Unhandled res_code");
+            console.log("Rescode:", response.data.res_code);
+          }
+        } else {
+          // TODO handle unable to connect with database
+          alert("Fetch catalogImageList: Unable to connect with database");
+        }
+      })
+      .catch(function (error) {
+        // TODO handle error with the call
+        alert("Fetch Gallery Images: Call error");
+        console.log(error);
+      });
+  };
 
   //form handlers
   const handleCollectionId = (e) => {
@@ -158,12 +234,15 @@ export default function CollectionEdit() {
     setGalImg6(e.target.files[0]);
   };
   const handleActive = (e) => {
+    e.preventDefault();
     let target = e.target;
     let val;
     if (target.type === 'checkbox') {
       val = target.checked;
+      console.log("YESS", val);
     } else {
       val = target.value;
+      console.log("NO", val);
     }
     setIsActive(val);
   };
@@ -181,13 +260,13 @@ export default function CollectionEdit() {
     setGalImg5("");
     setGalImg6("");
     setIsActive(true);
-    mainImage=null;
-    galImage1=null;
-    galImage2=null;
-    galImage3=null;
-    galImage4=null;
-    galImage5=null;
-    galImage6=null;
+    mainImage = null;
+    galImage1 = null;
+    galImage2 = null;
+    galImage3 = null;
+    galImage4 = null;
+    galImage5 = null;
+    galImage6 = null;
     console.log("states reinitialized");
   };
 
@@ -215,9 +294,9 @@ export default function CollectionEdit() {
   const changeItem = (id) => {
     const currentItem = (data.filter(item => item.id === id))[0]; //selects the item that is clicked
     setItem(currentItem);
-    fetchGalleryImages(id);
   };
-  const handleEditShow = () => {
+  const handleEditShow = (id) => {
+    fetchGalleryImages(id);
     setEditModalShow(true);
   };
   const handleEditClose = () => {
@@ -233,6 +312,7 @@ export default function CollectionEdit() {
         break;
       }
     }
+    console.log("Editing Item:", data[i], "current_item.id:", itemID);
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/collection/item/edit/" + itemID + "/";
     const formData = new FormData();
 
@@ -240,7 +320,7 @@ export default function CollectionEdit() {
     let inputName = name === "" ? data[i].name : name;
     let inputPrice = price === -1 ? data[i].price : price;
     let inputDesc = desc === "" ? data[i].desc : desc;
-    let inputMainImg = mainImg === null ? data[i].main_img : mainImg;
+    let inputMainImg = mainImg == null ? data[i].main_img : mainImg;
     //No need to check for empty galImges because fetchGalleryImage is done when edit modal is displayed
     formData.append("collection_id", inputColID);
     formData.append("name", inputName);
@@ -253,7 +333,7 @@ export default function CollectionEdit() {
     formData.append("gallery_img4", galImg4);
     formData.append("gallery_img5", galImg5);
     formData.append("gallery_img6", galImg6);
-    formData.append("is_active",isActive);
+    formData.append("is_active", isActive ? 'true' : 'false');
     axios.put(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {
@@ -296,6 +376,7 @@ export default function CollectionEdit() {
     formData.append('gallery_img4', galImg4);
     formData.append('gallery_img5', galImg5);
     formData.append('gallery_img6', galImg6);
+    // formData.append("is_active",isActive ?'true':'false');
     axios.post(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {
@@ -327,6 +408,15 @@ export default function CollectionEdit() {
     setCreateModalShow(true);
   };
 
+  const handleCatalogShow = (id) => {
+    checkAndFetchCatalogImages(id);
+    setCatalogModalShow(true);
+  };
+
+  const handleCatalogClose = () => {
+    setCatalogModalShow(false);
+  };
+
   return (
     <div>
       <Link style={{fontSize: "17px"}} className="goBack" to="/admin">
@@ -350,7 +440,9 @@ export default function CollectionEdit() {
           headers={headers}
           changeItem={changeItem}
           showEdit={handleEditShow}
-          deleteItem={handleDelete}/>
+          showCatalog={handleCatalogShow}
+          deleteItem={handleDelete}
+        />
       }
       {/*Create Modal*/}
       <Modal size="lg" centered={true} animation={false} show={showCreateModal} onHide={handleCreateClose}>
@@ -416,9 +508,13 @@ export default function CollectionEdit() {
           }
         </Modal.Body>
       </Modal>
+      {/*360View Catalog Modal*/}
+      <CatalogDisplayModal show={showCatalogModal} hide={handleCatalogClose} hasCatalog={hasCatalog}
+                           isLoading={isLoading} setLoading={setLoading}/>
+
       <div style={{display: "flex", justifyContent: "center"}}>
         <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
-          Create
+          Add an Item
         </Button>
       </div>
     </div>

@@ -38,15 +38,6 @@ export default function CollectionsForm(prop) {
     <Form.File onChange={prop.handleGalImg1} accept=".jpg, .jpeg., .png"
                label="Gallery Img1 (e.g., .png/jpeg/jpg files)" required/>;
 
-  const isActiveForm = isEditForm ?
-    //when editing
-    (
-      prop.currentItem.is_active ?
-        <input name="isActive" type="checkbox" onChange={prop.handleActive} defaultChecked='true'/> :
-        <input name="isActive" type="checkbox" onChange={prop.handleActive}/>
-    ) :
-    //when creating, this form is not necessary
-    null;
   /*const schoolForm = isEditForm ?
     (prop.currentItem.school === "SBU" ?
       <Form.Control as="select" onChange={prop.handleSchool}>
@@ -93,14 +84,15 @@ export default function CollectionsForm(prop) {
           </Form.Group>
         </Form.Row>
         <Form.Row>
-          <Form.Group as={Col} md={"3"}>
-            <Form.Label>Collection ID (0 to 3)</Form.Label>
+          <Form.Group as={Col} md={"4"}>
+            <Form.Label>Collection ID</Form.Label>
+            <Form.Label>(0:None 1:Goods 2:Apparel)</Form.Label>
             {collectionIdForm}
           </Form.Group>
           {isEditForm && <Form.Group as={Col} md={"2"}>
             <Form.Label>In Stock?</Form.Label>
             <div className="isActive_checkbox-container"> {/*mandatory container for layout*/}
-              {isActiveForm}
+              <Form.Check type={"checkbox"} onChange={prop.handleActive} defaultChecked={prop.currentItem.is_active}/>
             </div>
           </Form.Group>}
         </Form.Row>
