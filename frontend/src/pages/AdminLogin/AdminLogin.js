@@ -6,7 +6,6 @@ import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import LOADER_GIF from "../../images/loading.gif";
-
 var axios = require("axios");
 
 export default function Login() {
@@ -25,7 +24,7 @@ export default function Login() {
   }
 
 
-  const handleClick = () => {
+  const handleLogin = () => {
     var apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/admin/login/";
     var payload = {
       email: email,
@@ -53,8 +52,10 @@ export default function Login() {
             window.location.href = "/admin";
           } else if (response.data.res_code == 2) {
             console.log("Email Does Not Exist");
+            setLoading(false)
             alert("Email Does Not Exist");
           } else if (response.data.res_code == 3) {
+            setLoading(false)
             console.log("Incorrect Password");
             alert("Incorrect Password");
           } else {
@@ -75,6 +76,10 @@ export default function Login() {
       });
   }
 
+
+  const handleForgotPassword = () => {
+    alert("Please contact one of the developers of the website -- Haseung, Tim, David ")
+  }
 
   return (
     <motion.div
@@ -99,6 +104,7 @@ export default function Login() {
             <br />
             {/* <AppBar title="Login" /> */}
             <TextField
+
               hintText="Enter your Email"
               floatingLabelText="Email"
               onChange={(event, newValue) =>
@@ -109,29 +115,30 @@ export default function Login() {
             <TextField
               type="password"
               hintText="Enter your Password"
+              color="#d4d4d4"
+
               floatingLabelText="Password"
               onChange={(event, newValue) =>
                 setPassword(newValue)
               }
             />
             <br />
-            {loading ? (
-              <img
-                style={{
-                  display: "block",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  width: "50%",
-                }}
-                src={LOADER_GIF}
-              />
-            ) :
-              (<RaisedButton
-                label="Login"
-                primary={true}
-                style={style}
-                onClick={() => handleClick()}
-              />)
+            {loading ? (<RaisedButton
+              label="Loading..."
+              primary={false}
+              style={style}
+            />) :
+              (<div>
+                <RaisedButton
+                  label="Login"
+                  backgroundColor="#d4d4d4"
+                  style={style}
+                  onClick={() => handleLogin()}
+                />
+                <button style={{ outline: "none" }} type="button" class="btn-link" onClick={() => handleForgotPassword()}>Forgot Account Info?</button>
+
+              </div>
+              )
             }
           </div>
         </MuiThemeProvider>
