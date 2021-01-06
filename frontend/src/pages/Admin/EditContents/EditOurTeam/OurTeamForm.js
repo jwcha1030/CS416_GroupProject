@@ -25,7 +25,6 @@ export default function OurTeamForm (props) {
     <Form.Control onChange={props.handleContact} placeholder={props.currentItem.contact}/>:
     <Form.Control onChange={props.handleContact} placeholder='Enter contact info'/>;
 
-
   return (
     <div style={{margin:"auto"}} className="editContent__ourTeam-form-container">
       <Form validated onSubmit={props.handleSubmit}>

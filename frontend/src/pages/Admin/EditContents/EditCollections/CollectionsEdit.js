@@ -41,7 +41,7 @@ export default function CollectionEdit() {
   const [isActive, setIsActive] = useState(true);
 
   const [hasCatalog, setHasCatalog] = useState(false);
-  const [catalogImgList, setCatalogImgList] = useState({}); //in format of {0: img1 file, 1: img2 file, 2: img3 file, ...}
+  const [catalogImages, setCatalogImages] = useState({}); //in format of {0: img1 file, 1: img2 file, 2: img3 file, ...}
   const [catalogID, setCatalogID] = useState(-1);
 
   let axios = require('axios');
@@ -137,12 +137,13 @@ export default function CollectionEdit() {
             console.log("catlogID:", cd_id, "hasCatalog?:", response.data.has);
             setCatalogID(cd_id);
             console.log("fetch hasCatalogImages complete");
-            if(cd_id > -1){
+            if (cd_id > -1) {
               console.log("CALLING fetchCatalogImages()");
+              setHasCatalog(true);
               fetchCatalogImages(cd_id);
-            }
-            else{
+            } else {
               console.log("No catalog images found");
+              setHasCatalog(false);
               setLoading(false);
             }
           } else {
@@ -168,12 +169,14 @@ export default function CollectionEdit() {
         // Check if internet connection was working
         if (response.status === 200) {
           if (response.data.res_code === 1) {
-            console.log("fetchCatalogImages:", response.data.results);
-            for (const [key, val] of Object.entries(response.data.results)){
-              console.log("key:",key,"value:",val);
+            let images = {};
+            for (let [key, val] of Object.entries(response.data.results)) {
+              console.log("key:", key, "value:", val);
+              images[parseInt(key)] = val;
             }
+            setCatalogImages(images);
             setLoading(false);
-            console.log("fetch catalogImageList complete");
+            console.log("fetch catalogImageList complete:", response.data.results);
           } else {
             // Unhandled res_code
             alert("Fetch catalogImageList: Unhandled res_code");
@@ -260,6 +263,9 @@ export default function CollectionEdit() {
     setGalImg5("");
     setGalImg6("");
     setIsActive(true);
+    setCatalogID(-1);
+    setHasCatalog(false);
+    setCatalogImages({});
     mainImage = null;
     galImage1 = null;
     galImage2 = null;
@@ -414,6 +420,120 @@ export default function CollectionEdit() {
   };
 
   const handleCatalogClose = () => {
+    setCatalogImages({});
+    setHasCatalog(false);
+    setCatalogModalShow(false);
+  };
+
+
+  const urltoFile=(url, filename, mimeType)=>{
+        return (fetch(url)
+            .then(function(res){return res.arrayBuffer();})
+            .then(function(buf){return new File([buf], filename,{type:mimeType});})
+        );
+   };
+
+  //checks if the input is in dataURL
+  const isDataURL=(s)=> {
+    const regex=/^\s*data:([a-z]+\/[a-z]+(;[a-z\-]+\=[a-z\-]+)?)?(;base64)?,[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%\s]*\s*$/i;
+    return !!s.match(regex);
+  };
+
+  const dataURLtoFile = (dataurl, filename) => {
+    if(isDataURL(dataurl)){
+      let arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new File([u8arr], filename, {type: mime});
+    }
+    return dataurl;
+  };
+
+
+  const handleAddCatalogSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    //TODO: addListCollectionItemCatalogDisplayImages api call here
+    console.log("Adding Item:", current_item, "current_item.id:", current_item.id, "catalog_id:", catalogID);
+
+    let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/collection/item/" + current_item.id + "/catalog_display/add_list/";
+    const formData = new FormData();
+    let numOfImg = Object.keys(catalogImages).length;
+    formData.append("num_of_files", numOfImg);
+    for (let [key, val] of Object.entries(catalogImages)) {
+      formData.append("img" + key, dataURLtoFile(val, "img" + key));
+    }
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + " " + pair[1]);
+    }
+    axios.post(apiBaseUrl, formData).then(response => {
+      // Check if internet connection was working
+      if (response.status === 200) {
+        if (response.data.res_code === 1) {
+          console.log("AddCatalogSubmit SUCCESS");
+          // window.location.reload();
+          setLoading(false);
+        } else {
+          // Unhandled res_code
+          alert("AddCatalogSubmit: Unhandled res_code");
+          console.log("Res_code:", response.data.res_code);
+        }
+      } else {
+        // TODO handle unable to connect with database
+        alert("AddCatalogSubmit: unable to connect with database");
+      }
+    }).catch(function (error) {
+      // TODO handle error with the call
+      alert("AddCatalogSubmit: Call error");
+      console.log(error);
+    });
+
+    setHasCatalog(false);
+    setCatalogModalShow(false);
+  };
+  const handleEditCatalogSubmit = () => {
+    setLoading(true);
+    //TODO: editAllCollectionItemCatalogDisplayImage api call here
+    console.log("Editing Item:", current_item, "current_item.id:", current_item.id, "catalog_id:", catalogID);
+    let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/catalog_display/" + catalogID + "/images/edit_all/";
+    const formData = new FormData();
+    let numOfImg = Object.keys(catalogImages).length;
+    formData.append("num_of_files", numOfImg);
+    for (let [key, val] of Object.entries(catalogImages)) {
+      console.log("key:", key, "val:", val);
+      formData.append("img" + key, dataURLtoFile(val, "img" + key));
+    }
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + " " + pair[1]);
+    }
+    axios.put(apiBaseUrl, formData).then(response => {
+      // Check if internet connection was working
+      if (response.status === 200) {
+        if (response.data.res_code === 1) {
+          console.log("EditCatalogSubmission SUCCESS");
+          // window.location.reload();
+          setLoading(false);
+        } else {
+          // Unhandled res_code
+          alert("EditCatalogSubmission: Unhandled res_code");
+          console.log("EditCatalogSubmission rescode:", response.data.res_code);
+        }
+      } else {
+        // TODO handle unable to connect with database
+        alert("EditCatalogSubmission: unable to connect with database");
+      }
+    }).catch(function (error) {
+      // TODO handle error with the call
+      alert("EditCatalogSubmission: Call error");
+      console.log(error);
+    });
+
+    setHasCatalog(false);
     setCatalogModalShow(false);
   };
 
@@ -509,8 +629,16 @@ export default function CollectionEdit() {
         </Modal.Body>
       </Modal>
       {/*360View Catalog Modal*/}
-      <CatalogDisplayModal show={showCatalogModal} hide={handleCatalogClose} hasCatalog={hasCatalog}
-                           isLoading={isLoading} setLoading={setLoading}/>
+      <CatalogDisplayModal show={showCatalogModal}
+                           hide={handleCatalogClose}
+                           hasCatalog={hasCatalog}
+                           isLoading={isLoading}
+                           setLoading={setLoading}
+                           images={catalogImages}
+                           setCatalog={setCatalogImages}
+                           selectedItem={current_item}
+                           submit={hasCatalog ? handleEditCatalogSubmit : handleAddCatalogSubmit}
+      />
 
       <div style={{display: "flex", justifyContent: "center"}}>
         <Button onClick={handleCreateShow} buttonStyle="btn--large" buttonSize="btn--outline" buttonColor="msc_orange">
