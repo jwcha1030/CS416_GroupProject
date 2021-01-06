@@ -29,7 +29,7 @@ const renderMembers = (item, index) => {
             {item.position}
           </Card.Subtitle>
           <p class="card-text">
-            <medium className="date text-muted">{item.introduction}</medium>
+            <medium className="date text-muted">{item.date_joined}</medium>
           </p>
           <Card.Text className="description">{item.position_desc}</Card.Text>
           {/* id: INT, idx: INT,
