@@ -57,7 +57,7 @@ export default function CollectionEdit() {
             setData(response.data.results);
             setHeaders(Object.keys(response.data.results[0]));
             setLoading(false);
-            console.log("fetch complete");
+            console.log("fetch complete:", response.data.results);
             // } else if (){
             // Check other res_code with else if
             // }
@@ -212,27 +212,51 @@ export default function CollectionEdit() {
     setMainImg(e.target.files[0]);
   };
   const handleGalImg1 = (e) => {
+    if (e.target.files[0]==null){
+      setGalImg1("");
+      return;
+    }
     galImage1 = URL.createObjectURL(e.target.files[0]);
     setGalImg1(e.target.files[0]);
   };
   const handleGalImg2 = (e) => {
+    if (e.target.files[0]==null){
+      setGalImg2("");
+      return;
+    }
     galImage2 = URL.createObjectURL(e.target.files[0]);
     setGalImg2(e.target.files[0]);
 
   };
   const handleGalImg3 = (e) => {
+    if (e.target.files[0]==null){
+      setGalImg3("");
+      return;
+    }
     galImage3 = URL.createObjectURL(e.target.files[0]);
     setGalImg3(e.target.files[0]);
   };
   const handleGalImg4 = (e) => {
+    if (e.target.files[0]==null){
+      setGalImg4("");
+      return;
+    }
     galImage4 = URL.createObjectURL(e.target.files[0]);
     setGalImg4(e.target.files[0]);
   };
   const handleGalImg5 = (e) => {
+    if (e.target.files[0]==null){
+      setGalImg5("");
+      return;
+    }
     galImage5 = URL.createObjectURL(e.target.files[0]);
     setGalImg5(e.target.files[0]);
   };
   const handleGalImg6 = (e) => {
+    if (e.target.files[0]==null){
+      setGalImg6("");
+      return;
+    }
     galImage6 = URL.createObjectURL(e.target.files[0]);
     setGalImg6(e.target.files[0]);
   };
@@ -241,11 +265,9 @@ export default function CollectionEdit() {
     let target = e.target;
     let val;
     if (target.type === 'checkbox') {
-      val = target.checked;
-      console.log("YESS", val);
+      console.log(val = target.checked);
     } else {
       val = target.value;
-      console.log("NO", val);
     }
     setIsActive(val);
   };
@@ -309,6 +331,12 @@ export default function CollectionEdit() {
     reinitializeStates();
     setEditModalShow(false);
   };
+
+  const formDataPrint=(formData)=>{
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + " " + pair[1]);
+    }
+  };
   const handleEditSubmit = (e) => {
     e.preventDefault();
     let itemID = current_item.id;
@@ -322,7 +350,7 @@ export default function CollectionEdit() {
     let apiBaseUrl = "https://sunyk-msc-backend.herokuapp.com/collection/item/edit/" + itemID + "/";
     const formData = new FormData();
 
-    let inputColID = collectionId === 0 ? data[i].collection_id : collectionId;
+    let inputColID = collectionId === 0 ? data[i].id : collectionId;
     let inputName = name === "" ? data[i].name : name;
     let inputPrice = price === -1 ? data[i].price : price;
     let inputDesc = desc === "" ? data[i].desc : desc;
@@ -339,7 +367,8 @@ export default function CollectionEdit() {
     formData.append("gallery_img4", galImg4);
     formData.append("gallery_img5", galImg5);
     formData.append("gallery_img6", galImg6);
-    formData.append("is_active", isActive ? 'true' : 'false');
+    formData.append("is_active", isActive);
+    formDataPrint(formData);
     axios.put(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {
@@ -382,6 +411,7 @@ export default function CollectionEdit() {
     formData.append('gallery_img4', galImg4);
     formData.append('gallery_img5', galImg5);
     formData.append('gallery_img6', galImg6);
+    formDataPrint(formData);
     // formData.append("is_active",isActive ?'true':'false');
     axios.post(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
@@ -468,9 +498,7 @@ export default function CollectionEdit() {
     for (let [key, val] of Object.entries(catalogImages)) {
       formData.append("img" + key, dataURLtoFile(val, "img" + key));
     }
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + " " + pair[1]);
-    }
+    formDataPrint(formData);
     axios.post(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {
@@ -508,9 +536,7 @@ export default function CollectionEdit() {
       console.log("key:", key, "val:", val);
       formData.append("img" + key, dataURLtoFile(val, "img" + key));
     }
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + " " + pair[1]);
-    }
+    formDataPrint(formData);
     axios.put(apiBaseUrl, formData).then(response => {
       // Check if internet connection was working
       if (response.status === 200) {

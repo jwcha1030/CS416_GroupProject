@@ -10,9 +10,9 @@ export default function CollectionsForm(prop) {
   const isEditForm = prop.currentItem !== undefined; //true if this form is called when edit button is pressed.
   //collection id: 0 -> None, 1-> Goods, 2-> Apparel
   const collectionIdForm = isEditForm ?
-    <Form.Control type="number" onChange={prop.handleCollectionId} placeholder={prop.currentItem.collection_id} min={0}
+    <Form.Control type="number" onChange={prop.handleCollectionId} placeholder={prop.currentItem.collection_id} min={1}
                   max={2}/> :
-    <Form.Control type="number" onChange={prop.handleCollectionId} placeholder='Enter Collection ID' required min={0}
+    <Form.Control type="number" onChange={prop.handleCollectionId} placeholder='Enter Collection ID' required min={1}
                   max={2}/>;
   const nameForm = isEditForm ?
     <Form.Control onChange={prop.handleName} placeholder={prop.currentItem.name}/> :
@@ -86,7 +86,7 @@ export default function CollectionsForm(prop) {
         <Form.Row>
           <Form.Group as={Col} md={"4"}>
             <Form.Label>Collection ID</Form.Label>
-            <Form.Label>(0:None 1:Goods 2:Apparel)</Form.Label>
+            <Form.Label>(1:Goods 2:Apparel)</Form.Label>
             {collectionIdForm}
           </Form.Group>
           {isEditForm && <Form.Group as={Col} md={"2"}>
