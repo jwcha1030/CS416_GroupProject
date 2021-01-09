@@ -67,31 +67,30 @@ const typeMapping = (type_id) => {
 };
 
 let has360View;
-let api360ViewUrl;
+let cProductID
 function ProductDetailPage(props) {
   const [loading, setLoading] = useState(false);
 
-  const cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
+  cProductID = props.match.params.id; // the id of this product  11.25.2020 has only 2 in the backend data
 
   const [productData, setData] = useState({});
   const [hasCatalogDisplayID, setHasCatalogDisplayID] = useState();
   const [hasCatalogDisplayBoolean, setHasCatalogDisplayBoolean] = useState();
 
-  const apiBaseUrl =
+  let apiBaseUrl =
     "https://sunyk-msc-backend.herokuapp.com/collection/item/get/" +
     cProductID +
     "/";
 
-  const apiHas360ViewUrl =
+  let apiHas360ViewUrl =
     "https://sunyk-msc-backend.herokuapp.com/collection/item/" +
     cProductID +
     "/catalog_display/has/";
 
-  const api360ViewImagesUrl =
+  let api360ViewImagesUrl =
     "https://sunyk-msc-backend.herokuapp.com/catalog_display/" +
     hasCatalogDisplayID +
     "/images/get_all/";
-  api360ViewUrl = api360ViewImagesUrl;
 
   // product details api call
   useEffect(() => {
@@ -166,8 +165,7 @@ function ProductDetailPage(props) {
       });
   }, []);
 
-  console.log(productData);
-  console.log(hasCatalogDisplayID);
+
 
   const [
     PurchaseInquiryModalShow,
@@ -352,35 +350,81 @@ function ProductDetailPage(props) {
 
 function RotatingImageModal(props) {
   const [catalogDisplayImages, setCatalogDisplayImages] = useState([{}]);
+  const [loading360, setLoading360] = useState(false);
+  const [hasCatalogDisplayID, setHasCatalogDisplayID] = useState();
+
+
+  let apiHas360ViewUrl =
+    "https://sunyk-msc-backend.herokuapp.com/collection/item/" +
+    cProductID +
+    "/catalog_display/has/";
+
+  let api360ViewImagesUrl =
+    "https://sunyk-msc-backend.herokuapp.com/catalog_display/" +
+    hasCatalogDisplayID +
+    "/images/get_all/";
+
+
+
+  // NOTE: This is a nested axios call because it needs to re initialize the url...
   useEffect(() => {
     axios
-      .get(api360ViewUrl)
-      .then(function (response) {
-        if (response.status == 200) {
-          if (response.data.res_code == 1) {
-            console.log(
-              "Successfully fetched 360 Degree Images with c_id " +
-              response.data.res_msg
-            );
-            setCatalogDisplayImages(response.data.results);
+      .get(apiHas360ViewUrl)
+      .then(function (response1) {
+        if (response1.status == 200) {
+          if (response1.data.res_code == 1) {
+            api360ViewImagesUrl =
+              "https://sunyk-msc-backend.herokuapp.com/catalog_display/" +
+              response1.data.cd_id +
+              "/images/get_all/";
+            setLoading360(true);
+            console.log(api360ViewImagesUrl)
+            axios
+              .get(api360ViewImagesUrl)
+              .then(function (response) {
+                if (response.status == 200) {
+                  if (response.data.res_code == 1) {
+                    console.log("START IMAGE DATA")
+
+                    setCatalogDisplayImages(response.data.results)
+                    setLoading360(false);
+                  } else {
+                    console.log(
+                      "rescode other than 1. Catalog Display may not be available, or it has some other error."
+                    );
+                  }
+                } else {
+                  console.log(
+                    "unhandled response status from loading catalog display images. Please contact an admin."
+                  );
+                }
+              })
+              .catch(function (error) {
+                console.log("code 0 " + error);
+                console.log(
+                  "unhandled error from loading catalog display images. Please contact an admin."
+                );
+              });
           } else {
             console.log(
-              "rescode other than 1. Catalog Display may not be available, or it has some other error."
+              "unhandled res_code error from catalog display. Please contact an admin."
             );
           }
         } else {
           console.log(
-            "unhandled response status from loading catalog display images. Please contact an admin."
+            "unhandled response status  catalog display. Please contact an admin."
           );
         }
       })
       .catch(function (error) {
-        console.log("code 0 " + error);
+
         console.log(
-          "unhandled error from loading catalog display images. Please contact an admin."
+          "unhandled error from catalog display. Please contact an admin."
         );
       });
   }, []);
+
+
   const id = props.id;
   //pass data from product using props...
 
@@ -394,7 +438,7 @@ function RotatingImageModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Sample 360 Degree View
+          360 Degree View
         </Modal.Title>
       </Modal.Header>
       <Modal.Body align="center">
@@ -412,11 +456,17 @@ function RotatingImageModal(props) {
 
               {/*  BACKEND DATA API CALL -- MSC IS NOT READY TO PROVIDE THE DATA YET -12/3/2020 **********************************/}
               {/* enabled --12/20/2020 */}
-              {catalogDisplayImages.map(renderImages)}
+
+              {loading360 ? ( //button for 360 degree view if it is available.
+                <img src={LOADER_GIF} />
+
+              ) : (
+                  catalogDisplayImages.map(renderImages)
+                )}
+
             </Rotation>
           }
         >
-          {" "}
           <Meta
             title={props.productName}
             description="Drag around the see different angles"
