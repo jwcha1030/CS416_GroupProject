@@ -83,7 +83,7 @@ function ProductDetailPage(props) {
     "/";
 
   const apiHas360ViewUrl =
-    "https://sunyk-msc-backend.herokuapp.com/collection/item/get/collection/item/" +
+    "https://sunyk-msc-backend.herokuapp.com/collection/item/" +
     cProductID +
     "/catalog_display/has/";
 
@@ -143,7 +143,8 @@ function ProductDetailPage(props) {
             );
             setHasCatalogDisplayID(response.data.cd_id);
             setHasCatalogDisplayBoolean(response.data.has);
-            has360View = response.daa.has;
+            has360View = response.data.has;
+
             setLoading(false);
           } else {
             console.log(
