@@ -112,6 +112,7 @@ const renderProducts = (props, index) => {
           cover={
             <ReactImageAppear
               className="cover-image"
+              key={props.id}
               src={props.main_img}
               alt={"img"}
               animation="fillIn"
