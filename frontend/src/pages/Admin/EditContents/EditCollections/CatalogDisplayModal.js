@@ -9,13 +9,15 @@ export default function CatalogDisplayModal(props) {
     fontSize: 15,
   };
   const headerStyle={
+    margin:0,
     textAlign: 'center',
     fontSize:20,
     fontWeight: 'bold',
     position:'absolute',
     left: '50%',
-    top: '6%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translateX(-50%)',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
   };
   return (
     <Modal size='lg' centered={true} animation={false} show={props.show} onHide={props.hide}>
@@ -43,7 +45,7 @@ export default function CatalogDisplayModal(props) {
                 images={props.images}
                 setImages={props.setCatalog}
                 allowCrop={false}
-                handleError={() => alert("Image Upload Failed: Max 50 images allowed")}
+                handleError={() => alert("Image Upload Failed: Max 60 images allowed")}
                 theme={"light"}
                 max={60}
               />

@@ -333,6 +333,7 @@ export default function CollectionEdit() {
   };
 
   const formDataPrint=(formData)=>{
+    console.log("FormData Print:");
     for (let pair of formData.entries()) {
       console.log(pair[0] + " " + pair[1]);
     }
