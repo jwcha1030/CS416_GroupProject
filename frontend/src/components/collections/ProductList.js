@@ -72,7 +72,9 @@ const ProductList = (props, index) => {
   const [goodsAll, setGoodsAll] = React.useState([]);
   const [apparelsAll, setApparelsAll] = React.useState([]);
 
-  const handleChange = (e) => {
+  const handleSearchChange = (e) => {
+    console.log(e.target.value);
+    console.log(searchResults)
     setSearchTerm(e.target.value);
   };
 
@@ -253,7 +255,7 @@ const ProductList = (props, index) => {
             type="text"
             placeholder={'Try Searching for "' + SAMPLE_SEARCH_LIST[SAMPLE_ORDER] + '"'}
             value={searchTerm}
-            onChange={handleChange}
+            onChange={handleSearchChange}
           />
         </div>
       </div>
