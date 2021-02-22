@@ -70,13 +70,13 @@ function Home() {
             display: "block",
             marginLeft: "auto",
             marginRight: "auto",
-            width: "50%",
+            width: "30%",
           }}
           src={LOADER_GIF}
         />
       ) : (
-        <Carousel>{carouselItemsFromBackend.map(carouselItem)}</Carousel>
-      )}
+          <Carousel>{carouselItemsFromBackend.map(carouselItem)}</Carousel>
+        )}
       {/* COLLECTIONS */}
       <div data-aos="slide-left">
         <HeroSection {...collections} />

@@ -110,6 +110,12 @@
     width: 15px;
     padding-right: 5px;
   }
+
+  .iproduct-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .iproduct-name {
     font-size: 1.5rem;
     padding-left: 5rem;
