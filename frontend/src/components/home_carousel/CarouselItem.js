@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const carouselItem = (item, index) => {
   return (
+
     <Carousel.Item>
       <img className="carousel-image" src={item.img} alt={item.alt} />
       <Carousel.Caption>
